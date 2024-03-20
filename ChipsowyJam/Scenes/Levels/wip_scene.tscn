@@ -1,3 +1,23 @@
-[gd_scene format=3 uid="uid://dujs37qsrm41c"]
+[gd_scene load_steps=4 format=3 uid="uid://dujs37qsrm41c"]
+
+[ext_resource type="PackedScene" uid="uid://d1aae145icetj" path="res://Models/Terrain.glb" id="1_0b2o3"]
+[ext_resource type="PackedScene" uid="uid://bowvq8oqmhu74" path="res://Scenes/Assets/nexus_red.tscn" id="2_1ajbf"]
+[ext_resource type="PackedScene" uid="uid://ctrqmvyc13uo" path="res://Scenes/Assets/tower_red.tscn" id="3_lgpwt"]
 
 [node name="Node3D" type="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.1475, 2.68318, -0.818871)
+
+[node name="Terrain" parent="." instance=ExtResource("1_0b2o3")]
+transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 0, 0, 0)
+
+[node name="NexusRed" parent="." instance=ExtResource("2_1ajbf")]
+transform = Transform3D(-0.0401455, 0, -3.50963e-09, 0, 0.13685, 0, 3.50963e-09, 0, -0.0401455, 22.257, 2.531, 0)
+
+[node name="TowerRed" parent="NexusRed" instance=ExtResource("3_lgpwt")]
+transform = Transform3D(-14.0693, 0, 1.22998e-06, 0, 4.12729, 0, -1.22998e-06, 0, -14.0693, 3.5444, 8.09055, 125.452)
+
+[node name="TowerRed2" parent="NexusRed" instance=ExtResource("3_lgpwt")]
+transform = Transform3D(-14.0693, 0, 1.22998e-06, 0, 4.12729, 0, -1.22998e-06, 0, -14.0693, 3.5444, 9.00315, -126.881)
+
+[node name="TowerRed3" parent="NexusRed" instance=ExtResource("3_lgpwt")]
+transform = Transform3D(-14.0693, 0, 1.22998e-06, 0, 4.12729, 0, -1.22998e-06, 0, -14.0693, 128.787, 10.197, -1.90735e-06)
