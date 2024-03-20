@@ -1,0 +1,7 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://3p3mkenj3y1t"]
+
+[resource]
+resource_name = "DarkRed"
+cull_mode = 2
+albedo_color = Color(0.906392, 0.364558, 0.245831, 1)
+roughness = 0.5

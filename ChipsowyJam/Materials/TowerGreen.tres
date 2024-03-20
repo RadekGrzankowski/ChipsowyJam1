@@ -1,0 +1,8 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://ht41xnlgjjoh"]
+
+[resource]
+resource_name = "TowerGreen"
+cull_mode = 2
+albedo_color = Color(0.33597, 0.953993, 0.731351, 1)
+metallic = 0.735849
+roughness = 0.231132
