@@ -35,6 +35,12 @@ _subresources={
 "use_external/enabled": true,
 "use_external/path": "res://Materials/Material.001.tres"
 }
+},
+"nodes": {
+"PATH:Plane": {
+"generate/physics": true,
+"physics/shape_type": 2
+}
 }
 }
 gltf/naming_version=1
