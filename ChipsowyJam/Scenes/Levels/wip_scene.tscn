@@ -1,30 +1,38 @@
-[gd_scene load_steps=7 format=3 uid="uid://dujs37qsrm41c"]
+[gd_scene load_steps=10 format=3 uid="uid://dujs37qsrm41c"]
 
 [ext_resource type="PackedScene" uid="uid://dqjshpkv6wn2t" path="res://Scenes/Assets/terrain.tscn" id="1_0p14s"]
+[ext_resource type="Script" path="res://Scripts/camera_movement.gd" id="1_80gvj"]
 [ext_resource type="PackedScene" uid="uid://bowvq8oqmhu74" path="res://Scenes/Assets/nexus_red.tscn" id="2_1ajbf"]
 [ext_resource type="PackedScene" uid="uid://ctrqmvyc13uo" path="res://Scenes/Assets/tower_red.tscn" id="3_lgpwt"]
 [ext_resource type="PackedScene" uid="uid://k35yjc6xeque" path="res://Scenes/Assets/tower_blue.tscn" id="3_n8rwg"]
 [ext_resource type="PackedScene" uid="uid://4rrv3e1eqdmv" path="res://Scenes/Assets/nexus_blue.tscn" id="4_ma8xm"]
 
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_trv5t"]
+ground_bottom_color = Color(0.298039, 0.407843, 0.470588, 1)
+
+[sub_resource type="Sky" id="Sky_jy73e"]
+sky_material = SubResource("ProceduralSkyMaterial_trv5t")
+
 [sub_resource type="Environment" id="Environment_6gxsl"]
-background_mode = 1
+background_mode = 2
 background_color = Color(0.407843, 0.615686, 0.67451, 1)
+sky = SubResource("Sky_jy73e")
+ambient_light_source = 3
+reflected_light_source = 2
 tonemap_mode = 3
 tonemap_exposure = 0.6
+ssao_enabled = true
+glow_enabled = true
 
 [node name="Node3D" type="Node3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.1475, 2.68318, -0.818871)
-
-[node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(0.999391, -0.0232162, 0.0260573, 0, 0.746638, 0.66523, -0.0348995, -0.664825, 0.746183, 0, 19.635, 17.599)
-current = true
-fov = 70.0
 
 [node name="Terrain" parent="." instance=ExtResource("1_0p14s")]
 transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 0, 0, 0)
 
 [node name="NexusBlue" parent="." instance=ExtResource("4_ma8xm")]
 transform = Transform3D(0.0401455, 0, 0, 0, 0.13685, 0, 0, 0, 0.0401455, -24.8965, 1.99031, 0)
+metadata/_edit_group_ = true
 
 [node name="TowerBlue" parent="NexusBlue" instance=ExtResource("3_n8rwg")]
 transform = Transform3D(14.0693, 0, 0, 0, 4.12729, 0, 0, 0, 14.0693, 121.97, 11.4474, 0)
@@ -54,3 +62,11 @@ shadow_enabled = true
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_6gxsl")
+
+[node name="CameraController" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 22.5, 12.5)
+script = ExtResource("1_80gvj")
+
+[node name="Camera3D" type="Camera3D" parent="CameraController"]
+transform = Transform3D(1, 0, 0, 0, 0.258819, 0.965926, 0, -0.965926, 0.258819, 0, 0, 0)
+current = true
