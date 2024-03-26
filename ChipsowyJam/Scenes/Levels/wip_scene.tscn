@@ -43,6 +43,15 @@ transform = Transform3D(14.0693, 0, 0, 0, 4.12729, 0, 0, 0, 14.0693, -2.57733, 1
 [node name="TowerBlue3" parent="NexusBlue" instance=ExtResource("3_n8rwg")]
 transform = Transform3D(14.0693, 0, 0, 0, 4.12729, 0, 0, 0, 14.0693, -2.57733, 6.84706, 124.547)
 
+[node name="MidSpawner" type="Marker3D" parent="NexusBlue"]
+transform = Transform3D(1, 0, 0, 0, 0.48261, 0.875835, 0, -0.875835, 0.48261, 31.372, -8.8182, 0.689045)
+
+[node name="BotSpawner" type="Marker3D" parent="NexusBlue"]
+transform = Transform3D(1, 0, 0, 0, 0.48261, 0.875835, 0, -0.875835, 0.48261, 1.87201, -9.69578, 27.5047)
+
+[node name="TopSpawner" type="Marker3D" parent="NexusBlue"]
+transform = Transform3D(1, 0, 0, 0, 0.48261, 0.875835, 0, -0.875835, 0.48261, -1.80548, -8.06656, -32.3679)
+
 [node name="NexusRed" parent="." instance=ExtResource("2_1ajbf")]
 transform = Transform3D(-0.0401455, 0, -3.50963e-09, 0, 0.13685, 0, 3.50963e-09, 0, -0.0401455, 22.257, 2.531, 0)
 metadata/_edit_group_ = true
@@ -55,6 +64,15 @@ transform = Transform3D(-14.0693, 0, 1.22998e-06, 0, 4.12729, 0, -1.22998e-06, 0
 
 [node name="TowerRed3" parent="NexusRed" instance=ExtResource("3_lgpwt")]
 transform = Transform3D(-14.0693, 0, 1.22998e-06, 0, 4.12729, 0, -1.22998e-06, 0, -14.0693, 128.787, 10.197, -1.90735e-06)
+
+[node name="MidSpawner2" type="Marker3D" parent="NexusRed"]
+transform = Transform3D(1, 0, 0, 0, 0.48261, 0.875835, 0, -0.875835, 0.48261, 31.372, -8.8182, 0.689045)
+
+[node name="BotSpawner2" type="Marker3D" parent="NexusRed"]
+transform = Transform3D(1, 0, 0, 0, 0.48261, 0.875835, 0, -0.875835, 0.48261, 1.87201, -9.69578, 27.5047)
+
+[node name="TopSpawner2" type="Marker3D" parent="NexusRed"]
+transform = Transform3D(1, 0, 0, 0, 0.48261, 0.875835, 0, -0.875835, 0.48261, -1.80548, -8.06656, -32.3679)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.875137, -0.219537, -0.431206, 0.482832, 0.454673, 0.748429, 0.0317494, -0.863178, 0.503901, 0.00286484, 0.0375671, -0.040123)
@@ -70,3 +88,15 @@ script = ExtResource("1_80gvj")
 [node name="Camera3D" type="Camera3D" parent="CameraController"]
 transform = Transform3D(1, 0, 0, 0, 0.258819, 0.965926, 0, -0.965926, 0.258819, 0, 0, 0)
 current = true
+
+[node name="BotPathRed" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.043, 2.02154, 17.0916)
+
+[node name="BotPathBlue" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25.1851, 2.11995, 17.0916)
+
+[node name="TopPathRed" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.043, 2.02154, -18.3903)
+
+[node name="TopPathBlue" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25.1851, 2.11995, -18.3903)
