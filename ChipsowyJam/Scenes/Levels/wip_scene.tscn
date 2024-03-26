@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://ctrqmvyc13uo" path="res://Scenes/Assets/tower_red.tscn" id="3_lgpwt"]
 [ext_resource type="PackedScene" uid="uid://k35yjc6xeque" path="res://Scenes/Assets/tower_blue.tscn" id="3_n8rwg"]
 [ext_resource type="PackedScene" uid="uid://4rrv3e1eqdmv" path="res://Scenes/Assets/nexus_blue.tscn" id="4_ma8xm"]
-[ext_resource type="Script" path="res://Scenes/Levels/UI.gd" id="7_jyse4"]
+[ext_resource type="Script" path="res://Scripts/spawn_manager.gd" id="7_jyse4"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_trv5t"]
 ground_bottom_color = Color(0.298039, 0.407843, 0.470588, 1)
@@ -90,17 +90,17 @@ script = ExtResource("1_80gvj")
 transform = Transform3D(1, 0, 0, 0, 0.258819, 0.965926, 0, -0.965926, 0.258819, 0, 0, 0)
 current = true
 
-[node name="UI" type="Node3D" parent="CameraController/Camera3D"]
+[node name="UIController" type="Node3D" parent="CameraController/Camera3D"]
 script = ExtResource("7_jyse4")
 
-[node name="SPAWNBOTBLUE" type="Button" parent="CameraController/Camera3D/UI"]
+[node name="SPAWNBOTBLUE" type="Button" parent="CameraController/Camera3D/UIController"]
 offset_left = 168.0
 offset_top = 8.0
 offset_right = 314.0
 offset_bottom = 41.0
 text = "SPAWN BOT BLUE"
 
-[node name="SPAWNMIDBLUE" type="Button" parent="CameraController/Camera3D/UI"]
+[node name="SPAWNMIDBLUE" type="Button" parent="CameraController/Camera3D/UIController"]
 offset_left = 320.0
 offset_top = 8.0
 offset_right = 465.0
@@ -108,7 +108,7 @@ offset_bottom = 41.0
 text = "SPAWN MID BLUE
 "
 
-[node name="SPAWNTOPBLUE" type="Button" parent="CameraController/Camera3D/UI"]
+[node name="SPAWNTOPBLUE" type="Button" parent="CameraController/Camera3D/UIController"]
 offset_left = 472.0
 offset_top = 8.0
 offset_right = 617.0
@@ -116,14 +116,14 @@ offset_bottom = 41.0
 text = "SPAWN TOP BLUE
 "
 
-[node name="SPAWNBOTRED" type="Button" parent="CameraController/Camera3D/UI"]
+[node name="SPAWNBOTRED" type="Button" parent="CameraController/Camera3D/UIController"]
 offset_left = 168.0
 offset_top = 48.0
 offset_right = 314.0
 offset_bottom = 81.0
 text = "SPAWN BOT RED"
 
-[node name="SPAWNMIDRED" type="Button" parent="CameraController/Camera3D/UI"]
+[node name="SPAWNMIDRED" type="Button" parent="CameraController/Camera3D/UIController"]
 offset_left = 320.0
 offset_top = 48.0
 offset_right = 465.0
@@ -131,7 +131,7 @@ offset_bottom = 81.0
 text = "SPAWN MID RED
 "
 
-[node name="SPAWNTOPRED" type="Button" parent="CameraController/Camera3D/UI"]
+[node name="SPAWNTOPRED" type="Button" parent="CameraController/Camera3D/UIController"]
 offset_left = 472.0
 offset_top = 48.0
 offset_right = 617.0
@@ -150,3 +150,5 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.043, 2.02154, -18.3903)
 
 [node name="TopPathBlue" type="Marker3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25.1851, 2.11995, -18.3903)
+
+[connection signal="pressed" from="CameraController/Camera3D/UIController/SPAWNBOTBLUE" to="CameraController/Camera3D/UIController" method="_on_spawnbotblue_pressed"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://dcu24u5hlay3i"]
+[gd_scene load_steps=25 format=3 uid="uid://dcu24u5hlay3i"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3cth0"]
 resource_name = "Demon_Main"
@@ -374,6 +374,9 @@ bind/41/pose = Transform3D(-0.75326, -2.52911e-05, -1.2771e-07, -3.47697e-08, -0
 bind/42/name = &"PoleTarget.R"
 bind/42/bone = -1
 bind/42/pose = Transform3D(0.75326, 1.30595e-13, 5.38774e-07, -1.07045e-13, 0.75326, -3.29261e-08, -5.38774e-07, 3.29261e-08, 0.75326, 0.0224202, 0.0113429, -0.0179171)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_mkgvg"]
+size = Vector3(1.25, 1.2, 0.7)
 
 [sub_resource type="Animation" id="Animation_0bkxl"]
 resource_name = "CharacterArmature|Death"
@@ -4270,10 +4273,10 @@ _data = {
 "CharacterArmature|Yes": SubResource("Animation_seklk")
 }
 
-[node name="RedDemon" type="Node3D"]
-transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 0, 0, 0)
+[node name="RedDemon" type="CharacterBody3D"]
 
 [node name="RootNode" type="Node3D" parent="."]
+transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 0, 0, 0)
 
 [node name="CharacterArmature" type="Node3D" parent="RootNode"]
 transform = Transform3D(100, 0, 0, 0, -1.19209e-05, 100, 0, -100, -1.19209e-05, 0, 0, 0)
@@ -4693,6 +4696,10 @@ skin = SubResource("Skin_v17jb")
 [node name="Trident" type="MeshInstance3D" parent="RootNode/CharacterArmature/Skeleton3D"]
 mesh = SubResource("ArrayMesh_w546f")
 skin = SubResource("Skin_q83t0")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.58, 0)
+shape = SubResource("BoxShape3D_mkgvg")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
