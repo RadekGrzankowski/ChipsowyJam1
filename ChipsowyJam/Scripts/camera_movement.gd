@@ -25,3 +25,5 @@ func _move(delta):
 	# moving the camera
 	translate(velocity.normalized() * delta * movement_speed)
 	pass
+
+
