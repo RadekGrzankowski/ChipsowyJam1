@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://b5jm5bsdkufxr"]
+
+[ext_resource type="PackedScene" uid="uid://bw1cexmd1ty2x" path="res://Models/TerrainV2.glb" id="1_t01hj"]
+[ext_resource type="Material" uid="uid://d1qa8astnokmi" path="res://Materials/TerrainMaterial.tres" id="2_p0gcv"]
+
+[node name="TerrainV2" instance=ExtResource("1_t01hj")]
+
+[node name="Terrain" parent="." index="0"]
+material_override = ExtResource("2_p0gcv")

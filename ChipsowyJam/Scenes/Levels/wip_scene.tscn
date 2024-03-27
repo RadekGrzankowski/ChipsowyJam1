@@ -1,12 +1,12 @@
 [gd_scene load_steps=11 format=3 uid="uid://dujs37qsrm41c"]
 
-[ext_resource type="PackedScene" uid="uid://dqjshpkv6wn2t" path="res://Scenes/Assets/terrain.tscn" id="1_0p14s"]
 [ext_resource type="Script" path="res://Scripts/camera_movement.gd" id="1_80gvj"]
 [ext_resource type="PackedScene" uid="uid://bowvq8oqmhu74" path="res://Scenes/Assets/nexus_red.tscn" id="2_1ajbf"]
 [ext_resource type="PackedScene" uid="uid://ctrqmvyc13uo" path="res://Scenes/Assets/tower_red.tscn" id="3_lgpwt"]
 [ext_resource type="PackedScene" uid="uid://k35yjc6xeque" path="res://Scenes/Assets/tower_blue.tscn" id="3_n8rwg"]
 [ext_resource type="PackedScene" uid="uid://4rrv3e1eqdmv" path="res://Scenes/Assets/nexus_blue.tscn" id="4_ma8xm"]
 [ext_resource type="Script" path="res://Scripts/spawn_manager.gd" id="7_jyse4"]
+[ext_resource type="PackedScene" uid="uid://b5jm5bsdkufxr" path="res://Scenes/Assets/TerrainV2.tscn" id="7_xweac"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_trv5t"]
 ground_bottom_color = Color(0.298039, 0.407843, 0.470588, 1)
@@ -28,24 +28,24 @@ glow_enabled = true
 [node name="Node3D" type="Node3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.1475, 2.68318, -0.818871)
 
-[node name="Terrain" parent="." instance=ExtResource("1_0p14s")]
-transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 0, 0, 0)
+[node name="TerrainV2" parent="." instance=ExtResource("7_xweac")]
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 0, 0, 0)
 
 [node name="NexusBlue" parent="." instance=ExtResource("4_ma8xm")]
-transform = Transform3D(0.0401455, 0, 0, 0, 0.13685, 0, 0, 0, 0.0401455, -24.8965, 1.99031, 0)
+transform = Transform3D(0.0283872, 0, 0.0283872, 0, 0.13685, 0, -0.0283872, 0, 0.0283872, -26, 2.897, 26)
 metadata/_edit_group_ = true
 
 [node name="TowerBlue" parent="NexusBlue" instance=ExtResource("3_n8rwg")]
-transform = Transform3D(14.0693, 0, 0, 0, 4.12729, 0, 0, 0, 14.0693, 121.97, 11.4474, 0)
+transform = Transform3D(14.0693, 0, 0, 0, 4.12729, 0, 0, 0, 14.0693, 120, 8, 0)
 
 [node name="TowerBlue2" parent="NexusBlue" instance=ExtResource("3_n8rwg")]
-transform = Transform3D(14.0693, 0, 0, 0, 4.12729, 0, 0, 0, 14.0693, -2.57733, 12.2321, -124.547)
+transform = Transform3D(9.9485, 0, 9.9485, 0, 4.12729, 0, -9.9485, 0, 9.9485, 75, 8, -120)
 
 [node name="TowerBlue3" parent="NexusBlue" instance=ExtResource("3_n8rwg")]
-transform = Transform3D(14.0693, 0, 0, 0, 4.12729, 0, 0, 0, 14.0693, -2.57733, 6.84706, 124.547)
+transform = Transform3D(9.94849, 0, -9.94849, 0, 4.12729, 0, 9.94849, 0, 9.94849, 75, 8, 120)
 
 [node name="MidSpawnerBlue" type="Marker3D" parent="NexusBlue"]
-transform = Transform3D(1, 0, 0, 0, 0.48261, 0.875835, 0, -0.875835, 0.48261, 31.372, -8.8182, 0.689045)
+transform = Transform3D(1, 0, 0, 0, 0.48261, 0.875835, 0, -0.875835, 0.48261, 29.3671, -8.8182, 0.689056)
 
 [node name="BotSpawnerBlue" type="Marker3D" parent="NexusBlue"]
 transform = Transform3D(1, 0, 0, 0, 0.48261, 0.875835, 0, -0.875835, 0.48261, 1.87201, -9.69578, 27.5047)
@@ -54,17 +54,17 @@ transform = Transform3D(1, 0, 0, 0, 0.48261, 0.875835, 0, -0.875835, 0.48261, 1.
 transform = Transform3D(1, 0, 0, 0, 0.48261, 0.875835, 0, -0.875835, 0.48261, -1.80548, -8.06656, -32.3679)
 
 [node name="NexusRed" parent="." instance=ExtResource("2_1ajbf")]
-transform = Transform3D(-0.0401455, 0, -3.50963e-09, 0, 0.13685, 0, 3.50963e-09, 0, -0.0401455, 22.257, 2.531, 0)
+transform = Transform3D(-0.0283872, 0, -0.0283872, 0, 0.13685, 0, 0.0283872, 0, -0.0283872, 26, 2.89749, -26)
 metadata/_edit_group_ = true
 
 [node name="TowerRed" parent="NexusRed" instance=ExtResource("3_lgpwt")]
-transform = Transform3D(-14.0693, 0, 1.22998e-06, 0, 4.12729, 0, -1.22998e-06, 0, -14.0693, 3.5444, 8.54094, 125.452)
+transform = Transform3D(-9.9485, 0, 9.9485, 0, 4.12729, 0, -9.9485, 0, -9.9485, 75, 8, 120)
 
 [node name="TowerRed2" parent="NexusRed" instance=ExtResource("3_lgpwt")]
-transform = Transform3D(-14.0693, 0, 1.22998e-06, 0, 4.12729, 0, -1.22998e-06, 0, -14.0693, 3.5444, 9.00315, -126.881)
+transform = Transform3D(-9.9485, 0, 9.9485, 0, 4.12729, 0, -9.9485, 0, -9.9485, 75.0001, 8, -120)
 
 [node name="TowerRed3" parent="NexusRed" instance=ExtResource("3_lgpwt")]
-transform = Transform3D(-14.0693, 0, 1.22998e-06, 0, 4.12729, 0, -1.22998e-06, 0, -14.0693, 128.787, 10.197, -1.90735e-06)
+transform = Transform3D(-14.0693, 0, 9.53674e-07, 0, 4.12729, 0, -9.53674e-07, 0, -14.0693, 120, 8, 0)
 
 [node name="MidSpawnerRed" type="Marker3D" parent="NexusRed"]
 transform = Transform3D(1, 0, 0, 0, 0.48261, 0.875835, 0, -0.875835, 0.48261, 31.372, -8.8182, 0.689045)
