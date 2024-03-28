@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://dujs37qsrm41c"]
+[gd_scene load_steps=13 format=3 uid="uid://dujs37qsrm41c"]
 
 [ext_resource type="Script" path="res://Scripts/camera_movement.gd" id="1_80gvj"]
 [ext_resource type="PackedScene" uid="uid://bowvq8oqmhu74" path="res://Scenes/Assets/nexus_red.tscn" id="2_1ajbf"]
@@ -7,6 +7,8 @@
 [ext_resource type="PackedScene" uid="uid://4rrv3e1eqdmv" path="res://Scenes/Assets/nexus_blue.tscn" id="4_ma8xm"]
 [ext_resource type="Script" path="res://Scripts/spawn_manager.gd" id="7_jyse4"]
 [ext_resource type="PackedScene" uid="uid://b5jm5bsdkufxr" path="res://Scenes/Assets/TerrainV2.tscn" id="7_xweac"]
+[ext_resource type="PackedScene" uid="uid://b5guql3jxuxf" path="res://Scenes/Assets/Mobs/blue_demon.tscn" id="8_gtino"]
+[ext_resource type="PackedScene" uid="uid://dcu24u5hlay3i" path="res://Scenes/Assets/Mobs/red_demon.tscn" id="9_0q4ox"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_trv5t"]
 ground_bottom_color = Color(0.298039, 0.407843, 0.470588, 1)
@@ -33,6 +35,72 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.1475, 2.68318, -0.818871)
 [node name="Terrain" parent="." instance=ExtResource("7_xweac")]
 transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 0, 0, 0)
 
+[node name="CameraController" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 30, 12.5)
+script = ExtResource("1_80gvj")
+
+[node name="Camera3D" type="Camera3D" parent="CameraController"]
+transform = Transform3D(1, 0, 0, 0, 0.258819, 0.965926, 0, -0.965926, 0.258819, 0, 0, 0)
+current = true
+
+[node name="UIController" type="Node3D" parent="." node_paths=PackedStringArray("markerTopRed", "markerMidRed", "markerBotRed", "markerTopBlue", "markerMidBlue", "markerBotBlue")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 0)
+script = ExtResource("7_jyse4")
+markerTopRed = NodePath("../NexusRed/TopSpawnerRed")
+markerMidRed = NodePath("../NexusRed/MidSpawnerRed")
+markerBotRed = NodePath("../NexusRed/BotSpawnerRed")
+markerTopBlue = NodePath("../NexusBlue/TopSpawnerBlue")
+markerMidBlue = NodePath("../NexusBlue/MidSpawnerBlue")
+markerBotBlue = NodePath("../NexusBlue/BotSpawnerBlue")
+blueDemon = ExtResource("8_gtino")
+redDemon = ExtResource("9_0q4ox")
+
+[node name="SPAWNBOTBLUE" type="Button" parent="UIController"]
+offset_left = 168.0
+offset_top = 8.0
+offset_right = 314.0
+offset_bottom = 41.0
+text = "SPAWN BOT BLUE"
+
+[node name="SPAWNMIDBLUE" type="Button" parent="UIController"]
+offset_left = 320.0
+offset_top = 8.0
+offset_right = 465.0
+offset_bottom = 41.0
+text = "SPAWN MID BLUE
+"
+
+[node name="SPAWNTOPBLUE" type="Button" parent="UIController"]
+offset_left = 472.0
+offset_top = 8.0
+offset_right = 617.0
+offset_bottom = 41.0
+text = "SPAWN TOP BLUE
+"
+
+[node name="SPAWNBOTRED" type="Button" parent="UIController"]
+offset_left = 168.0
+offset_top = 48.0
+offset_right = 314.0
+offset_bottom = 81.0
+text = "SPAWN BOT RED"
+
+[node name="SPAWNMIDRED" type="Button" parent="UIController"]
+offset_left = 320.0
+offset_top = 48.0
+offset_right = 465.0
+offset_bottom = 81.0
+text = "SPAWN MID RED
+"
+
+[node name="SPAWNTOPRED" type="Button" parent="UIController"]
+offset_left = 472.0
+offset_top = 48.0
+offset_right = 617.0
+offset_bottom = 81.0
+text = "SPAWN TOP RED
+"
+
 [node name="NexusBlue" parent="." instance=ExtResource("4_ma8xm")]
 transform = Transform3D(0.0283872, 0, 0.0283872, 0, 0.13685, 0, -0.0283872, 0, 0.0283872, -26, 2.897, 26)
 metadata/_edit_group_ = true
@@ -47,13 +115,13 @@ transform = Transform3D(9.9485, 0, 9.9485, 0, 4.12729, 0, -9.9485, 0, 9.9485, 75
 transform = Transform3D(9.94849, 0, -9.94849, 0, 4.12729, 0, 9.94849, 0, 9.94849, 75, 8, 120)
 
 [node name="MidSpawnerBlue" type="Marker3D" parent="NexusBlue"]
-transform = Transform3D(1, 0, 0, 0, 0.48261, 0.875835, 0, -0.875835, 0.48261, 29.3671, -8.8182, 0.689056)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.999999, 37, -7, 0)
 
 [node name="BotSpawnerBlue" type="Marker3D" parent="NexusBlue"]
-transform = Transform3D(1, 0, 0, 0, 0.48261, 0.875835, 0, -0.875835, 0.48261, 1.87201, -9.69578, 27.5047)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -7, 37)
 
 [node name="TopSpawnerBlue" type="Marker3D" parent="NexusBlue"]
-transform = Transform3D(1, 0, 0, 0, 0.48261, 0.875835, 0, -0.875835, 0.48261, -1.80548, -8.06656, -32.3679)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -7, -37)
 
 [node name="NexusRed" parent="." instance=ExtResource("2_1ajbf")]
 transform = Transform3D(-0.0283872, 0, -0.0283872, 0, 0.13685, 0, 0.0283872, 0, -0.0283872, 26, 2.89749, -26)
@@ -69,13 +137,13 @@ transform = Transform3D(-9.9485, 0, 9.9485, 0, 4.12729, 0, -9.9485, 0, -9.9485, 
 transform = Transform3D(-14.0693, 0, 9.53674e-07, 0, 4.12729, 0, -9.53674e-07, 0, -14.0693, 120, 8, 0)
 
 [node name="MidSpawnerRed" type="Marker3D" parent="NexusRed"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.999999, 31.3719, -8.8182, 0.689026)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.999999, 37, -7, 0)
 
 [node name="BotSpawnerRed" type="Marker3D" parent="NexusRed"]
-transform = Transform3D(1, 0, 0, 0, 0.48261, 0.875835, 0, -0.875835, 0.48261, 1.87201, -9.69578, 27.5047)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -7, 37)
 
 [node name="TopSpawnerRed" type="Marker3D" parent="NexusRed"]
-transform = Transform3D(1, 0, 0, 0, 0.48261, 0.875835, 0, -0.875835, 0.48261, -1.80548, -8.06656, -32.3679)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -7, -37)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.875137, -0.219537, -0.431206, 0.482832, 0.454673, 0.748429, 0.0317494, -0.863178, 0.503901, 0.00286484, 0.0375671, -0.040123)
@@ -84,73 +152,15 @@ shadow_enabled = true
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_6gxsl")
 
-[node name="CameraController" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 30, 12.5)
-script = ExtResource("1_80gvj")
-
-[node name="Camera3D" type="Camera3D" parent="CameraController"]
-transform = Transform3D(1, 0, 0, 0, 0.258819, 0.965926, 0, -0.965926, 0.258819, 0, 0, 0)
-current = true
-
-[node name="UIController" type="Node3D" parent="CameraController/Camera3D" node_paths=PackedStringArray("markerTopRed", "markerMidRed", "markerBotRed", "markerTopBlue", "markerMidBlue", "markerBotBlue")]
-script = ExtResource("7_jyse4")
-markerTopRed = NodePath("../../../NexusRed/TopSpawnerRed")
-markerMidRed = NodePath("../../../NexusRed/MidSpawnerRed")
-markerBotRed = NodePath("../../../NexusRed/BotSpawnerRed")
-markerTopBlue = NodePath("../../../NexusBlue/TopSpawnerBlue")
-markerMidBlue = NodePath("../../../NexusBlue/MidSpawnerBlue")
-markerBotBlue = NodePath("../../../NexusBlue/BotSpawnerBlue")
-
-[node name="SPAWNBOTBLUE" type="Button" parent="CameraController/Camera3D/UIController"]
-offset_left = 168.0
-offset_top = 8.0
-offset_right = 314.0
-offset_bottom = 41.0
-text = "SPAWN BOT BLUE"
-
-[node name="SPAWNMIDBLUE" type="Button" parent="CameraController/Camera3D/UIController"]
-offset_left = 320.0
-offset_top = 8.0
-offset_right = 465.0
-offset_bottom = 41.0
-text = "SPAWN MID BLUE
-"
-
-[node name="SPAWNTOPBLUE" type="Button" parent="CameraController/Camera3D/UIController"]
-offset_left = 472.0
-offset_top = 8.0
-offset_right = 617.0
-offset_bottom = 41.0
-text = "SPAWN TOP BLUE
-"
-
-[node name="SPAWNBOTRED" type="Button" parent="CameraController/Camera3D/UIController"]
-offset_left = 168.0
-offset_top = 48.0
-offset_right = 314.0
-offset_bottom = 81.0
-text = "SPAWN BOT RED"
-
-[node name="SPAWNMIDRED" type="Button" parent="CameraController/Camera3D/UIController"]
-offset_left = 320.0
-offset_top = 48.0
-offset_right = 465.0
-offset_bottom = 81.0
-text = "SPAWN MID RED
-"
-
-[node name="SPAWNTOPRED" type="Button" parent="CameraController/Camera3D/UIController"]
-offset_left = 472.0
-offset_top = 48.0
-offset_right = 617.0
-offset_bottom = 81.0
-text = "SPAWN TOP RED
-"
-
 [node name="BotPath" type="Marker3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26.6, 2, 26.6)
 
 [node name="TopPath" type="Marker3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26.5, 2, -26.5)
 
-[connection signal="pressed" from="CameraController/Camera3D/UIController/SPAWNBOTBLUE" to="CameraController/Camera3D/UIController" method="_on_spawnbotblue_pressed"]
+[connection signal="pressed" from="UIController/SPAWNBOTBLUE" to="UIController" method="_on_spawnbotblue_pressed"]
+[connection signal="pressed" from="UIController/SPAWNMIDBLUE" to="UIController" method="_on_spawnmidblue_pressed"]
+[connection signal="pressed" from="UIController/SPAWNTOPBLUE" to="UIController" method="_on_spawntopblue_pressed"]
+[connection signal="pressed" from="UIController/SPAWNBOTRED" to="UIController" method="_on_spawnbotred_pressed"]
+[connection signal="pressed" from="UIController/SPAWNMIDRED" to="UIController" method="_on_spawnmidred_pressed"]
+[connection signal="pressed" from="UIController/SPAWNTOPRED" to="UIController" method="_on_spawntopred_pressed"]
