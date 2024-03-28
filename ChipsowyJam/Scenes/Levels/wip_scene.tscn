@@ -44,14 +44,13 @@ transform = Transform3D(1, 0, 0, 0, 0.258819, 0.965926, 0, -0.965926, 0.258819, 
 current = true
 
 [node name="UIController" type="Node3D" parent="." node_paths=PackedStringArray("markerTopRed", "markerMidRed", "markerBotRed", "markerTopBlue", "markerMidBlue", "markerBotBlue")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 0)
 script = ExtResource("7_jyse4")
-markerTopRed = NodePath("../NexusRed/TopSpawnerRed")
-markerMidRed = NodePath("../NexusRed/MidSpawnerRed")
-markerBotRed = NodePath("../NexusRed/BotSpawnerRed")
-markerTopBlue = NodePath("../NexusBlue/TopSpawnerBlue")
-markerMidBlue = NodePath("../NexusBlue/MidSpawnerBlue")
-markerBotBlue = NodePath("../NexusBlue/BotSpawnerBlue")
+markerTopRed = NodePath("../TopSpawnerRed")
+markerMidRed = NodePath("../MidSpawnerRed")
+markerBotRed = NodePath("../BotSpawnerRed")
+markerTopBlue = NodePath("../TopSpawnerBlue")
+markerMidBlue = NodePath("../MidSpawnerBlue")
+markerBotBlue = NodePath("../BotSpawnerBlue")
 blueDemon = ExtResource("8_gtino")
 redDemon = ExtResource("9_0q4ox")
 
@@ -114,15 +113,6 @@ transform = Transform3D(9.9485, 0, 9.9485, 0, 4.12729, 0, -9.9485, 0, 9.9485, 75
 [node name="TowerBlue3" parent="NexusBlue" instance=ExtResource("3_n8rwg")]
 transform = Transform3D(9.94849, 0, -9.94849, 0, 4.12729, 0, 9.94849, 0, 9.94849, 75, 8, 120)
 
-[node name="MidSpawnerBlue" type="Marker3D" parent="NexusBlue"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.999999, 37, -7, 0)
-
-[node name="BotSpawnerBlue" type="Marker3D" parent="NexusBlue"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -7, 37)
-
-[node name="TopSpawnerBlue" type="Marker3D" parent="NexusBlue"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -7, -37)
-
 [node name="NexusRed" parent="." instance=ExtResource("2_1ajbf")]
 transform = Transform3D(-0.0283872, 0, -0.0283872, 0, 0.13685, 0, 0.0283872, 0, -0.0283872, 26, 2.89749, -26)
 metadata/_edit_group_ = true
@@ -136,15 +126,6 @@ transform = Transform3D(-9.9485, 0, 9.9485, 0, 4.12729, 0, -9.9485, 0, -9.9485, 
 [node name="TowerRed3" parent="NexusRed" instance=ExtResource("3_lgpwt")]
 transform = Transform3D(-14.0693, 0, 9.53674e-07, 0, 4.12729, 0, -9.53674e-07, 0, -14.0693, 120, 8, 0)
 
-[node name="MidSpawnerRed" type="Marker3D" parent="NexusRed"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.999999, 37, -7, 0)
-
-[node name="BotSpawnerRed" type="Marker3D" parent="NexusRed"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -7, 37)
-
-[node name="TopSpawnerRed" type="Marker3D" parent="NexusRed"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -7, -37)
-
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.875137, -0.219537, -0.431206, 0.482832, 0.454673, 0.748429, 0.0317494, -0.863178, 0.503901, 0.00286484, 0.0375671, -0.040123)
 shadow_enabled = true
@@ -157,6 +138,24 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26.6, 2, 26.6)
 
 [node name="TopPath" type="Marker3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26.5, 2, -26.5)
+
+[node name="MidSpawnerRed" type="Marker3D" parent="."]
+transform = Transform3D(0.0283872, 0, -0.0283872, 0, 0.13685, 0, 0.0283872, 0, 0.0283872, 24.9497, 1.93954, -24.9497)
+
+[node name="BotSpawnerRed" type="Marker3D" parent="."]
+transform = Transform3D(-0.0283872, 0, -0.0283872, 0, 0.13685, 0, 0.0283872, 0, -0.0283872, 24.9497, 1.93954, -27.0503)
+
+[node name="TopSpawnerRed" type="Marker3D" parent="."]
+transform = Transform3D(0.0283872, 0, 0.0283872, 0, 0.13685, 0, -0.0283872, 0, 0.0283872, 27.0503, 1.93954, -24.9497)
+
+[node name="MidSpawnerBlue" type="Marker3D" parent="."]
+transform = Transform3D(-0.0283872, 0, 0.0283872, 0, 0.13685, 0, -0.0283872, 0, -0.0283872, -24.9497, 1.93905, 24.9497)
+
+[node name="BotSpawnerBlue" type="Marker3D" parent="."]
+transform = Transform3D(0.0283872, 0, 0.0283872, 0, 0.13685, 0, -0.0283872, 0, 0.0283872, -24.9497, 1.93905, 27.0503)
+
+[node name="TopSpawnerBlue" type="Marker3D" parent="."]
+transform = Transform3D(-0.0283872, 0, -0.0283872, 0, 0.13685, 0, 0.0283872, 0, -0.0283872, -27.0503, 1.93905, 24.9497)
 
 [connection signal="pressed" from="UIController/SPAWNBOTBLUE" to="UIController" method="_on_spawnbotblue_pressed"]
 [connection signal="pressed" from="UIController/SPAWNMIDBLUE" to="UIController" method="_on_spawnmidblue_pressed"]

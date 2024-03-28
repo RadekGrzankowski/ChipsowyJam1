@@ -25,13 +25,13 @@ func _spawn_bot(color: String, marker: Marker3D):
 		bot = redDemon.instantiate()
 	elif color == "blue":
 		bot = blueDemon.instantiate()
-
-	bot.position = marker.global_position
-	bot.rotation = marker.global_rotation
+		
+	bot.position = marker.position
+	bot.rotation = marker.position
 	
 	add_child(bot)
-	print(bot.position)
 	
+
 func _on_spawnbotblue_pressed():
 	_spawn_bot("blue", markerBotBlue)
 func _on_spawnmidblue_pressed():
