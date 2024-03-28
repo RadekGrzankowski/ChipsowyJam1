@@ -3,15 +3,19 @@
 [ext_resource type="PackedScene" uid="uid://bw1cexmd1ty2x" path="res://Models/TerrainV2.glb" id="1_t01hj"]
 [ext_resource type="Material" uid="uid://d1qa8astnokmi" path="res://Materials/TerrainMaterial.tres" id="2_p0gcv"]
 
-[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_jxx06"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_qaxdq"]
+size = Vector3(1.53821, 1.01953, 1.57708)
 
 [node name="TerrainV2" instance=ExtResource("1_t01hj")]
 
 [node name="Terrain" parent="." index="0"]
 material_override = ExtResource("2_p0gcv")
 
+[node name="NavigationRegion3D" parent="Terrain" index="0"]
+visible = false
+
 [node name="StaticBody3D" type="StaticBody3D" parent="Terrain" index="1"]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Terrain/StaticBody3D" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
-shape = SubResource("ConcavePolygonShape3D_jxx06")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00335693, -0.120892, 0.00468064)
+shape = SubResource("BoxShape3D_qaxdq")

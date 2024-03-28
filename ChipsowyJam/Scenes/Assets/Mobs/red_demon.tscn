@@ -1,6 +1,6 @@
 [gd_scene load_steps=26 format=3 uid="uid://dcu24u5hlay3i"]
 
-[ext_resource type="Script" path="res://Scripts/red_demon.gd" id="1_noxop"]
+[ext_resource type="Script" path="res://Scripts/red_demon.gd" id="1_r7ukj"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3cth0"]
 resource_name = "Demon_Main"
@@ -4276,7 +4276,7 @@ _data = {
 }
 
 [node name="RedDemon" type="CharacterBody3D"]
-script = ExtResource("1_noxop")
+script = ExtResource("1_r7ukj")
 
 [node name="RootNode" type="Node3D" parent="."]
 transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 0, 0, 0)
