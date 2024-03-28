@@ -27,7 +27,7 @@ func _spawn_bot(color: String, marker: Marker3D):
 		bot = blueDemon.instantiate()
 		
 	bot.position = marker.position
-	bot.rotation = marker.position
+	bot.rotation = marker.rotation
 	
 	add_child(bot)
 	
