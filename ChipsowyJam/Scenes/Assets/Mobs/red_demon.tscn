@@ -1,6 +1,6 @@
 [gd_scene load_steps=26 format=3 uid="uid://dcu24u5hlay3i"]
 
-[ext_resource type="Script" path="res://Scripts/red_demon.gd" id="1_r7ukj"]
+[ext_resource type="Script" path="res://Scripts/mob_movement.gd" id="1_4drmd"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3cth0"]
 resource_name = "Demon_Main"
@@ -4276,7 +4276,9 @@ _data = {
 }
 
 [node name="RedDemon" type="CharacterBody3D"]
-script = ExtResource("1_r7ukj")
+transform = Transform3D(0.75, 0, 0, 0, 0.75, 0, 0, 0, 0.75, 0, 0, 0)
+script = ExtResource("1_4drmd")
+movement_speed = 4.0
 
 [node name="RootNode" type="Node3D" parent="."]
 transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 0, 0, 0)
@@ -4704,8 +4706,14 @@ skin = SubResource("Skin_q83t0")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.58, 0)
 shape = SubResource("BoxShape3D_mkgvg")
 
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
+avoidance_enabled = true
+radius = 0.6
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_mv4ts")
 }
 autoplay = "CharacterArmature|Idle"
+
+[connection signal="velocity_computed" from="NavigationAgent3D" to="." method="_on_navigation_agent_3d_velocity_computed"]
