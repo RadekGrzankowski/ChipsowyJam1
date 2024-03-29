@@ -1,11 +1,11 @@
 extends Node3D
 
-@export var markerTopRed: Marker3D
-@export var markerMidRed: Marker3D
-@export var markerBotRed: Marker3D
-@export var markerTopBlue: Marker3D
-@export var markerMidBlue: Marker3D
-@export var markerBotBlue: Marker3D
+@onready var markerTopRed: Marker3D = get_node("/root/GameNode/Terrain/TopSpawnerRed")
+@onready var markerMidRed: Marker3D = get_node("/root/GameNode/Terrain/MidSpawnerRed")
+@onready var markerBotRed: Marker3D = get_node("/root/GameNode/Terrain/BotSpawnerRed")
+@onready var markerTopBlue: Marker3D = get_node("/root/GameNode/Terrain/TopSpawnerBlue")
+@onready var markerMidBlue: Marker3D = get_node("/root/GameNode/Terrain/MidSpawnerBlue")
+@onready var markerBotBlue: Marker3D = get_node("/root/GameNode/Terrain/BotSpawnerBlue")
 
 @export var blueDemon : PackedScene
 @export var redDemon : PackedScene
@@ -13,7 +13,6 @@ extends Node3D
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.
-
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):

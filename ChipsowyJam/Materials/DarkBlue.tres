@@ -1,9 +1,15 @@
-[gd_resource type="StandardMaterial3D" format=3 uid="uid://bxkiqeeb787pj"]
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://dh452p4jgynpo"]
 
 [resource]
 resource_name = "DarkBlue"
 cull_mode = 2
-albedo_color = Color(0.176471, 0.580392, 0.67451, 1)
-metallic = 0.49
-metallic_specular = 0.75
-roughness = 0.83
+albedo_color = Color(0.196078, 0.482353, 0.72549, 1)
+metallic = 0.7
+roughness = 0.75
+rim_enabled = true
+rim = 0.51
+rim_tint = 0.31
+clearcoat_enabled = true
+clearcoat = 0.48
+clearcoat_roughness = 1.0
+refraction_scale = -0.06

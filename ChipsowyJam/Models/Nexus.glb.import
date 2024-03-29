@@ -3,7 +3,7 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://j74oi0sk8clb"
+uid="uid://d3j8eu750mlia"
 path="res://.godot/imported/Nexus.glb-6c0c8ef703c4f7baad574212826a27b0.scn"
 
 [deps]
@@ -33,31 +33,49 @@ _subresources={
 "materials": {
 "Black": {
 "use_external/enabled": true,
-"use_external/path": "res://Materials/Black.tres"
+"use_external/path": "res://Materials/Mats/Black.tres"
 },
 "DarkBlue": {
 "use_external/enabled": true,
-"use_external/path": "res://Materials/DarkBlue.tres"
+"use_external/path": "res://Materials/Mats/DarkBlue.tres"
 },
 "DarkRed": {
 "use_external/enabled": true,
-"use_external/path": "res://Materials/DarkRed.tres"
+"use_external/path": "res://Materials/Mats/DarkRed.tres"
 },
 "Green": {
 "use_external/enabled": true,
-"use_external/path": "res://Materials/Green.tres"
+"use_external/path": "res://Materials/Mats/Green.tres"
 },
 "LightBlue": {
 "use_external/enabled": true,
-"use_external/path": "res://Materials/LightBlue.tres"
+"use_external/path": "res://Materials/Mats/LightBlue.tres"
 },
 "LightRed": {
 "use_external/enabled": true,
-"use_external/path": "res://Materials/LightRed.tres"
+"use_external/path": "res://Materials/Mats/LightRed.tres"
 },
 "TowerGreen": {
 "use_external/enabled": true,
-"use_external/path": "res://Materials/TowerGreen.tres"
+"use_external/path": "res://Materials/Mats/TowerGreen.tres"
+}
+},
+"nodes": {
+"PATH:NexusBlue": {
+"generate/physics": true,
+"physics/shape_type": 1
+},
+"PATH:NexusRed": {
+"generate/physics": true,
+"physics/shape_type": 1
+},
+"PATH:TowerBlue": {
+"generate/physics": true,
+"physics/shape_type": 1
+},
+"PATH:TowerRed": {
+"generate/physics": true,
+"physics/shape_type": 1
 }
 }
 }

@@ -1,7 +1,6 @@
-[gd_resource type="StandardMaterial3D" format=3 uid="uid://cn3u0ru5is28t"]
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://btge4821qs176"]
 
 [resource]
 resource_name = "Black"
-cull_mode = 2
-albedo_color = Color(0.0705882, 0.0705882, 0.0705882, 1)
+albedo_color = Color(0.180392, 0.180392, 0.180392, 1)
 metallic = 1.0

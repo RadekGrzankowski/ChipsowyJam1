@@ -3,7 +3,7 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://d1aae145icetj"
+uid="uid://h3wi1kev4vb6"
 path="res://.godot/imported/Terrain.glb-77858ecb440f290706e683d341fa844a.scn"
 
 [deps]
@@ -24,20 +24,20 @@ meshes/light_baking=1
 meshes/lightmap_texel_size=0.2
 meshes/force_disable_compression=false
 skins/use_named_skins=true
-animation/import=true
+animation/import=false
 animation/fps=30
 animation/trimming=false
 animation/remove_immutable_tracks=true
 import_script/path=""
 _subresources={
 "materials": {
-"Material.001": {
+"TerrainMat": {
 "use_external/enabled": true,
-"use_external/path": "res://Materials/Material.001.tres"
+"use_external/path": "res://Materials/TerrainMaterial.tres"
 }
 },
 "nodes": {
-"PATH:Plane": {
+"PATH:Terrain": {
 "generate/physics": true,
 "physics/shape_type": 2
 }

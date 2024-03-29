@@ -6,11 +6,12 @@
 [resource]
 resource_name = "Material.001"
 cull_mode = 2
-diffuse_mode = 1
 albedo_texture = ExtResource("1_yqyi5")
-metallic_specular = 0.31
-roughness = 0.79
+roughness = 0.8
 normal_enabled = true
-normal_scale = 0.75
+normal_scale = 0.5
 normal_texture = ExtResource("2_oukqi")
-anisotropy = -0.18
+clearcoat_roughness = 1.0
+anisotropy = 1.0
+heightmap_scale = 2.878
+refraction_scale = 0.4

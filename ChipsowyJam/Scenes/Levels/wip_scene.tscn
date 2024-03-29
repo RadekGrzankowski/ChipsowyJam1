@@ -1,17 +1,16 @@
-[gd_scene load_steps=13 format=3 uid="uid://dujs37qsrm41c"]
+[gd_scene load_steps=7 format=3 uid="uid://dujs37qsrm41c"]
 
 [ext_resource type="Script" path="res://Scripts/camera_movement.gd" id="1_80gvj"]
-[ext_resource type="PackedScene" uid="uid://bowvq8oqmhu74" path="res://Scenes/Assets/nexus_red.tscn" id="2_1ajbf"]
-[ext_resource type="PackedScene" uid="uid://ctrqmvyc13uo" path="res://Scenes/Assets/tower_red.tscn" id="3_lgpwt"]
-[ext_resource type="PackedScene" uid="uid://k35yjc6xeque" path="res://Scenes/Assets/tower_blue.tscn" id="3_n8rwg"]
-[ext_resource type="PackedScene" uid="uid://4rrv3e1eqdmv" path="res://Scenes/Assets/nexus_blue.tscn" id="4_ma8xm"]
-[ext_resource type="Script" path="res://Scripts/spawn_manager.gd" id="7_jyse4"]
-[ext_resource type="PackedScene" uid="uid://b5jm5bsdkufxr" path="res://Scenes/Assets/TerrainV2.tscn" id="7_xweac"]
-[ext_resource type="PackedScene" uid="uid://b5guql3jxuxf" path="res://Scenes/Assets/Mobs/blue_demon.tscn" id="8_gtino"]
-[ext_resource type="PackedScene" uid="uid://dcu24u5hlay3i" path="res://Scenes/Assets/Mobs/red_demon.tscn" id="9_0q4ox"]
+[ext_resource type="PackedScene" uid="uid://vi0aftyh1au0" path="res://Scenes/Assets/Terrain.tscn" id="1_gwcpw"]
+[ext_resource type="PackedScene" uid="uid://0cdht6xykwu7" path="res://Scenes/HUD.tscn" id="2_qn11f"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_trv5t"]
-ground_bottom_color = Color(0.298039, 0.407843, 0.470588, 1)
+sky_top_color = Color(0.360784, 0.490196, 0.662745, 1)
+sky_horizon_color = Color(0.52549, 0.752941, 0.784314, 1)
+sky_curve = 0.0891906
+sky_energy_multiplier = 1.1
+ground_bottom_color = Color(0.137255, 0.258824, 0.317647, 1)
+use_debanding = false
 
 [sub_resource type="Sky" id="Sky_jy73e"]
 sky_material = SubResource("ProceduralSkyMaterial_trv5t")
@@ -26,105 +25,24 @@ tonemap_mode = 3
 tonemap_exposure = 0.6
 ssao_enabled = true
 glow_enabled = true
-volumetric_fog_enabled = true
 volumetric_fog_density = 0.0
 
-[node name="Node3D" type="Node3D"]
+[node name="GameNode" type="Node3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.1475, 2.68318, -0.818871)
 
-[node name="Terrain" parent="." instance=ExtResource("7_xweac")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 0, 0, 0)
+[node name="Terrain" parent="." instance=ExtResource("1_gwcpw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.000226974, 0.000179768, 0.000156403)
+
+[node name="HUD" parent="." instance=ExtResource("2_qn11f")]
 
 [node name="CameraController" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 30, 12.5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13, 20, 28)
 script = ExtResource("1_80gvj")
 
 [node name="Camera3D" type="Camera3D" parent="CameraController"]
 transform = Transform3D(1, 0, 0, 0, 0.258819, 0.965926, 0, -0.965926, 0.258819, 0, 0, 0)
 current = true
-
-[node name="UIController" type="Node3D" parent="." node_paths=PackedStringArray("markerTopRed", "markerMidRed", "markerBotRed", "markerTopBlue", "markerMidBlue", "markerBotBlue")]
-script = ExtResource("7_jyse4")
-markerTopRed = NodePath("../TopSpawnerRed")
-markerMidRed = NodePath("../MidSpawnerRed")
-markerBotRed = NodePath("../BotSpawnerRed")
-markerTopBlue = NodePath("../TopSpawnerBlue")
-markerMidBlue = NodePath("../MidSpawnerBlue")
-markerBotBlue = NodePath("../BotSpawnerBlue")
-blueDemon = ExtResource("8_gtino")
-redDemon = ExtResource("9_0q4ox")
-
-[node name="SPAWNBOTBLUE" type="Button" parent="UIController"]
-offset_left = 168.0
-offset_top = 8.0
-offset_right = 314.0
-offset_bottom = 41.0
-text = "SPAWN BOT BLUE"
-
-[node name="SPAWNMIDBLUE" type="Button" parent="UIController"]
-offset_left = 320.0
-offset_top = 8.0
-offset_right = 465.0
-offset_bottom = 41.0
-text = "SPAWN MID BLUE
-"
-
-[node name="SPAWNTOPBLUE" type="Button" parent="UIController"]
-offset_left = 472.0
-offset_top = 8.0
-offset_right = 617.0
-offset_bottom = 41.0
-text = "SPAWN TOP BLUE
-"
-
-[node name="SPAWNBOTRED" type="Button" parent="UIController"]
-offset_left = 168.0
-offset_top = 48.0
-offset_right = 314.0
-offset_bottom = 81.0
-text = "SPAWN BOT RED"
-
-[node name="SPAWNMIDRED" type="Button" parent="UIController"]
-offset_left = 320.0
-offset_top = 48.0
-offset_right = 465.0
-offset_bottom = 81.0
-text = "SPAWN MID RED
-"
-
-[node name="SPAWNTOPRED" type="Button" parent="UIController"]
-offset_left = 472.0
-offset_top = 48.0
-offset_right = 617.0
-offset_bottom = 81.0
-text = "SPAWN TOP RED
-"
-
-[node name="NexusBlue" parent="." instance=ExtResource("4_ma8xm")]
-transform = Transform3D(0.0283872, 0, 0.0283872, 0, 0.13685, 0, -0.0283872, 0, 0.0283872, -26, 2.897, 26)
-metadata/_edit_group_ = true
-
-[node name="TowerBlue" parent="NexusBlue" instance=ExtResource("3_n8rwg")]
-transform = Transform3D(14.0693, 0, 0, 0, 4.12729, 0, 0, 0, 14.0693, 120, 8, 0)
-
-[node name="TowerBlue2" parent="NexusBlue" instance=ExtResource("3_n8rwg")]
-transform = Transform3D(9.9485, 0, 9.9485, 0, 4.12729, 0, -9.9485, 0, 9.9485, 75, 8, -120)
-
-[node name="TowerBlue3" parent="NexusBlue" instance=ExtResource("3_n8rwg")]
-transform = Transform3D(9.94849, 0, -9.94849, 0, 4.12729, 0, 9.94849, 0, 9.94849, 75, 8, 120)
-
-[node name="NexusRed" parent="." instance=ExtResource("2_1ajbf")]
-transform = Transform3D(-0.0283872, 0, -0.0283872, 0, 0.13685, 0, 0.0283872, 0, -0.0283872, 26, 2.89749, -26)
-metadata/_edit_group_ = true
-
-[node name="TowerRed" parent="NexusRed" instance=ExtResource("3_lgpwt")]
-transform = Transform3D(-9.9485, 0, 9.9485, 0, 4.12729, 0, -9.9485, 0, -9.9485, 75, 8, 120)
-
-[node name="TowerRed2" parent="NexusRed" instance=ExtResource("3_lgpwt")]
-transform = Transform3D(-9.9485, 0, 9.9485, 0, 4.12729, 0, -9.9485, 0, -9.9485, 75.0001, 8, -120)
-
-[node name="TowerRed3" parent="NexusRed" instance=ExtResource("3_lgpwt")]
-transform = Transform3D(-14.0693, 0, 9.53674e-07, 0, 4.12729, 0, -9.53674e-07, 0, -14.0693, 120, 8, 0)
+fov = 90.0
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.875137, -0.219537, -0.431206, 0.482832, 0.454673, 0.748429, 0.0317494, -0.863178, 0.503901, 0.00286484, 0.0375671, -0.040123)
@@ -132,34 +50,3 @@ shadow_enabled = true
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_6gxsl")
-
-[node name="BotPath" type="Marker3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26.6, 2, 26.6)
-
-[node name="TopPath" type="Marker3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26.5, 2, -26.5)
-
-[node name="MidSpawnerRed" type="Marker3D" parent="."]
-transform = Transform3D(0.0283872, 0, -0.0283872, 0, 0.13685, 0, 0.0283872, 0, 0.0283872, 24.9497, 1.93954, -24.9497)
-
-[node name="BotSpawnerRed" type="Marker3D" parent="."]
-transform = Transform3D(-0.0283872, 0, -0.0283872, 0, 0.13685, 0, 0.0283872, 0, -0.0283872, 24.9497, 1.93954, -27.0503)
-
-[node name="TopSpawnerRed" type="Marker3D" parent="."]
-transform = Transform3D(0.0283872, 0, 0.0283872, 0, 0.13685, 0, -0.0283872, 0, 0.0283872, 27.0503, 1.93954, -24.9497)
-
-[node name="MidSpawnerBlue" type="Marker3D" parent="."]
-transform = Transform3D(-0.0283872, 0, 0.0283872, 0, 0.13685, 0, -0.0283872, 0, -0.0283872, -24.9497, 1.93905, 24.9497)
-
-[node name="BotSpawnerBlue" type="Marker3D" parent="."]
-transform = Transform3D(0.0283872, 0, 0.0283872, 0, 0.13685, 0, -0.0283872, 0, 0.0283872, -24.9497, 1.93905, 27.0503)
-
-[node name="TopSpawnerBlue" type="Marker3D" parent="."]
-transform = Transform3D(-0.0283872, 0, -0.0283872, 0, 0.13685, 0, 0.0283872, 0, -0.0283872, -27.0503, 1.93905, 24.9497)
-
-[connection signal="pressed" from="UIController/SPAWNBOTBLUE" to="UIController" method="_on_spawnbotblue_pressed"]
-[connection signal="pressed" from="UIController/SPAWNMIDBLUE" to="UIController" method="_on_spawnmidblue_pressed"]
-[connection signal="pressed" from="UIController/SPAWNTOPBLUE" to="UIController" method="_on_spawntopblue_pressed"]
-[connection signal="pressed" from="UIController/SPAWNBOTRED" to="UIController" method="_on_spawnbotred_pressed"]
-[connection signal="pressed" from="UIController/SPAWNMIDRED" to="UIController" method="_on_spawnmidred_pressed"]
-[connection signal="pressed" from="UIController/SPAWNTOPRED" to="UIController" method="_on_spawntopred_pressed"]

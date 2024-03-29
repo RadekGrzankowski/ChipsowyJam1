@@ -1,8 +1,9 @@
-[gd_resource type="StandardMaterial3D" format=3 uid="uid://ca8bbcweaa73k"]
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://bbkw76hl73anf"]
 
 [resource]
 resource_name = "Green"
+cull_mode = 2
 albedo_color = Color(0.360564, 0.906565, 0.377773, 1)
-metallic = 0.31
-metallic_specular = 0.36
+metallic = 0.67
+metallic_specular = 1.0
 roughness = 0.372642
