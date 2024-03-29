@@ -14,15 +14,26 @@ extends Node3D
 @export var blueDemon : PackedScene
 @export var redDemon : PackedScene
 
+@onready var waveTimer = $WaveTimer
+@onready var mobTimer = $MobTimer
+
+var waveMobCount: int = 6
+var currentCount: int = 0
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	pass
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	#print(waveTimer.time_left)
 	pass
 
-func _spawn_bot(color: String, path: String, marker: Marker3D):
+func spawn_wave():
+	waveTimer.start()
+	mobTimer.start()
+
+func spawn_bot(color: String, path: String, marker: Marker3D):
 	var bot: CharacterBody3D
 	if color == "red":
 		bot = redDemon.instantiate()
@@ -44,14 +55,35 @@ func _spawn_bot(color: String, path: String, marker: Marker3D):
 	bot.set_movement_target(target_position)
 
 func _on_spawnbotblue_pressed():
-	_spawn_bot("blue", "bot", markerBotBlue)
+	spawn_bot("blue", "bot", markerBotBlue)
 func _on_spawnmidblue_pressed():
-	_spawn_bot("blue", "mid", markerMidBlue)
+	spawn_bot("blue", "mid", markerMidBlue)
 func _on_spawntopblue_pressed():
-	_spawn_bot("blue", "top", markerTopBlue)
+	spawn_bot("blue", "top", markerTopBlue)
 func _on_spawnbotred_pressed():
-	_spawn_bot("red", "bot", markerBotRed)
+	spawn_bot("red", "bot", markerBotRed)
 func _on_spawnmidred_pressed():
-	_spawn_bot("red", "mid", markerMidRed)
+	spawn_bot("red", "mid", markerMidRed)
 func _on_spawntopred_pressed():
-	_spawn_bot("red", "top", markerTopRed)
+	spawn_bot("red", "top", markerTopRed)
+
+
+func _on_wave_timer_timeout():
+	currentCount = 0
+	mobTimer.start()
+
+
+func _on_mob_timer_timeout():
+	currentCount = currentCount + 1
+	spawn_bot("blue", "bot", markerBotBlue)
+	spawn_bot("blue", "mid", markerMidBlue)
+	spawn_bot("blue", "top", markerTopBlue)
+	spawn_bot("red", "bot", markerBotRed)
+	spawn_bot("red", "mid", markerMidRed)
+	spawn_bot("red", "top", markerTopRed)
+	if currentCount == waveMobCount:
+		mobTimer.stop()
+
+
+func _on_start_delay_timer_timeout():
+	spawn_wave()

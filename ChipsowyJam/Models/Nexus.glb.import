@@ -71,11 +71,11 @@ _subresources={
 },
 "PATH:TowerBlue": {
 "generate/physics": true,
-"physics/shape_type": 1
+"physics/shape_type": 2
 },
 "PATH:TowerRed": {
 "generate/physics": true,
-"physics/shape_type": 1
+"physics/shape_type": 2
 }
 }
 }
