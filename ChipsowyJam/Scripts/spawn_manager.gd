@@ -17,7 +17,7 @@ extends Node3D
 @onready var waveTimer = $WaveTimer
 @onready var mobTimer = $MobTimer
 
-var waveMobCount: int = 6
+@export var waveMobCount: int = 6
 var currentCount: int = 0
 
 # Called when the node enters the scene tree for the first time.
@@ -37,22 +37,34 @@ func spawn_bot(color: String, path: String, marker: Marker3D):
 	var bot: CharacterBody3D
 	if color == "red":
 		bot = redDemon.instantiate()
+		bot.initialize("red")
 	elif color == "blue":
 		bot = blueDemon.instantiate()
-	var target_position : Vector3
+		bot.initialize("blue")
+	var target_positions : Array
 	match path:
 		"bot":
-			target_position = botPath.position
+			if color == "red":
+				target_positions = [botPath.position, markerBotBlue.position]
+			elif color == "blue":
+				target_positions = [botPath.position, markerBotRed.position]
 		"mid":
-			target_position = midPath.position
+			if color == "red":
+				target_positions = [midPath.position, markerMidBlue.position]
+			elif color == "blue":
+				target_positions = [midPath.position, markerMidRed.position]
 		"top":
-			target_position = topPath.position
+			if color == "red":
+				target_positions = [topPath.position, markerTopBlue.position]
+			elif color == "blue":
+				target_positions = [topPath.position, markerTopRed.position]
 		
 	bot.position = marker.position
 	bot.rotation = marker.rotation
-	add_child(bot)
 	
-	bot.set_movement_target(target_position)
+	bot.set_targets(target_positions)
+	
+	add_child(bot)
 
 func _on_spawnbotblue_pressed():
 	spawn_bot("blue", "bot", markerBotBlue)
