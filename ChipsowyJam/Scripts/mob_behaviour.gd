@@ -24,6 +24,12 @@ func take_damage(amount):
 	else:
 		health_label.text = str(mob_health)
 
+func _physics_process(delta):
+	super(delta)
+	if attacking:
+		#get the correct rotation
+		look_at(opponent_to_attack.transform.origin, Vector3.UP)
+
 func _process(delta):	
 	if velocity.length() > 0:
 		anim_player.play("CharacterArmature|Walk")
@@ -40,7 +46,6 @@ func _process(delta):
 		else:
 			if !attacking:
 				$AttackTimer.start()
-				opponent_to_attack.take_damage(mob_melee_attack)
 				attacking = true
 	
 func closest_target():
