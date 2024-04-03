@@ -26,9 +26,9 @@ func take_damage(amount):
 
 func _physics_process(delta):
 	super(delta)
-	if attacking:
-		#get the correct rotation
-		look_at(opponent_to_attack.transform.origin, Vector3.UP)
+	if attacking && opponent_to_attack != null:
+		look_at(opponent_to_attack.global_position)
+		rotate_object_local(Vector3.UP, PI)
 
 func _process(delta):	
 	if velocity.length() > 0:
@@ -61,6 +61,7 @@ func closest_target():
 
 func set_target():
 	if opponents_array.size() == 0:
+		opponent_to_attack = null
 		set_movement_target(targetArray[currentTarget])
 	else:
 		var body = closest_target()
