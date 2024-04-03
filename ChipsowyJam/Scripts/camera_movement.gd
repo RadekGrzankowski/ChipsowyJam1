@@ -22,6 +22,8 @@ func _move(delta):
 		velocity -= transform.basis.x
 	if Input.is_action_pressed("move_right"):
 		velocity += transform.basis.x
+	if Input.is_action_pressed("mwheelup"):
+	if Input.is_action_pressed("mwheeldown"):
 	# moving the camera
 	translate(velocity.normalized() * delta * movement_speed)
 	pass
