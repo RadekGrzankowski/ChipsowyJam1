@@ -9,7 +9,6 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	_move(delta)
-	pass
 
 func _move(delta):
 	var velocity = Vector3()
@@ -22,10 +21,11 @@ func _move(delta):
 		velocity -= transform.basis.x
 	if Input.is_action_pressed("move_right"):
 		velocity += transform.basis.x
-	if Input.is_action_pressed("mwheelup"):
-	if Input.is_action_pressed("mwheeldown"):
+	if Input.is_action_just_pressed("mwheelup"):
+		velocity -= transform.basis.y
+	if Input.is_action_just_pressed("mwheeldown"):
+		velocity += transform.basis.y
 	# moving the camera
 	translate(velocity.normalized() * delta * movement_speed)
-	pass
 
 
