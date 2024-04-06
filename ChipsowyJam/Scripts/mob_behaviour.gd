@@ -12,9 +12,6 @@ var enemies_to_attack: Array[Node3D]
 
 var detected_enemies_array: Array[Node3D]
 var opponent_to_attack: Node3D
-#opponent_position will be different from opponent_to_attack position only for detected towers and nexuses
-var opponent_position: Vector3 = Vector3.ZERO
-var attacking: bool = false
 
 func _ready():
 	super()
@@ -37,18 +34,15 @@ func take_damage(amount, attacker):
 
 func _physics_process(delta):
 	super(delta)
-	if attacking && opponent_to_attack != null:
-		if opponent_position == Vector3.ZERO:
-			look_at(opponent_to_attack.global_position)
-		else:
-			look_at(opponent_position)
+	if is_attacking && opponent_to_attack != null:
+		var look_pos = Vector3(opponent_to_attack.global_position.x, position.y, opponent_to_attack.global_position.z)
+		look_at(look_pos)
 		rotate_object_local(Vector3.UP, PI)
 
 func _process(delta):
 	if is_attacking:
 		if anim_player.current_animation != "CharacterArmature|Weapon":
 			anim_player.play("CharacterArmature|Weapon")
-			enemies_to_attack[0].take_damage(mob_melee_attack, self)
 	else:
 		if velocity.length() > 0:
 			anim_player.play("CharacterArmature|Walk")
@@ -63,7 +57,6 @@ func change_target(body: Node3D):
 func closest_target():
 	var body: Node3D
 	var dist: float = INF
-	opponent_position = Vector3.ZERO
 	for opponent in detected_enemies_array:
 		var new_dist = position.distance_to(opponent.global_position)
 		if new_dist < dist:
@@ -77,10 +70,8 @@ func set_target():
 		set_movement_target(targetArray[currentTarget])
 	else:
 		opponent_to_attack = closest_target()
-		if opponent_position == Vector3.ZERO:
-			set_movement_target(opponent_to_attack.global_position)
-		else:
-			set_movement_target(opponent_position)
+		set_movement_target(opponent_to_attack.global_position)
+
 
 func _on_area_3d_body_entered(body):
 	if detected_enemies_array.size() == 0:
@@ -107,10 +98,6 @@ func _on_area_3d_body_exited(body):
 		detected_enemies_array.erase(body)
 		if body == opponent_to_attack:
 			set_target()
-		
-
-func _on_attack_timer_timeout():
-	attacking = false
 
 func _on_nav_path_timer_timeout():
 	if !is_attacking:
@@ -118,10 +105,7 @@ func _on_nav_path_timer_timeout():
 		if !navigation_agent.is_target_reached():
 			if opponent_to_attack != null:
 				navigation_agent.time_horizon_agents = 0.1
-				if opponent_position == Vector3.ZERO:
-					set_movement_target(opponent_to_attack.global_position)
-				else:
-					set_movement_target(opponent_position)
+				set_movement_target(opponent_to_attack.global_position)
 			else:
 				navigation_agent.time_horizon_agents = 1
 				set_movement_target(navigation_agent.target_position)
@@ -140,3 +124,8 @@ func _on_hit_area_3d_body_exited(body):
 	enemies_to_attack.erase(body)
 	if enemies_to_attack.size() == 0:
 		is_attacking = false
+
+
+func _on_animation_player_animation_finished(anim_name):
+	if anim_name == "CharacterArmature|Weapon":
+		enemies_to_attack[0].take_damage(mob_melee_attack, self)

@@ -90,4 +90,3 @@ func _on_detection_area_body_exited(body):
 
 func _on_attack_cooldown_timeout():
 	can_attack = true
-	print("can_attack")

@@ -11,7 +11,6 @@ func _ready():
 	winner_label.text = actual_winner_string
 	stats_label.text = actual_stats_string
 
-
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	pass

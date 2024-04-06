@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://nx2wtp418eb3"]
 
-[ext_resource type="Script" path="res://Scenes/end_scene.gd" id="1_0dd2w"]
+[ext_resource type="Script" path="res://Scripts/end_scene.gd" id="1_0dd2w"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_2r8ka"]
 font_size = 95
@@ -31,6 +31,7 @@ RED TOWERS DESTROYED:
 label_settings = SubResource("LabelSettings_lkrcj")
 
 [node name="Amounts" type="Label" parent="StatsLabel"]
+layout_mode = 0
 offset_left = 1016.0
 offset_right = 1096.0
 offset_bottom = 296.0
