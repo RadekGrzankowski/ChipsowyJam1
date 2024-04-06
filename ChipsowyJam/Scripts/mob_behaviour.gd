@@ -27,6 +27,10 @@ func take_damage(amount, attacker):
 	mob_health -= amount - mob_armor	
 	if mob_health <= 0:
 		attacker.change_target(self)
+		if teamName == "red":
+			Game.red_minions_killed += 1
+		if teamName == "blue":
+			Game.blue_minions_killed += 1
 		queue_free()
 	else:
 		health_label.text = str(mob_health)

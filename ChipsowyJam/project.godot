@@ -15,6 +15,10 @@ run/main_scene="res://Scenes/Levels/wip_scene.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
 config/icon="res://icon.svg"
 
+[autoload]
+
+Game="*res://Scripts/Game.gd"
+
 [dotnet]
 
 project/assembly_name="Chipsowy Jam"

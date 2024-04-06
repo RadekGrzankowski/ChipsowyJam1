@@ -34,7 +34,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.000226974, 0.000179768, 0.0
 
 [node name="HUD" parent="." instance=ExtResource("2_qn11f")]
 waveTime = 45
-waveMobCount = 6
 
 [node name="CameraController" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25, 18, 40)

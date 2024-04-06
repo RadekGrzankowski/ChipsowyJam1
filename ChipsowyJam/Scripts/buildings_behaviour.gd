@@ -28,8 +28,19 @@ func _ready():
 func take_damage(amount, attacker):
 	building_health -= amount - building_armor	
 	if building_health <= 0:
-		attacker.change_target(self)
-		queue_free()
+		if type == 1:
+			attacker.change_target(self)
+			if teamName == "red":
+				Game.red_towers_destroyed += 1
+			if teamName == "blue":
+				Game.blue_towers_destroyed += 1
+			queue_free()
+		elif type == 2:
+			if teamName == "red":
+				Game.winner = "BLUE"
+			if teamName == "blue":
+				Game.winner = "RED"
+			get_tree().change_scene_to_file("res://Scenes/end_scene.tscn")
 	else:
 		health_label.text = str(building_health)
 
