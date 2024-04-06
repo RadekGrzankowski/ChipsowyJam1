@@ -32,8 +32,10 @@ func take_damage(amount, attacker):
 			attacker.change_target(self)
 			if teamName == "red":
 				Game.red_towers_destroyed += 1
+				Game.blue_gold += 20
 			if teamName == "blue":
 				Game.blue_towers_destroyed += 1
+				Game.red_gold += 20
 			queue_free()
 		elif type == 2:
 			if teamName == "red":

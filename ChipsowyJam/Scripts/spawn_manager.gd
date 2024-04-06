@@ -66,22 +66,6 @@ func spawn_bot(color: String, path: String, marker: Marker3D):
 	bot.set_targets(target_positions)
 	add_child(bot)
 
-	
-
-func _on_spawnbotblue_pressed():
-	spawn_bot("blue", "bot", markerBotBlue)
-func _on_spawnmidblue_pressed():
-	spawn_bot("blue", "mid", markerMidBlue)
-func _on_spawntopblue_pressed():
-	spawn_bot("blue", "top", markerTopBlue)
-func _on_spawnbotred_pressed():
-	spawn_bot("red", "bot", markerBotRed)
-func _on_spawnmidred_pressed():
-	spawn_bot("red", "mid", markerMidRed)
-func _on_spawntopred_pressed():
-	spawn_bot("red", "top", markerTopRed)
-
-
 func _on_wave_timer_timeout():
 	currentCount = 0
 	mobTimer.start()
