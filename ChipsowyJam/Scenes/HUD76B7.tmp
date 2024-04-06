@@ -1,0 +1,82 @@
+[gd_scene load_steps=4 format=3 uid="uid://0cdht6xykwu7"]
+
+[ext_resource type="Script" path="res://Scripts/spawn_manager.gd" id="1_bvj0y"]
+[ext_resource type="PackedScene" uid="uid://b5guql3jxuxf" path="res://Scenes/Assets/Mobs/blue_demon.tscn" id="2_vgpgw"]
+[ext_resource type="PackedScene" uid="uid://dcu24u5hlay3i" path="res://Scenes/Assets/Mobs/red_demon.tscn" id="3_jxfht"]
+
+[node name="UIController" type="Node3D"]
+script = ExtResource("1_bvj0y")
+blueDemon = ExtResource("2_vgpgw")
+redDemon = ExtResource("3_jxfht")
+
+[node name="SPAWNBOTBLUE" type="Button" parent="."]
+visible = false
+offset_left = 168.0
+offset_top = 8.0
+offset_right = 314.0
+offset_bottom = 41.0
+text = "SPAWN BOT BLUE"
+
+[node name="SPAWNMIDBLUE" type="Button" parent="."]
+visible = false
+offset_left = 320.0
+offset_top = 8.0
+offset_right = 465.0
+offset_bottom = 41.0
+text = "SPAWN MID BLUE
+"
+
+[node name="SPAWNTOPBLUE" type="Button" parent="."]
+visible = false
+offset_left = 472.0
+offset_top = 8.0
+offset_right = 617.0
+offset_bottom = 41.0
+text = "SPAWN TOP BLUE
+"
+
+[node name="SPAWNBOTRED" type="Button" parent="."]
+visible = false
+offset_left = 168.0
+offset_top = 48.0
+offset_right = 314.0
+offset_bottom = 81.0
+text = "SPAWN BOT RED"
+
+[node name="SPAWNMIDRED" type="Button" parent="."]
+visible = false
+offset_left = 320.0
+offset_top = 48.0
+offset_right = 465.0
+offset_bottom = 81.0
+text = "SPAWN MID RED
+"
+
+[node name="SPAWNTOPRED" type="Button" parent="."]
+visible = false
+offset_left = 472.0
+offset_top = 48.0
+offset_right = 617.0
+offset_bottom = 81.0
+text = "SPAWN TOP RED
+"
+
+[node name="WaveTimer" type="Timer" parent="."]
+wait_time = 45.0
+
+[node name="MobTimer" type="Timer" parent="."]
+
+[node name="StartDelayTimer" type="Timer" parent="."]
+wait_time = 5.0
+one_shot = true
+autostart = true
+
+[connection signal="pressed" from="SPAWNBOTBLUE" to="." method="_on_spawnbotblue_pressed"]
+[connection signal="pressed" from="SPAWNMIDBLUE" to="." method="_on_spawnmidblue_pressed"]
+[connection signal="pressed" from="SPAWNTOPBLUE" to="." method="_on_spawntopblue_pressed"]
+[connection signal="pressed" from="SPAWNBOTRED" to="." method="_on_spawnbotred_pressed"]
+[connection signal="pressed" from="SPAWNMIDRED" to="." method="_on_spawnmidred_pressed"]
+[connection signal="pressed" from="SPAWNTOPRED" to="." method="_on_spawntopred_pressed"]
+[connection signal="timeout" from="WaveTimer" to="." method="_on_wave_timer_timeout"]
+[connection signal="timeout" from="MobTimer" to="." method="_on_mob_timer_timeout"]
+[connection signal="timeout" from="StartDelayTimer" to="." method="_on_start_delay_timer_timeout"]

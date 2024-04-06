@@ -22,9 +22,10 @@ func _ready():
 	elif is_in_group("tower"):
 		type = 1
 
-func take_damage(amount):
+func take_damage(amount, attacker):
 	building_health -= amount - building_armor	
 	if building_health <= 0:
+		attacker.change_target(self)
 		queue_free()
 	else:
 		health_label.text = str(building_health)

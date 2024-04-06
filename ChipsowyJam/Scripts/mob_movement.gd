@@ -24,11 +24,6 @@ func _physics_process(delta):
 	# rotates the mob into the direction of movement
 	if velocity.length() > 0:
 		look_at(transform.origin + -new_velocity, Vector3.UP)
-	else:
-		look_at(navigation_agent.target_position)
-	# adds the gravity
-	if !is_on_floor():
-		new_velocity.y -= gravity * delta
 	
 	if navigation_agent.avoidance_enabled:
 		navigation_agent.set_velocity(new_velocity)

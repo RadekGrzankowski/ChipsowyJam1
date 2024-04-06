@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://dcu24u5hlay3i"]
+[gd_scene load_steps=27 format=3 uid="uid://dcu24u5hlay3i"]
 
 [ext_resource type="Script" path="res://Scripts/mob_behaviour.gd" id="1_8j1x2"]
 
@@ -377,8 +377,8 @@ bind/42/name = &"PoleTarget.R"
 bind/42/bone = -1
 bind/42/pose = Transform3D(0.75326, 1.30595e-13, 5.38774e-07, -1.07045e-13, 0.75326, -3.29261e-08, -5.38774e-07, 3.29261e-08, 0.75326, 0.0224202, 0.0113429, -0.0179171)
 
-[sub_resource type="CylinderShape3D" id="CylinderShape3D_s5vho"]
-height = 1.25
+[sub_resource type="BoxShape3D" id="BoxShape3D_mkgvg"]
+size = Vector3(1.25, 1.2, 0.7)
 
 [sub_resource type="Animation" id="Animation_0bkxl"]
 resource_name = "CharacterArmature|Death"
@@ -4276,18 +4276,14 @@ _data = {
 }
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_lflvg"]
-radius = 4.5
+height = 1.0
+radius = 3.5
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_2bbjw"]
-
-[node name="RedDemon" type="CharacterBody3D" node_paths=PackedStringArray("health_label", "hit_area3D") groups=["red_team"]]
-axis_lock_angular_x = true
-axis_lock_angular_z = true
+[node name="RedDemon" type="CharacterBody3D" node_paths=PackedStringArray("health_label") groups=["red_team"]]
+transform = Transform3D(0.75, 0, 0, 0, 0.75, 0, 0, 0, 0.75, 0, 0, 0)
 script = ExtResource("1_8j1x2")
 health_label = NodePath("HealthLabel")
-hit_area3D = NodePath("HitArea3D")
-movement_speed = 3.5
-metadata/_edit_group_ = true
+movement_speed = 3.0
 
 [node name="RootNode" type="Node3D" parent="."]
 transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 0, 0, 0)
@@ -4712,12 +4708,12 @@ mesh = SubResource("ArrayMesh_w546f")
 skin = SubResource("Skin_q83t0")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.625, 0)
-shape = SubResource("CylinderShape3D_s5vho")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.58, 0)
+shape = SubResource("BoxShape3D_mkgvg")
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
 avoidance_enabled = true
-debug_enabled = true
+neighbor_distance = 10.0
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -4729,14 +4725,8 @@ autoplay = "CharacterArmature|Idle"
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.5)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="DetectionArea3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.625, 0.5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.624828, 0.225708)
 shape = SubResource("CylinderShape3D_lflvg")
-
-[node name="HitArea3D" type="Area3D" parent="."]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="HitArea3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.55, 1)
-shape = SubResource("BoxShape3D_2bbjw")
 
 [node name="HealthLabel" type="Label3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
@@ -4746,16 +4736,7 @@ font_size = 60
 
 [node name="AttackTimer" type="Timer" parent="."]
 
-[node name="NavPathTimer" type="Timer" parent="."]
-wait_time = 0.25
-autostart = true
-
-[node name="DetectionRayCast3D" type="RayCast3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.74228e-08, 0.5, 1)
-target_position = Vector3(0, 0, 5)
-
 [connection signal="velocity_computed" from="NavigationAgent3D" to="." method="_on_navigation_agent_3d_velocity_computed"]
 [connection signal="body_entered" from="DetectionArea3D" to="." method="_on_area_3d_body_entered"]
 [connection signal="body_exited" from="DetectionArea3D" to="." method="_on_area_3d_body_exited"]
 [connection signal="timeout" from="AttackTimer" to="." method="_on_attack_timer_timeout"]
-[connection signal="timeout" from="NavPathTimer" to="." method="_on_nav_path_timer_timeout"]

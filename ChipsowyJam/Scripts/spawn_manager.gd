@@ -15,6 +15,7 @@ extends Node3D
 @export var redDemon : PackedScene
 
 @onready var waveTimer = $WaveTimer
+@export var waveTime: int
 @onready var mobTimer = $MobTimer
 
 @export var waveMobCount: int = 6
@@ -22,7 +23,7 @@ var currentCount: int = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass
+	waveTimer.wait_time = waveTime
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -63,8 +64,9 @@ func spawn_bot(color: String, path: String, marker: Marker3D):
 	bot.rotation = marker.rotation
 	
 	bot.set_targets(target_positions)
-	
 	add_child(bot)
+
+	
 
 func _on_spawnbotblue_pressed():
 	spawn_bot("blue", "bot", markerBotBlue)
