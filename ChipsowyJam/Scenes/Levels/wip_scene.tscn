@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://dujs37qsrm41c"]
 
 [ext_resource type="Script" path="res://Scripts/camera_movement.gd" id="1_80gvj"]
-[ext_resource type="PackedScene" uid="uid://vi0aftyh1au0" path="res://Scenes/Assets/Terrain.tscn" id="1_gwcpw"]
+[ext_resource type="PackedScene" uid="uid://vi0aftyh1au0" path="res://Scenes/Assets/terrain.tscn" id="1_gwcpw"]
 [ext_resource type="PackedScene" uid="uid://0cdht6xykwu7" path="res://Scenes/HUD.tscn" id="2_qn11f"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_trv5t"]
@@ -33,8 +33,8 @@ volumetric_fog_density = 0.0
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.000226974, 0.000179768, 0.000156403)
 
 [node name="HUD" parent="." instance=ExtResource("2_qn11f")]
-waveTime = 200
-waveMobCount = 4
+waveTime = 45
+waveMobCount = 6
 
 [node name="CameraController" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25, 18, 40)

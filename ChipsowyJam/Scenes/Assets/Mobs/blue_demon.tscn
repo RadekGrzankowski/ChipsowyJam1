@@ -4445,12 +4445,17 @@ _data = {
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_mtoku"]
 radius = 4.5
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_0xn8r"]
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_1ggtu"]
+height = 0.608183
+radius = 1.5
 
 [node name="BlueDemon" type="CharacterBody3D" node_paths=PackedStringArray("health_label", "hit_area3D") groups=["blue_team"]]
 axis_lock_angular_x = true
 axis_lock_angular_z = true
 script = ExtResource("1_nmh4o")
+mob_health = null
+mob_melee_attack = null
+mob_armor = null
 health_label = NodePath("HealthLabel")
 hit_area3D = NodePath("HitArea3D")
 movement_speed = 3.5
@@ -4898,8 +4903,8 @@ shape = SubResource("CylinderShape3D_mtoku")
 [node name="HitArea3D" type="Area3D" parent="."]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="HitArea3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.55, 1)
-shape = SubResource("BoxShape3D_0xn8r")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.55, -0.00243807)
+shape = SubResource("CylinderShape3D_1ggtu")
 
 [node name="HealthLabel" type="Label3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
@@ -4913,12 +4918,10 @@ font_size = 60
 wait_time = 0.25
 autostart = true
 
-[node name="DetectionRayCast3D" type="RayCast3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1, 0.2)
-target_position = Vector3(0, 0, 5.5)
-
 [connection signal="velocity_computed" from="NavigationAgent3D" to="." method="_on_navigation_agent_3d_velocity_computed"]
 [connection signal="body_entered" from="DetectionArea3D" to="." method="_on_area_3d_body_entered"]
 [connection signal="body_exited" from="DetectionArea3D" to="." method="_on_area_3d_body_exited"]
+[connection signal="body_entered" from="HitArea3D" to="." method="_on_hit_area_3d_body_entered"]
+[connection signal="body_exited" from="HitArea3D" to="." method="_on_hit_area_3d_body_exited"]
 [connection signal="timeout" from="AttackTimer" to="." method="_on_attack_timer_timeout"]
 [connection signal="timeout" from="NavPathTimer" to="." method="_on_nav_path_timer_timeout"]

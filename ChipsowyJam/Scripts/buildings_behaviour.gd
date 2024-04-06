@@ -3,12 +3,14 @@ extends Node
 @export var building_armor: int = 5
 @export var building_health: int = 500
 @export var health_label: Label3D
+@export var attack_cd: Timer
 var teamName: String
 var type: int # 1-Tower 2-Nexus
 
-var opponents_array: Array[Node3D]
-var opponent_to_attack: Node3D
-var attacking: bool = false
+var enemies_to_attack: Array[Node3D]
+var enemy_to_attack: Node3D
+var is_attacking: bool = false
+var can_attack: bool = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -33,46 +35,48 @@ func take_damage(amount, attacker):
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	pass
+	if type == 1:
+		if is_attacking:
+			if can_attack:
+				enemy_to_attack = closest_target()
+				enemy_to_attack.take_damage(building_damage, self)
+				can_attack = false
+				attack_cd.start()
+	
+func change_target(body: Node3D):
+	enemies_to_attack.erase(body)
 
 func closest_target():
-	var body: Node3D
-	var dist: float = INF
-	for opponent in opponents_array:
-		var new_dist = self.position.distance_to(opponent.position)
-		if new_dist < dist:
-			dist = new_dist
-			body = opponent
-	opponent_to_attack = body
-	return body
+	if enemy_to_attack == null:
+		var body: Node3D
+		var dist: float = INF
+		for enemy in enemies_to_attack:
+			var new_dist = self.position.distance_to(enemy.position)
+			if new_dist < dist:
+				dist = new_dist
+				body = enemy
+		return body
+	else:
+		return enemy_to_attack
 
 func _on_detection_area_body_entered(body):
-	if opponents_array.size() == 0:
-		if teamName == "blue":
-			if body.is_in_group("red_team"):
-				opponents_array.append(body)
-				set_target()
-		elif teamName == "red":
-			if body.is_in_group("blue_team"):
-				opponents_array.append(body)
-				set_target()
-	else:
-		if teamName == "blue":
-			if body.is_in_group("red_team"):
-				if opponents_array.find(body) == -1:
-					opponents_array.append(body)
-		elif teamName == "red":
-			if body.is_in_group("blue_team"):
-				if opponents_array.find(body) == -1:
-					opponents_array.append(body)
+	if teamName == "blue":
+		if body.is_in_group("red_team"):
+			enemies_to_attack.append(body)
+			is_attacking = true
+	elif teamName == "red":
+		if body.is_in_group("blue_team"):
+			enemies_to_attack.append(body)
+			is_attacking = true
 
 func _on_detection_area_body_exited(body):
-	if opponents_array.size() > 0:
-		opponents_array.erase(body)
-		set_target()
+		enemies_to_attack.erase(body)
+		if enemies_to_attack.size() == 0:
+			is_attacking = false
+		else:
+			enemy_to_attack = closest_target()
 
-func set_target():
-	if opponents_array.size() == 0:
-		opponent_to_attack = null
-	else:
-		opponent_to_attack = closest_target()
+
+func _on_attack_cooldown_timeout():
+	can_attack = true
+	print("can_attack")

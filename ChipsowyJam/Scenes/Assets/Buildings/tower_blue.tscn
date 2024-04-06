@@ -120,11 +120,12 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.595, 0)
 mesh = SubResource("ArrayMesh_q2qrk")
 skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="." node_paths=PackedStringArray("health_label") groups=["blue_team", "tower"]]
+[node name="StaticBody3D" type="StaticBody3D" parent="." node_paths=PackedStringArray("health_label", "attack_cd") groups=["blue_team", "tower"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2, 0)
 script = ExtResource("5_o0x8h")
 building_health = 200
 health_label = NodePath("HealthLabel")
+attack_cd = NodePath("AttackCooldown")
 
 [node name="HealthLabel" type="Label3D" parent="StaticBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.13635, 0)
@@ -143,5 +144,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.38812, 0)
 shape = SubResource("CylinderShape3D_nllhc")
 
+[node name="AttackCooldown" type="Timer" parent="StaticBody3D"]
+wait_time = 0.5
+one_shot = true
+autostart = true
+
 [connection signal="body_entered" from="StaticBody3D/DetectionArea" to="StaticBody3D" method="_on_detection_area_body_entered"]
 [connection signal="body_exited" from="StaticBody3D/DetectionArea" to="StaticBody3D" method="_on_detection_area_body_exited"]
+[connection signal="timeout" from="StaticBody3D/AttackCooldown" to="StaticBody3D" method="_on_attack_cooldown_timeout"]
