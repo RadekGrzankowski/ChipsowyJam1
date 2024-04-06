@@ -136,9 +136,12 @@ font_size = 60
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
 shape = SubResource("ConcavePolygonShape3D_synad")
 
-[node name="Area3D" type="Area3D" parent="StaticBody3D"]
+[node name="DetectionArea" type="Area3D" parent="StaticBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D/Area3D"]
+[node name="DetectionShape" type="CollisionShape3D" parent="StaticBody3D/DetectionArea"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.38812, 0)
 shape = SubResource("CylinderShape3D_nllhc")
+
+[connection signal="body_entered" from="StaticBody3D/DetectionArea" to="StaticBody3D" method="_on_detection_area_body_entered"]
+[connection signal="body_exited" from="StaticBody3D/DetectionArea" to="StaticBody3D" method="_on_detection_area_body_exited"]

@@ -126,19 +126,22 @@ script = ExtResource("5_xk2dl")
 building_health = 200
 health_label = NodePath("HealthLabel")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
-shape = SubResource("ConcavePolygonShape3D_ofh51")
-
-[node name="Area3D" type="Area3D" parent="StaticBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D/Area3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.38812, 0)
-shape = SubResource("CylinderShape3D_xpw5f")
-
 [node name="HealthLabel" type="Label3D" parent="StaticBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.13635, 0)
 billboard = 1
 modulate = Color(0, 0.713726, 0.109804, 1)
 font_size = 60
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+shape = SubResource("ConcavePolygonShape3D_ofh51")
+
+[node name="DetectionArea" type="Area3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+
+[node name="DetectionShape" type="CollisionShape3D" parent="StaticBody3D/DetectionArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.38812, 0)
+shape = SubResource("CylinderShape3D_xpw5f")
+
+[connection signal="body_entered" from="StaticBody3D/DetectionArea" to="StaticBody3D" method="_on_detection_area_body_entered"]
+[connection signal="body_exited" from="StaticBody3D/DetectionArea" to="StaticBody3D" method="_on_detection_area_body_exited"]

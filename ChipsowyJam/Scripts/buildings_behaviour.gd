@@ -67,7 +67,7 @@ func _on_detection_area_body_entered(body):
 					opponents_array.append(body)
 
 func _on_detection_area_body_exited(body):
-	1`if opponents_array.size() > 0:
+	if opponents_array.size() > 0:
 		opponents_array.erase(body)
 		set_target()
 
