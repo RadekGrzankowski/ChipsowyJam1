@@ -22,9 +22,9 @@ func _move(delta):
 	if Input.is_action_pressed("move_right"):
 		velocity += transform.basis.x
 	if Input.is_action_just_pressed("mwheelup"):
-		velocity -= transform.basis.y
+		position.y -= 1
 	if Input.is_action_just_pressed("mwheeldown"):
-		velocity += transform.basis.y
+		position.y += 1
 	# moving the camera
 	translate(velocity.normalized() * delta * movement_speed)
 	#clamping the position to world borders
