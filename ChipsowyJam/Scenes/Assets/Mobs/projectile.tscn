@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://bi3f26bls5dm3"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_yw83x"]
+radius = 0.2
+height = 0.4
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_qi3us"]
+radius = 0.2
+
+[node name="RigidBody3D" type="RigidBody3D"]
+collision_layer = 0
+collision_mask = 0
+input_ray_pickable = false
+gravity_scale = 0.0
+
+[node name="ProjectileMeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("SphereMesh_yw83x")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_qi3us")

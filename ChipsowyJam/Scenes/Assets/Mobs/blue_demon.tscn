@@ -1,6 +1,7 @@
-[gd_scene load_steps=30 format=3 uid="uid://b5guql3jxuxf"]
+[gd_scene load_steps=31 format=3 uid="uid://b5guql3jxuxf"]
 
 [ext_resource type="Script" path="res://Scripts/mob_behaviour.gd" id="1_nmh4o"]
+[ext_resource type="PackedScene" uid="uid://bi3f26bls5dm3" path="res://Scenes/Assets/Mobs/projectile.tscn" id="2_trjdb"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_x504n"]
 resource_name = "BlueDemon_Main"
@@ -4443,7 +4444,7 @@ _data = {
 }
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_mtoku"]
-radius = 4.5
+radius = 5.0
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_1ggtu"]
 height = 0.7
@@ -4451,7 +4452,7 @@ radius = 1.5
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_b3ee2"]
 height = 0.7
-radius = 3.47276
+radius = 4.0
 
 [node name="BlueDemon" type="CharacterBody3D" node_paths=PackedStringArray("health_label", "hit_area3D") groups=["blue_team"]]
 axis_lock_angular_x = true
@@ -4459,6 +4460,7 @@ axis_lock_angular_z = true
 script = ExtResource("1_nmh4o")
 health_label = NodePath("HealthLabel")
 hit_area3D = NodePath("HitArea3D")
+projectile_ball = ExtResource("2_trjdb")
 movement_speed = 3.5
 metadata/_edit_group_ = true
 

@@ -29,7 +29,8 @@ func _move(delta):
 	translate(velocity.normalized() * delta * movement_speed)
 	#clamping the position to world borders
 	var x_pos = clamp(position.x, -50, 50)
-	var y_pos = clamp(position.y, 5, 30)
+	#y_pos value below 10.0 makes the camera clip with the assets
+	var y_pos = clamp(position.y, 7.5, 30)
 	var z_pos = clamp(position.z, -50, 50)
 	var new_pos = Vector3(x_pos,y_pos,z_pos)
 	position = new_pos

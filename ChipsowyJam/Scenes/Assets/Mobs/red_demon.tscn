@@ -1,6 +1,7 @@
-[gd_scene load_steps=29 format=3 uid="uid://dcu24u5hlay3i"]
+[gd_scene load_steps=30 format=3 uid="uid://dcu24u5hlay3i"]
 
 [ext_resource type="Script" path="res://Scripts/mob_behaviour.gd" id="1_8j1x2"]
+[ext_resource type="PackedScene" uid="uid://bi3f26bls5dm3" path="res://Scenes/Assets/Mobs/projectile.tscn" id="2_mf7np"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3cth0"]
 resource_name = "Demon_Main"
@@ -4276,7 +4277,7 @@ _data = {
 }
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_lflvg"]
-radius = 4.5
+radius = 5.0
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_p8gbg"]
 height = 0.7
@@ -4284,7 +4285,7 @@ radius = 1.5
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_2fcc8"]
 height = 0.7
-radius = 3.47276
+radius = 4.0
 
 [node name="RedDemon" type="CharacterBody3D" node_paths=PackedStringArray("health_label", "hit_area3D") groups=["red_team"]]
 axis_lock_angular_x = true
@@ -4292,6 +4293,7 @@ axis_lock_angular_z = true
 script = ExtResource("1_8j1x2")
 health_label = NodePath("HealthLabel")
 hit_area3D = NodePath("HitArea3D")
+projectile_ball = ExtResource("2_mf7np")
 movement_speed = 3.5
 metadata/_edit_group_ = true
 

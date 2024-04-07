@@ -4,16 +4,18 @@ extends "res://Scripts/mob_movement.gd"
 @export var mob_melee_attack: float = 15.0
 @export var mob_armor: float = 2.0
 @export var health_label: Label3D
+@export var hit_area3D: Area3D
+@export var projectile_ball: PackedScene
+
 var teamName: String
-@onready var melee_range: CollisionShape3D = $HitArea3D/MeleeShape
-@onready var ranged_range: CollisionShape3D = $HitArea3D/RangedShape
 var minion_type: String
 var path: String
 
-@export var hit_area3D: Area3D
+@onready var melee_range: CollisionShape3D = $HitArea3D/MeleeShape
+@onready var ranged_range: CollisionShape3D = $HitArea3D/RangedShape
 
+var spawned_projectile: Node3D
 var enemies_to_attack: Array[Node3D]
-
 var detected_enemies_array: Array[Node3D]
 var opponent_to_attack: Node3D
 
@@ -44,32 +46,33 @@ func initialize(name: String, type: String, main_path: String):
 	minion_type = type
 	path = main_path
 	
-# Czasami jedna jednostka ginie więcej niż raz - trzeba to naprawić
 func take_damage(amount, attacker):
-	mob_health -= amount - mob_armor	
-	if mob_health <= 0:
-		attacker.change_target(self)
-		if teamName == "red":
-			if path == "top":
-				Game.red_minions_top -= 1
-			elif path == "mid":
-				Game.red_minions_mid -= 1
-			elif path == "bot":
-				Game.red_minions_bot -= 1
-			Game.red_minions_killed += 1
-			Game.blue_gold += 5
-		if teamName == "blue":
-			if path == "top":
-				Game.blue_minions_top -= 1
-			elif path == "mid":
-				Game.blue_minions_mid -= 1
-			elif path == "bot":
-				Game.blue_minions_bot -= 1
-			Game.blue_minions_killed += 1
-			Game.red_gold += 5
-		queue_free()
-	else:
-		health_label.text = str(mob_health)
+	#checks if current mob is existing
+	if is_instance_valid(self):
+		mob_health -= amount - mob_armor	
+		if mob_health <= 0:
+			attacker.change_target(self)
+			if teamName == "red":
+				if path == "top":
+					Game.red_minions_top -= 1
+				elif path == "mid":
+					Game.red_minions_mid -= 1
+				elif path == "bot":
+					Game.red_minions_bot -= 1
+				Game.red_minions_killed += 1
+				Game.blue_gold += 5
+			if teamName == "blue":
+				if path == "top":
+					Game.blue_minions_top -= 1
+				elif path == "mid":
+					Game.blue_minions_mid -= 1
+				elif path == "bot":
+					Game.blue_minions_bot -= 1
+				Game.blue_minions_killed += 1
+				Game.red_gold += 5
+			queue_free()
+		else:
+			health_label.text = str(mob_health)
 
 func _physics_process(delta):
 	super(delta)
@@ -82,12 +85,23 @@ func _process(delta):
 	if is_attacking:
 		if anim_player.current_animation != "CharacterArmature|Weapon":
 			anim_player.play("CharacterArmature|Weapon")
+			#spawn an arrow from mob position to enemy when the mob is ranged - WIP
+			#if minion_type == "ranged":
+				#spawn_projectile()
 	else:
 		if velocity.length() > 0:
 			anim_player.play("CharacterArmature|Walk")
 		else:
 			anim_player.play("CharacterArmature|Idle")
 				
+# WIP function
+func spawn_projectile():
+	var projectile: RigidBody3D
+	projectile = projectile_ball.instantiate()
+	projectile.position = global_position
+	add_child(projectile)
+	spawned_projectile = projectile
+	
 func change_target(body: Node3D):
 	opponent_to_attack = null
 	detected_enemies_array.erase(body)
@@ -167,5 +181,7 @@ func _on_hit_area_3d_body_exited(body):
 
 func _on_animation_player_animation_finished(anim_name):
 	if anim_name == "CharacterArmature|Weapon":
-		if enemies_to_attack[0].mob_health > 0:
-			enemies_to_attack[0].take_damage(mob_melee_attack, self)
+		enemies_to_attack[0].take_damage(mob_melee_attack, self)
+		if spawned_projectile != null:
+			spawned_projectile.queue_free()
+
