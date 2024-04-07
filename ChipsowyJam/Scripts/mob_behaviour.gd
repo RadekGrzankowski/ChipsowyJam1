@@ -5,6 +5,10 @@ extends "res://Scripts/mob_movement.gd"
 @export var mob_armor: float = 2.0
 @export var health_label: Label3D
 var teamName: String
+@onready var melee_range: CollisionShape3D = $HitArea3D/MeleeShape
+@onready var ranged_range: CollisionShape3D = $HitArea3D/RangedShape
+var minion_type: String
+var path: String
 
 @export var hit_area3D: Area3D
 
@@ -16,18 +20,51 @@ var opponent_to_attack: Node3D
 func _ready():
 	super()
 	health_label.text = str(mob_health)
+	if minion_type == "melee":
+		melee_range.disabled = false
+	elif minion_type == "ranged":
+		ranged_range.disabled = false
+	if teamName == "red":
+		if path == "top":
+			Game.red_minions_top += 1
+		elif path == "mid":
+			Game.red_minions_mid += 1
+		elif path == "bot":
+			Game.red_minions_bot += 1
+	elif teamName == "blue":
+		if path == "top":
+			Game.blue_minions_top += 1
+		elif path == "mid":
+			Game.blue_minions_mid += 1
+		elif path == "bot":
+			Game.blue_minions_bot += 1
 
-func initialize(name):
+func initialize(name: String, type: String, main_path: String):
 	teamName = name
+	minion_type = type
+	path = main_path
 	
+# Czasami jedna jednostka ginie więcej niż raz - trzeba to naprawić
 func take_damage(amount, attacker):
 	mob_health -= amount - mob_armor	
 	if mob_health <= 0:
 		attacker.change_target(self)
 		if teamName == "red":
+			if path == "top":
+				Game.red_minions_top -= 1
+			elif path == "mid":
+				Game.red_minions_mid -= 1
+			elif path == "bot":
+				Game.red_minions_bot -= 1
 			Game.red_minions_killed += 1
 			Game.blue_gold += 5
 		if teamName == "blue":
+			if path == "top":
+				Game.blue_minions_top -= 1
+			elif path == "mid":
+				Game.blue_minions_mid -= 1
+			elif path == "bot":
+				Game.blue_minions_bot -= 1
 			Game.blue_minions_killed += 1
 			Game.red_gold += 5
 		queue_free()

@@ -14,9 +14,9 @@ extends Node3D
 @export var blueDemon : PackedScene
 @export var redDemon : PackedScene
 
-@onready var waveTimer = $WaveTimer
+@onready var waveTimer = $"../WaveTimer"
 @export var waveTime: int
-@onready var mobTimer = $MobTimer
+@onready var mobTimer = $"../MobTimer"
 
 @export var waveMobCount: int = 6
 var currentCount: int = 0
@@ -38,10 +38,16 @@ func spawn_bot(color: String, path: String, marker: Marker3D):
 	var bot: CharacterBody3D
 	if color == "red":
 		bot = redDemon.instantiate()
-		bot.initialize("red")
+		if currentCount <= 3:
+			bot.initialize("red", "melee", path)
+		elif currentCount >= 4:
+			bot.initialize("red", "ranged", path)
 	elif color == "blue":
 		bot = blueDemon.instantiate()
-		bot.initialize("blue")
+		if currentCount <= 3:
+			bot.initialize("blue", "melee", path)
+		elif currentCount >= 4:
+			bot.initialize("blue", "ranged", path)
 	var target_positions : Array
 	match path:
 		"bot":

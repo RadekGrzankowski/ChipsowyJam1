@@ -29,12 +29,12 @@ func _move(delta):
 	translate(velocity.normalized() * delta * movement_speed)
 	#clamping the position to world borders
 	var x_pos = clamp(position.x, -50, 50)
-	var y_pos = clamp(position.y, 10, 30)
+	var y_pos = clamp(position.y, 5, 30)
 	var z_pos = clamp(position.z, -50, 50)
 	var new_pos = Vector3(x_pos,y_pos,z_pos)
 	position = new_pos
 	
 	#rotating the camera based on the normalized height
-	var normalized_height = smoothstep(-10.0, 30, position.y)
+	var normalized_height = smoothstep(-40.0, 30, position.y)
 	camera.rotation_degrees.x = -rad_to_deg(sin(normalized_height))
 

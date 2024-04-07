@@ -42,7 +42,7 @@ func take_damage(amount, attacker):
 				Game.winner = "BLUE"
 			if teamName == "blue":
 				Game.winner = "RED"
-			get_tree().change_scene_to_file("res://Scenes/end_scene.tscn")
+			get_tree().change_scene_to_file("res://Scenes/Levels/end_scene.tscn")
 	else:
 		health_label.text = str(building_health)
 

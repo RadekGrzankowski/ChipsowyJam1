@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://b5guql3jxuxf"]
+[gd_scene load_steps=30 format=3 uid="uid://b5guql3jxuxf"]
 
 [ext_resource type="Script" path="res://Scripts/mob_behaviour.gd" id="1_nmh4o"]
 
@@ -4449,6 +4449,10 @@ radius = 4.5
 height = 0.7
 radius = 1.5
 
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_b3ee2"]
+height = 0.7
+radius = 3.47276
+
 [node name="BlueDemon" type="CharacterBody3D" node_paths=PackedStringArray("health_label", "hit_area3D") groups=["blue_team"]]
 axis_lock_angular_x = true
 axis_lock_angular_z = true
@@ -4898,9 +4902,15 @@ shape = SubResource("CylinderShape3D_mtoku")
 
 [node name="HitArea3D" type="Area3D" parent="."]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="HitArea3D"]
+[node name="MeleeShape" type="CollisionShape3D" parent="HitArea3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 shape = SubResource("CylinderShape3D_1ggtu")
+disabled = true
+
+[node name="RangedShape" type="CollisionShape3D" parent="HitArea3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.55, 0)
+shape = SubResource("CylinderShape3D_b3ee2")
+disabled = true
 
 [node name="HealthLabel" type="Label3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
