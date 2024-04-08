@@ -85,21 +85,22 @@ func _process(delta):
 	if is_attacking:
 		if anim_player.current_animation != "CharacterArmature|Weapon":
 			anim_player.play("CharacterArmature|Weapon")
-			#spawn an arrow from mob position to enemy when the mob is ranged - WIP
-			#if minion_type == "ranged":
-				#spawn_projectile()
+			#spawn an arrow from mob position to enemy when the mob is ranged
+			if minion_type == "ranged":
+				spawn_projectile()
 	else:
 		if velocity.length() > 0:
 			anim_player.play("CharacterArmature|Walk")
 		else:
 			anim_player.play("CharacterArmature|Idle")
 				
-# WIP function
 func spawn_projectile():
-	var projectile: RigidBody3D
+	var projectile: StaticBody3D
 	projectile = projectile_ball.instantiate()
-	projectile.position = global_position
+	projectile.start_pos = global_position + Vector3(0, 1.5, 0)
+	projectile.target_node = opponent_to_attack
 	add_child(projectile)
+	projectile.init(teamName)
 	spawned_projectile = projectile
 	
 func change_target(body: Node3D):
@@ -157,7 +158,7 @@ func _on_nav_path_timer_timeout():
 		if navigation_agent.is_navigation_finished() && opponent_to_attack == null: return
 		if !navigation_agent.is_target_reached():
 			if opponent_to_attack != null:
-				navigation_agent.time_horizon_agents = 0.1
+				navigation_agent.time_horizon_agents = 0.5
 				set_movement_target(opponent_to_attack.global_position)
 			else:
 				navigation_agent.time_horizon_agents = 1
@@ -178,10 +179,7 @@ func _on_hit_area_3d_body_exited(body):
 	if enemies_to_attack.size() == 0:
 		is_attacking = false
 
-
 func _on_animation_player_animation_finished(anim_name):
 	if anim_name == "CharacterArmature|Weapon":
 		enemies_to_attack[0].take_damage(mob_melee_attack, self)
-		if spawned_projectile != null:
-			spawned_projectile.queue_free()
 

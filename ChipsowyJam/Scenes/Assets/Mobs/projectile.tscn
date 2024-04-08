@@ -1,4 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://bi3f26bls5dm3"]
+[gd_scene load_steps=6 format=3 uid="uid://bi3f26bls5dm3"]
+
+[ext_resource type="Script" path="res://Scripts/projectile.gd" id="1_p4aex"]
+[ext_resource type="Material" uid="uid://cye5080d8ya1i" path="res://Materials/LightRed.tres" id="2_dsecu"]
+[ext_resource type="Material" uid="uid://73ufq0fugf4v" path="res://Materials/LightBlue.tres" id="3_qr7gd"]
 
 [sub_resource type="SphereMesh" id="SphereMesh_yw83x"]
 radius = 0.2
@@ -7,14 +11,22 @@ height = 0.4
 [sub_resource type="SphereShape3D" id="SphereShape3D_qi3us"]
 radius = 0.2
 
-[node name="RigidBody3D" type="RigidBody3D"]
+[node name="StaticBody3D" type="StaticBody3D"]
 collision_layer = 0
 collision_mask = 0
-input_ray_pickable = false
-gravity_scale = 0.0
+script = ExtResource("1_p4aex")
 
-[node name="ProjectileMeshInstance3D" type="MeshInstance3D" parent="."]
+[node name="ProjectileMeshInstanceRed" type="MeshInstance3D" parent="."]
+visible = false
+material_override = ExtResource("2_dsecu")
 mesh = SubResource("SphereMesh_yw83x")
+skeleton = NodePath("")
+
+[node name="ProjectileMeshInstanceBlue" type="MeshInstance3D" parent="."]
+visible = false
+material_override = ExtResource("3_qr7gd")
+mesh = SubResource("SphereMesh_yw83x")
+skeleton = NodePath("")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("SphereShape3D_qi3us")

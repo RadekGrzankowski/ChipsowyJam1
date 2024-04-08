@@ -4,6 +4,7 @@ extends Node
 @export var building_health: int = 500
 @export var health_label: Label3D
 @export var attack_cd: Timer
+@export var projectile_ball: PackedScene
 var teamName: String
 var type: int # 1-Tower 2-Nexus
 
@@ -11,6 +12,7 @@ var enemies_to_attack: Array[Node3D]
 var enemy_to_attack: Node3D
 var is_attacking: bool = false
 var can_attack: bool = false
+var spawned_projectile: Node3D
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -55,7 +57,17 @@ func _process(delta):
 				enemy_to_attack.take_damage(building_damage, self)
 				can_attack = false
 				attack_cd.start()
-	
+				spawn_projectile()
+				
+func spawn_projectile():
+	var projectile: StaticBody3D
+	projectile = projectile_ball.instantiate()
+	projectile.start_pos = self.global_position + Vector3(0, 1.5, 0)
+	projectile.target_node = enemy_to_attack
+	add_child(projectile)
+	projectile.init(teamName)
+	spawned_projectile = projectile
+
 func change_target(body: Node3D):
 	enemies_to_attack.erase(body)
 
