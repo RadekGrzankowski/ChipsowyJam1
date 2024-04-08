@@ -39,15 +39,15 @@ func spawn_bot(color: String, path: String, marker: Marker3D):
 	if color == "red":
 		bot = redDemon.instantiate()
 		if currentCount <= 3:
-			bot.initialize("red", "melee", path)
+			bot.initialize("red", "melee", path, Game.additional_red_minions_dmg, Game.additional_red_minions_armor)
 		elif currentCount >= 4:
-			bot.initialize("red", "ranged", path)
+			bot.initialize("red", "ranged", path, Game.additional_red_minions_dmg, Game.additional_red_minions_armor)
 	elif color == "blue":
 		bot = blueDemon.instantiate()
 		if currentCount <= 3:
-			bot.initialize("blue", "melee", path)
+			bot.initialize("blue", "melee", path, Game.additional_blue_minions_dmg, Game.additional_blue_minions_armor)
 		elif currentCount >= 4:
-			bot.initialize("blue", "ranged", path)
+			bot.initialize("blue", "ranged", path, Game.additional_blue_minions_dmg, Game.additional_blue_minions_armor)
 	var target_positions : Array
 	match path:
 		"bot":

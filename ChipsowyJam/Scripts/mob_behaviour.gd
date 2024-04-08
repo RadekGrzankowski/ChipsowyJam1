@@ -41,10 +41,12 @@ func _ready():
 		elif path == "bot":
 			Game.blue_minions_bot += 1
 
-func initialize(name: String, type: String, main_path: String):
+func initialize(name: String, type: String, main_path: String, additional_dmg: int, additional_armor: int):
 	teamName = name
 	minion_type = type
 	path = main_path
+	mob_melee_attack += additional_dmg
+	mob_armor += additional_armor
 	
 func take_damage(amount, attacker):
 	#checks if current mob is existing

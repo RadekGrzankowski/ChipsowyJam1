@@ -28,3 +28,21 @@ func _process(delta):
 	mid_minions_label.text = actual_minions_mid
 	bot_minions_label.text = actual_minions_bot
 	
+
+func _on_attack_5_pressed():
+	Game.additional_blue_minions_dmg += 5
+	Game.blue_gold -= 80
+
+
+func _on_attack_10_pressed():
+	Game.additional_blue_minions_dmg += 10
+	Game.blue_gold -= 110
+
+
+func _on_armor_5_pressed():
+	Game.additional_blue_minions_armor += 1
+	Game.blue_gold -= 50
+
+func _on_armor_10_pressed():
+	Game.additional_blue_minions_armor += 3
+	Game.blue_gold -= 80

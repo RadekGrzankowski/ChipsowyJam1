@@ -17,3 +17,9 @@ var red_towers_destroyed: int = 0
 var blue_towers_destroyed: int = 0
 
 var winner: String
+
+var additional_red_minions_dmg: int = 0 
+var additional_blue_minions_dmg: int = 0 
+
+var additional_red_minions_armor: int = 0 
+var additional_blue_minions_armor: int = 0 
