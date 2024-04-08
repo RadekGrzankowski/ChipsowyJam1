@@ -1,0 +1,81 @@
+[gd_scene load_steps=10 format=3 uid="uid://cbvtsbnemkan6"]
+
+[ext_resource type="Shader" path="res://Shaders/gdshader.gdshader" id="1_apeg1"]
+
+[sub_resource type="Environment" id="Environment_emhdc"]
+
+[sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_8ti2j"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_s2lvs"]
+render_priority = 0
+shader = ExtResource("1_apeg1")
+shader_parameter/uv_size = 1.0
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_cqy20"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_fmthv"]
+
+[sub_resource type="Animation" id="Animation_1783c"]
+resource_name = "new_animation"
+length = 20.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Ball:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 5, 10, 15, 20),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0.488071, 0), Vector3(-0.319894, 0.48807, -20.0055), Vector3(21.1231, 0.48807, -17.7122), Vector3(25.7898, 0.48807, 20.6661), Vector3(-12.3144, 0.48807, 25.0115)]
+}
+
+[sub_resource type="Animation" id="Animation_n6vd3"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Ball:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0.488071, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_1anfr"]
+_data = {
+"RESET": SubResource("Animation_n6vd3"),
+"new_animation": SubResource("Animation_1783c")
+}
+
+[node name="Node3D" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_emhdc")
+camera_attributes = SubResource("CameraAttributesPractical_8ti2j")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.283597, 0.958944, 0, -0.958944, 0.283597, 0, 4.38405, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(38.4211, 0, 0, 0, 0.994841, 0, 0, 0, 38.1643, 0, 0, 0)
+material_override = SubResource("ShaderMaterial_s2lvs")
+mesh = SubResource("PlaneMesh_cqy20")
+
+[node name="Node3D" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0925536, 0.243311, -0.00535965)
+
+[node name="Ball" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.488071, 0)
+mesh = SubResource("SphereMesh_fmthv")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Node3D"]
+libraries = {
+"": SubResource("AnimationLibrary_1anfr")
+}
+
+[node name="Camera3D" type="Camera3D" parent="Node3D"]
