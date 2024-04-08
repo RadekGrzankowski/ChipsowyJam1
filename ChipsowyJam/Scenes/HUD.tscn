@@ -56,33 +56,45 @@ bot minions"
 label_settings = SubResource("LabelSettings_tnijv")
 
 [node name="Attack5" type="Button" parent="GameUIManager/HUD"]
-offset_top = 560.0
-offset_right = 120.0
-offset_bottom = 648.0
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -90.0
+offset_right = 130.0
+grow_vertical = 0
 text = "Attack DMG + 5
 Cost: 80Gold"
 
 [node name="Attack10" type="Button" parent="GameUIManager/HUD"]
-offset_left = 136.0
-offset_top = 560.0
-offset_right = 263.0
-offset_bottom = 648.0
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 152.0
+offset_top = -90.0
+offset_right = 292.0
+grow_vertical = 0
 text = "Attack DMG + 10
 Cost: 110Gold"
 
 [node name="Armor1" type="Button" parent="GameUIManager/HUD"]
-offset_left = 280.0
-offset_top = 560.0
-offset_right = 416.0
-offset_bottom = 648.0
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 316.0
+offset_top = -88.0
+offset_right = 452.0
+grow_vertical = 0
 text = "Armor + 1
 Cost: 50Gold"
 
 [node name="Armor3" type="Button" parent="GameUIManager/HUD"]
-offset_left = 424.0
-offset_top = 560.0
-offset_right = 560.0
-offset_bottom = 648.0
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 473.0
+offset_top = -88.0
+offset_right = 609.0
+grow_vertical = 0
 text = "Armor + 3
 Cost: 90Gold"
 

@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://dujs37qsrm41c"]
+[gd_scene load_steps=8 format=3 uid="uid://dujs37qsrm41c"]
 
 [ext_resource type="Script" path="res://Scripts/camera_movement.gd" id="1_80gvj"]
-[ext_resource type="PackedScene" uid="uid://vi0aftyh1au0" path="res://Scenes/Assets/terrain.tscn" id="1_gwcpw"]
+[ext_resource type="PackedScene" uid="uid://vi0aftyh1au0" path="res://Scenes/Assets/Terrain.tscn" id="1_gwcpw"]
 [ext_resource type="PackedScene" uid="uid://0cdht6xykwu7" path="res://Scenes/HUD.tscn" id="2_qn11f"]
+[ext_resource type="Script" path="res://Scenes/Levels/Camera3D.gd" id="4_rci3m"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_trv5t"]
 sky_top_color = Color(0.764706, 0.827451, 0.917647, 1)
@@ -44,6 +45,7 @@ transform = Transform3D(1, 0, 0, 0, 0.34202, 0.939693, 0, -0.939693, 0.34202, 0,
 current = true
 fov = 80.0
 near = 1.916
+script = ExtResource("4_rci3m")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.875137, -0.219537, -0.431206, 0.482832, 0.454673, 0.748429, 0.0317494, -0.863178, 0.503901, 0.00286484, 0.0375671, -0.040123)
