@@ -15,6 +15,21 @@ shader_parameter/uv_size = 1.0
 
 [sub_resource type="SphereMesh" id="SphereMesh_fmthv"]
 
+[sub_resource type="Animation" id="Animation_n6vd3"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Ball:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0.488071, 0)]
+}
+
 [sub_resource type="Animation" id="Animation_1783c"]
 resource_name = "new_animation"
 length = 20.0
@@ -29,21 +44,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 0,
 "values": [Vector3(0, 0.488071, 0), Vector3(-0.319894, 0.48807, -20.0055), Vector3(21.1231, 0.48807, -17.7122), Vector3(25.7898, 0.48807, 20.6661), Vector3(-12.3144, 0.48807, 25.0115)]
-}
-
-[sub_resource type="Animation" id="Animation_n6vd3"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Ball:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(0, 0.488071, 0)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_1anfr"]

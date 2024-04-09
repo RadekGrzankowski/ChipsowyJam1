@@ -15,8 +15,11 @@ var fog_of_war_viewport_texture : ImageTexture
 
 var map_rect : Rect2
 
+var dissolve_sprite:Texture2D = preload("res://Materials/Textures/fog_of_war.png") 
+
 func _ready():
 	fog_of_war_sprite.centered = false
+	new_fog_of_war(Rect2(0,0,512,512))
 	
 
 func new_fog_of_war(new_map_rect:Rect2):
@@ -34,6 +37,13 @@ func new_fog_of_war(new_map_rect:Rect2):
 	
 	fog_of_war_main_image.fill( Color(0.0,0.0,0.0,1.0))
 	update_texture()
+
+func _input(event:InputEvent):
+	if event is InputEventMouseButton \
+	and event.button_index == MOUSE_BUTTON_LEFT \
+	and event.is_pressed():
+		var mouse_pos:Vector2 = get_global_mouse_position()
+		fog_of_war_dissolve(mouse_pos,dissolve_sprite.get_image())
 
 func update_texture():
 	fog_of_war_main_texture = ImageTexture.create_from_image(fog_of_war_main_image)
