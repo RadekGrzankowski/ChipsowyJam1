@@ -9,10 +9,10 @@ var actual_minions_top: String
 var actual_minions_mid: String
 var actual_minions_bot: String
 
-@onready var gold_label: Label = $HUD/GoldLabel
-@onready var top_minions_label: Label = $HUD/TopMinions
-@onready var mid_minions_label: Label = $HUD/MidMinions
-@onready var bot_minions_label: Label = $HUD/BotMinions
+@onready var gold_label: Label = $HUD/Labels/GoldLabel
+@onready var top_minions_label: Label = $HUD/Labels/TopMinions
+@onready var mid_minions_label: Label = $HUD/Labels/MidMinions
+@onready var bot_minions_label: Label = $HUD/Labels/BotMinions
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass

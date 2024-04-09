@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://vi0aftyh1au0"]
+[gd_scene load_steps=14 format=3 uid="uid://vi0aftyh1au0"]
 
 [ext_resource type="Material" uid="uid://jwcxs2rxl3ce" path="res://Materials/DebugBorder.tres" id="1_k1grv"]
 [ext_resource type="Material" uid="uid://cx0atg4k5plkp" path="res://Materials/DebugFloor.tres" id="1_keaj2"]
@@ -30,10 +30,6 @@ size = Vector3(50, 50, 5)
 
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_560p8"]
 data = PackedVector3Array(-25, 25, 2.5, 25, -25, 2.5, -25, -25, 2.5, -25, 25, -2.5, -25, -25, -2.5, 25, -25, -2.5, -25, 25, 2.5, -25, 25, -2.5, 25, -25, 2.5, -25, 25, -2.5, 25, -25, -2.5, 25, -25, 2.5, -25, 25, -2.5, -25, 25, 2.5, -25, -25, -2.5, -25, 25, 2.5, -25, -25, 2.5, -25, -25, -2.5, -25, -25, 2.5, 25, -25, 2.5, -25, -25, -2.5, 25, -25, 2.5, 25, -25, -2.5, -25, -25, -2.5)
-
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_hrk5b"]
-radius = 0.898714
-height = 5.35106
 
 [node name="Terrain" type="Node3D"]
 
@@ -122,11 +118,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.3, 0)
 radius = 0.6
 height = 5.0
 
-[node name="ClickHandler" type="Area3D" parent="NexusBlue/TowerBlue"]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="NexusBlue/TowerBlue/ClickHandler"]
-shape = SubResource("CapsuleShape3D_hrk5b")
-
 [node name="TowerBlue2" parent="NexusBlue" groups=["mid_tower"] instance=ExtResource("4_wne1o")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, -0.88, 0)
 
@@ -135,11 +126,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.3, 0)
 radius = 0.6
 height = 5.0
 
-[node name="ClickHandler" type="Area3D" parent="NexusBlue/TowerBlue2"]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="NexusBlue/TowerBlue2/ClickHandler"]
-shape = SubResource("CapsuleShape3D_hrk5b")
-
 [node name="TowerBlue3" parent="NexusBlue" groups=["bot_tower"] instance=ExtResource("4_wne1o")]
 transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 4, -0.88, 8)
 
@@ -147,11 +133,6 @@ transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.3, 0)
 radius = 0.6
 height = 5.0
-
-[node name="ClickHandler" type="Area3D" parent="NexusBlue/TowerBlue3"]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="NexusBlue/TowerBlue3/ClickHandler"]
-shape = SubResource("CapsuleShape3D_hrk5b")
 
 [node name="NexusRed" parent="." instance=ExtResource("5_3h17s")]
 transform = Transform3D(-0.883883, 0, -0.883883, 0, 1.25, 0, 0.883883, 0, -0.883883, 40, 1.82, -40)
