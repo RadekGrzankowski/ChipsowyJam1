@@ -23,3 +23,7 @@ var additional_blue_minions_dmg: int = 0
 
 var additional_red_minions_armor: int = 0 
 var additional_blue_minions_armor: int = 0 
+
+var additional_blue_top_tower_damage: int = 0
+var additional_blue_mid_tower_damage: int = 0
+var additional_blue_bot_tower_damage: int = 0

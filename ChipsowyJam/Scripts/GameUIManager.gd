@@ -46,3 +46,10 @@ func _on_armor_5_pressed():
 func _on_armor_10_pressed():
 	Game.additional_blue_minions_armor += 3
 	Game.blue_gold -= 80
+
+
+func _on_attack_upgrade_1_pressed():
+	Game.blue_gold -= 100
+	Game.additional_blue_top_tower_damage += 10
+	get_node("HUD/UpgradeControls/TopTowerUpgrades/AttackUpgrades/AttackUpgrade2").disabled = false
+	#disable self button

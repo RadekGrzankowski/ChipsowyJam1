@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://dujs37qsrm41c"]
 
 [ext_resource type="Script" path="res://Scripts/camera_movement.gd" id="1_80gvj"]
-[ext_resource type="PackedScene" uid="uid://vi0aftyh1au0" path="res://Scenes/Assets/Terrain.tscn" id="1_gwcpw"]
+[ext_resource type="PackedScene" uid="uid://vi0aftyh1au0" path="res://Scenes/Assets/terrain.tscn" id="1_gwcpw"]
 [ext_resource type="PackedScene" uid="uid://0cdht6xykwu7" path="res://Scenes/HUD.tscn" id="2_qn11f"]
 [ext_resource type="Script" path="res://Scenes/Levels/Camera3D.gd" id="4_rci3m"]
 
@@ -35,12 +35,12 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.000226974, 0.000179768, 0.0
 
 [node name="HUD" parent="." instance=ExtResource("2_qn11f")]
 
-[node name="CameraController" type="Node3D" parent="." node_paths=PackedStringArray("camera")]
+[node name="CameraController" type="Node3D" parent="HUD" node_paths=PackedStringArray("camera")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25, 18, 40)
 script = ExtResource("1_80gvj")
 camera = NodePath("Camera3D")
 
-[node name="Camera3D" type="Camera3D" parent="CameraController"]
+[node name="Camera3D" type="Camera3D" parent="HUD/CameraController"]
 transform = Transform3D(1, 0, 0, 0, 0.34202, 0.939693, 0, -0.939693, 0.34202, 0, 0, 0)
 current = true
 fov = 80.0
