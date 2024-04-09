@@ -111,26 +111,26 @@ radius = 1.3
 height = 5.0
 
 [node name="TowerBlue" parent="NexusBlue" instance=ExtResource("4_wne1o")]
-transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, 4, 1.12, -8)
+transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, 4, -0.88, -8)
 
 [node name="NavigationObstacle3D" type="NavigationObstacle3D" parent="NexusBlue/TowerBlue"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.3, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.3, 0)
 radius = 0.6
 height = 5.0
 
 [node name="TowerBlue2" parent="NexusBlue" instance=ExtResource("4_wne1o")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 1.12, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, -0.88, 0)
 
 [node name="NavigationObstacle3D2" type="NavigationObstacle3D" parent="NexusBlue/TowerBlue2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.3, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.3, 0)
 radius = 0.6
 height = 5.0
 
 [node name="TowerBlue3" parent="NexusBlue" instance=ExtResource("4_wne1o")]
-transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 4, 1.12, 8)
+transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 4, -0.88, 8)
 
 [node name="NavigationObstacle3D3" type="NavigationObstacle3D" parent="NexusBlue/TowerBlue3"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.3, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.3, 0)
 radius = 0.6
 height = 5.0
 
@@ -144,26 +144,26 @@ radius = 1.3
 height = 5.0
 
 [node name="TowerRed" parent="NexusRed" instance=ExtResource("6_srmdh")]
-transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 4, 1.12, 8)
+transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 4, -0.85, 8)
 
 [node name="NavigationObstacle3D" type="NavigationObstacle3D" parent="NexusRed/TowerRed"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.3, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.3, 0)
 radius = 0.6
 height = 5.0
 
 [node name="TowerRed2" parent="NexusRed" instance=ExtResource("6_srmdh")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 1.12, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, -0.85, 0)
 
 [node name="NavigationObstacle3D2" type="NavigationObstacle3D" parent="NexusRed/TowerRed2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.3, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.3, 0)
 radius = 0.6
 height = 5.0
 
 [node name="TowerRed3" parent="NexusRed" instance=ExtResource("6_srmdh")]
-transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 4, 1.12, -8)
+transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 4, -0.85, -8)
 
 [node name="NavigationObstacle3D3" type="NavigationObstacle3D" parent="NexusRed/TowerRed3"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.3, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.3, 0)
 radius = 0.6
 height = 5.0
 

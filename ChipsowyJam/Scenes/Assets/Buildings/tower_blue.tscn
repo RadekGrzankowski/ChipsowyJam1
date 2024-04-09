@@ -116,41 +116,40 @@ data = PackedVector3Array(0, -0.56482, 0, -0.0917581, -0.480466, 0.282407, 0.240
 height = 2.70798
 radius = 4.13564
 
-[node name="TowerBlue" type="MeshInstance3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.595, 0)
-mesh = SubResource("ArrayMesh_q2qrk")
-skeleton = NodePath("")
-
-[node name="StaticBody3D" type="StaticBody3D" parent="." node_paths=PackedStringArray("health_label", "attack_cd") groups=["blue_team", "tower"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2, 0)
+[node name="StaticBody3D" type="StaticBody3D" node_paths=PackedStringArray("health_label", "attack_cd") groups=["blue_team", "tower"]]
 script = ExtResource("5_o0x8h")
 building_health = 200
 health_label = NodePath("HealthLabel")
 attack_cd = NodePath("AttackCooldown")
 projectile_ball = ExtResource("6_bjo83")
 
-[node name="HealthLabel" type="Label3D" parent="StaticBody3D"]
+[node name="TowerBlue" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+mesh = SubResource("ArrayMesh_q2qrk")
+skeleton = NodePath("")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+shape = SubResource("ConcavePolygonShape3D_synad")
+
+[node name="HealthLabel" type="Label3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.13635, 0)
 billboard = 1
 modulate = Color(0, 0.713726, 0.109804, 1)
 font_size = 60
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
-shape = SubResource("ConcavePolygonShape3D_synad")
-
-[node name="DetectionArea" type="Area3D" parent="StaticBody3D"]
+[node name="DetectionArea" type="Area3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
 
-[node name="DetectionShape" type="CollisionShape3D" parent="StaticBody3D/DetectionArea"]
+[node name="DetectionShape" type="CollisionShape3D" parent="DetectionArea"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.38812, 0)
 shape = SubResource("CylinderShape3D_nllhc")
 
-[node name="AttackCooldown" type="Timer" parent="StaticBody3D"]
+[node name="AttackCooldown" type="Timer" parent="."]
 wait_time = 0.5
 one_shot = true
 autostart = true
 
-[connection signal="body_entered" from="StaticBody3D/DetectionArea" to="StaticBody3D" method="_on_detection_area_body_entered"]
-[connection signal="body_exited" from="StaticBody3D/DetectionArea" to="StaticBody3D" method="_on_detection_area_body_exited"]
-[connection signal="timeout" from="StaticBody3D/AttackCooldown" to="StaticBody3D" method="_on_attack_cooldown_timeout"]
+[connection signal="body_entered" from="DetectionArea" to="." method="_on_detection_area_body_entered"]
+[connection signal="body_exited" from="DetectionArea" to="." method="_on_detection_area_body_exited"]
+[connection signal="timeout" from="AttackCooldown" to="." method="_on_attack_cooldown_timeout"]

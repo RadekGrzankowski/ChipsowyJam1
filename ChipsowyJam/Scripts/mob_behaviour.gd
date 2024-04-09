@@ -160,7 +160,7 @@ func _on_nav_path_timer_timeout():
 		if navigation_agent.is_navigation_finished() && opponent_to_attack == null: return
 		if !navigation_agent.is_target_reached():
 			if opponent_to_attack != null:
-				navigation_agent.time_horizon_agents = 0.5
+				navigation_agent.time_horizon_agents = 0.25
 				set_movement_target(opponent_to_attack.global_position)
 			else:
 				navigation_agent.time_horizon_agents = 1
