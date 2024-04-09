@@ -58,7 +58,6 @@ func _on_attack_upgrade_1_pressed(lane: String):
 		Game.additional_blue_mid_tower_damage += 10
 		get_node("HUD/UpgradeControls/MidTowerUpgrades/AttackUpgrades/AttackUpgrade2").disabled = false
 		get_node("HUD/UpgradeControls/MidTowerUpgrades/AttackUpgrades/AttackUpgrade1").disabled = true
-		print("mid+10")
 	elif lane == "bot":
 		Game.additional_blue_bot_tower_damage += 10
 		get_node("HUD/UpgradeControls/BotTowerUpgrades/AttackUpgrades/AttackUpgrade2").disabled = false
@@ -75,7 +74,6 @@ func _on_attack_upgrade_2_pressed(lane: String):
 		Game.additional_blue_mid_tower_damage += 5
 		get_node("HUD/UpgradeControls/MidTowerUpgrades/AttackUpgrades/AttackUpgrade3").disabled = false
 		get_node("HUD/UpgradeControls/MidTowerUpgrades/AttackUpgrades/AttackUpgrade2").disabled = true
-		print("mid+5")
 	elif lane == "bot":
 		Game.additional_blue_bot_tower_damage += 5
 		get_node("HUD/UpgradeControls/BotTowerUpgrades/AttackUpgrades/AttackUpgrade3").disabled = false
@@ -91,7 +89,6 @@ func _on_attack_upgrade_3_pressed(lane: String):
 		Game.additional_blue_mid_tower_damage += 5
 		get_node("HUD/UpgradeControls/MidTowerUpgrades/AttackUpgrades/AttackUpgrade4").disabled = false
 		get_node("HUD/UpgradeControls/MidTowerUpgrades/AttackUpgrades/AttackUpgrade3").disabled = true
-		print("mid+5")
 	elif lane == "bot":
 		Game.additional_blue_bot_tower_damage += 5
 		get_node("HUD/UpgradeControls/BotTowerUpgrades/AttackUpgrades/AttackUpgrade4").disabled = false
@@ -105,7 +102,6 @@ func _on_attack_upgrade_4_pressed(lane: String):
 	elif lane == "mid":
 		Game.additional_blue_mid_tower_damage += 5
 		get_node("HUD/UpgradeControls/MidTowerUpgrades/AttackUpgrades/AttackUpgrade4").disabled = true
-		print("mid+5")
 	elif lane == "bot":
 		Game.additional_blue_bot_tower_damage += 5
 		get_node("HUD/UpgradeControls/BidTowerUpgrades/AttackUpgrades/AttackUpgrade4").disabled = true
