@@ -7,6 +7,7 @@ extends Node
 @export var projectile_ball: PackedScene
 var teamName: String
 var type: int # 1-Tower 2-Nexus
+var lane: String
 
 var enemies_to_attack: Array[Node3D]
 var enemy_to_attack: Node3D
@@ -26,9 +27,15 @@ func _ready():
 		type = 2
 	elif is_in_group("tower"):
 		type = 1
+		if is_in_group("top_tower"):
+			lane = "top"
+		elif is_in_group("mid_tower"):
+			lane = "mid"
+		if is_in_group("bot_tower"):
+			lane = "bot"
 
 func take_damage(amount, attacker):
-	building_health -= amount - building_armor	
+	building_health -= amount - check_armor()
 	if building_health <= 0:
 		if type == 1:
 			attacker.change_target(self)
@@ -54,7 +61,7 @@ func _process(delta):
 		if is_attacking:
 			if can_attack:
 				enemy_to_attack = closest_target()
-				enemy_to_attack.take_damage(building_damage, self)
+				enemy_to_attack.take_damage(check_damage(), self)
 				can_attack = false
 				attack_cd.start()
 				spawn_projectile()
@@ -104,3 +111,25 @@ func _on_detection_area_body_exited(body):
 
 func _on_attack_cooldown_timeout():
 	can_attack = true
+	
+func check_armor():
+	if teamName == "blue":
+		if lane == "top":
+			return building_armor + Game.additional_blue_top_tower_armor
+		elif lane == "mid":
+			return building_armor + Game.additional_blue_mid_tower_armor
+		elif lane == "bot":
+			return building_armor + Game.additional_blue_bot_tower_armor
+	else:
+		return building_armor
+
+func check_damage():
+	if teamName == "blue":
+		if lane == "top":
+			return building_damage + Game.additional_blue_top_tower_damage
+		elif lane == "mid":
+			return building_damage + Game.additional_blue_mid_tower_damage
+		elif lane == "bot":
+			return building_damage + Game.additional_blue_bot_tower_damage
+	else:
+		return building_armor
