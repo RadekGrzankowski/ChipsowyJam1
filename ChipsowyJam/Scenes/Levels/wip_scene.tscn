@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://dujs37qsrm41c"]
 
 [ext_resource type="Script" path="res://Scripts/camera_movement.gd" id="1_80gvj"]
-[ext_resource type="PackedScene" uid="uid://vi0aftyh1au0" path="res://Scenes/Assets/terrain.tscn" id="1_gwcpw"]
+[ext_resource type="PackedScene" uid="uid://vi0aftyh1au0" path="res://Scenes/Assets/Terrain.tscn" id="1_gwcpw"]
 [ext_resource type="PackedScene" uid="uid://0cdht6xykwu7" path="res://Scenes/HUD.tscn" id="2_qn11f"]
 [ext_resource type="Script" path="res://Scenes/Levels/Camera3D.gd" id="4_rci3m"]
 
