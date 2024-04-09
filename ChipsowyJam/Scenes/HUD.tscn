@@ -136,10 +136,12 @@ offset_bottom = 48.0
 text = "MID TOWER"
 vertical_alignment = 1
 
-[node name="AttackUpgrades" type="Node2D" parent="GameUIManager/HUD/UpgradeControls/MidTowerUpgrades"]
-position = Vector2(0, 32)
+[node name="AttackUpgrades" type="Control" parent="GameUIManager/HUD/UpgradeControls/MidTowerUpgrades"]
+anchors_preset = 0
+offset_top = 32.0
+offset_bottom = 32.0
 
-[node name="AttackUpgrade4" type="Button" parent="GameUIManager/HUD/UpgradeControls/MidTowerUpgrades/AttackUpgrades"]
+[node name="AttackUpgrade4" type="Button" parent="GameUIManager/HUD/UpgradeControls/MidTowerUpgrades/AttackUpgrades" groups=["button"]]
 offset_top = 40.0
 offset_right = 121.0
 offset_bottom = 88.0
@@ -147,7 +149,7 @@ disabled = true
 text = "PLACEHOLDER"
 metadata/_edit_use_anchors_ = true
 
-[node name="AttackUpgrade3" type="Button" parent="GameUIManager/HUD/UpgradeControls/MidTowerUpgrades/AttackUpgrades"]
+[node name="AttackUpgrade3" type="Button" parent="GameUIManager/HUD/UpgradeControls/MidTowerUpgrades/AttackUpgrades" groups=["button"]]
 offset_top = 96.0
 offset_right = 121.0
 offset_bottom = 144.0
@@ -155,7 +157,7 @@ disabled = true
 text = "PLACEHOLDER"
 metadata/_edit_use_anchors_ = true
 
-[node name="AttackUpgrade2" type="Button" parent="GameUIManager/HUD/UpgradeControls/MidTowerUpgrades/AttackUpgrades"]
+[node name="AttackUpgrade2" type="Button" parent="GameUIManager/HUD/UpgradeControls/MidTowerUpgrades/AttackUpgrades" groups=["button"]]
 offset_top = 152.0
 offset_right = 121.0
 offset_bottom = 200.0
@@ -163,16 +165,17 @@ disabled = true
 text = "PLACEHOLDER"
 metadata/_edit_use_anchors_ = true
 
-[node name="AttackUpgrade1" type="Button" parent="GameUIManager/HUD/UpgradeControls/MidTowerUpgrades/AttackUpgrades"]
+[node name="AttackUpgrade1" type="Button" parent="GameUIManager/HUD/UpgradeControls/MidTowerUpgrades/AttackUpgrades" groups=["button"]]
 offset_top = 208.0
 offset_right = 121.0
 offset_bottom = 256.0
 text = "PLACEHOLDER"
 metadata/_edit_use_anchors_ = true
 
-[node name="ArmorUpgrades" type="Node2D" parent="GameUIManager/HUD/UpgradeControls/MidTowerUpgrades"]
+[node name="ArmorUpgrades" type="Control" parent="GameUIManager/HUD/UpgradeControls/MidTowerUpgrades"]
+anchors_preset = 0
 
-[node name="ArmorUpgrade4" type="Button" parent="GameUIManager/HUD/UpgradeControls/MidTowerUpgrades/ArmorUpgrades"]
+[node name="ArmorUpgrade4" type="Button" parent="GameUIManager/HUD/UpgradeControls/MidTowerUpgrades/ArmorUpgrades" groups=["button"]]
 offset_left = 128.0
 offset_top = 72.0
 offset_right = 249.0
@@ -181,7 +184,7 @@ disabled = true
 text = "PLACEHOLDER"
 metadata/_edit_use_anchors_ = true
 
-[node name="ArmorUpgrade3" type="Button" parent="GameUIManager/HUD/UpgradeControls/MidTowerUpgrades/ArmorUpgrades"]
+[node name="ArmorUpgrade3" type="Button" parent="GameUIManager/HUD/UpgradeControls/MidTowerUpgrades/ArmorUpgrades" groups=["button"]]
 offset_left = 128.0
 offset_top = 128.0
 offset_right = 249.0
@@ -190,7 +193,7 @@ disabled = true
 text = "PLACEHOLDER"
 metadata/_edit_use_anchors_ = true
 
-[node name="ArmorUpgrade2" type="Button" parent="GameUIManager/HUD/UpgradeControls/MidTowerUpgrades/ArmorUpgrades"]
+[node name="ArmorUpgrade2" type="Button" parent="GameUIManager/HUD/UpgradeControls/MidTowerUpgrades/ArmorUpgrades" groups=["button"]]
 offset_left = 128.0
 offset_top = 184.0
 offset_right = 249.0
@@ -199,7 +202,7 @@ disabled = true
 text = "PLACEHOLDER"
 metadata/_edit_use_anchors_ = true
 
-[node name="ArmorUpgrade1" type="Button" parent="GameUIManager/HUD/UpgradeControls/MidTowerUpgrades/ArmorUpgrades"]
+[node name="ArmorUpgrade1" type="Button" parent="GameUIManager/HUD/UpgradeControls/MidTowerUpgrades/ArmorUpgrades" groups=["button"]]
 offset_left = 128.0
 offset_top = 240.0
 offset_right = 249.0
@@ -207,9 +210,10 @@ offset_bottom = 288.0
 text = "PLACEHOLDER"
 metadata/_edit_use_anchors_ = true
 
-[node name="SpecialUpgrades" type="Node2D" parent="GameUIManager/HUD/UpgradeControls/MidTowerUpgrades"]
+[node name="SpecialUpgrades" type="Control" parent="GameUIManager/HUD/UpgradeControls/MidTowerUpgrades"]
+anchors_preset = 0
 
-[node name="SpecialUpgrade4" type="Button" parent="GameUIManager/HUD/UpgradeControls/MidTowerUpgrades/SpecialUpgrades"]
+[node name="SpecialUpgrade4" type="Button" parent="GameUIManager/HUD/UpgradeControls/MidTowerUpgrades/SpecialUpgrades" groups=["button"]]
 offset_left = 256.0
 offset_top = 72.0
 offset_right = 377.0
@@ -218,7 +222,7 @@ disabled = true
 text = "PLACEHOLDER"
 metadata/_edit_use_anchors_ = true
 
-[node name="SpecialUpgrade3" type="Button" parent="GameUIManager/HUD/UpgradeControls/MidTowerUpgrades/SpecialUpgrades"]
+[node name="SpecialUpgrade3" type="Button" parent="GameUIManager/HUD/UpgradeControls/MidTowerUpgrades/SpecialUpgrades" groups=["button"]]
 offset_left = 256.0
 offset_top = 128.0
 offset_right = 377.0
@@ -227,7 +231,7 @@ disabled = true
 text = "PLACEHOLDER"
 metadata/_edit_use_anchors_ = true
 
-[node name="SpecialUpgrade2" type="Button" parent="GameUIManager/HUD/UpgradeControls/MidTowerUpgrades/SpecialUpgrades"]
+[node name="SpecialUpgrade2" type="Button" parent="GameUIManager/HUD/UpgradeControls/MidTowerUpgrades/SpecialUpgrades" groups=["button"]]
 offset_left = 256.0
 offset_top = 184.0
 offset_right = 377.0
@@ -236,7 +240,7 @@ disabled = true
 text = "PLACEHOLDER"
 metadata/_edit_use_anchors_ = true
 
-[node name="SpecialUpgrade1" type="Button" parent="GameUIManager/HUD/UpgradeControls/MidTowerUpgrades/SpecialUpgrades"]
+[node name="SpecialUpgrade1" type="Button" parent="GameUIManager/HUD/UpgradeControls/MidTowerUpgrades/SpecialUpgrades" groups=["button"]]
 offset_left = 256.0
 offset_top = 240.0
 offset_right = 377.0
@@ -262,38 +266,40 @@ offset_bottom = 48.0
 text = "BOT TOWER"
 vertical_alignment = 1
 
-[node name="AttackUpgrades" type="Node2D" parent="GameUIManager/HUD/UpgradeControls/BotTowerUpgrades"]
+[node name="AttackUpgrades" type="Control" parent="GameUIManager/HUD/UpgradeControls/BotTowerUpgrades"]
+anchors_preset = 0
 
-[node name="AttackUpgrade4" type="Button" parent="GameUIManager/HUD/UpgradeControls/BotTowerUpgrades/AttackUpgrades"]
+[node name="AttackUpgrade4" type="Button" parent="GameUIManager/HUD/UpgradeControls/BotTowerUpgrades/AttackUpgrades" groups=["button"]]
 offset_top = 72.0
 offset_right = 121.0
 offset_bottom = 120.0
 disabled = true
 text = "PLACEHOLDER"
 
-[node name="AttackUpgrade3" type="Button" parent="GameUIManager/HUD/UpgradeControls/BotTowerUpgrades/AttackUpgrades"]
+[node name="AttackUpgrade3" type="Button" parent="GameUIManager/HUD/UpgradeControls/BotTowerUpgrades/AttackUpgrades" groups=["button"]]
 offset_top = 128.0
 offset_right = 121.0
 offset_bottom = 176.0
 disabled = true
 text = "PLACEHOLDER"
 
-[node name="AttackUpgrade2" type="Button" parent="GameUIManager/HUD/UpgradeControls/BotTowerUpgrades/AttackUpgrades"]
+[node name="AttackUpgrade2" type="Button" parent="GameUIManager/HUD/UpgradeControls/BotTowerUpgrades/AttackUpgrades" groups=["button"]]
 offset_top = 184.0
 offset_right = 121.0
 offset_bottom = 232.0
 disabled = true
 text = "PLACEHOLDER"
 
-[node name="AttackUpgrade1" type="Button" parent="GameUIManager/HUD/UpgradeControls/BotTowerUpgrades/AttackUpgrades"]
+[node name="AttackUpgrade1" type="Button" parent="GameUIManager/HUD/UpgradeControls/BotTowerUpgrades/AttackUpgrades" groups=["button"]]
 offset_top = 240.0
 offset_right = 121.0
 offset_bottom = 288.0
 text = "PLACEHOLDER"
 
-[node name="ArmorUpgrades" type="Node2D" parent="GameUIManager/HUD/UpgradeControls/BotTowerUpgrades"]
+[node name="ArmorUpgrades" type="Control" parent="GameUIManager/HUD/UpgradeControls/BotTowerUpgrades"]
+anchors_preset = 0
 
-[node name="ArmorUpgrade4" type="Button" parent="GameUIManager/HUD/UpgradeControls/BotTowerUpgrades/ArmorUpgrades"]
+[node name="ArmorUpgrade4" type="Button" parent="GameUIManager/HUD/UpgradeControls/BotTowerUpgrades/ArmorUpgrades" groups=["button"]]
 offset_left = 128.0
 offset_top = 72.0
 offset_right = 249.0
@@ -301,7 +307,7 @@ offset_bottom = 120.0
 disabled = true
 text = "PLACEHOLDER"
 
-[node name="ArmorUpgrade3" type="Button" parent="GameUIManager/HUD/UpgradeControls/BotTowerUpgrades/ArmorUpgrades"]
+[node name="ArmorUpgrade3" type="Button" parent="GameUIManager/HUD/UpgradeControls/BotTowerUpgrades/ArmorUpgrades" groups=["button"]]
 offset_left = 128.0
 offset_top = 128.0
 offset_right = 249.0
@@ -309,7 +315,7 @@ offset_bottom = 176.0
 disabled = true
 text = "PLACEHOLDER"
 
-[node name="ArmorUpgrade2" type="Button" parent="GameUIManager/HUD/UpgradeControls/BotTowerUpgrades/ArmorUpgrades"]
+[node name="ArmorUpgrade2" type="Button" parent="GameUIManager/HUD/UpgradeControls/BotTowerUpgrades/ArmorUpgrades" groups=["button"]]
 offset_left = 128.0
 offset_top = 184.0
 offset_right = 249.0
@@ -317,16 +323,17 @@ offset_bottom = 232.0
 disabled = true
 text = "PLACEHOLDER"
 
-[node name="ArmorUpgrade1" type="Button" parent="GameUIManager/HUD/UpgradeControls/BotTowerUpgrades/ArmorUpgrades"]
+[node name="ArmorUpgrade1" type="Button" parent="GameUIManager/HUD/UpgradeControls/BotTowerUpgrades/ArmorUpgrades" groups=["button"]]
 offset_left = 128.0
 offset_top = 240.0
 offset_right = 249.0
 offset_bottom = 288.0
 text = "PLACEHOLDER"
 
-[node name="SpecialUpgrades" type="Node2D" parent="GameUIManager/HUD/UpgradeControls/BotTowerUpgrades"]
+[node name="SpecialUpgrades" type="Control" parent="GameUIManager/HUD/UpgradeControls/BotTowerUpgrades"]
+anchors_preset = 0
 
-[node name="SpecialUpgrade4" type="Button" parent="GameUIManager/HUD/UpgradeControls/BotTowerUpgrades/SpecialUpgrades"]
+[node name="SpecialUpgrade4" type="Button" parent="GameUIManager/HUD/UpgradeControls/BotTowerUpgrades/SpecialUpgrades" groups=["button"]]
 offset_left = 256.0
 offset_top = 72.0
 offset_right = 377.0
@@ -334,7 +341,7 @@ offset_bottom = 120.0
 disabled = true
 text = "PLACEHOLDER"
 
-[node name="SpecialUpgrade3" type="Button" parent="GameUIManager/HUD/UpgradeControls/BotTowerUpgrades/SpecialUpgrades"]
+[node name="SpecialUpgrade3" type="Button" parent="GameUIManager/HUD/UpgradeControls/BotTowerUpgrades/SpecialUpgrades" groups=["button"]]
 offset_left = 256.0
 offset_top = 128.0
 offset_right = 377.0
@@ -342,7 +349,7 @@ offset_bottom = 176.0
 disabled = true
 text = "PLACEHOLDER"
 
-[node name="SpecialUpgrade2" type="Button" parent="GameUIManager/HUD/UpgradeControls/BotTowerUpgrades/SpecialUpgrades"]
+[node name="SpecialUpgrade2" type="Button" parent="GameUIManager/HUD/UpgradeControls/BotTowerUpgrades/SpecialUpgrades" groups=["button"]]
 offset_left = 256.0
 offset_top = 184.0
 offset_right = 377.0
@@ -350,7 +357,7 @@ offset_bottom = 232.0
 disabled = true
 text = "PLACEHOLDER"
 
-[node name="SpecialUpgrade1" type="Button" parent="GameUIManager/HUD/UpgradeControls/BotTowerUpgrades/SpecialUpgrades"]
+[node name="SpecialUpgrade1" type="Button" parent="GameUIManager/HUD/UpgradeControls/BotTowerUpgrades/SpecialUpgrades" groups=["button"]]
 offset_left = 256.0
 offset_top = 240.0
 offset_right = 377.0
@@ -375,38 +382,40 @@ offset_bottom = 48.0
 text = "TOP TOWER"
 vertical_alignment = 1
 
-[node name="AttackUpgrades" type="Node2D" parent="GameUIManager/HUD/UpgradeControls/TopTowerUpgrades"]
+[node name="AttackUpgrades" type="Control" parent="GameUIManager/HUD/UpgradeControls/TopTowerUpgrades"]
+anchors_preset = 0
 
-[node name="AttackUpgrade4" type="Button" parent="GameUIManager/HUD/UpgradeControls/TopTowerUpgrades/AttackUpgrades"]
+[node name="AttackUpgrade4" type="Button" parent="GameUIManager/HUD/UpgradeControls/TopTowerUpgrades/AttackUpgrades" groups=["button"]]
 offset_top = 72.0
 offset_right = 121.0
 offset_bottom = 120.0
 disabled = true
 text = "PLACEHOLDER"
 
-[node name="AttackUpgrade3" type="Button" parent="GameUIManager/HUD/UpgradeControls/TopTowerUpgrades/AttackUpgrades"]
+[node name="AttackUpgrade3" type="Button" parent="GameUIManager/HUD/UpgradeControls/TopTowerUpgrades/AttackUpgrades" groups=["button"]]
 offset_top = 128.0
 offset_right = 121.0
 offset_bottom = 176.0
 disabled = true
 text = "PLACEHOLDER"
 
-[node name="AttackUpgrade2" type="Button" parent="GameUIManager/HUD/UpgradeControls/TopTowerUpgrades/AttackUpgrades"]
+[node name="AttackUpgrade2" type="Button" parent="GameUIManager/HUD/UpgradeControls/TopTowerUpgrades/AttackUpgrades" groups=["button"]]
 offset_top = 184.0
 offset_right = 121.0
 offset_bottom = 232.0
 disabled = true
 text = "PLACEHOLDER"
 
-[node name="AttackUpgrade1" type="Button" parent="GameUIManager/HUD/UpgradeControls/TopTowerUpgrades/AttackUpgrades"]
+[node name="AttackUpgrade1" type="Button" parent="GameUIManager/HUD/UpgradeControls/TopTowerUpgrades/AttackUpgrades" groups=["button"]]
 offset_top = 240.0
 offset_right = 121.0
 offset_bottom = 288.0
 text = "PLACEHOLDER"
 
-[node name="ArmorUpgrades" type="Node2D" parent="GameUIManager/HUD/UpgradeControls/TopTowerUpgrades"]
+[node name="ArmorUpgrades" type="Control" parent="GameUIManager/HUD/UpgradeControls/TopTowerUpgrades"]
+anchors_preset = 0
 
-[node name="ArmorUpgrade4" type="Button" parent="GameUIManager/HUD/UpgradeControls/TopTowerUpgrades/ArmorUpgrades"]
+[node name="ArmorUpgrade4" type="Button" parent="GameUIManager/HUD/UpgradeControls/TopTowerUpgrades/ArmorUpgrades" groups=["button"]]
 offset_left = 128.0
 offset_top = 72.0
 offset_right = 249.0
@@ -414,7 +423,7 @@ offset_bottom = 120.0
 disabled = true
 text = "PLACEHOLDER"
 
-[node name="ArmorUpgrade3" type="Button" parent="GameUIManager/HUD/UpgradeControls/TopTowerUpgrades/ArmorUpgrades"]
+[node name="ArmorUpgrade3" type="Button" parent="GameUIManager/HUD/UpgradeControls/TopTowerUpgrades/ArmorUpgrades" groups=["button"]]
 offset_left = 128.0
 offset_top = 128.0
 offset_right = 249.0
@@ -422,7 +431,7 @@ offset_bottom = 176.0
 disabled = true
 text = "PLACEHOLDER"
 
-[node name="ArmorUpgrade2" type="Button" parent="GameUIManager/HUD/UpgradeControls/TopTowerUpgrades/ArmorUpgrades"]
+[node name="ArmorUpgrade2" type="Button" parent="GameUIManager/HUD/UpgradeControls/TopTowerUpgrades/ArmorUpgrades" groups=["button"]]
 offset_left = 128.0
 offset_top = 184.0
 offset_right = 249.0
@@ -430,16 +439,17 @@ offset_bottom = 232.0
 disabled = true
 text = "PLACEHOLDER"
 
-[node name="ArmorUpgrade1" type="Button" parent="GameUIManager/HUD/UpgradeControls/TopTowerUpgrades/ArmorUpgrades"]
+[node name="ArmorUpgrade1" type="Button" parent="GameUIManager/HUD/UpgradeControls/TopTowerUpgrades/ArmorUpgrades" groups=["button"]]
 offset_left = 128.0
 offset_top = 240.0
 offset_right = 249.0
 offset_bottom = 288.0
 text = "PLACEHOLDER"
 
-[node name="SpecialUpgrades" type="Node2D" parent="GameUIManager/HUD/UpgradeControls/TopTowerUpgrades"]
+[node name="SpecialUpgrades" type="Control" parent="GameUIManager/HUD/UpgradeControls/TopTowerUpgrades"]
+anchors_preset = 0
 
-[node name="SpecialUpgrade4" type="Button" parent="GameUIManager/HUD/UpgradeControls/TopTowerUpgrades/SpecialUpgrades"]
+[node name="SpecialUpgrade4" type="Button" parent="GameUIManager/HUD/UpgradeControls/TopTowerUpgrades/SpecialUpgrades" groups=["button"]]
 offset_left = 256.0
 offset_top = 72.0
 offset_right = 377.0
@@ -447,7 +457,7 @@ offset_bottom = 120.0
 disabled = true
 text = "PLACEHOLDER"
 
-[node name="SpecialUpgrade3" type="Button" parent="GameUIManager/HUD/UpgradeControls/TopTowerUpgrades/SpecialUpgrades"]
+[node name="SpecialUpgrade3" type="Button" parent="GameUIManager/HUD/UpgradeControls/TopTowerUpgrades/SpecialUpgrades" groups=["button"]]
 offset_left = 256.0
 offset_top = 128.0
 offset_right = 377.0
@@ -455,7 +465,7 @@ offset_bottom = 176.0
 disabled = true
 text = "PLACEHOLDER"
 
-[node name="SpecialUpgrade2" type="Button" parent="GameUIManager/HUD/UpgradeControls/TopTowerUpgrades/SpecialUpgrades"]
+[node name="SpecialUpgrade2" type="Button" parent="GameUIManager/HUD/UpgradeControls/TopTowerUpgrades/SpecialUpgrades" groups=["button"]]
 offset_left = 256.0
 offset_top = 184.0
 offset_right = 377.0
@@ -463,7 +473,7 @@ offset_bottom = 232.0
 disabled = true
 text = "PLACEHOLDER"
 
-[node name="SpecialUpgrade1" type="Button" parent="GameUIManager/HUD/UpgradeControls/TopTowerUpgrades/SpecialUpgrades"]
+[node name="SpecialUpgrade1" type="Button" parent="GameUIManager/HUD/UpgradeControls/TopTowerUpgrades/SpecialUpgrades" groups=["button"]]
 offset_left = 256.0
 offset_top = 240.0
 offset_right = 377.0
