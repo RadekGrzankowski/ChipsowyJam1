@@ -48,8 +48,125 @@ func _on_armor_10_pressed():
 	Game.blue_gold -= 80
 
 
-func _on_attack_upgrade_1_pressed():
+func _on_attack_upgrade_1_pressed(lane: String):
 	Game.blue_gold -= 100
-	Game.additional_blue_top_tower_damage += 10
-	get_node("HUD/UpgradeControls/TopTowerUpgrades/AttackUpgrades/AttackUpgrade2").disabled = false
-	#disable self button
+	if lane == "top":
+		Game.additional_blue_top_tower_damage += 10
+		get_node("HUD/UpgradeControls/TopTowerUpgrades/AttackUpgrades/AttackUpgrade2").disabled = false
+		get_node("HUD/UpgradeControls/TopTowerUpgrades/AttackUpgrades/AttackUpgrade1").disabled = true
+	elif lane == "mid":
+		Game.additional_blue_mid_tower_damage += 10
+		get_node("HUD/UpgradeControls/MidTowerUpgrades/AttackUpgrades/AttackUpgrade2").disabled = false
+		get_node("HUD/UpgradeControls/MidTowerUpgrades/AttackUpgrades/AttackUpgrade1").disabled = true
+		print("mid+10")
+	elif lane == "bot":
+		Game.additional_blue_bot_tower_damage += 10
+		get_node("HUD/UpgradeControls/BotTowerUpgrades/AttackUpgrades/AttackUpgrade2").disabled = false
+		get_node("HUD/UpgradeControls/BidTowerUpgrades/AttackUpgrades/AttackUpgrade1").disabled = true
+		
+
+func _on_attack_upgrade_2_pressed(lane: String):
+	Game.blue_gold -= 100
+	if lane == "top":
+		Game.additional_blue_top_tower_damage += 5
+		get_node("HUD/UpgradeControls/TopTowerUpgrades/AttackUpgrades/AttackUpgrade3").disabled = false
+		get_node("HUD/UpgradeControls/TopTowerUpgrades/AttackUpgrades/AttackUpgrade2").disabled = true
+	elif lane == "mid":
+		Game.additional_blue_mid_tower_damage += 5
+		get_node("HUD/UpgradeControls/MidTowerUpgrades/AttackUpgrades/AttackUpgrade3").disabled = false
+		get_node("HUD/UpgradeControls/MidTowerUpgrades/AttackUpgrades/AttackUpgrade2").disabled = true
+		print("mid+5")
+	elif lane == "bot":
+		Game.additional_blue_bot_tower_damage += 5
+		get_node("HUD/UpgradeControls/BotTowerUpgrades/AttackUpgrades/AttackUpgrade3").disabled = false
+		get_node("HUD/UpgradeControls/BidTowerUpgrades/AttackUpgrades/AttackUpgrade2").disabled = true
+
+func _on_attack_upgrade_3_pressed(lane: String):
+	Game.blue_gold -= 100
+	if lane == "top":
+		Game.additional_blue_top_tower_damage += 5
+		get_node("HUD/UpgradeControls/TopTowerUpgrades/AttackUpgrades/AttackUpgrade4").disabled = false
+		get_node("HUD/UpgradeControls/TopTowerUpgrades/AttackUpgrades/AttackUpgrade3").disabled = true
+	elif lane == "mid":
+		Game.additional_blue_mid_tower_damage += 5
+		get_node("HUD/UpgradeControls/MidTowerUpgrades/AttackUpgrades/AttackUpgrade4").disabled = false
+		get_node("HUD/UpgradeControls/MidTowerUpgrades/AttackUpgrades/AttackUpgrade3").disabled = true
+		print("mid+5")
+	elif lane == "bot":
+		Game.additional_blue_bot_tower_damage += 5
+		get_node("HUD/UpgradeControls/BotTowerUpgrades/AttackUpgrades/AttackUpgrade4").disabled = false
+		get_node("HUD/UpgradeControls/BidTowerUpgrades/AttackUpgrades/AttackUpgrade3").disabled = true
+
+func _on_attack_upgrade_4_pressed(lane: String):
+	Game.blue_gold -= 100
+	if lane == "top":
+		Game.additional_blue_top_tower_damage += 5
+		get_node("HUD/UpgradeControls/TopTowerUpgrades/AttackUpgrades/AttackUpgrade4").disabled = true
+	elif lane == "mid":
+		Game.additional_blue_mid_tower_damage += 5
+		get_node("HUD/UpgradeControls/MidTowerUpgrades/AttackUpgrades/AttackUpgrade4").disabled = true
+		print("mid+5")
+	elif lane == "bot":
+		Game.additional_blue_bot_tower_damage += 5
+		get_node("HUD/UpgradeControls/BidTowerUpgrades/AttackUpgrades/AttackUpgrade4").disabled = true
+
+
+func _on_armor_upgrade_1_pressed(lane: String):
+	Game.blue_gold -= 100
+	if lane == "top":
+		Game.additional_blue_top_tower_armor += 3
+		get_node("HUD/UpgradeControls/TopTowerUpgrades/ArmorUpgrades/ArmorUpgrade2").disabled = false
+		get_node("HUD/UpgradeControls/TopTowerUpgrades/ArmorUpgrades/ArmorUpgrade1").disabled = true
+	elif lane == "mid":
+		Game.additional_blue_mid_tower_armor += 3
+		get_node("HUD/UpgradeControls/MidTowerUpgrades/ArmorUpgrades/ArmorUpgrade2").disabled = false
+		get_node("HUD/UpgradeControls/MidTowerUpgrades/ArmorUpgrades/ArmorUpgrade1").disabled = true
+	elif lane == "bot":
+		Game.additional_blue_bot_tower_armor += 3
+		get_node("HUD/UpgradeControls/BotTowerUpgrades/ArmorUpgrades/ArmorUpgrade2").disabled = false
+		get_node("HUD/UpgradeControls/BotTowerUpgrades/ArmorUpgrades/ArmorUpgrade1").disabled = true
+
+
+func _on_armor_upgrade_2_pressed(lane: String):
+	Game.blue_gold -= 100
+	if lane == "top":
+		Game.additional_blue_top_tower_armor += 3
+		get_node("HUD/UpgradeControls/TopTowerUpgrades/ArmorUpgrades/ArmorUpgrade3").disabled = false
+		get_node("HUD/UpgradeControls/TopTowerUpgrades/ArmorUpgrades/ArmorUpgrade2").disabled = true
+	elif lane == "mid":
+		Game.additional_blue_mid_tower_armor += 3
+		get_node("HUD/UpgradeControls/MidTowerUpgrades/ArmorUpgrades/ArmorUpgrade3").disabled = false
+		get_node("HUD/UpgradeControls/MidTowerUpgrades/ArmorUpgrades/ArmorUpgrade2").disabled = true
+	elif lane == "bot":
+		Game.additional_blue_bot_tower_armor += 3
+		get_node("HUD/UpgradeControls/BotTowerUpgrades/ArmorUpgrades/ArmorUpgrade3").disabled = false
+		get_node("HUD/UpgradeControls/BotTowerUpgrades/ArmorUpgrades/ArmorUpgrade2").disabled = true
+
+
+func _on_armor_upgrade_3_pressed(lane: String):
+	Game.blue_gold -= 100
+	if lane == "top":
+		Game.additional_blue_top_tower_armor += 3
+		get_node("HUD/UpgradeControls/TopTowerUpgrades/ArmorUpgrades/ArmorUpgrade4").disabled = false
+		get_node("HUD/UpgradeControls/TopTowerUpgrades/ArmorUpgrades/ArmorUpgrade3").disabled = true
+	elif lane == "mid":
+		Game.additional_blue_mid_tower_armor += 3
+		get_node("HUD/UpgradeControls/MidTowerUpgrades/ArmorUpgrades/ArmorUpgrade4").disabled = false
+		get_node("HUD/UpgradeControls/MidTowerUpgrades/ArmorUpgrades/ArmorUpgrade3").disabled = true
+	elif lane == "bot":
+		Game.additional_blue_bot_tower_armor += 3
+		get_node("HUD/UpgradeControls/BotTowerUpgrades/ArmorUpgrades/ArmorUpgrade4").disabled = false
+		get_node("HUD/UpgradeControls/BotTowerUpgrades/ArmorUpgrades/ArmorUpgrade3").disabled = true
+
+
+func _on_armor_upgrade_4_pressed(lane: String):
+	Game.blue_gold -= 100
+	if lane == "top":
+		Game.additional_blue_top_tower_armor += 3
+		get_node("HUD/UpgradeControls/TopTowerUpgrades/ArmorUpgrades/ArmorUpgrade4").disabled = true
+	elif lane == "mid":
+		Game.additional_blue_mid_tower_armor += 3
+		get_node("HUD/UpgradeControls/MidTowerUpgrades/ArmorUpgrades/ArmorUpgrade4").disabled = true
+	elif lane == "bot":
+		Game.additional_blue_bot_tower_armor += 3
+		get_node("HUD/UpgradeControls/BotTowerUpgrades/ArmorUpgrades/ArmorUpgrade4").disabled = true
