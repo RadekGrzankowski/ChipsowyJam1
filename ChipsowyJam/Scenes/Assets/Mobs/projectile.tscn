@@ -30,3 +30,5 @@ skeleton = NodePath("")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("SphereShape3D_qi3us")
+
+[node name="PathFollow3D" type="PathFollow3D" parent="."]

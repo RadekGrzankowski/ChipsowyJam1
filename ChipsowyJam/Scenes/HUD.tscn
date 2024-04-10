@@ -1,8 +1,8 @@
 [gd_scene load_steps=6 format=3 uid="uid://0cdht6xykwu7"]
 
 [ext_resource type="Script" path="res://Scripts/spawn_manager.gd" id="1_bvj0y"]
-[ext_resource type="PackedScene" uid="uid://b5guql3jxuxf" path="res://Scenes/Assets/Mobs/blue_demon.tscn" id="2_vgpgw"]
-[ext_resource type="PackedScene" uid="uid://dcu24u5hlay3i" path="res://Scenes/Assets/Mobs/red_demon.tscn" id="3_jxfht"]
+[ext_resource type="PackedScene" uid="uid://c8riyqts5q1cc" path="res://Scenes/Assets/Mobs/ranged_minion.tscn" id="3_nfw86"]
+[ext_resource type="PackedScene" uid="uid://chf01dp46evdy" path="res://Scenes/Assets/Mobs/melee_minion.tscn" id="4_qa1mu"]
 [ext_resource type="Script" path="res://Scripts/GameUIManager.gd" id="4_v33no"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_tnijv"]
@@ -12,8 +12,8 @@ font_size = 18
 
 [node name="SpawnManager" type="Node3D" parent="."]
 script = ExtResource("1_bvj0y")
-blueDemon = ExtResource("2_vgpgw")
-redDemon = ExtResource("3_jxfht")
+meleeDemon = ExtResource("4_qa1mu")
+rangedDemon = ExtResource("3_nfw86")
 waveTime = 45
 
 [node name="GameUIManager" type="Node3D" parent="."]

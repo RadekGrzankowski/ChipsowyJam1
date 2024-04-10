@@ -7,6 +7,8 @@ var projectile_speed: float = 5.0
 
 @onready var mesh_instance_blue: GeometryInstance3D = $ProjectileMeshInstanceBlue
 @onready var mesh_instance_red: GeometryInstance3D = $ProjectileMeshInstanceRed
+
+
 # Called when the node enters the scene tree for the first time.
 func init(team_name: String):
 	if team_name == "red":

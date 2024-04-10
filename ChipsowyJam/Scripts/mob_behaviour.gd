@@ -1,31 +1,27 @@
 extends "res://Scripts/mob_movement.gd"
 
+# Generic mobs info
 @export var mob_health: int = 100
-@export var mob_melee_attack: float = 15.0
+@export var mob_attack: float = 15.0
 @export var mob_armor: float = 2.0
 @export var health_label: Label3D
 @export var hit_area3D: Area3D
-@export var projectile_ball: PackedScene
 
 var teamName: String
 var minion_type: String
 var path: String
 
-@onready var melee_range: CollisionShape3D = $HitArea3D/MeleeShape
-@onready var ranged_range: CollisionShape3D = $HitArea3D/RangedShape
-
-var spawned_projectile: Node3D
 var enemies_to_attack: Array[Node3D]
 var detected_enemies_array: Array[Node3D]
 var opponent_to_attack: Node3D
 
+# Ranged units variables
+@export var projectile_ball: PackedScene
+var spawned_projectile: Node3D
+
 func _ready():
 	super()
 	health_label.text = str(mob_health)
-	if minion_type == "melee":
-		melee_range.disabled = false
-	elif minion_type == "ranged":
-		ranged_range.disabled = false
 	if teamName == "red":
 		if path == "top":
 			Game.red_minions_top += 1
@@ -45,8 +41,18 @@ func initialize(name: String, type: String, main_path: String, additional_dmg: i
 	teamName = name
 	minion_type = type
 	path = main_path
-	mob_melee_attack += additional_dmg
+	mob_attack += additional_dmg
 	mob_armor += additional_armor
+	if name == "red":
+		remove_child($RootNode_Blue)
+		add_to_group("red_team")
+		$RootNode_Red.visible = true
+		$RootNode_Red.name = "RootNode"
+	elif name == "blue":
+		remove_child($RootNode_Red)
+		add_to_group("blue_team")
+		$RootNode_Blue.visible = true
+		$RootNode_Blue.name = "RootNode"
 	
 func take_damage(amount, attacker):
 	#checks if current mob is existing
@@ -88,7 +94,7 @@ func _process(delta):
 		if anim_player.current_animation != "CharacterArmature|Weapon":
 			anim_player.play("CharacterArmature|Weapon")
 			#spawn an arrow from mob position to enemy when the mob is ranged
-			if minion_type == "ranged":
+			if minion_type == "ranged" || minion_type == "mage":
 				spawn_projectile()
 	else:
 		if velocity.length() > 0:
@@ -101,6 +107,15 @@ func spawn_projectile():
 	projectile = projectile_ball.instantiate()
 	projectile.start_pos = global_position + Vector3(0, 1.5, 0)
 	projectile.target_node = opponent_to_attack
+	
+	#var path_curve : Curve3D
+	#path_curve = $Path3D.curve
+	##adding two points of a curve
+	#path_curve.clear_points()
+	#path_curve.add_point(Vector3.ZERO + Vector3(0, 1.5, 0),Vector3(0, 2, 0), Vector3.ZERO, 0)
+	#var localEndPosition = global_position - opponent_to_attack.global_position
+	#path_curve.add_point(localEndPosition + Vector3(0,1.5,0),Vector3.ZERO, Vector3(0, 2, 0), 1)
+	
 	add_child(projectile)
 	projectile.init(teamName)
 	spawned_projectile = projectile
@@ -183,5 +198,5 @@ func _on_hit_area_3d_body_exited(body):
 
 func _on_animation_player_animation_finished(anim_name):
 	if anim_name == "CharacterArmature|Weapon":
-		enemies_to_attack[0].take_damage(mob_melee_attack, self)
+		enemies_to_attack[0].take_damage(mob_attack, self)
 

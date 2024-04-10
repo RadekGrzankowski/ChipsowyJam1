@@ -11,8 +11,8 @@ extends Node3D
 @onready var topPath: Marker3D = get_node("/root/GameNode/Terrain/TopPath")
 @onready var midPath: Marker3D = get_node("/root/GameNode/Terrain/MidPath")
 
-@export var blueDemon : PackedScene
-@export var redDemon : PackedScene
+@export var meleeDemon : PackedScene
+@export var rangedDemon : PackedScene
 
 @onready var waveTimer = $"../WaveTimer"
 @export var waveTime: int
@@ -37,16 +37,18 @@ func spawn_wave():
 func spawn_bot(color: String, path: String, marker: Marker3D):
 	var bot: CharacterBody3D
 	if color == "red":
-		bot = redDemon.instantiate()
 		if currentCount <= 3:
+			bot = meleeDemon.instantiate()
 			bot.initialize("red", "melee", path, Game.additional_red_minions_dmg, Game.additional_red_minions_armor)
 		elif currentCount >= 4:
+			bot = rangedDemon.instantiate()
 			bot.initialize("red", "ranged", path, Game.additional_red_minions_dmg, Game.additional_red_minions_armor)
 	elif color == "blue":
-		bot = blueDemon.instantiate()
 		if currentCount <= 3:
+			bot = meleeDemon.instantiate()
 			bot.initialize("blue", "melee", path, Game.additional_blue_minions_dmg, Game.additional_blue_minions_armor)
 		elif currentCount >= 4:
+			bot = rangedDemon.instantiate()
 			bot.initialize("blue", "ranged", path, Game.additional_blue_minions_dmg, Game.additional_blue_minions_armor)
 	var target_positions : Array
 	match path:
