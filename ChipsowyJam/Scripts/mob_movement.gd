@@ -48,3 +48,7 @@ func _on_navigation_agent_3d_velocity_computed(safe_velocity):
 		velocity = safe_velocity
 		move_and_slide()
 
+func _on_navigation_agent_3d_link_reached(details: Dictionary):
+	if details.owner.is_in_group("teleport"):
+		self.position = details.link_exit_position
+

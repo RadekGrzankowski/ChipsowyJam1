@@ -199,4 +199,3 @@ func _on_hit_area_3d_body_exited(body):
 func _on_animation_player_animation_finished(anim_name):
 	if anim_name == "CharacterArmature|Weapon":
 		enemies_to_attack[0].take_damage(mob_attack, self)
-
