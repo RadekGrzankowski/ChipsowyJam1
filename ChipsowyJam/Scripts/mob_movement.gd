@@ -6,6 +6,9 @@ extends CharacterBody3D
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 
+var _is_travelling_links: bool = false
+var _link_end_point: Vector3
+
 var is_attacking: bool = false
 var currentTarget: int = 0
 var targetArray = []
@@ -15,6 +18,10 @@ func _ready():
 
 func _physics_process(delta):
 	if !is_attacking:
+		if _is_travelling_links:
+			if position.distance_to(_link_end_point) < 0.5:
+				_is_travelling_links = false
+			return
 		if navigation_agent.is_navigation_finished() && navigation_agent.target_position == targetArray[currentTarget]:
 			if currentTarget < targetArray.size() - 1:
 				set_next_target()
@@ -48,7 +55,5 @@ func _on_navigation_agent_3d_velocity_computed(safe_velocity):
 		velocity = safe_velocity
 		move_and_slide()
 
-func _on_navigation_agent_3d_link_reached(details: Dictionary):
-	if details.owner.is_in_group("teleport"):
-		self.position = details.link_exit_position
+
 

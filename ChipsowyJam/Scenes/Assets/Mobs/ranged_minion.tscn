@@ -4547,6 +4547,11 @@ height = 0.7
 radius = 4.0
 
 [sub_resource type="Curve3D" id="Curve3D_ti6jn"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 3),
+"tilts": PackedFloat32Array(0, 0)
+}
+point_count = 2
 
 [node name="RangedMinion" type="CharacterBody3D" node_paths=PackedStringArray("health_label", "hit_area3D")]
 axis_lock_angular_x = true
@@ -4560,7 +4565,6 @@ metadata/_edit_group_ = true
 
 [node name="RootNode_Red" type="Node3D" parent="."]
 transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 0, 0, 0)
-visible = false
 
 [node name="CharacterArmature" type="Node3D" parent="RootNode_Red"]
 transform = Transform3D(100, 0, 0, 0, -1.19209e-05, 100, 0, -100, -1.19209e-05, 0, 0, 0)
@@ -4983,7 +4987,6 @@ skin = SubResource("Skin_q83t0")
 
 [node name="RootNode_Blue" type="Node3D" parent="."]
 transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 0, 0, 0)
-visible = false
 
 [node name="CharacterArmature" type="Node3D" parent="RootNode_Blue"]
 transform = Transform3D(100, 0, 0, 0, -1.19209e-05, 100, 0, -100, -1.19209e-05, 0, 0, 0)
@@ -5437,6 +5440,7 @@ wait_time = 0.25
 autostart = true
 
 [node name="Path3D" type="Path3D" parent="."]
+visible = false
 curve = SubResource("Curve3D_ti6jn")
 
 [connection signal="link_reached" from="NavigationAgent3D" to="." method="_on_navigation_agent_3d_link_reached"]

@@ -199,3 +199,9 @@ func _on_hit_area_3d_body_exited(body):
 func _on_animation_player_animation_finished(anim_name):
 	if anim_name == "CharacterArmature|Weapon":
 		enemies_to_attack[0].take_damage(mob_attack, self)
+
+func _on_navigation_agent_3d_link_reached(details: Dictionary):
+	if details.owner.is_in_group("teleport"):
+		_link_end_point = details.link_exit_position
+		_is_travelling_links = true
+		# TODO code minion transformation and apply buffs
