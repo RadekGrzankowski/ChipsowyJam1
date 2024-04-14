@@ -2,10 +2,10 @@
 
 [ext_resource type="Material" uid="uid://bn2dt3r36x3il" path="res://Materials/TowerGreen.tres" id="1_tffbq"]
 [ext_resource type="Material" uid="uid://dh452p4jgynpo" path="res://Materials/DarkBlue.tres" id="2_8xwxk"]
+[ext_resource type="PackedScene" uid="uid://yswx1jx6ncbw" path="res://Scenes/Assets/Buildings/tower_projectile.tscn" id="2_xsu2x"]
 [ext_resource type="Material" uid="uid://btge4821qs176" path="res://Materials/Black.tres" id="3_jhi4q"]
 [ext_resource type="Material" uid="uid://73ufq0fugf4v" path="res://Materials/LightBlue.tres" id="4_gk820"]
 [ext_resource type="Script" path="res://Scripts/buildings_behaviour.gd" id="5_o0x8h"]
-[ext_resource type="PackedScene" uid="uid://bi3f26bls5dm3" path="res://Scenes/Assets/Mobs/projectile.tscn" id="6_bjo83"]
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_jygjl"]
 _surfaces = [{
@@ -121,7 +121,7 @@ script = ExtResource("5_o0x8h")
 building_health = 200
 health_label = NodePath("HealthLabel")
 attack_cd = NodePath("AttackCooldown")
-projectile_ball = ExtResource("6_bjo83")
+projectile_ball = ExtResource("2_xsu2x")
 
 [node name="TowerBlue" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)

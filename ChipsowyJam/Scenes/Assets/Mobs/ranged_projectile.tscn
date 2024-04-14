@@ -1,0 +1,37 @@
+[gd_scene load_steps=7 format=3 uid="uid://bi3f26bls5dm3"]
+
+[ext_resource type="Script" path="res://Scripts/ranged_projectile.gd" id="1_731m5"]
+[ext_resource type="Material" uid="uid://cye5080d8ya1i" path="res://Materials/LightRed.tres" id="2_iosye"]
+[ext_resource type="Material" uid="uid://73ufq0fugf4v" path="res://Materials/LightBlue.tres" id="3_a0cov"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_b5n05"]
+size = Vector3(0.05, 0.05, 0.5)
+
+[sub_resource type="BoxMesh" id="BoxMesh_qkevs"]
+size = Vector3(0.05, 0.05, 0.5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_wyn5g"]
+size = Vector3(0.05, 0.05, 0.5)
+
+[node name="PathFollow3D" type="PathFollow3D"]
+loop = false
+script = ExtResource("1_731m5")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+collision_layer = 0
+collision_mask = 0
+
+[node name="ProjectileMeshInstanceRed" type="MeshInstance3D" parent="StaticBody3D"]
+visible = false
+material_override = ExtResource("2_iosye")
+mesh = SubResource("BoxMesh_b5n05")
+skeleton = NodePath("")
+
+[node name="ProjectileMeshInstanceBlue" type="MeshInstance3D" parent="StaticBody3D"]
+visible = false
+material_override = ExtResource("3_a0cov")
+mesh = SubResource("BoxMesh_qkevs")
+skeleton = NodePath("")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+shape = SubResource("BoxShape3D_wyn5g")

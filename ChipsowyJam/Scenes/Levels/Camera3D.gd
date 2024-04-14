@@ -38,6 +38,10 @@ func select_node():
 	var start = project_ray_origin(mouse)
 	var end = project_position(mouse, 1000)
 	var result = worldspace.intersect_ray(PhysicsRayQueryParameters3D.create(start, end))
+	if !result:
+		hide_every_ui()
+		return
+		
 	var collider = result.collider
 	#print(result)
 	if collider.is_in_group("top_tower"):

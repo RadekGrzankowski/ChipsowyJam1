@@ -132,4 +132,4 @@ func check_damage():
 		elif lane == "bot":
 			return building_damage + Game.additional_blue_bot_tower_damage
 	else:
-		return building_armor
+		return building_damage

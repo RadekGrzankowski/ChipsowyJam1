@@ -1,7 +1,6 @@
-[gd_scene load_steps=37 format=3 uid="uid://chf01dp46evdy"]
+[gd_scene load_steps=36 format=3 uid="uid://chf01dp46evdy"]
 
 [ext_resource type="Script" path="res://Scripts/mob_behaviour.gd" id="1_d8b3v"]
-[ext_resource type="PackedScene" uid="uid://bi3f26bls5dm3" path="res://Scenes/Assets/Mobs/projectile.tscn" id="2_ow6hl"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3cth0"]
 resource_name = "Demon_Main"
@@ -641,8 +640,9 @@ bind/42/name = &"PoleTarget.R"
 bind/42/bone = -1
 bind/42/pose = Transform3D(0.54, -3.86238e-07, 7.67386e-14, -7.67386e-14, 3.30655e-17, 0.54, -3.86238e-07, -0.54, 3.30106e-17, 0.00347177, -0.00599934, -0.0162215)
 
-[sub_resource type="CylinderShape3D" id="CylinderShape3D_s5vho"]
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_gebwx"]
 height = 1.25
+radius = 0.4
 
 [sub_resource type="Animation" id="Animation_0bkxl"]
 resource_name = "CharacterArmature|Death"
@@ -4540,7 +4540,7 @@ _data = {
 }
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_lflvg"]
-radius = 5.0
+radius = 6.0
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_p8gbg"]
 height = 0.7
@@ -4552,12 +4552,13 @@ axis_lock_angular_z = true
 script = ExtResource("1_d8b3v")
 health_label = NodePath("HealthLabel")
 hit_area3D = NodePath("HitArea3D")
-projectile_ball = ExtResource("2_ow6hl")
 movement_speed = 3.5
+look_ahead = 1.5
+num_rays = 19
 metadata/_edit_group_ = true
 
 [node name="RootNode_Red" type="Node3D" parent="."]
-transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 0, 0, 0)
+transform = Transform3D(-0.4, 0, -3.49691e-08, 0, 0.4, 0, 3.49691e-08, 0, -0.4, 0, 0, 0)
 visible = false
 
 [node name="CharacterArmature" type="Node3D" parent="RootNode_Red"]
@@ -4980,7 +4981,7 @@ mesh = SubResource("ArrayMesh_w546f")
 skin = SubResource("Skin_q83t0")
 
 [node name="RootNode_Blue" type="Node3D" parent="."]
-transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 0, 0, 0)
+transform = Transform3D(-0.4, 0, -3.49691e-08, 0, 0.4, 0, 3.49691e-08, 0, -0.4, 0, 0, 0)
 visible = false
 
 [node name="CharacterArmature" type="Node3D" parent="RootNode_Blue"]
@@ -5400,10 +5401,10 @@ skin = SubResource("Skin_lykmg")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.625, 0)
-shape = SubResource("CylinderShape3D_s5vho")
+shape = SubResource("CylinderShape3D_gebwx")
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
-avoidance_enabled = true
+max_speed = 15.0
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -5412,7 +5413,7 @@ libraries = {
 autoplay = "CharacterArmature|Idle"
 
 [node name="DetectionArea3D" type="Area3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.5)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="DetectionArea3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.625, 0.5)

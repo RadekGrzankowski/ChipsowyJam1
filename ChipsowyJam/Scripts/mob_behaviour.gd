@@ -16,8 +16,11 @@ var detected_enemies_array: Array[Node3D]
 var opponent_to_attack: Node3D
 
 # Ranged units variables
-@export var projectile_ball: PackedScene
+@export var projectile_arrow: PackedScene
+
 var spawned_projectile: Node3D
+var path_curve: Curve3D
+
 
 func _ready():
 	super()
@@ -43,6 +46,8 @@ func initialize(name: String, type: String, main_path: String, additional_dmg: i
 	path = main_path
 	mob_attack += additional_dmg
 	mob_armor += additional_armor
+	if minion_type == "ranged":
+		path_curve = $Path3D.curve
 	if name == "red":
 		remove_child($RootNode_Blue)
 		add_to_group("red_team")
@@ -84,10 +89,18 @@ func take_damage(amount, attacker):
 
 func _physics_process(delta):
 	super(delta)
-	if is_attacking && opponent_to_attack != null:
-		var look_pos = Vector3(opponent_to_attack.global_position.x, position.y, opponent_to_attack.global_position.z)
-		look_at(look_pos)
-		rotate_object_local(Vector3.UP, PI)
+	if opponent_to_attack != null:
+		if minion_type == "ranged":
+			var local_pos: Vector3 = to_local(opponent_to_attack.global_position) + Vector3(0, 1, 0)
+			# setting two points of a curve
+			path_curve.set_point_position(0, Vector3(0, 1, 0))
+			path_curve.set_point_out(0, Vector3(0, 2, 0))
+			path_curve.set_point_position(1, local_pos)
+			path_curve.set_point_in(1, Vector3(0, 2, 0))
+		if is_attacking:
+			var look_pos = Vector3(opponent_to_attack.global_position.x, position.y, opponent_to_attack.global_position.z)
+			var look_dir = position.direction_to(look_pos)
+			rotation.y = lerp_angle(rotation.y, atan2(-look_dir.x, -look_dir.z), delta * rotate_speed)
 
 func _process(delta):
 	if is_attacking:
@@ -103,20 +116,10 @@ func _process(delta):
 			anim_player.play("CharacterArmature|Idle")
 				
 func spawn_projectile():
-	var projectile: StaticBody3D
-	projectile = projectile_ball.instantiate()
-	projectile.start_pos = global_position + Vector3(0, 1.5, 0)
+	var projectile: PathFollow3D
+	projectile = projectile_arrow.instantiate()
 	projectile.target_node = opponent_to_attack
-	
-	#var path_curve : Curve3D
-	#path_curve = $Path3D.curve
-	##adding two points of a curve
-	#path_curve.clear_points()
-	#path_curve.add_point(Vector3.ZERO + Vector3(0, 1.5, 0),Vector3(0, 2, 0), Vector3.ZERO, 0)
-	#var localEndPosition = global_position - opponent_to_attack.global_position
-	#path_curve.add_point(localEndPosition + Vector3(0,1.5,0),Vector3.ZERO, Vector3(0, 2, 0), 1)
-	
-	add_child(projectile)
+	$Path3D.add_child(projectile)
 	projectile.init(teamName)
 	spawned_projectile = projectile
 	
@@ -137,9 +140,13 @@ func closest_target():
 
 func set_target():
 	if detected_enemies_array.size() == 0:
+		is_chasing = false
+		look_ahead = 1.5
 		opponent_to_attack = null
 		set_movement_target(targetArray[currentTarget])
 	else:
+		look_ahead = 10
+		is_chasing = true
 		opponent_to_attack = closest_target()
 		set_movement_target(opponent_to_attack.global_position)
 
@@ -175,10 +182,8 @@ func _on_nav_path_timer_timeout():
 		if navigation_agent.is_navigation_finished() && opponent_to_attack == null: return
 		if !navigation_agent.is_target_reached():
 			if opponent_to_attack != null:
-				navigation_agent.time_horizon_agents = 0.25
 				set_movement_target(opponent_to_attack.global_position)
 			else:
-				navigation_agent.time_horizon_agents = 1
 				set_movement_target(navigation_agent.target_position)
 
 func _on_hit_area_3d_body_entered(body):
@@ -204,4 +209,5 @@ func _on_navigation_agent_3d_link_reached(details: Dictionary):
 	if details.owner.is_in_group("teleport"):
 		_link_end_point = details.link_exit_position
 		_is_travelling_links = true
+		look_ahead = 0.25
 		# TODO code minion transformation and apply buffs
