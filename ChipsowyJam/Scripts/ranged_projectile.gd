@@ -17,7 +17,7 @@ func init(team_name: String):
 func _process(delta):
 	if is_instance_valid(target_node):
 		progress_ratio += delta * projectile_speed
-		if progress_ratio > 0.85:
+		if progress_ratio > 0.9:
 			queue_free()
 	else:
 		queue_free()

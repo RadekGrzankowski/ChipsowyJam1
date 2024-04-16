@@ -61,7 +61,6 @@ func _process(delta):
 		if is_attacking:
 			if can_attack:
 				enemy_to_attack = closest_target()
-				enemy_to_attack.take_damage(check_damage(), self)
 				can_attack = false
 				attack_cd.start()
 				spawn_projectile()
@@ -108,8 +107,9 @@ func _on_detection_area_body_exited(body):
 		else:
 			enemy_to_attack = closest_target()
 
-
 func _on_attack_cooldown_timeout():
+	if enemy_to_attack:
+		enemy_to_attack.take_damage(check_damage(), self)
 	can_attack = true
 	
 func check_armor():

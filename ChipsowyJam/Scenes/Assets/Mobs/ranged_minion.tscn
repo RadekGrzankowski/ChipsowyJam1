@@ -4549,7 +4549,7 @@ radius = 4.0
 
 [sub_resource type="Curve3D" id="Curve3D_ti6jn"]
 _data = {
-"points": PackedVector3Array(0, 0, 0, 0, 2, 0, 0, 1, 0, 0, 2, 0, 0, 0, 0, 0, 1, -3),
+"points": PackedVector3Array(0, 0, 0, 0, 2, 0, 0, 1, 0, 0, 2, 0, 0, 0, 0, 0, 1, -1),
 "tilts": PackedFloat32Array(0, 0)
 }
 point_count = 2

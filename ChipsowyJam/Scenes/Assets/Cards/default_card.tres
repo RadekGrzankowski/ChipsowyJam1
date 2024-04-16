@@ -1,0 +1,11 @@
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://c4jxg1kfqxv83"]
+
+[ext_resource type="Script" path="res://Scripts/card_stats.gd" id="1_iv7j3"]
+
+[sub_resource type="ImageTexture" id="ImageTexture_vecf8"]
+
+[resource]
+script = ExtResource("1_iv7j3")
+name = "card1"
+image = SubResource("ImageTexture_vecf8")
+cost = 10

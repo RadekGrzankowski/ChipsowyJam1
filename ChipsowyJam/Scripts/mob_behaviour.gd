@@ -1,5 +1,4 @@
 extends "res://Scripts/mob_movement.gd"
-
 # Generic mobs info
 @export var mob_health: int = 100
 @export var mob_attack: float = 15.0
@@ -17,10 +16,7 @@ var opponent_to_attack: Node3D
 
 # Ranged units variables
 @export var projectile_arrow: PackedScene
-
-var spawned_projectile: Node3D
 var path_curve: Curve3D
-
 
 func _ready():
 	super()
@@ -90,17 +86,10 @@ func take_damage(amount, attacker):
 func _physics_process(delta):
 	super(delta)
 	if opponent_to_attack != null:
-		if minion_type == "ranged":
-			var local_pos: Vector3 = to_local(opponent_to_attack.global_position) + Vector3(0, 1, 0)
-			# setting two points of a curve
-			path_curve.set_point_position(0, Vector3(0, 1, 0))
-			path_curve.set_point_out(0, Vector3(0, 2, 0))
-			path_curve.set_point_position(1, local_pos)
-			path_curve.set_point_in(1, Vector3(0, 2, 0))
-		if is_attacking:
-			var look_pos = Vector3(opponent_to_attack.global_position.x, position.y, opponent_to_attack.global_position.z)
-			var look_dir = position.direction_to(look_pos)
-			rotation.y = lerp_angle(rotation.y, atan2(-look_dir.x, -look_dir.z), delta * rotate_speed)
+		# looking at the current enemy to atack
+		var look_pos = Vector3(opponent_to_attack.global_position.x, position.y, opponent_to_attack.global_position.z)
+		var look_dir = position.direction_to(look_pos)
+		rotation.y = lerp_angle(rotation.y, atan2(-look_dir.x, -look_dir.z), delta * rotate_speed)
 
 func _process(delta):
 	if is_attacking:
@@ -119,9 +108,9 @@ func spawn_projectile():
 	var projectile: PathFollow3D
 	projectile = projectile_arrow.instantiate()
 	projectile.target_node = opponent_to_attack
+	projectile.position = path_curve.get_point_position(0)
 	$Path3D.add_child(projectile)
 	projectile.init(teamName)
-	spawned_projectile = projectile
 	
 func change_target(body: Node3D):
 	opponent_to_attack = null
@@ -178,6 +167,13 @@ func _on_area_3d_body_exited(body):
 			set_target()
 
 func _on_nav_path_timer_timeout():
+	if opponent_to_attack != null:
+		#refresh the path curve to the active opponent
+		if minion_type == "ranged":
+			var local_pos: Vector3 = to_local(opponent_to_attack.global_position) + Vector3(0, 1, 0)
+			# setting end point of a curve
+			path_curve.set_point_position(1, local_pos)
+			path_curve.set_point_in(1, Vector3(0, 2, 0))
 	if !is_attacking:
 		if navigation_agent.is_navigation_finished() && opponent_to_attack == null: return
 		if !navigation_agent.is_target_reached():
@@ -190,10 +186,12 @@ func _on_hit_area_3d_body_entered(body):
 	if teamName == "blue":
 		if body.is_in_group("red_team"):
 			enemies_to_attack.append(body)
+			is_chasing = false
 			is_attacking = true
 	elif teamName == "red":
 		if body.is_in_group("blue_team"):
 			enemies_to_attack.append(body)
+			is_chasing = false
 			is_attacking = true
 
 func _on_hit_area_3d_body_exited(body):

@@ -2,6 +2,7 @@ extends CharacterBody3D
 
 @export var movement_speed: float = 15.0
 @export var rotate_speed: float = 10.0
+@export var push_speed: float = 2
 @onready var navigation_agent: NavigationAgent3D = $NavigationAgent3D
 @onready var anim_player: AnimationPlayer = $AnimationPlayer
 # Get the gravity from the project settings to be synced with RigidBody nodes.
@@ -122,10 +123,26 @@ func set_next_target():
 	currentTarget = currentTarget + 1
 	set_movement_target(targetArray[currentTarget])
 	
+func _set_velocity(velocity):
+	_on_navigation_agent_3d_velocity_computed(velocity)
+	
 func _on_navigation_agent_3d_velocity_computed(safe_velocity):
-	if !is_attacking:	
-		velocity = safe_velocity
-		move_and_slide()
-
-
-
+	velocity = safe_velocity
+	var is_collision = move_and_slide()
+	if is_chasing && is_collision:
+		# if mob is colliding with 2 or more bodies
+		if get_slide_collision_count() > 1:
+			for i in get_slide_collision_count():
+				var collision = get_slide_collision(i)
+				if collision:
+					if self.is_in_group("blue_team"):
+						if collision.get_collider().is_in_group("blue_team"):
+							# get the push velocity from normal of the impact and send it to the body's which mob wants to push
+							var push_velocity = -collision.get_normal() * push_speed
+							collision.get_collider().call("_set_velocity", push_velocity)
+					elif self.is_in_group("red_team"):
+						if collision.get_collider().is_in_group("red_team"):
+							var push_velocity = -collision.get_normal() * push_speed
+							collision.get_collider().call("_set_velocity", push_velocity)
+				
+	
