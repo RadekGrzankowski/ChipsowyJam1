@@ -1,9 +1,12 @@
-[gd_scene load_steps=6 format=3 uid="uid://0cdht6xykwu7"]
+[gd_scene load_steps=9 format=3 uid="uid://0cdht6xykwu7"]
 
 [ext_resource type="Script" path="res://Scripts/spawn_manager.gd" id="1_bvj0y"]
 [ext_resource type="PackedScene" uid="uid://c8riyqts5q1cc" path="res://Scenes/Assets/Mobs/ranged_minion.tscn" id="3_nfw86"]
 [ext_resource type="PackedScene" uid="uid://chf01dp46evdy" path="res://Scenes/Assets/Mobs/melee_minion.tscn" id="4_qa1mu"]
 [ext_resource type="Script" path="res://Scripts/GameUIManager.gd" id="4_v33no"]
+[ext_resource type="Resource" uid="uid://c4jxg1kfqxv83" path="res://Scenes/Assets/Cards/orc_1.tres" id="5_f0jaq"]
+[ext_resource type="PackedScene" uid="uid://bpcf3shjxg2ll" path="res://Scenes/Assets/Cards/card.tscn" id="5_k520t"]
+[ext_resource type="Resource" uid="uid://dyyyn6x6h1ypo" path="res://Scenes/Assets/Cards/orc_2.tres" id="6_xm824"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_tnijv"]
 font_size = 18
@@ -18,6 +21,8 @@ waveTime = 45
 
 [node name="GameUIManager" type="Node3D" parent="."]
 script = ExtResource("4_v33no")
+orc_cards_array = [ExtResource("5_f0jaq"), ExtResource("6_xm824")]
+card_scene = ExtResource("5_k520t")
 
 [node name="HUD" type="Node2D" parent="GameUIManager"]
 

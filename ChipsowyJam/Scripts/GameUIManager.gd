@@ -13,9 +13,17 @@ var actual_minions_bot: String
 @onready var top_minions_label: Label = $HUD/Labels/TopMinions
 @onready var mid_minions_label: Label = $HUD/Labels/MidMinions
 @onready var bot_minions_label: Label = $HUD/Labels/BotMinions
+
+@export var orc_cards_array: Array
+@export var card_scene: PackedScene
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass
+	var card = card_scene.instantiate()
+	var resource = orc_cards_array[1]
+	card._update_card(resource)
+	add_child(card)
+	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	actual_gold_stats = format_gold_stats % [Game.red_gold, Game.blue_gold]
