@@ -1,29 +1,58 @@
 extends Control
 
 @export var name_label: Label
-@export var image: TextureRect
+@export var image_rect: TextureRect
 @export var description_label: Label
 @export var cost_label: Label
-@export var race_label: Label
+@export var race_type_label: Label
+@export var health_label: Label
+@export var armor_label: Label
+@export var attack_damage_label: Label
 
+var card_name: String
+var image: Texture2D
+var description: String
+
+var health: int
+var attack_damage: int
+var armor: int
+var attack_speed: float
 var cost: int
-var race: String
 
-var card_resource: Resource
-# Called when the node enters the scene tree for the first time.
+enum mob_race {HUMAN, ORC, UNDEAD, ELVES}
+var race: mob_race
+
+enum mob_type {MELEE, RANGED, MAGE}
+var type: mob_type
+
+enum card_tier {COMMON, RARE, EPIC, LEGENDARY}
+var tier: card_tier
+
+var card_resource: Resource	
 func _ready():
-	pass
+	_update_card()
 
-func _update_card(resource: Resource):
-	var imported_resource = resource
-	if imported_resource:
-		card_resource = imported_resource
-		name_label.text = card_resource.name
-		image.texture = card_resource.image
-		description_label.text = card_resource.description
-		cost_label.text = str(card_resource.cost)
-		race_label.text = card_resource.race
+func _set_variables(resource: Resource):
+	card_resource = resource
+	card_name = card_resource.name
+	image = card_resource.image
+	description = card_resource.description
+	health = card_resource.health
+	attack_damage = card_resource.attack_damage
+	armor = card_resource.armor
+	attack_speed = card_resource.attack_speed
+	cost = card_resource.cost
+	race = card_resource.race
+	type = card_resource.type
+	tier = card_resource.tier
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
+func _update_card():
+	if card_resource:
+		name_label.text = card_name
+		image_rect.texture = image
+		description_label.text = description
+		cost_label.text = str(cost) + "G"
+		race_type_label.text = str(mob_type.keys()[type]) + " " + str(mob_race.keys()[race])
+		health_label.text = str(health) + "HP"
+		armor_label.text = str(armor) + "ARM"
+		attack_damage_label.text = str(attack_damage) + "AD"

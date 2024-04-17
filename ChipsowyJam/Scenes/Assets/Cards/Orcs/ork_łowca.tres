@@ -1,0 +1,18 @@
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://duytcrafgxeb3"]
+
+[ext_resource type="Script" path="res://Scripts/card_stats.gd" id="1_liuik"]
+[ext_resource type="Texture2D" uid="uid://xtfpddj5qd3s" path="res://Textures/orc5_picture.jpg" id="1_t5ncu"]
+
+[resource]
+script = ExtResource("1_liuik")
+name = "Ork Łowca"
+image = ExtResource("1_t5ncu")
+race = 1
+tier = 0
+description = "Uga Buga"
+cost = 10
+health = 100
+attack_damage = 14
+armor = 5
+attack_speed = 1.0
+type = 1

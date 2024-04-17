@@ -1,0 +1,17 @@
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://c4jxg1kfqxv83"]
+
+[ext_resource type="Texture2D" uid="uid://c0ooohmhcu7ck" path="res://Textures/orc4_picture.jpg" id="1_r0y4x"]
+[ext_resource type="Script" path="res://Scripts/card_stats.gd" id="2_c7ypr"]
+
+[resource]
+script = ExtResource("2_c7ypr")
+name = "Ork"
+image = ExtResource("1_r0y4x")
+race = 1
+description = "Uga Buga"
+cost = 10
+health = 125
+attack_damage = 12
+armor = 10
+attack_speed = 0.75
+type = 0

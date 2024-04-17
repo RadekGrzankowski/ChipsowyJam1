@@ -1,14 +1,79 @@
-[gd_scene load_steps=10 format=3 uid="uid://0cdht6xykwu7"]
+[gd_scene load_steps=16 format=3 uid="uid://0cdht6xykwu7"]
 
 [ext_resource type="Script" path="res://Scripts/spawn_manager.gd" id="1_bvj0y"]
 [ext_resource type="PackedScene" uid="uid://c8riyqts5q1cc" path="res://Scenes/Assets/Mobs/ranged_minion.tscn" id="3_nfw86"]
 [ext_resource type="PackedScene" uid="uid://chf01dp46evdy" path="res://Scenes/Assets/Mobs/melee_minion.tscn" id="4_qa1mu"]
 [ext_resource type="Script" path="res://Scripts/GameUIManager.gd" id="4_v33no"]
-[ext_resource type="Resource" uid="uid://bi16gqmp2nk0x" path="res://Scenes/Assets/Cards/orc_1.tres" id="5_f0jaq"]
-[ext_resource type="PackedScene" path="res://Scenes/Assets/Cards/card.tscn" id="5_k520t"]
-[ext_resource type="Resource" path="res://Scenes/Assets/Cards/orc_2.tres" id="6_xm824"]
+[ext_resource type="Resource" uid="uid://c4jxg1kfqxv83" path="res://Scenes/Assets/Cards/Orcs/ork.tres" id="5_f0jaq"]
+[ext_resource type="PackedScene" uid="uid://bpcf3shjxg2ll" path="res://Scenes/Assets/Cards/card.tscn" id="5_k520t"]
+[ext_resource type="Resource" uid="uid://c677paac1ok1r" path="res://Scenes/Assets/Cards/Orcs/ork_szaman.tres" id="6_7bnmd"]
+[ext_resource type="Resource" uid="uid://dyyyn6x6h1ypo" path="res://Scenes/Assets/Cards/Orcs/pół_ork.tres" id="6_xm824"]
+[ext_resource type="Resource" uid="uid://duytcrafgxeb3" path="res://Scenes/Assets/Cards/Orcs/ork_łowca.tres" id="7_7h2cq"]
+[ext_resource type="Resource" uid="uid://cghb5gashwsrb" path="res://Scenes/Assets/Cards/Orcs/wojownik.tres" id="9_sx7ig"]
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_6okh6"]
+
+[sub_resource type="Animation" id="Animation_6dryd"]
+resource_name = "hide"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(960, 1080), Vector2(960, 1500)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.5),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_vwec5"]
+resource_name = "show"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(960, 1500), Vector2(960, 1080)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_4rcds"]
+_data = {
+"hide": SubResource("Animation_6dryd"),
+"show": SubResource("Animation_vwec5")
+}
 
 [sub_resource type="LabelSettings" id="LabelSettings_tnijv"]
 font_size = 18
@@ -23,7 +88,7 @@ waveTime = 45
 
 [node name="GameUIManager" type="Node3D" parent="."]
 script = ExtResource("4_v33no")
-orc_cards_array = [ExtResource("5_f0jaq"), ExtResource("6_xm824")]
+orc_cards_array = [ExtResource("5_f0jaq"), ExtResource("6_7bnmd"), ExtResource("7_7h2cq"), ExtResource("6_xm824"), ExtResource("9_sx7ig")]
 card_scene = ExtResource("5_k520t")
 
 [node name="HUD" type="Node2D" parent="GameUIManager"]
@@ -31,28 +96,35 @@ card_scene = ExtResource("5_k520t")
 [node name="CanvasLayer" type="CanvasLayer" parent="GameUIManager/HUD"]
 
 [node name="UI" type="Control" parent="GameUIManager/HUD/CanvasLayer"]
+visible = false
 layout_mode = 3
+anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -576.0
-offset_top = -648.0
-offset_right = -576.0
-offset_bottom = -648.0
+offset_top = 420.0
+offset_bottom = 420.0
 grow_horizontal = 2
 grow_vertical = 0
-size_flags_horizontal = 4
+size_flags_horizontal = 8
 size_flags_vertical = 8
-metadata/_edit_use_anchors_ = true
 
 [node name="TopPanel" type="Panel" parent="GameUIManager/HUD/CanvasLayer/UI"]
-offset_left = 160.0
-offset_top = 352.0
-offset_right = 992.0
-offset_bottom = 648.0
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -416.0
+offset_top = -296.0
+offset_right = 416.0
+grow_horizontal = 2
+grow_vertical = 0
 
 [node name="TopCard8" type="TextureRect" parent="GameUIManager/HUD/CanvasLayer/UI/TopPanel"]
+layout_mode = 0
 offset_left = 736.0
 offset_top = 48.0
 offset_right = 800.0
@@ -60,6 +132,7 @@ offset_bottom = 128.0
 texture = SubResource("CanvasTexture_6okh6")
 
 [node name="TopCard7" type="TextureRect" parent="GameUIManager/HUD/CanvasLayer/UI/TopPanel"]
+layout_mode = 0
 offset_left = 664.0
 offset_top = 48.0
 offset_right = 728.0
@@ -67,6 +140,7 @@ offset_bottom = 128.0
 texture = SubResource("CanvasTexture_6okh6")
 
 [node name="TopCard6" type="TextureRect" parent="GameUIManager/HUD/CanvasLayer/UI/TopPanel"]
+layout_mode = 0
 offset_left = 592.0
 offset_top = 48.0
 offset_right = 656.0
@@ -74,6 +148,7 @@ offset_bottom = 128.0
 texture = SubResource("CanvasTexture_6okh6")
 
 [node name="TopCard5" type="TextureRect" parent="GameUIManager/HUD/CanvasLayer/UI/TopPanel"]
+layout_mode = 0
 offset_left = 520.0
 offset_top = 48.0
 offset_right = 584.0
@@ -81,6 +156,7 @@ offset_bottom = 128.0
 texture = SubResource("CanvasTexture_6okh6")
 
 [node name="TopCard4" type="TextureRect" parent="GameUIManager/HUD/CanvasLayer/UI/TopPanel"]
+layout_mode = 0
 offset_left = 448.0
 offset_top = 48.0
 offset_right = 512.0
@@ -88,6 +164,7 @@ offset_bottom = 128.0
 texture = SubResource("CanvasTexture_6okh6")
 
 [node name="TopCard3" type="TextureRect" parent="GameUIManager/HUD/CanvasLayer/UI/TopPanel"]
+layout_mode = 0
 offset_left = 376.0
 offset_top = 48.0
 offset_right = 440.0
@@ -95,6 +172,7 @@ offset_bottom = 128.0
 texture = SubResource("CanvasTexture_6okh6")
 
 [node name="TopCard2" type="TextureRect" parent="GameUIManager/HUD/CanvasLayer/UI/TopPanel"]
+layout_mode = 0
 offset_left = 304.0
 offset_top = 48.0
 offset_right = 368.0
@@ -102,6 +180,7 @@ offset_bottom = 128.0
 texture = SubResource("CanvasTexture_6okh6")
 
 [node name="TopCard1" type="TextureRect" parent="GameUIManager/HUD/CanvasLayer/UI/TopPanel"]
+layout_mode = 0
 offset_left = 232.0
 offset_top = 48.0
 offset_right = 296.0
@@ -202,10 +281,17 @@ grow_vertical = 0
 text = "AD+ 5"
 
 [node name="ShopPanel" type="Panel" parent="GameUIManager/HUD/CanvasLayer/UI"]
-offset_left = 160.0
-offset_top = 552.0
-offset_right = 992.0
-offset_bottom = 648.0
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -416.0
+offset_top = -96.0
+offset_right = 416.0
+grow_horizontal = 2
+grow_vertical = 0
 
 [node name="RollButton" type="Button" parent="GameUIManager/HUD/CanvasLayer/UI/ShopPanel"]
 layout_mode = 0
@@ -296,10 +382,18 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="TabsPanel" type="Panel" parent="GameUIManager/HUD/CanvasLayer/UI"]
-offset_left = 160.0
-offset_top = 352.0
-offset_right = 992.0
-offset_bottom = 384.0
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -416.0
+offset_top = -296.0
+offset_right = 416.0
+offset_bottom = -264.0
+grow_horizontal = 2
+grow_vertical = 0
 
 [node name="TopTab" type="Button" parent="GameUIManager/HUD/CanvasLayer/UI/TabsPanel"]
 layout_mode = 0
@@ -321,6 +415,11 @@ offset_left = 456.0
 offset_right = 520.0
 offset_bottom = 31.0
 text = "BOT"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="GameUIManager/HUD/CanvasLayer/UI"]
+libraries = {
+"": SubResource("AnimationLibrary_4rcds")
+}
 
 [node name="Labels" type="CanvasLayer" parent="GameUIManager/HUD"]
 

@@ -1,0 +1,18 @@
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://c677paac1ok1r"]
+
+[ext_resource type="Texture2D" uid="uid://bvquxytjipkno" path="res://Textures/orc2_picture.jpg" id="1_ctorp"]
+[ext_resource type="Script" path="res://Scripts/card_stats.gd" id="1_f6rah"]
+
+[resource]
+script = ExtResource("1_f6rah")
+name = "Ork Szaman"
+image = ExtResource("1_ctorp")
+race = 1
+tier = 0
+description = "Uga Buga"
+cost = 10
+health = 100
+attack_damage = 10
+armor = 0
+attack_speed = 0.75
+type = 2

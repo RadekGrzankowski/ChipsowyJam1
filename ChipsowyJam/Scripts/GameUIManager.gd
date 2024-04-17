@@ -14,18 +14,30 @@ var actual_minions_bot: String
 @onready var mid_minions_label: Label = $HUD/Labels/MidMinions
 @onready var bot_minions_label: Label = $HUD/Labels/BotMinions
 
+@onready var shop_ui_anim: AnimationPlayer = $HUD/CanvasLayer/UI/AnimationPlayer
+@onready var shop_ui: Control = $HUD/CanvasLayer/UI
+
 @export var orc_cards_array: Array
 @export var card_scene: PackedScene
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	var card = card_scene.instantiate()
-	var resource = orc_cards_array[1]
-	card._update_card(resource)
-	add_child(card)
+	# INFO adds template orc cards to the main scene
+	#var card: Control = card_scene.instantiate()
+	#var resource = orc_cards_array[4]
+	#card._set_variables(resource)
+	#card.position = Vector2(960, 600)
+	#add_child(card)
+	pass
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	if Input.is_action_just_released("space"):
+		if !shop_ui.visible:
+			shop_ui_anim.play("show")
+		elif shop_ui.visible:
+			shop_ui_anim.play("hide")
+	
 	actual_gold_stats = format_gold_stats % [Game.red_gold, Game.blue_gold]
 	actual_minions_top = format_minions_top % [Game.red_minions_top, Game.blue_minions_top]
 	actual_minions_mid = format_minions_mid % [Game.red_minions_mid, Game.blue_minions_mid]

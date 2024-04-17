@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cw38ik6ufr3ui"
-path="res://.godot/imported/orc_picture.jpg-7417d6c329b7fa088669a8373b4abc32.ctex"
+uid="uid://c0ooohmhcu7ck"
+path="res://.godot/imported/orc4_picture.jpg-38691410ae27bd4559a3caeca5d227b5.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://orc_picture.jpg"
-dest_files=["res://.godot/imported/orc_picture.jpg-7417d6c329b7fa088669a8373b4abc32.ctex"]
+source_file="res://Textures/orc4_picture.jpg"
+dest_files=["res://.godot/imported/orc4_picture.jpg-38691410ae27bd4559a3caeca5d227b5.ctex"]
 
 [params]
 
