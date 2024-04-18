@@ -940,8 +940,8 @@ card_resource = ExtResource("7_7h2cq")
 [node name="Card4" parent="GameUIManager/HUD" instance=ExtResource("5_k520t")]
 offset_left = 1152.0
 offset_top = 243.0
-offset_right = 1302.0
-offset_bottom = 448.0
+offset_right = 1256.0
+offset_bottom = 392.0
 card_resource = ExtResource("6_xm824")
 
 [node name="Card5" parent="GameUIManager/HUD" instance=ExtResource("5_k520t")]
