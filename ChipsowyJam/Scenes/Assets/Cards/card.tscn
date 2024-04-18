@@ -1,23 +1,96 @@
-[gd_scene load_steps=2 format=3 uid="uid://bpcf3shjxg2ll"]
+[gd_scene load_steps=8 format=3 uid="uid://bpcf3shjxg2ll"]
 
 [ext_resource type="Script" path="res://Scenes/Assets/Cards/card.gd" id="1_2e6cc"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rgrjn"]
+border_width_left = 6
+border_width_top = 24
+border_width_right = 6
+border_width_bottom = 6
+border_color = Color(0.788235, 0.788235, 0.788235, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+shadow_size = 2
+anti_aliasing = false
+
+[sub_resource type="LabelSettings" id="LabelSettings_v3i33"]
+outline_size = 2
+outline_color = Color(0, 0, 0, 1)
+shadow_color = Color(0.0705882, 0.0705882, 0.0705882, 0)
+
+[sub_resource type="LabelSettings" id="LabelSettings_88qp0"]
+font_color = Color(0.858824, 0.67451, 0.203922, 1)
+outline_size = 2
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_4ajj6"]
+font_color = Color(0.980392, 0.27451, 0.145098, 1)
+outline_size = 2
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_416wt"]
+font_color = Color(0.164706, 0.592157, 0.721569, 1)
+outline_size = 2
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_6msuk"]
+font_size = 12
+outline_size = 2
+outline_color = Color(0, 0, 0, 1)
 
 [node name="Card" type="Control" node_paths=PackedStringArray("name_label", "image_rect", "description_label", "cost_label", "race_type_label", "health_label", "armor_label", "attack_damage_label")]
 layout_mode = 3
 anchors_preset = 0
-offset_right = 140.0
-offset_bottom = 203.0
+offset_right = 150.0
+offset_bottom = 205.0
 script = ExtResource("1_2e6cc")
 name_label = NodePath("NameLabel")
-image_rect = NodePath("ImagePanel/TextureRect")
-description_label = NodePath("DescriptionLabel")
+image_rect = NodePath("FaceSide/ImagePanel/TextureRect")
+description_label = NodePath("ReverseSide/DescriptionLabel")
 cost_label = NodePath("CostLabel")
-race_type_label = NodePath("RaceTypeLabel")
-health_label = NodePath("HealthLabel")
+race_type_label = NodePath("FaceSide/RaceTypeLabel")
+health_label = NodePath("FaceSide/HealthLabel")
 armor_label = NodePath("ArmorLabel")
-attack_damage_label = NodePath("ADLabel")
+attack_damage_label = NodePath("FaceSide/ADLabel")
 
 [node name="Panel" type="Panel" parent="."]
+modulate = Color(0.266667, 0.435294, 0.266667, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_rgrjn")
+
+[node name="NameLabel" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -63.0
+offset_right = 17.0
+offset_bottom = 25.0
+grow_horizontal = 2
+label_settings = SubResource("LabelSettings_v3i33")
+horizontal_alignment = 1
+
+[node name="CostLabel" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 105.0
+offset_top = -201.0
+offset_right = 145.0
+offset_bottom = -178.0
+grow_vertical = 0
+label_settings = SubResource("LabelSettings_88qp0")
+horizontal_alignment = 2
+
+[node name="FaceSide" type="Control" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -25,34 +98,95 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="NameLabel" type="Label" parent="."]
+[node name="ImagePanel" type="Panel" parent="FaceSide"]
 layout_mode = 1
-offset_right = 56.0
-offset_bottom = 23.0
+anchors_preset = 13
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -62.5
+offset_top = 30.0
+offset_right = 62.5
+offset_bottom = -50.0
+grow_horizontal = 2
+grow_vertical = 2
 
-[node name="HealthLabel" type="Label" parent="."]
-modulate = Color(0, 0.92549, 0.470588, 1)
+[node name="TextureRect" type="TextureRect" parent="FaceSide/ImagePanel"]
 layout_mode = 1
-anchors_preset = 1
-anchor_left = 1.0
+anchors_preset = 15
 anchor_right = 1.0
-offset_left = -82.0
-offset_bottom = 23.0
-grow_horizontal = 0
-horizontal_alignment = 2
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+expand_mode = 2
+stretch_mode = 5
 
-[node name="ADLabel" type="Label" parent="."]
-modulate = Color(1, 0.713726, 0.247059, 1)
+[node name="HealthLabel" type="Label" parent="FaceSide"]
 layout_mode = 1
 anchors_preset = 4
 anchor_top = 0.5
 anchor_bottom = 0.5
-offset_top = 10.5
-offset_right = 82.0
-offset_bottom = 33.5
+offset_left = 7.0
+offset_top = 50.5
+offset_right = 89.0
+offset_bottom = 73.5
+grow_vertical = 2
+label_settings = SubResource("LabelSettings_4ajj6")
+
+[node name="ADLabel" type="Label" parent="FaceSide"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -89.0
+offset_top = 50.5
+offset_right = -7.0
+offset_bottom = 73.5
+grow_horizontal = 0
+grow_vertical = 2
+label_settings = SubResource("LabelSettings_416wt")
+horizontal_alignment = 2
+
+[node name="RaceTypeLabel" type="Label" parent="FaceSide"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -94.0
+offset_top = -27.0
+offset_right = -6.0
+offset_bottom = -4.0
+grow_horizontal = 0
+grow_vertical = 0
+horizontal_alignment = 2
+
+[node name="ReverseSide" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
 grow_vertical = 2
 
+[node name="DescriptionLabel" type="Label" parent="ReverseSide"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 13.0
+offset_top = -175.0
+offset_right = 138.0
+offset_bottom = -10.0
+grow_vertical = 0
+label_settings = SubResource("LabelSettings_6msuk")
+autowrap_mode = 1
+
 [node name="ArmorLabel" type="Label" parent="."]
+visible = false
 modulate = Color(1, 0.713726, 0.247059, 1)
 layout_mode = 1
 anchors_preset = 6
@@ -60,63 +194,20 @@ anchor_left = 1.0
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
-offset_left = -82.0
-offset_top = 11.5
-offset_bottom = 34.5
+offset_left = -138.0
+offset_top = 73.5
+offset_right = -56.0
+offset_bottom = 96.5
 grow_horizontal = 0
 grow_vertical = 2
 horizontal_alignment = 2
 
-[node name="ImagePanel" type="Panel" parent="."]
+[node name="MouseClickControl" type="Control" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 11.0
-offset_top = 24.0
-offset_right = -10.0
-offset_bottom = -91.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="TextureRect" type="TextureRect" parent="ImagePanel"]
-layout_mode = 0
-offset_right = 119.0
-offset_bottom = 88.0
-expand_mode = 2
-stretch_mode = 5
-
-[node name="DescriptionLabel" type="Label" parent="."]
-layout_mode = 1
-anchors_preset = 2
-anchor_top = 1.0
-anchor_bottom = 1.0
-offset_left = 11.0
-offset_top = -67.0
-offset_right = 131.0
-offset_bottom = -42.0
-grow_vertical = 0
-horizontal_alignment = 1
-
-[node name="CostLabel" type="Label" parent="."]
-modulate = Color(0.882353, 0.8, 0, 1)
-layout_mode = 1
-anchors_preset = 2
-anchor_top = 1.0
-anchor_bottom = 1.0
-offset_top = -23.0
-offset_right = 40.0
-grow_vertical = 0
-
-[node name="RaceTypeLabel" type="Label" parent="."]
-layout_mode = 1
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -79.0
-offset_top = -23.0
-grow_horizontal = 0
-grow_vertical = 0
-horizontal_alignment = 2
+[connection signal="gui_input" from="MouseClickControl" to="." method="_on_mouse_click_control_gui_input"]

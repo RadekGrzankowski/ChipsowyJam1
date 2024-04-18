@@ -8,6 +8,7 @@ script = ExtResource("2_c7ypr")
 name = "Ork"
 image = ExtResource("1_r0y4x")
 race = 1
+tier = 0
 description = "Uga Buga"
 cost = 10
 health = 125

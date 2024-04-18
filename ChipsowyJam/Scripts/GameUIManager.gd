@@ -23,11 +23,11 @@ var actual_minions_bot: String
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	# INFO adds template orc cards to the main scene
-	#var card: Control = card_scene.instantiate()
-	#var resource = orc_cards_array[4]
-	#card._set_variables(resource)
-	#card.position = Vector2(960, 600)
-	#add_child(card)
+	var card: Control = card_scene.instantiate()
+	var resource = orc_cards_array[4]
+	card._set_variables(resource)
+	card.position = Vector2(960, 600)
+	add_child(card)
 	pass
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.

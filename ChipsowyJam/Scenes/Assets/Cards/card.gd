@@ -29,8 +29,9 @@ enum card_tier {COMMON, RARE, EPIC, LEGENDARY}
 var tier: card_tier
 
 var card_resource: Resource	
+var is_showing_reverse: bool = false
 func _ready():
-	_update_card()
+	update_card()
 
 func _set_variables(resource: Resource):
 	card_resource = resource
@@ -46,13 +47,32 @@ func _set_variables(resource: Resource):
 	type = card_resource.type
 	tier = card_resource.tier
 
-func _update_card():
+func update_card():
 	if card_resource:
+		$FaceSide.visible = true
+		$ReverseSide.visible = false
 		name_label.text = card_name
 		image_rect.texture = image
-		description_label.text = description
 		cost_label.text = str(cost) + "G"
 		race_type_label.text = str(mob_type.keys()[type]) + " " + str(mob_race.keys()[race])
-		health_label.text = str(health) + "HP"
-		armor_label.text = str(armor) + "ARM"
+		health_label.text = str(health) + "♥"
 		attack_damage_label.text = str(attack_damage) + "AD"
+		
+		description_label.text = str(health) + " Health" + "\n" + str(attack_damage) + " Attack Damage" + "\n" + \
+		str(attack_speed) + "/s Attack Speed\n"+ str(armor) + " Armor Points" + "\n" + \
+		str(card_tier.keys()[tier]) + " Tier" + "\n" + str(mob_type.keys()[type]) + " " + str(mob_race.keys()[race]) + " Unit Type" + "\n" + \
+		str(cost) + " Gold"
+
+
+func _on_mouse_click_control_gui_input(event):
+	if event is InputEventMouseButton and event.is_released():
+		if event.button_index == MOUSE_BUTTON_LEFT:
+			if is_showing_reverse:
+				is_showing_reverse = false
+				$FaceSide.visible = true
+				$ReverseSide.visible = false
+			else:
+				is_showing_reverse = true
+				$FaceSide.visible = false
+				$ReverseSide.visible = true
+				
