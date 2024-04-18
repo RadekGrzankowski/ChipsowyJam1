@@ -916,6 +916,41 @@ offset_right = 377.0
 offset_bottom = 288.0
 text = "PLACEHOLDER"
 
+[node name="Card" parent="GameUIManager/HUD" instance=ExtResource("5_k520t")]
+offset_left = 616.0
+offset_top = 243.0
+offset_right = 766.0
+offset_bottom = 448.0
+card_resource = ExtResource("5_f0jaq")
+
+[node name="Card2" parent="GameUIManager/HUD" instance=ExtResource("5_k520t")]
+offset_left = 792.0
+offset_top = 243.0
+offset_right = 942.0
+offset_bottom = 448.0
+card_resource = ExtResource("6_7bnmd")
+
+[node name="Card3" parent="GameUIManager/HUD" instance=ExtResource("5_k520t")]
+offset_left = 972.0
+offset_top = 243.0
+offset_right = 1122.0
+offset_bottom = 448.0
+card_resource = ExtResource("7_7h2cq")
+
+[node name="Card4" parent="GameUIManager/HUD" instance=ExtResource("5_k520t")]
+offset_left = 1152.0
+offset_top = 243.0
+offset_right = 1302.0
+offset_bottom = 448.0
+card_resource = ExtResource("6_xm824")
+
+[node name="Card5" parent="GameUIManager/HUD" instance=ExtResource("5_k520t")]
+offset_left = 1328.0
+offset_top = 243.0
+offset_right = 1478.0
+offset_bottom = 448.0
+card_resource = ExtResource("9_sx7ig")
+
 [node name="WaveTimer" type="Timer" parent="."]
 wait_time = 45.0
 

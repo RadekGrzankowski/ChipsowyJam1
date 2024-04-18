@@ -28,13 +28,15 @@ var type: mob_type
 enum card_tier {COMMON, RARE, EPIC, LEGENDARY}
 var tier: card_tier
 
-var card_resource: Resource	
+@export var card_resource: Resource	
 var is_showing_reverse: bool = false
+var selected: bool = false
+
 func _ready():
+	set_variables()
 	update_card()
 
-func _set_variables(resource: Resource):
-	card_resource = resource
+func set_variables():
 	card_name = card_resource.name
 	image = card_resource.image
 	description = card_resource.description
@@ -52,6 +54,22 @@ func update_card():
 		$FaceSide.visible = true
 		$ReverseSide.visible = false
 		name_label.text = card_name
+		var ls = LabelSettings.new()
+		#modify label color depending on card's tier
+		var tier_value: int = tier
+		match tier_value:
+			0: #COMMON tier
+				ls.font_color =  Color.WHITE
+			1: #RARE tier
+				ls.font_color =  Color.SKY_BLUE
+			2: #EPIC tier
+				ls.font_color =  Color.MEDIUM_PURPLE
+			3: #LEGENDARY tier
+				ls.font_color =  Color.DARK_ORANGE
+			_: #Default case
+				ls.font_color =  Color.WHITE
+		name_label.label_settings = ls
+		
 		image_rect.texture = image
 		cost_label.text = str(cost) + "G"
 		race_type_label.text = str(mob_type.keys()[type]) + " " + str(mob_race.keys()[race])
@@ -60,13 +78,24 @@ func update_card():
 		
 		description_label.text = str(health) + " Health" + "\n" + str(attack_damage) + " Attack Damage" + "\n" + \
 		str(attack_speed) + "/s Attack Speed\n"+ str(armor) + " Armor Points" + "\n" + \
-		str(card_tier.keys()[tier]) + " Tier" + "\n" + str(mob_type.keys()[type]) + " " + str(mob_race.keys()[race]) + " Unit Type" + "\n" + \
+		str(card_tier.keys()[tier]) + " Tier" + "\n" + str(mob_type.keys()[type]) + " " + str(mob_race.keys()[race]) + " Unit" + "\n" + \
 		str(cost) + " Gold"
 
+func _physics_process(delta):
+	if selected:
+		var offset = Vector2(size.x/3, size.y/3)
+		global_position = lerp(global_position - offset, get_global_mouse_position(), 25 * delta)
 
 func _on_mouse_click_control_gui_input(event):
+	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
+		if not selected and event.pressed:
+			selected = true
+		# Stop dragging if the button is released.
+		if selected and not event.pressed:
+			selected = false
+
 	if event is InputEventMouseButton and event.is_released():
-		if event.button_index == MOUSE_BUTTON_LEFT:
+		if event.button_index == MOUSE_BUTTON_RIGHT:
 			if is_showing_reverse:
 				is_showing_reverse = false
 				$FaceSide.visible = true
