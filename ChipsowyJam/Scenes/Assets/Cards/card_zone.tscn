@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://bln5nembvaqdw"]
+
+[node name="CardZone" type="Control" groups=["zone"]]
+custom_minimum_size = Vector2(140, 160)
+layout_mode = 3
+anchors_preset = 0
+offset_right = 140.0
+offset_bottom = 160.0
+pivot_offset = Vector2(70, 72)
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 0
+offset_right = 140.0
+offset_bottom = 160.0

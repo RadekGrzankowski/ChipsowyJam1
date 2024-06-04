@@ -30,9 +30,15 @@ var tier: card_tier
 
 @export var card_resource: Resource	
 var is_showing_reverse: bool = false
+
+#INFO drag & drop variables
 var selected: bool = false
+var rest_point
+var rest_nodes = []
 
 func _ready():
+	rest_nodes = get_tree().get_nodes_in_group("zone")
+	rest_point = rest_nodes[0].global_position + rest_nodes[0].pivot_offset
 	set_variables()
 	update_card()
 
@@ -51,8 +57,8 @@ func set_variables():
 
 func update_card():
 	if card_resource:
-		$FaceSide.visible = true
-		$ReverseSide.visible = false
+		$CardPanel/FaceSide.visible = true
+		$CardPanel/ReverseSide.visible = false
 		name_label.text = card_name
 		var ls = LabelSettings.new()
 		#modify label color depending on card's tier
@@ -83,8 +89,9 @@ func update_card():
 
 func _physics_process(delta):
 	if selected:
-		var offset = Vector2(size.x/3, size.y/3)
-		global_position = lerp(global_position - offset, get_global_mouse_position(), 25 * delta)
+		global_position = lerp(global_position, get_global_mouse_position(), 25 * delta)
+	else:
+		global_position = lerp(global_position, rest_point, 10 * delta)
 
 func _on_mouse_click_control_gui_input(event):
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
@@ -93,15 +100,20 @@ func _on_mouse_click_control_gui_input(event):
 		# Stop dragging if the button is released.
 		if selected and not event.pressed:
 			selected = false
+			var shortest_dist = 75
+			for child in rest_nodes:
+				var distance = global_position.distance_to(child.global_position)
+				if distance < shortest_dist:
+					rest_point = child.global_position + child.pivot_offset
 
 	if event is InputEventMouseButton and event.is_released():
 		if event.button_index == MOUSE_BUTTON_RIGHT:
 			if is_showing_reverse:
 				is_showing_reverse = false
-				$FaceSide.visible = true
-				$ReverseSide.visible = false
+				$CardPanel/FaceSide.visible = true
+				$CardPanel/ReverseSide.visible = false
 			else:
 				is_showing_reverse = true
-				$FaceSide.visible = false
-				$ReverseSide.visible = true
+				$CardPanel/FaceSide.visible = false
+				$CardPanel/ReverseSide.visible = true
 				

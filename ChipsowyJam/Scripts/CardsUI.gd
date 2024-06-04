@@ -19,9 +19,6 @@ func _ready():
 func _process(delta):
 	pass
 
-
-
-
 func _on_shop_button_pressed():
 	if ui_open == false:
 		ui.position.y += 175

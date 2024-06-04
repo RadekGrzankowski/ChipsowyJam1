@@ -1,12 +1,13 @@
-[gd_scene load_steps=8 format=3 uid="uid://drr8l01a1ia4i"]
+[gd_scene load_steps=9 format=3 uid="uid://drr8l01a1ia4i"]
 
-[ext_resource type="Script" path="res://CardsUI.gd" id="1_lbyja"]
+[ext_resource type="Script" path="res://Scripts/CardsUI.gd" id="1_lbyja"]
 [ext_resource type="Resource" uid="uid://c4jxg1kfqxv83" path="res://Scenes/Assets/Cards/Orcs/ork.tres" id="2_5vv4p"]
 [ext_resource type="PackedScene" uid="uid://bpcf3shjxg2ll" path="res://Scenes/Assets/Cards/card.tscn" id="2_ju84m"]
 [ext_resource type="Resource" uid="uid://c677paac1ok1r" path="res://Scenes/Assets/Cards/Orcs/ork_szaman.tres" id="3_jupwg"]
 [ext_resource type="Resource" uid="uid://duytcrafgxeb3" path="res://Scenes/Assets/Cards/Orcs/ork_łowca.tres" id="4_d48qi"]
 [ext_resource type="Resource" uid="uid://dyyyn6x6h1ypo" path="res://Scenes/Assets/Cards/Orcs/pół_ork.tres" id="5_cqcik"]
 [ext_resource type="Resource" uid="uid://cghb5gashwsrb" path="res://Scenes/Assets/Cards/Orcs/wojownik.tres" id="6_csvxf"]
+[ext_resource type="PackedScene" uid="uid://bln5nembvaqdw" path="res://Scenes/Assets/Cards/card_zone.tscn" id="8_agvxe"]
 
 [node name="CardsUI" type="CanvasLayer"]
 script = ExtResource("1_lbyja")
@@ -41,39 +42,32 @@ size_flags_stretch_ratio = 8.0
 
 [node name="DeckCards" type="HBoxContainer" parent="UI/CardsPanelsAndTools/CardsPanels/Deck"]
 layout_mode = 0
-offset_right = 1120.0
-offset_bottom = 144.0
+offset_top = 3.0
+offset_right = 1148.0
+offset_bottom = 147.0
 
-[node name="Card1" type="Control" parent="UI/CardsPanelsAndTools/CardsPanels/Deck/DeckCards"]
-custom_minimum_size = Vector2(140, 0)
+[node name="CardZone" parent="UI/CardsPanelsAndTools/CardsPanels/Deck/DeckCards" instance=ExtResource("8_agvxe")]
 layout_mode = 2
 
-[node name="Card2" type="Control" parent="UI/CardsPanelsAndTools/CardsPanels/Deck/DeckCards"]
-custom_minimum_size = Vector2(140, 0)
+[node name="CardZone2" parent="UI/CardsPanelsAndTools/CardsPanels/Deck/DeckCards" instance=ExtResource("8_agvxe")]
 layout_mode = 2
 
-[node name="Card3" type="Control" parent="UI/CardsPanelsAndTools/CardsPanels/Deck/DeckCards"]
-custom_minimum_size = Vector2(140, 0)
+[node name="CardZone3" parent="UI/CardsPanelsAndTools/CardsPanels/Deck/DeckCards" instance=ExtResource("8_agvxe")]
 layout_mode = 2
 
-[node name="Card4" type="Control" parent="UI/CardsPanelsAndTools/CardsPanels/Deck/DeckCards"]
-custom_minimum_size = Vector2(140, 0)
+[node name="CardZone4" parent="UI/CardsPanelsAndTools/CardsPanels/Deck/DeckCards" instance=ExtResource("8_agvxe")]
 layout_mode = 2
 
-[node name="Card5" type="Control" parent="UI/CardsPanelsAndTools/CardsPanels/Deck/DeckCards"]
-custom_minimum_size = Vector2(140, 0)
+[node name="CardZone5" parent="UI/CardsPanelsAndTools/CardsPanels/Deck/DeckCards" instance=ExtResource("8_agvxe")]
 layout_mode = 2
 
-[node name="Card6" type="Control" parent="UI/CardsPanelsAndTools/CardsPanels/Deck/DeckCards"]
-custom_minimum_size = Vector2(140, 0)
+[node name="CardZone6" parent="UI/CardsPanelsAndTools/CardsPanels/Deck/DeckCards" instance=ExtResource("8_agvxe")]
 layout_mode = 2
 
-[node name="Card7" type="Control" parent="UI/CardsPanelsAndTools/CardsPanels/Deck/DeckCards"]
-custom_minimum_size = Vector2(140, 0)
+[node name="CardZone7" parent="UI/CardsPanelsAndTools/CardsPanels/Deck/DeckCards" instance=ExtResource("8_agvxe")]
 layout_mode = 2
 
-[node name="Card8" type="Control" parent="UI/CardsPanelsAndTools/CardsPanels/Deck/DeckCards"]
-custom_minimum_size = Vector2(140, 0)
+[node name="CardZone8" parent="UI/CardsPanelsAndTools/CardsPanels/Deck/DeckCards" instance=ExtResource("8_agvxe")]
 layout_mode = 2
 
 [node name="ShopSpacer" type="Control" parent="UI/CardsPanelsAndTools/CardsPanels"]
