@@ -1,6 +1,8 @@
-[gd_scene format=3 uid="uid://bln5nembvaqdw"]
+[gd_scene load_steps=2 format=3 uid="uid://bln5nembvaqdw"]
 
-[node name="CardZone" type="Control" groups=["zone"]]
+[ext_resource type="Script" path="res://Scripts/card_zone.gd" id="1_1es2s"]
+
+[node name="CardZone" type="Control"]
 custom_minimum_size = Vector2(140, 160)
 layout_mode = 3
 anchors_preset = 0
@@ -9,6 +11,7 @@ offset_bottom = 160.0
 pivot_offset = Vector2(70, 72)
 size_flags_horizontal = 4
 size_flags_vertical = 4
+script = ExtResource("1_1es2s")
 
 [node name="Panel" type="Panel" parent="."]
 layout_mode = 0

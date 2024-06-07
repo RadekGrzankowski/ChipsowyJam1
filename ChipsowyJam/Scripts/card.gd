@@ -38,9 +38,11 @@ var rest_nodes = []
 
 func _ready():
 	rest_nodes = get_tree().get_nodes_in_group("zone")
-	rest_point = rest_nodes[0].global_position + rest_nodes[0].pivot_offset
 	set_variables()
 	update_card()
+	
+func set_rest_point(position: Vector2):
+	rest_point = position
 
 func set_variables():
 	card_name = card_resource.name
@@ -91,7 +93,8 @@ func _physics_process(delta):
 	if selected:
 		global_position = lerp(global_position, get_global_mouse_position(), 25 * delta)
 	else:
-		global_position = lerp(global_position, rest_point, 10 * delta)
+		if rest_point != null:
+			global_position = lerp(global_position, rest_point, 10 * delta)
 
 func _on_mouse_click_control_gui_input(event):
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
@@ -102,7 +105,7 @@ func _on_mouse_click_control_gui_input(event):
 			selected = false
 			var shortest_dist = 75
 			for child in rest_nodes:
-				var distance = global_position.distance_to(child.global_position)
+				var distance = global_position.distance_to(child.global_position + child.pivot_offset)
 				if distance < shortest_dist:
 					rest_point = child.global_position + child.pivot_offset
 
