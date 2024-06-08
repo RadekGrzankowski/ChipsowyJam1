@@ -7,19 +7,24 @@ signal refresh_cards
 
 @export var card_scene: PackedScene
 @export var orc_cards_array: Array
+@export var human_cards_array: Array
+var all_cards_array: Array
 
 @onready var shop_nodes : Array = get_tree().get_nodes_in_group("shop_zone")
 @onready var deck_nodes : Array = get_tree().get_nodes_in_group("zone")
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	all_cards_array.append_array(orc_cards_array)
+	all_cards_array.append_array(human_cards_array)
 	call_deferred("fill_the_shop")
 	
 func fill_the_shop():
 	var index = 0
 	for node in shop_nodes:
 		var card: Control = card_scene.instantiate()
-		var resource = orc_cards_array.pick_random()
+		card.add_to_group("shop_card")
+		var resource = all_cards_array.pick_random()
 		card.card_resource = resource
 		node.card = card
 		var position = node.global_position + node.pivot_offset
@@ -48,3 +53,10 @@ func _on_refresh_cards():
 		else:
 			print("Null")
 	print("\n")
+
+
+func _on_roll_pressed():
+	var cards_to_delete = get_tree().get_nodes_in_group("shop_card")
+	for card in cards_to_delete:
+		card.queue_free()
+	fill_the_shop()

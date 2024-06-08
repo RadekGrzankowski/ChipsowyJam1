@@ -115,16 +115,23 @@ func _on_mouse_click_control_gui_input(event):
 				var distance = global_position.distance_to(child.global_position + child.pivot_offset)
 				if distance < shortest_dist:
 					if child.card != null:
-						var temp_card: Control = rest_nodes[index].card
-						temp_card.rest_point = rest_point
-						temp_card.current_rest_node = current_rest_node
-						rest_nodes[current_rest_node].card = temp_card
-						rest_point = child.global_position + child.pivot_offset
-						current_rest_node = index
-						child.card = self
+						if !child.card.is_in_group("shop_card") && !is_in_group("shop_card"):
+							var temp_card: Control = rest_nodes[index].card
+							temp_card.rest_point = rest_point
+							temp_card.current_rest_node = current_rest_node
+							rest_nodes[current_rest_node].card = temp_card
+							rest_point = child.global_position + child.pivot_offset
+							current_rest_node = index
+							child.card = self
 					else:
 						if current_rest_node >= 0: 
 							rest_nodes[current_rest_node].card = null
+						if is_in_group("shop_card"):
+							# moving shop card into the deck - charging gold
+							add_to_group("deck_card")
+							remove_from_group("shop_card")
+							if Game.blue_gold >= cost:
+								Game.blue_gold -= cost
 						rest_point = child.global_position + child.pivot_offset
 						current_rest_node = index
 						child.card = self

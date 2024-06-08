@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://drr8l01a1ia4i"]
+[gd_scene load_steps=10 format=3 uid="uid://drr8l01a1ia4i"]
 
 [ext_resource type="Script" path="res://Scripts/CardsUI.gd" id="1_lbyja"]
 [ext_resource type="Resource" uid="uid://c4jxg1kfqxv83" path="res://Scenes/Assets/Cards/Orcs/ork.tres" id="2_5vv4p"]
@@ -8,11 +8,13 @@
 [ext_resource type="Resource" uid="uid://dyyyn6x6h1ypo" path="res://Scenes/Assets/Cards/Orcs/pół_ork.tres" id="5_cqcik"]
 [ext_resource type="Resource" uid="uid://cghb5gashwsrb" path="res://Scenes/Assets/Cards/Orcs/wojownik.tres" id="6_csvxf"]
 [ext_resource type="PackedScene" uid="uid://bln5nembvaqdw" path="res://Scenes/Assets/Cards/card_zone.tscn" id="8_agvxe"]
+[ext_resource type="Resource" uid="uid://ck1jo5iaygoc2" path="res://Scenes/Assets/Cards/Humans/rycerz.tres" id="8_no8tg"]
 
 [node name="CardsUI" type="CanvasLayer" groups=["CardsUI"]]
 script = ExtResource("1_lbyja")
 card_scene = ExtResource("2_ju84m")
 orc_cards_array = [ExtResource("2_5vv4p"), ExtResource("3_jupwg"), ExtResource("4_d48qi"), ExtResource("5_cqcik"), ExtResource("6_csvxf")]
+human_cards_array = [ExtResource("8_no8tg")]
 
 [node name="UI" type="PanelContainer" parent="."]
 anchors_preset = 7
@@ -147,3 +149,4 @@ text = "ROLL"
 
 [connection signal="refresh_cards" from="." to="." method="_on_refresh_cards"]
 [connection signal="pressed" from="UI/CardsPanelsAndTools/CardsPanels/ShopSpacer/ShopButton" to="." method="_on_shop_button_pressed"]
+[connection signal="pressed" from="UI/CardsPanelsAndTools/Tools/Roll" to="." method="_on_roll_pressed"]

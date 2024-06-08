@@ -1,0 +1,16 @@
+[gd_resource type="Resource" load_steps=2 format=3 uid="uid://ck1jo5iaygoc2"]
+
+[ext_resource type="Script" path="res://Scripts/card_stats.gd" id="1_xajib"]
+
+[resource]
+script = ExtResource("1_xajib")
+name = "Rycerz"
+race = 0
+tier = 2
+description = "Konny rycerz"
+cost = 60
+health = 200
+attack_damage = 15
+armor = 10
+attack_speed = 2.0
+type = 0
