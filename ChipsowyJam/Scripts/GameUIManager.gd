@@ -20,16 +20,6 @@ var actual_minions_bot: String
 @export var orc_cards_array: Array
 @export var card_scene: PackedScene
 
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	# INFO adds template orc cards to the main scene
-	#var card: Control = card_scene.instantiate()
-	#var resource = orc_cards_array[4]
-	#card.card_resource = resource
-	#card.position = Vector2(960, 600)
-	#add_child(card)
-	pass
-	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	if Input.is_action_just_released("space"):

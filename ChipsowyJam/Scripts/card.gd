@@ -34,10 +34,13 @@ var is_showing_reverse: bool = false
 #INFO drag & drop variables
 var selected: bool = false
 var rest_point
+var current_rest_node: int = -1
 var rest_nodes = []
+var cardsUI
 
 func _ready():
 	rest_nodes = get_tree().get_nodes_in_group("zone")
+	cardsUI = get_tree().get_first_node_in_group("CardsUI")
 	set_variables()
 	update_card()
 	
@@ -99,15 +102,39 @@ func _physics_process(delta):
 func _on_mouse_click_control_gui_input(event):
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
 		if not selected and event.pressed:
+			#change top level of the card to always be on top for duration of drag
+			var position = global_position
+			top_level = true
+			global_position = position
 			selected = true
 		# Stop dragging if the button is released.
 		if selected and not event.pressed:
-			selected = false
-			var shortest_dist = 75
+			var shortest_dist = 70
+			var index = 0
 			for child in rest_nodes:
 				var distance = global_position.distance_to(child.global_position + child.pivot_offset)
 				if distance < shortest_dist:
-					rest_point = child.global_position + child.pivot_offset
+					if child.card != null:
+						var temp_card: Control = rest_nodes[index].card
+						temp_card.rest_point = rest_point
+						temp_card.current_rest_node = current_rest_node
+						rest_nodes[current_rest_node].card = temp_card
+						rest_point = child.global_position + child.pivot_offset
+						current_rest_node = index
+						child.card = self
+					else:
+						if current_rest_node >= 0: 
+							rest_nodes[current_rest_node].card = null
+						rest_point = child.global_position + child.pivot_offset
+						current_rest_node = index
+						child.card = self
+					cardsUI.refresh_cards.emit()
+				index += 1
+			selected = false
+			#reset the top level and position to not obstruct other cards
+			var position = global_position
+			top_level = false
+			global_position = position
 
 	if event is InputEventMouseButton and event.is_released():
 		if event.button_index == MOUSE_BUTTON_RIGHT:

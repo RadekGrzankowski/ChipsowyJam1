@@ -9,7 +9,7 @@
 [ext_resource type="Resource" uid="uid://cghb5gashwsrb" path="res://Scenes/Assets/Cards/Orcs/wojownik.tres" id="6_csvxf"]
 [ext_resource type="PackedScene" uid="uid://bln5nembvaqdw" path="res://Scenes/Assets/Cards/card_zone.tscn" id="8_agvxe"]
 
-[node name="CardsUI" type="CanvasLayer"]
+[node name="CardsUI" type="CanvasLayer" groups=["CardsUI"]]
 script = ExtResource("1_lbyja")
 card_scene = ExtResource("2_ju84m")
 orc_cards_array = [ExtResource("2_5vv4p"), ExtResource("3_jupwg"), ExtResource("4_d48qi"), ExtResource("5_cqcik"), ExtResource("6_csvxf")]
@@ -145,4 +145,5 @@ size_flags_vertical = 3
 size_flags_stretch_ratio = 8.0
 text = "ROLL"
 
+[connection signal="refresh_cards" from="." to="." method="_on_refresh_cards"]
 [connection signal="pressed" from="UI/CardsPanelsAndTools/CardsPanels/ShopSpacer/ShopButton" to="." method="_on_shop_button_pressed"]
