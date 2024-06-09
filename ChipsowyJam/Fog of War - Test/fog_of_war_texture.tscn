@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://cjr2v58nwfgxy"]
 
-[ext_resource type="Script" path="res://Scenes/Test/fog_of_war_texture.gd" id="1_7xdr7"]
+[ext_resource type="Script" path="res://Fog of War - Test/fog_of_war_texture.gd" id="1_7xdr7"]
 [ext_resource type="Texture2D" uid="uid://uy4so3xnrblb" path="res://Materials/Textures/fog_of_war.png" id="2_q1afq"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_217i4"]

@@ -8,6 +8,8 @@ signal refresh_cards
 @export var card_scene: PackedScene
 @export var orc_cards_array: Array
 @export var human_cards_array: Array
+@export var undead_cards_array: Array
+@export var elf_cards_array: Array
 var all_cards_array: Array
 
 @onready var shop_nodes : Array = get_tree().get_nodes_in_group("shop_zone")
@@ -17,6 +19,9 @@ var all_cards_array: Array
 func _ready():
 	all_cards_array.append_array(orc_cards_array)
 	all_cards_array.append_array(human_cards_array)
+	all_cards_array.append_array(undead_cards_array)
+	all_cards_array.append_array(elf_cards_array)
+	all_cards_array.shuffle()	
 	call_deferred("fill_the_shop")
 	
 func fill_the_shop():
@@ -35,16 +40,19 @@ func fill_the_shop():
 		index += 1
 
 func _process(delta):
-	pass
+	if Input.is_action_just_released("open_shop"):
+		open_ui()
 
 func _on_shop_button_pressed():
+	open_ui()
+
+func open_ui():
 	if ui_open == false:
-		ui.position.y += 175
+		ui.position.y -= 165
 		ui_open = true
 	elif ui_open == true:
-		ui.position.y -= 175
+		ui.position.y += 165
 		ui_open = false
-
 
 func _on_refresh_cards():
 	for node in deck_nodes:
