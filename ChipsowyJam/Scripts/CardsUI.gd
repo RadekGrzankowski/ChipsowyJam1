@@ -28,10 +28,10 @@ func fill_the_shop():
 		card.card_resource = resource
 		node.card = card
 		var position = node.global_position + node.pivot_offset
-		card.position = position
-		card.set_rest_point(position)
-		card.name = "Card" + str(index) + " " + resource.name 
 		node.add_child(card)
+		card.global_position = position
+		card.set_rest_node(node)
+		card.name = "Card" + str(index) + " " + resource.name 
 		index += 1
 
 func _process(delta):
@@ -57,6 +57,8 @@ func _on_refresh_cards():
 
 func _on_roll_pressed():
 	var cards_to_delete = get_tree().get_nodes_in_group("shop_card")
-	for card in cards_to_delete:
-		card.queue_free()
-	fill_the_shop()
+	if Game.blue_gold >= 10:
+		Game.blue_gold -= 10
+		for card in cards_to_delete:
+			card.queue_free()
+		fill_the_shop()

@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://bpcf3shjxg2ll"]
+[gd_scene load_steps=8 format=3 uid="uid://bpcf3shjxg2ll"]
 
 [ext_resource type="Script" path="res://Scripts/card.gd" id="1_5v28u"]
 
@@ -14,6 +14,8 @@ corner_radius_bottom_right = 5
 corner_radius_bottom_left = 5
 shadow_size = 2
 anti_aliasing = false
+
+[sub_resource type="LabelSettings" id="LabelSettings_xioda"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_88qp0"]
 font_color = Color(0.858824, 0.67451, 0.203922, 1)
@@ -56,7 +58,7 @@ offset_right = 75.0
 offset_bottom = 105.0
 
 [node name="Panel" type="Panel" parent="CardPanel"]
-modulate = Color(0.266667, 0.435294, 0.266667, 1)
+modulate = Color(0.240396, 0.394721, 0.493195, 1)
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -70,10 +72,11 @@ layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -14.0
-offset_right = 96.0
+offset_left = -25.0
+offset_right = 74.0
 offset_bottom = 25.0
 grow_horizontal = 2
+label_settings = SubResource("LabelSettings_xioda")
 
 [node name="CostLabel" type="Label" parent="CardPanel"]
 layout_mode = 1

@@ -33,7 +33,7 @@ var is_showing_reverse: bool = false
 
 #INFO drag & drop variables
 var selected: bool = false
-var rest_point
+var rest_node: Control
 var current_rest_node: int = -1
 var rest_nodes = []
 var cardsUI
@@ -44,8 +44,8 @@ func _ready():
 	set_variables()
 	update_card()
 	
-func set_rest_point(position: Vector2):
-	rest_point = position
+func set_rest_node(node: Control):
+	rest_node = node
 
 func set_variables():
 	card_name = card_resource.name
@@ -79,8 +79,25 @@ func update_card():
 				ls.font_color =  Color.DARK_ORANGE
 			_: #Default case
 				ls.font_color =  Color.WHITE
+		ls.outline_size = 3
+		ls.outline_color = Color.BLACK
 		name_label.label_settings = ls
 		
+		#modify card's background color depending on card's race
+		var color
+		var race_value: int = race
+		match race_value:
+			0: #HUMAN
+				color = Color(0.24, 0.395, 0.493)
+			1: #ORC
+				color = Color(0.267, 0.435, 0.267)
+			2: #UNDEAD
+				color = Color(0.423, 0.331, 0.577)
+			3: #ELVES
+				color = Color(0.433, 0.382, 0.256)
+			_: #Default case - HUMAN
+				color = Color(0.24, 0.395, 0.493)
+		$CardPanel/Panel.modulate = color
 		image_rect.texture = image
 		cost_label.text = str(cost) + "G"
 		race_type_label.text = str(mob_type.keys()[type]) + " " + str(mob_race.keys()[race])
@@ -96,8 +113,8 @@ func _physics_process(delta):
 	if selected:
 		global_position = lerp(global_position, get_global_mouse_position(), 25 * delta)
 	else:
-		if rest_point != null:
-			global_position = lerp(global_position, rest_point, 10 * delta)
+		if rest_node != null:
+			global_position = lerp(global_position, rest_node.global_position + rest_node.pivot_offset, 10 * delta)
 
 func _on_mouse_click_control_gui_input(event):
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
@@ -114,28 +131,38 @@ func _on_mouse_click_control_gui_input(event):
 			for child in rest_nodes:
 				var distance = global_position.distance_to(child.global_position + child.pivot_offset)
 				if distance < shortest_dist:
-					if child.card != null:
-						if !child.card.is_in_group("shop_card") && !is_in_group("shop_card"):
-							var temp_card: Control = rest_nodes[index].card
-							temp_card.rest_point = rest_point
-							temp_card.current_rest_node = current_rest_node
-							rest_nodes[current_rest_node].card = temp_card
-							rest_point = child.global_position + child.pivot_offset
-							current_rest_node = index
-							child.card = self
+					if child.is_in_group("sell_zone"):
+						if !is_in_group("shop_card"):
+							#sell the card as the rest node is sell zone
+							Game.blue_gold += (cost / 2)
+							queue_free()
 					else:
-						if current_rest_node >= 0: 
-							rest_nodes[current_rest_node].card = null
-						if is_in_group("shop_card"):
-							# moving shop card into the deck - charging gold
-							add_to_group("deck_card")
-							remove_from_group("shop_card")
-							if Game.blue_gold >= cost:
-								Game.blue_gold -= cost
-						rest_point = child.global_position + child.pivot_offset
-						current_rest_node = index
-						child.card = self
-					cardsUI.refresh_cards.emit()
+						if child.card != null:
+							if !child.card.is_in_group("shop_card") && !is_in_group("shop_card"):
+								var temp_card: Control = rest_nodes[index].card
+								temp_card.rest_node = rest_node
+								temp_card.current_rest_node = current_rest_node
+								rest_nodes[current_rest_node].card = temp_card
+								rest_node = child
+								current_rest_node = index
+								child.card = self
+						else:
+							if current_rest_node >= 0: 
+								rest_nodes[current_rest_node].card = null
+							if is_in_group("shop_card"):
+								# moving shop card into the deck - charging gold
+								if Game.blue_gold >= cost:
+									Game.blue_gold -= cost
+									add_to_group("deck_card")
+									remove_from_group("shop_card")
+									rest_node = child
+									current_rest_node = index
+									child.card = self
+							else:
+								rest_node = child
+								current_rest_node = index
+								child.card = self
+						cardsUI.refresh_cards.emit()
 				index += 1
 			selected = false
 			#reset the top level and position to not obstruct other cards

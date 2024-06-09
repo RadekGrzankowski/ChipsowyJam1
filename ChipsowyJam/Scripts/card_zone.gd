@@ -1,6 +1,6 @@
 extends Control
 
-enum zone_type {DECK, SHOP}
+enum zone_type {DECK, SHOP, SELL}
 @export var zone: zone_type
 @export var card: Control
 

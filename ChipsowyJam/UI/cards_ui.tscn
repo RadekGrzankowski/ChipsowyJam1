@@ -24,7 +24,7 @@ anchor_right = 0.5
 anchor_bottom = 1.0
 offset_left = -640.0
 offset_top = -376.0
-offset_right = 640.0
+offset_right = 652.0
 grow_horizontal = 2
 grow_vertical = 0
 
@@ -130,11 +130,21 @@ zone = 1
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Sell" type="Button" parent="UI/CardsPanelsAndTools/Tools"]
+[node name="CardZoneSell" parent="UI/CardsPanelsAndTools/Tools" groups=["sell_zone", "zone"] instance=ExtResource("8_agvxe")]
 layout_mode = 2
+zone = 2
+
+[node name="Sell" type="Button" parent="UI/CardsPanelsAndTools/Tools/CardZoneSell"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 8.0
-text = "SELL"
+text = "SELL
+(50%)"
 
 [node name="Spacer" type="Control" parent="UI/CardsPanelsAndTools/Tools"]
 custom_minimum_size = Vector2(0, 31)
@@ -145,7 +155,8 @@ size_flags_stretch_ratio = 1.5
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 8.0
-text = "ROLL"
+text = "ROLL
+(10G)"
 
 [connection signal="refresh_cards" from="." to="." method="_on_refresh_cards"]
 [connection signal="pressed" from="UI/CardsPanelsAndTools/CardsPanels/ShopSpacer/ShopButton" to="." method="_on_shop_button_pressed"]
