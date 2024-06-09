@@ -147,21 +147,22 @@ func _on_mouse_click_control_gui_input(event):
 								current_rest_node = index
 								child.card = self
 						else:
-							if current_rest_node >= 0: 
-								rest_nodes[current_rest_node].card = null
-							if is_in_group("shop_card"):
-								# moving shop card into the deck - charging gold
-								if Game.blue_gold >= cost:
-									Game.blue_gold -= cost
-									add_to_group("deck_card")
-									remove_from_group("shop_card")
+							if !child.is_in_group("locked"):
+								if current_rest_node >= 0: 
+									rest_nodes[current_rest_node].card = null
+								if is_in_group("shop_card"):
+									# moving shop card into the deck - charging gold
+									if Game.blue_gold >= cost:
+										Game.blue_gold -= cost
+										add_to_group("deck_card")
+										remove_from_group("shop_card")
+										rest_node = child
+										current_rest_node = index
+										child.card = self
+								else:
 									rest_node = child
 									current_rest_node = index
 									child.card = self
-							else:
-								rest_node = child
-								current_rest_node = index
-								child.card = self
 						cardsUI.refresh_cards.emit()
 				index += 1
 			selected = false

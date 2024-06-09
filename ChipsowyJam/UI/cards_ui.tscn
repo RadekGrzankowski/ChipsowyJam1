@@ -60,16 +60,16 @@ layout_mode = 2
 [node name="CardZone4" parent="UI/CardsPanelsAndTools/CardsPanels/Deck/DeckCards" groups=["zone"] instance=ExtResource("8_agvxe")]
 layout_mode = 2
 
-[node name="CardZone5" parent="UI/CardsPanelsAndTools/CardsPanels/Deck/DeckCards" groups=["zone"] instance=ExtResource("8_agvxe")]
+[node name="CardZone5" parent="UI/CardsPanelsAndTools/CardsPanels/Deck/DeckCards" groups=["locked", "zone"] instance=ExtResource("8_agvxe")]
 layout_mode = 2
 
-[node name="CardZone6" parent="UI/CardsPanelsAndTools/CardsPanels/Deck/DeckCards" groups=["zone"] instance=ExtResource("8_agvxe")]
+[node name="CardZone6" parent="UI/CardsPanelsAndTools/CardsPanels/Deck/DeckCards" groups=["locked", "zone"] instance=ExtResource("8_agvxe")]
 layout_mode = 2
 
-[node name="CardZone7" parent="UI/CardsPanelsAndTools/CardsPanels/Deck/DeckCards" groups=["zone"] instance=ExtResource("8_agvxe")]
+[node name="CardZone7" parent="UI/CardsPanelsAndTools/CardsPanels/Deck/DeckCards" groups=["locked", "zone"] instance=ExtResource("8_agvxe")]
 layout_mode = 2
 
-[node name="CardZone8" parent="UI/CardsPanelsAndTools/CardsPanels/Deck/DeckCards" groups=["zone"] instance=ExtResource("8_agvxe")]
+[node name="CardZone8" parent="UI/CardsPanelsAndTools/CardsPanels/Deck/DeckCards" groups=["locked", "zone"] instance=ExtResource("8_agvxe")]
 layout_mode = 2
 
 [node name="ShopSpacer" type="Control" parent="UI/CardsPanelsAndTools/CardsPanels"]
