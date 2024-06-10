@@ -48,9 +48,13 @@ func _on_shop_button_pressed():
 
 func open_ui():
 	if ui_open == false:
+		print("Shop UI opened")
+		$UI/CardsPanelsAndTools/Tools/Roll.disabled = false
 		ui.position.y -= 165
 		ui_open = true
 	elif ui_open == true:
+		print("Shop UI closed")
+		$UI/CardsPanelsAndTools/Tools/Roll.disabled = true
 		ui.position.y += 165
 		ui_open = false
 

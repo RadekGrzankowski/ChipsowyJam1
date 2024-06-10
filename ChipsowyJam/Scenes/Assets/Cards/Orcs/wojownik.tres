@@ -1,6 +1,6 @@
 [gd_resource type="Resource" load_steps=3 format=3 uid="uid://cghb5gashwsrb"]
 
-[ext_resource type="Script" path="res://Scripts/card_stats.gd" id="1_4ra1a"]
+[ext_resource type="Script" path="res://Scenes/Assets/Cards/card_stats.gd" id="1_4ra1a"]
 [ext_resource type="Texture2D" uid="uid://cw38ik6ufr3ui" path="res://Textures/orc1_picture.jpg" id="1_lnd13"]
 
 [resource]

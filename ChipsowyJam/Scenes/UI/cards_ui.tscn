@@ -156,6 +156,7 @@ size_flags_stretch_ratio = 1.5
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 8.0
+disabled = true
 text = "ROLL
 (10G)"
 
