@@ -1,6 +1,10 @@
 extends CanvasLayer
 
-@onready var ui = $UI
+@onready var ui = $CardsUI
+@onready var top_button: Button = $CardsUI/LanesPanel/LaneButtons/TopButton
+@onready var middle_button: Button = $CardsUI/LanesPanel/LaneButtons/MiddleButton
+@onready var bottom_button: Button = $CardsUI/LanesPanel/LaneButtons/BottomButton
+var lane_value: int = 0 #0 - top, 1 - middle, 2 - bottom
 var ui_open: bool = false
 
 signal refresh_cards
@@ -17,6 +21,7 @@ var all_cards_array: Array
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	top_button.button_pressed = true
 	all_cards_array.append_array(orc_cards_array)
 	all_cards_array.append_array(human_cards_array)
 	all_cards_array.append_array(undead_cards_array)
@@ -49,12 +54,12 @@ func _on_shop_button_pressed():
 func open_ui():
 	if ui_open == false:
 		print("Shop UI opened")
-		$UI/CardsPanelsAndTools/Tools/Roll.disabled = false
+		$CardsUI/CardsPanel/CardsPanelsAndTools/Tools/Roll.disabled = false
 		ui.position.y -= 165
 		ui_open = true
 	elif ui_open == true:
 		print("Shop UI closed")
-		$UI/CardsPanelsAndTools/Tools/Roll.disabled = true
+		$CardsUI/CardsPanel/CardsPanelsAndTools/Tools/Roll.disabled = true
 		ui.position.y += 165
 		ui_open = false
 
@@ -74,3 +79,23 @@ func _on_roll_pressed():
 		for card in cards_to_delete:
 			card.queue_free()
 		fill_the_shop()
+
+
+func _on_top_button_pressed():
+	lane_value = 0
+	top_button.button_pressed = true
+	middle_button.button_pressed = false
+	bottom_button.button_pressed = false
+
+func _on_middle_button_pressed():
+	lane_value = 1
+	top_button.button_pressed = false
+	middle_button.button_pressed = true
+	bottom_button.button_pressed = false
+
+func _on_bottom_button_pressed():
+	lane_value = 2
+	top_button.button_pressed = false
+	middle_button.button_pressed = false
+	bottom_button.button_pressed = true
+	
