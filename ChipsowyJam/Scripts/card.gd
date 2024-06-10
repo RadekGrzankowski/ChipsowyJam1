@@ -151,6 +151,13 @@ func _on_mouse_click_control_gui_input(event):
 						if !is_in_group("shop_card"):
 							#sell the card as the rest node is sell zone
 							Game.blue_gold += (cost / 2)
+							match cardsUI.lane_value:
+								0: 
+									cardsUI.top_lane_cards.erase(self)
+								1: 
+									cardsUI.middle_lane_cards.erase(self)
+								2: 
+									cardsUI.bottom_lane_cards.erase(self)
 							queue_free()
 					else:
 						if child.card != null:
@@ -172,6 +179,13 @@ func _on_mouse_click_control_gui_input(event):
 										Game.blue_gold -= cost
 										add_to_group("deck_card")
 										remove_from_group("shop_card")
+										match cardsUI.lane_value:
+											0: 
+												cardsUI.top_lane_cards.append(self)
+											1: 
+												cardsUI.middle_lane_cards.append(self)
+											2: 
+												cardsUI.bottom_lane_cards.append(self)
 										rest_node = child
 										current_rest_node = index
 										child.card = self

@@ -19,6 +19,10 @@ var all_cards_array: Array
 @onready var shop_nodes : Array = get_tree().get_nodes_in_group("shop_zone")
 @onready var deck_nodes : Array = get_tree().get_nodes_in_group("zone")
 
+var top_lane_cards: Array
+var middle_lane_cards: Array
+var bottom_lane_cards: Array
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	top_button.button_pressed = true
@@ -82,20 +86,44 @@ func _on_roll_pressed():
 
 
 func _on_top_button_pressed():
+	if lane_value == 0:
+		return
 	lane_value = 0
 	top_button.button_pressed = true
 	middle_button.button_pressed = false
 	bottom_button.button_pressed = false
+	for t_card in top_lane_cards:
+		t_card.visible = true
+	for m_card in middle_lane_cards:
+		m_card.visible = false
+	for b_card in bottom_lane_cards:
+		b_card.visible = false
 
 func _on_middle_button_pressed():
+	if lane_value == 1:
+		return
 	lane_value = 1
 	top_button.button_pressed = false
 	middle_button.button_pressed = true
 	bottom_button.button_pressed = false
+	for t_card in top_lane_cards:
+		t_card.visible = false
+	for m_card in middle_lane_cards:
+		m_card.visible = true
+	for b_card in bottom_lane_cards:
+		b_card.visible = false
 
 func _on_bottom_button_pressed():
+	if lane_value == 2:
+		return
 	lane_value = 2
 	top_button.button_pressed = false
 	middle_button.button_pressed = false
 	bottom_button.button_pressed = true
+	for t_card in top_lane_cards:
+		t_card.visible = false
+	for m_card in middle_lane_cards:
+		m_card.visible = false
+	for b_card in bottom_lane_cards:
+		b_card.visible = true
 	
