@@ -2,10 +2,13 @@ extends Control
 
 enum zone_type {DECK, SHOP, SELL}
 @export var zone: zone_type
-@export var card: Control
+var cards = [] # [0] - top/shop, [1] - middle, [2] - bottom
 
-func set_card(_card: Control):
-	card = _card
+func _init():
+	if zone == zone_type.DECK:
+		cards.resize(3)
+	elif zone == zone_type.SHOP:
+		cards.resize(1)
 
 func _ready():
 	if is_in_group("locked"):

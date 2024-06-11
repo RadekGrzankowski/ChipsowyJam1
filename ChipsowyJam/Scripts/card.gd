@@ -42,10 +42,12 @@ var is_hovering_above: bool = false
 
 #INFO drag & drop variables
 var selected: bool = false
+var rest_nodes = []
 var rest_node: Control
 var current_rest_node: int = -1
-var rest_nodes = []
-var cardsUI
+var cardsUI: Node
+
+var lane: int = 0 # 0 - top, 1 - middle, 2 - bot
 
 func _ready():
 	rest_nodes = get_tree().get_nodes_in_group("zone")
@@ -135,7 +137,7 @@ func _physics_process(delta):
 func _on_mouse_click_control_gui_input(event):
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
 		if not selected and event.pressed:
-			#change top level of the card to always be on top for duration of drag
+			#INFO change top level of the card to always be on top for duration of drag
 			var position = global_position
 			top_level = true
 			global_position = position
@@ -144,56 +146,60 @@ func _on_mouse_click_control_gui_input(event):
 		if selected and not event.pressed:
 			var shortest_dist = 70
 			var index = 0
+			var _lane_value = cardsUI.lane_value
+			# INFO iterate through every rest node and check what is the closest and what node is it
 			for child in rest_nodes:
 				var distance = global_position.distance_to(child.global_position + child.pivot_offset)
 				if distance < shortest_dist:
 					if child.is_in_group("sell_zone"):
 						if !is_in_group("shop_card"):
-							#sell the card as the rest node is sell zone
+							# INFO sell the card, as the rest node is the sell zone
 							Game.blue_gold += (cost / 2)
-							match cardsUI.lane_value:
+							match _lane_value:
 								0: 
 									cardsUI.top_lane_cards.erase(self)
 								1: 
 									cardsUI.middle_lane_cards.erase(self)
 								2: 
 									cardsUI.bottom_lane_cards.erase(self)
+							rest_nodes[current_rest_node].cards[_lane_value] = null
 							queue_free()
-					else:
-						if child.card != null:
-							if !child.card.is_in_group("shop_card") && !is_in_group("shop_card"):
-								var temp_card: Control = rest_nodes[index].card
+					else: # INFO switching two cards
+						if !child.cards.is_empty() && child.cards[_lane_value]:
+							if !child.cards[_lane_value].is_in_group("shop_card") && !is_in_group("shop_card"):
+								var temp_card: Control = rest_nodes[index].cards[_lane_value]
 								temp_card.rest_node = rest_node
 								temp_card.current_rest_node = current_rest_node
-								rest_nodes[current_rest_node].card = temp_card
+								rest_nodes[current_rest_node].cards[_lane_value] = temp_card
 								rest_node = child
 								current_rest_node = index
-								child.card = self
+								child.cards[_lane_value] = self
 						else:
 							if !child.is_in_group("locked"):
 								if current_rest_node >= 0: 
-									rest_nodes[current_rest_node].card = null
+									rest_nodes[current_rest_node].cards[_lane_value] = null
 								if is_in_group("shop_card"):
-									# moving shop card into the deck - charging gold
+									# INFO moving shop card into the deck - charging gold
 									if Game.blue_gold >= cost:
 										Game.blue_gold -= cost
 										add_to_group("deck_card")
 										remove_from_group("shop_card")
-										match cardsUI.lane_value:
+										match _lane_value:
 											0: 
 												cardsUI.top_lane_cards.append(self)
 											1: 
 												cardsUI.middle_lane_cards.append(self)
 											2: 
 												cardsUI.bottom_lane_cards.append(self)
+										lane = _lane_value
 										rest_node = child
 										current_rest_node = index
-										child.card = self
-								else:
+										child.cards[_lane_value] = self
+								else: # INFO moving deck card into empty deck slot
 									rest_node = child
 									current_rest_node = index
-									child.card = self
-						cardsUI.refresh_cards.emit()
+									child.cards[_lane_value] = self
+					cardsUI.refresh_cards.emit()
 				index += 1
 			selected = false
 			is_hovering_above = false

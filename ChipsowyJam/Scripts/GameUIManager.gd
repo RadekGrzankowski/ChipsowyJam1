@@ -20,13 +20,7 @@ var actual_minions_bot: String
 @export var orc_cards_array: Array
 @export var card_scene: PackedScene
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	#if Input.is_action_just_released("space"):
-		#if !shop_ui.visible:
-			#shop_ui_anim.play("show")
-		#elif shop_ui.visible:
-			#shop_ui_anim.play("hide")
 	
 	actual_gold_stats = format_gold_stats % [Game.red_gold, Game.blue_gold]
 	actual_minions_top = format_minions_top % [Game.red_minions_top, Game.blue_minions_top]

@@ -40,7 +40,7 @@ func fill_the_shop():
 		card.add_to_group("shop_card")
 		var resource = all_cards_array.pick_random()
 		card.card_resource = resource
-		node.card = card
+		node.cards[0] = card
 		var position = node.global_position + node.pivot_offset
 		node.add_child(card)
 		card.global_position = position
@@ -69,10 +69,12 @@ func open_ui():
 
 func _on_refresh_cards():
 	for node in deck_nodes:
-		if node.card != null:
-			print(node, " ", node.card, " ", node.card.current_rest_node)
+		if !node.cards.is_empty():
+			for card in node.cards:
+				if card:
+					print(node, " ", card, " ", card.current_rest_node , " ", card.lane)
 		else:
-			print("Null")
+			print(" ")
 	print("\n")
 
 
