@@ -84,6 +84,7 @@ func _on_mob_timer_timeout():
 	spawn_bot("blue", "bot", markerBotBlue)
 	spawn_bot("blue", "mid", markerMidBlue)
 	spawn_bot("blue", "top", markerTopBlue)
+	
 	spawn_bot("red", "bot", markerBotRed)
 	spawn_bot("red", "mid", markerMidRed)
 	spawn_bot("red", "top", markerTopRed)

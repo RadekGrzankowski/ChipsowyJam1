@@ -16,3 +16,19 @@ func _ready():
 		$LockedLabel.visible = true
 		var zone_number: String = name
 		$LockedLabel.text = "SLOT " + zone_number.right(1) + " LOCKED"
+		$UnlockButton.visible = true
+		$UnlockButton.disabled = true
+		var button = get_tree().get_first_node_in_group("locked")
+		button.get_node("UnlockButton").disabled = false
+
+func _unlock(cost: int):
+	if Game.blue_gold >= cost:
+		Game.blue_gold -= cost
+		remove_from_group("locked")
+		$PadlockTexture.visible = false
+		$LockedLabel.visible = false
+		$UnlockButton.visible = false
+		if get_tree().get_first_node_in_group("locked"):
+			var button = get_tree().get_first_node_in_group("locked")
+			button.get_node("UnlockButton").disabled = false
+

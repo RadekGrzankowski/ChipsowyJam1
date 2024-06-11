@@ -68,15 +68,17 @@ func open_ui():
 		ui_open = false
 
 func _on_refresh_cards():
-	for node in deck_nodes:
-		if !node.cards.is_empty():
-			for card in node.cards:
-				if card:
-					print(node, " ", card, " ", card.current_rest_node , " ", card.lane)
-		else:
-			print(" ")
-	print("\n")
-
+	#for node in deck_nodes:
+		#if !node.cards.is_empty():
+			#for card in node.cards:
+				#if card:
+					#print(node, " ", card, " ", card.current_rest_node , " ", card.lane)
+		#else:
+			#print(" ")
+	#print("\n")
+	print("top: ", top_lane_cards)
+	print("middle: ", middle_lane_cards)
+	print("bottom: ", bottom_lane_cards, "\n")
 
 func _on_roll_pressed():
 	var cards_to_delete = get_tree().get_nodes_in_group("shop_card")
