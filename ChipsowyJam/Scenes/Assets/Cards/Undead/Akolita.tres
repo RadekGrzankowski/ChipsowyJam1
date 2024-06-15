@@ -1,0 +1,16 @@
+[gd_resource type="Resource" load_steps=2 format=3 uid="uid://cto6duh4swnip"]
+
+[ext_resource type="Script" path="res://Scenes/Assets/Cards/card_stats.gd" id="1_hv4kv"]
+
+[resource]
+script = ExtResource("1_hv4kv")
+name = "Akolita"
+race = 2
+tier = 0
+description = "AOE DMG"
+cost = 10
+health = 50
+attack_damage = 8
+armor = 0
+attack_speed = 0.8
+type = 2

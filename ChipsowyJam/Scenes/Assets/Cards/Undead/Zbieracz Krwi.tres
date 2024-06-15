@@ -1,0 +1,16 @@
+[gd_resource type="Resource" load_steps=2 format=3 uid="uid://cixm5tnesb5b8"]
+
+[ext_resource type="Script" path="res://Scenes/Assets/Cards/card_stats.gd" id="1_mt2ns"]
+
+[resource]
+script = ExtResource("1_mt2ns")
+name = "Zbieracz Krwi"
+race = 2
+tier = 1
+description = "1dmg/1sec"
+cost = 25
+health = 150
+attack_damage = 15
+armor = 15
+attack_speed = 1.0
+type = 1

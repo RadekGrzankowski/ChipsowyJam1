@@ -1,0 +1,16 @@
+[gd_resource type="Resource" load_steps=2 format=3 uid="uid://51udocmk0141"]
+
+[ext_resource type="Script" path="res://Scenes/Assets/Cards/card_stats.gd" id="1_oo42y"]
+
+[resource]
+script = ExtResource("1_oo42y")
+name = "Rębacz"
+race = 1
+tier = 1
+description = "1dmg/1sec"
+cost = 25
+health = 225
+attack_damage = 15
+armor = 5
+attack_speed = 1.4
+type = 0

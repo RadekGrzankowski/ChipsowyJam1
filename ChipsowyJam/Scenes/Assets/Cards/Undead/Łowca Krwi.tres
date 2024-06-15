@@ -1,0 +1,16 @@
+[gd_resource type="Resource" load_steps=2 format=3 uid="uid://cpbkq6r07l75n"]
+
+[ext_resource type="Script" path="res://Scenes/Assets/Cards/card_stats.gd" id="1_c0lpf"]
+
+[resource]
+script = ExtResource("1_c0lpf")
+name = "Łowca Krwi"
+race = 2
+tier = 1
+description = "2hp heal on Hit"
+cost = 25
+health = 175
+attack_damage = 15
+armor = 20
+attack_speed = 1.1
+type = 0

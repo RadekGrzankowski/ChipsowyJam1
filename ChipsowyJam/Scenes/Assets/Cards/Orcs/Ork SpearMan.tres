@@ -1,0 +1,16 @@
+[gd_resource type="Resource" load_steps=2 format=3 uid="uid://bris4m1i8241g"]
+
+[ext_resource type="Script" path="res://Scenes/Assets/Cards/card_stats.gd" id="1_c3c88"]
+
+[resource]
+script = ExtResource("1_c3c88")
+name = "Ork Spearman"
+race = 1
+tier = 1
+description = ""
+cost = 25
+health = 150
+attack_damage = 40
+armor = 5
+attack_speed = 0.5
+type = 1

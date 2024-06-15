@@ -1,0 +1,16 @@
+[gd_resource type="Resource" load_steps=2 format=3 uid="uid://b5pknkd64twe"]
+
+[ext_resource type="Script" path="res://Scenes/Assets/Cards/card_stats.gd" id="1_xblkf"]
+
+[resource]
+script = ExtResource("1_xblkf")
+name = "Abominacja"
+race = 2
+tier = 1
+description = "25 dmg on death"
+cost = 25
+health = 200
+attack_damage = 10
+armor = 40
+attack_speed = 0.8
+type = 0

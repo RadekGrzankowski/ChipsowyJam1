@@ -1,0 +1,16 @@
+[gd_resource type="Resource" load_steps=2 format=3 uid="uid://272ecggr0rhq"]
+
+[ext_resource type="Script" path="res://Scenes/Assets/Cards/card_stats.gd" id="1_mubjw"]
+
+[resource]
+script = ExtResource("1_mubjw")
+name = "Zombie"
+race = 2
+tier = 1
+description = "10 aoe dmg on death"
+cost = 30
+health = 400
+attack_damage = 20
+armor = 10
+attack_speed = 0.7
+type = 0

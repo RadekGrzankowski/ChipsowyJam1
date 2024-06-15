@@ -1,0 +1,16 @@
+[gd_resource type="Resource" load_steps=2 format=3 uid="uid://d0nb3qmebdagp"]
+
+[ext_resource type="Script" path="res://Scenes/Assets/Cards/card_stats.gd" id="1_jyuwa"]
+
+[resource]
+script = ExtResource("1_jyuwa")
+name = "Axe Thrower"
+race = 1
+tier = 1
+description = "1dmg/1sec"
+cost = 25
+health = 200
+attack_damage = 20
+armor = 5
+attack_speed = 1.5
+type = 1
