@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://drr8l01a1ia4i"]
+[gd_scene load_steps=13 format=3 uid="uid://drr8l01a1ia4i"]
 
 [ext_resource type="Script" path="res://Scripts/CardsUI.gd" id="1_lbyja"]
 [ext_resource type="Resource" uid="uid://c4jxg1kfqxv83" path="res://Scenes/Assets/Cards/Orcs/ork.tres" id="2_5vv4p"]
@@ -12,12 +12,17 @@
 [ext_resource type="Resource" uid="uid://bss0s5hx6l8x4" path="res://Scenes/Assets/Cards/Humans/chlop.tres" id="9_du0qi"]
 [ext_resource type="Resource" uid="uid://cblt1257e70cy" path="res://Scenes/Assets/Cards/Undead/ghul.tres" id="10_n37tu"]
 
-[node name="CardsUI" type="CanvasLayer" groups=["CardsUI"]]
+[sub_resource type="LabelSettings" id="LabelSettings_mtnm0"]
+
+[node name="CardsUI" type="CanvasLayer" node_paths=PackedStringArray("top_lane_deck", "middle_lane_deck", "bottom_lane_deck") groups=["CardsUI"]]
 script = ExtResource("1_lbyja")
 card_scene = ExtResource("2_ju84m")
 orc_cards_array = [ExtResource("2_5vv4p"), ExtResource("3_jupwg"), ExtResource("4_d48qi"), ExtResource("5_cqcik"), ExtResource("6_csvxf")]
 human_cards_array = [ExtResource("8_no8tg"), ExtResource("9_du0qi")]
 undead_cards_array = [ExtResource("10_n37tu")]
+top_lane_deck = NodePath("CardsUI/CardsPanel/CardsPanelsAndTools/CardsPanels/Deck/DeckCardsTop")
+middle_lane_deck = NodePath("CardsUI/CardsPanel/CardsPanelsAndTools/CardsPanels/Deck/DeckCardsMiddle")
+bottom_lane_deck = NodePath("CardsUI/CardsPanel/CardsPanelsAndTools/CardsPanels/Deck/DeckCardsBottom")
 
 [node name="CardsUI" type="Control" parent="."]
 layout_mode = 3
@@ -28,152 +33,6 @@ anchor_right = 0.5
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 0
-
-[node name="CardsPanel" type="PanelContainer" parent="CardsUI"]
-layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -640.0
-offset_top = -205.0
-offset_right = 652.0
-offset_bottom = 171.0
-grow_horizontal = 2
-grow_vertical = 0
-
-[node name="CardsPanelsAndTools" type="HBoxContainer" parent="CardsUI/CardsPanel"]
-layout_mode = 2
-
-[node name="CardsPanels" type="VBoxContainer" parent="CardsUI/CardsPanel/CardsPanelsAndTools"]
-custom_minimum_size = Vector2(2.89, 376)
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_stretch_ratio = 9.0
-
-[node name="Deck" type="Panel" parent="CardsUI/CardsPanel/CardsPanelsAndTools/CardsPanels"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-size_flags_stretch_ratio = 8.0
-
-[node name="DeckCards" type="HBoxContainer" parent="CardsUI/CardsPanel/CardsPanelsAndTools/CardsPanels/Deck"]
-layout_mode = 0
-offset_top = 3.0
-offset_right = 1148.0
-offset_bottom = 147.0
-
-[node name="CardZone1" parent="CardsUI/CardsPanel/CardsPanelsAndTools/CardsPanels/Deck/DeckCards" groups=["zone"] instance=ExtResource("8_agvxe")]
-layout_mode = 2
-
-[node name="CardZone2" parent="CardsUI/CardsPanel/CardsPanelsAndTools/CardsPanels/Deck/DeckCards" groups=["zone"] instance=ExtResource("8_agvxe")]
-layout_mode = 2
-
-[node name="CardZone3" parent="CardsUI/CardsPanel/CardsPanelsAndTools/CardsPanels/Deck/DeckCards" groups=["zone"] instance=ExtResource("8_agvxe")]
-layout_mode = 2
-
-[node name="CardZone4" parent="CardsUI/CardsPanel/CardsPanelsAndTools/CardsPanels/Deck/DeckCards" groups=["zone"] instance=ExtResource("8_agvxe")]
-layout_mode = 2
-
-[node name="CardZone5" parent="CardsUI/CardsPanel/CardsPanelsAndTools/CardsPanels/Deck/DeckCards" groups=["locked", "zone"] instance=ExtResource("8_agvxe")]
-layout_mode = 2
-
-[node name="CardZone6" parent="CardsUI/CardsPanel/CardsPanelsAndTools/CardsPanels/Deck/DeckCards" groups=["locked", "zone"] instance=ExtResource("8_agvxe")]
-layout_mode = 2
-
-[node name="CardZone7" parent="CardsUI/CardsPanel/CardsPanelsAndTools/CardsPanels/Deck/DeckCards" groups=["locked", "zone"] instance=ExtResource("8_agvxe")]
-layout_mode = 2
-
-[node name="CardZone8" parent="CardsUI/CardsPanel/CardsPanelsAndTools/CardsPanels/Deck/DeckCards" groups=["locked", "zone"] instance=ExtResource("8_agvxe")]
-layout_mode = 2
-
-[node name="ShopSpacer" type="Control" parent="CardsUI/CardsPanel/CardsPanelsAndTools/CardsPanels"]
-layout_mode = 2
-size_flags_vertical = 3
-size_flags_stretch_ratio = 1.5
-
-[node name="ShopButton" type="Button" parent="CardsUI/CardsPanel/CardsPanelsAndTools/CardsPanels/ShopSpacer"]
-layout_mode = 0
-offset_right = 1144.0
-offset_bottom = 23.0
-text = "SHOP"
-
-[node name="Shop" type="Panel" parent="CardsUI/CardsPanel/CardsPanelsAndTools/CardsPanels"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-size_flags_stretch_ratio = 8.0
-
-[node name="ShopCards" type="HBoxContainer" parent="CardsUI/CardsPanel/CardsPanelsAndTools/CardsPanels/Shop"]
-layout_mode = 0
-offset_right = 1120.0
-offset_bottom = 147.0
-
-[node name="CardZoneShop1" parent="CardsUI/CardsPanel/CardsPanelsAndTools/CardsPanels/Shop/ShopCards" groups=["shop_zone"] instance=ExtResource("8_agvxe")]
-layout_mode = 2
-zone = 1
-
-[node name="CardZoneShop2" parent="CardsUI/CardsPanel/CardsPanelsAndTools/CardsPanels/Shop/ShopCards" groups=["shop_zone"] instance=ExtResource("8_agvxe")]
-layout_mode = 2
-zone = 1
-
-[node name="CardZoneShop3" parent="CardsUI/CardsPanel/CardsPanelsAndTools/CardsPanels/Shop/ShopCards" groups=["shop_zone"] instance=ExtResource("8_agvxe")]
-layout_mode = 2
-zone = 1
-
-[node name="CardZoneShop4" parent="CardsUI/CardsPanel/CardsPanelsAndTools/CardsPanels/Shop/ShopCards" groups=["shop_zone"] instance=ExtResource("8_agvxe")]
-layout_mode = 2
-zone = 1
-
-[node name="CardZoneShop5" parent="CardsUI/CardsPanel/CardsPanelsAndTools/CardsPanels/Shop/ShopCards" groups=["shop_zone"] instance=ExtResource("8_agvxe")]
-layout_mode = 2
-zone = 1
-
-[node name="CardZoneShop6" parent="CardsUI/CardsPanel/CardsPanelsAndTools/CardsPanels/Shop/ShopCards" groups=["shop_zone"] instance=ExtResource("8_agvxe")]
-layout_mode = 2
-zone = 1
-
-[node name="CardZoneShop7" parent="CardsUI/CardsPanel/CardsPanelsAndTools/CardsPanels/Shop/ShopCards" groups=["shop_zone"] instance=ExtResource("8_agvxe")]
-layout_mode = 2
-zone = 1
-
-[node name="CardZoneShop8" parent="CardsUI/CardsPanel/CardsPanelsAndTools/CardsPanels/Shop/ShopCards" groups=["shop_zone"] instance=ExtResource("8_agvxe")]
-layout_mode = 2
-zone = 1
-
-[node name="Tools" type="VBoxContainer" parent="CardsUI/CardsPanel/CardsPanelsAndTools"]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="CardZoneSell" parent="CardsUI/CardsPanel/CardsPanelsAndTools/Tools" groups=["sell_zone", "zone"] instance=ExtResource("8_agvxe")]
-layout_mode = 2
-zone = 2
-
-[node name="Sell" type="Button" parent="CardsUI/CardsPanel/CardsPanelsAndTools/Tools/CardZoneSell"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-size_flags_vertical = 3
-size_flags_stretch_ratio = 8.0
-text = "SELL
-(50%)"
-
-[node name="Spacer" type="Control" parent="CardsUI/CardsPanel/CardsPanelsAndTools/Tools"]
-custom_minimum_size = Vector2(0, 44)
-layout_mode = 2
-size_flags_stretch_ratio = 1.5
-
-[node name="Roll" type="Button" parent="CardsUI/CardsPanel/CardsPanelsAndTools/Tools"]
-layout_mode = 2
-size_flags_vertical = 3
-size_flags_stretch_ratio = 8.0
-disabled = true
-text = "ROLL
-(10G)"
 
 [node name="LanesPanel" type="Panel" parent="CardsUI"]
 custom_minimum_size = Vector2(300, 60)
@@ -207,9 +66,262 @@ layout_mode = 2
 toggle_mode = true
 text = "BOTTOM"
 
+[node name="LanesRightPanel" type="Panel" parent="CardsUI/LanesPanel"]
+self_modulate = Color(0, 0, 0, 1)
+layout_mode = 0
+offset_left = 310.0
+offset_top = 17.0
+offset_right = 335.0
+offset_bottom = 42.0
+
+[node name="Label" type="Label" parent="CardsUI/LanesPanel/LanesRightPanel"]
+layout_mode = 0
+offset_top = -1.0
+offset_right = 25.0
+offset_bottom = 24.0
+text = "E"
+label_settings = SubResource("LabelSettings_mtnm0")
+horizontal_alignment = 1
+vertical_alignment = 1
+clip_text = true
+text_overrun_behavior = 1
+
+[node name="LanesLeftPanel" type="Panel" parent="CardsUI/LanesPanel"]
+self_modulate = Color(0, 0, 0, 1)
+layout_mode = 0
+offset_left = -35.0
+offset_top = 17.0
+offset_right = -10.0
+offset_bottom = 42.0
+
+[node name="Label" type="Label" parent="CardsUI/LanesPanel/LanesLeftPanel"]
+layout_mode = 0
+offset_top = -1.0
+offset_right = 25.0
+offset_bottom = 24.0
+text = "Q"
+label_settings = SubResource("LabelSettings_mtnm0")
+horizontal_alignment = 1
+vertical_alignment = 1
+clip_text = true
+text_overrun_behavior = 1
+
+[node name="CardsPanel" type="PanelContainer" parent="CardsUI"]
+layout_mode = 1
+anchors_preset = 13
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -494.0
+offset_top = -205.0
+offset_right = 510.0
+offset_bottom = 171.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CardsPanelsAndTools" type="HBoxContainer" parent="CardsUI/CardsPanel"]
+layout_mode = 2
+
+[node name="CardsPanels" type="VBoxContainer" parent="CardsUI/CardsPanel/CardsPanelsAndTools"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 9.0
+
+[node name="Deck" type="Panel" parent="CardsUI/CardsPanel/CardsPanelsAndTools/CardsPanels"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 8.0
+
+[node name="DeckCardsTop" type="HBoxContainer" parent="CardsUI/CardsPanel/CardsPanelsAndTools/CardsPanels/Deck"]
+layout_mode = 0
+offset_top = 3.0
+offset_right = 860.0
+offset_bottom = 163.0
+
+[node name="CardZone1" parent="CardsUI/CardsPanel/CardsPanelsAndTools/CardsPanels/Deck/DeckCardsTop" groups=["top_zone"] instance=ExtResource("8_agvxe")]
+layout_mode = 2
+
+[node name="CardZone2" parent="CardsUI/CardsPanel/CardsPanelsAndTools/CardsPanels/Deck/DeckCardsTop" groups=["top_zone"] instance=ExtResource("8_agvxe")]
+layout_mode = 2
+
+[node name="CardZone3" parent="CardsUI/CardsPanel/CardsPanelsAndTools/CardsPanels/Deck/DeckCardsTop" groups=["top_zone"] instance=ExtResource("8_agvxe")]
+layout_mode = 2
+
+[node name="CardZone4" parent="CardsUI/CardsPanel/CardsPanelsAndTools/CardsPanels/Deck/DeckCardsTop" groups=["locked", "top_zone"] instance=ExtResource("8_agvxe")]
+layout_mode = 2
+
+[node name="CardZone5" parent="CardsUI/CardsPanel/CardsPanelsAndTools/CardsPanels/Deck/DeckCardsTop" groups=["locked", "top_zone"] instance=ExtResource("8_agvxe")]
+layout_mode = 2
+
+[node name="CardZone6" parent="CardsUI/CardsPanel/CardsPanelsAndTools/CardsPanels/Deck/DeckCardsTop" groups=["locked", "top_zone"] instance=ExtResource("8_agvxe")]
+layout_mode = 2
+
+[node name="DeckCardsMiddle" type="HBoxContainer" parent="CardsUI/CardsPanel/CardsPanelsAndTools/CardsPanels/Deck"]
+visible = false
+layout_mode = 0
+offset_top = 3.0
+offset_right = 860.0
+offset_bottom = 163.0
+
+[node name="CardZone1" parent="CardsUI/CardsPanel/CardsPanelsAndTools/CardsPanels/Deck/DeckCardsMiddle" groups=["middle_zone"] instance=ExtResource("8_agvxe")]
+layout_mode = 2
+lane = 1
+
+[node name="CardZone2" parent="CardsUI/CardsPanel/CardsPanelsAndTools/CardsPanels/Deck/DeckCardsMiddle" groups=["middle_zone"] instance=ExtResource("8_agvxe")]
+layout_mode = 2
+lane = 1
+
+[node name="CardZone3" parent="CardsUI/CardsPanel/CardsPanelsAndTools/CardsPanels/Deck/DeckCardsMiddle" groups=["middle_zone"] instance=ExtResource("8_agvxe")]
+layout_mode = 2
+lane = 1
+
+[node name="CardZone4" parent="CardsUI/CardsPanel/CardsPanelsAndTools/CardsPanels/Deck/DeckCardsMiddle" groups=["locked", "middle_zone"] instance=ExtResource("8_agvxe")]
+layout_mode = 2
+lane = 1
+
+[node name="CardZone5" parent="CardsUI/CardsPanel/CardsPanelsAndTools/CardsPanels/Deck/DeckCardsMiddle" groups=["locked", "middle_zone"] instance=ExtResource("8_agvxe")]
+layout_mode = 2
+lane = 1
+
+[node name="CardZone6" parent="CardsUI/CardsPanel/CardsPanelsAndTools/CardsPanels/Deck/DeckCardsMiddle" groups=["locked", "middle_zone"] instance=ExtResource("8_agvxe")]
+layout_mode = 2
+lane = 1
+
+[node name="DeckCardsBottom" type="HBoxContainer" parent="CardsUI/CardsPanel/CardsPanelsAndTools/CardsPanels/Deck"]
+visible = false
+layout_mode = 0
+offset_top = 3.0
+offset_right = 860.0
+offset_bottom = 163.0
+
+[node name="CardZone1" parent="CardsUI/CardsPanel/CardsPanelsAndTools/CardsPanels/Deck/DeckCardsBottom" groups=["botton_zone"] instance=ExtResource("8_agvxe")]
+layout_mode = 2
+lane = 2
+
+[node name="CardZone2" parent="CardsUI/CardsPanel/CardsPanelsAndTools/CardsPanels/Deck/DeckCardsBottom" groups=["botton_zone"] instance=ExtResource("8_agvxe")]
+layout_mode = 2
+lane = 2
+
+[node name="CardZone3" parent="CardsUI/CardsPanel/CardsPanelsAndTools/CardsPanels/Deck/DeckCardsBottom" groups=["botton_zone"] instance=ExtResource("8_agvxe")]
+layout_mode = 2
+lane = 2
+
+[node name="CardZone4" parent="CardsUI/CardsPanel/CardsPanelsAndTools/CardsPanels/Deck/DeckCardsBottom" groups=["botton_zone", "locked"] instance=ExtResource("8_agvxe")]
+layout_mode = 2
+lane = 2
+
+[node name="CardZone5" parent="CardsUI/CardsPanel/CardsPanelsAndTools/CardsPanels/Deck/DeckCardsBottom" groups=["botton_zone", "locked"] instance=ExtResource("8_agvxe")]
+layout_mode = 2
+lane = 2
+
+[node name="CardZone6" parent="CardsUI/CardsPanel/CardsPanelsAndTools/CardsPanels/Deck/DeckCardsBottom" groups=["botton_zone", "locked"] instance=ExtResource("8_agvxe")]
+layout_mode = 2
+lane = 2
+
+[node name="ShopSpacer" type="Control" parent="CardsUI/CardsPanel/CardsPanelsAndTools/CardsPanels"]
+clip_contents = true
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 1.5
+
+[node name="ShopButton" type="Button" parent="CardsUI/CardsPanel/CardsPanelsAndTools/CardsPanels/ShopSpacer"]
+layout_mode = 0
+offset_right = 860.0
+offset_bottom = 31.0
+text = "SHOP "
+
+[node name="ShopKeyPanel" type="Panel" parent="CardsUI/CardsPanel/CardsPanelsAndTools/CardsPanels/ShopSpacer/ShopButton"]
+self_modulate = Color(0.317647, 0.317647, 0.317647, 1)
+layout_mode = 0
+offset_left = 459.0
+offset_top = 6.0
+offset_right = 479.0
+offset_bottom = 26.0
+
+[node name="Label" type="Label" parent="CardsUI/CardsPanel/CardsPanelsAndTools/CardsPanels/ShopSpacer/ShopButton/ShopKeyPanel"]
+layout_mode = 0
+offset_top = -2.0
+offset_right = 20.0
+offset_bottom = 22.0
+text = "B"
+label_settings = SubResource("LabelSettings_mtnm0")
+horizontal_alignment = 1
+vertical_alignment = 1
+clip_text = true
+text_overrun_behavior = 1
+
+[node name="Shop" type="Panel" parent="CardsUI/CardsPanel/CardsPanelsAndTools/CardsPanels"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 8.0
+
+[node name="ShopCards" type="HBoxContainer" parent="CardsUI/CardsPanel/CardsPanelsAndTools/CardsPanels/Shop"]
+layout_mode = 0
+offset_right = 860.0
+offset_bottom = 160.0
+
+[node name="CardZoneShop1" parent="CardsUI/CardsPanel/CardsPanelsAndTools/CardsPanels/Shop/ShopCards" groups=["shop_zone"] instance=ExtResource("8_agvxe")]
+layout_mode = 2
+zone = 1
+
+[node name="CardZoneShop2" parent="CardsUI/CardsPanel/CardsPanelsAndTools/CardsPanels/Shop/ShopCards" groups=["shop_zone"] instance=ExtResource("8_agvxe")]
+layout_mode = 2
+zone = 1
+
+[node name="CardZoneShop3" parent="CardsUI/CardsPanel/CardsPanelsAndTools/CardsPanels/Shop/ShopCards" groups=["shop_zone"] instance=ExtResource("8_agvxe")]
+layout_mode = 2
+zone = 1
+
+[node name="CardZoneShop4" parent="CardsUI/CardsPanel/CardsPanelsAndTools/CardsPanels/Shop/ShopCards" groups=["shop_zone"] instance=ExtResource("8_agvxe")]
+layout_mode = 2
+zone = 1
+
+[node name="CardZoneShop5" parent="CardsUI/CardsPanel/CardsPanelsAndTools/CardsPanels/Shop/ShopCards" groups=["shop_zone"] instance=ExtResource("8_agvxe")]
+layout_mode = 2
+zone = 1
+
+[node name="CardZoneShop6" parent="CardsUI/CardsPanel/CardsPanelsAndTools/CardsPanels/Shop/ShopCards" groups=["shop_zone"] instance=ExtResource("8_agvxe")]
+layout_mode = 2
+zone = 1
+
+[node name="Tools" type="VBoxContainer" parent="CardsUI/CardsPanel/CardsPanelsAndTools"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="CardZoneSell" parent="CardsUI/CardsPanel/CardsPanelsAndTools/Tools" groups=["sell_zone"] instance=ExtResource("8_agvxe")]
+layout_mode = 2
+zone = 2
+
+[node name="Sell" type="Button" parent="CardsUI/CardsPanel/CardsPanelsAndTools/Tools/CardZoneSell"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 8.0
+text = "SELL
+(50%)"
+
+[node name="Spacer" type="Control" parent="CardsUI/CardsPanel/CardsPanelsAndTools/Tools"]
+custom_minimum_size = Vector2(0, 44)
+layout_mode = 2
+size_flags_stretch_ratio = 1.5
+
+[node name="Roll" type="Button" parent="CardsUI/CardsPanel/CardsPanelsAndTools/Tools"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 8.0
+disabled = true
+text = "ROLL
+(10G)"
+
 [connection signal="refresh_cards" from="." to="." method="_on_refresh_cards"]
-[connection signal="pressed" from="CardsUI/CardsPanel/CardsPanelsAndTools/CardsPanels/ShopSpacer/ShopButton" to="." method="_on_shop_button_pressed"]
-[connection signal="pressed" from="CardsUI/CardsPanel/CardsPanelsAndTools/Tools/Roll" to="." method="_on_roll_pressed"]
 [connection signal="pressed" from="CardsUI/LanesPanel/LaneButtons/TopButton" to="." method="_on_top_button_pressed"]
 [connection signal="pressed" from="CardsUI/LanesPanel/LaneButtons/MiddleButton" to="." method="_on_middle_button_pressed"]
 [connection signal="pressed" from="CardsUI/LanesPanel/LaneButtons/BottomButton" to="." method="_on_bottom_button_pressed"]
+[connection signal="pressed" from="CardsUI/CardsPanel/CardsPanelsAndTools/CardsPanels/ShopSpacer/ShopButton" to="." method="_on_shop_button_pressed"]
+[connection signal="pressed" from="CardsUI/CardsPanel/CardsPanelsAndTools/Tools/Roll" to="." method="_on_roll_pressed"]

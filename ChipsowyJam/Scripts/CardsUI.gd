@@ -17,11 +17,12 @@ signal refresh_cards
 var all_cards_array: Array
 
 @onready var shop_nodes : Array = get_tree().get_nodes_in_group("shop_zone")
-@onready var deck_nodes : Array = get_tree().get_nodes_in_group("zone")
-
-var top_lane_cards: Array
-var middle_lane_cards: Array
-var bottom_lane_cards: Array
+@onready var top_lane_nodes: Array = get_tree().get_nodes_in_group("top_zone")
+@export var top_lane_deck: Control
+@onready var middle_lane_nodes: Array = get_tree().get_nodes_in_group("middle_zone")
+@export var middle_lane_deck: Control
+@onready var bottom_lane_nodes: Array = get_tree().get_nodes_in_group("botton_zone")
+@export var bottom_lane_deck: Control
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -32,7 +33,22 @@ func _ready():
 	all_cards_array.append_array(elf_cards_array)
 	all_cards_array.shuffle()	
 	call_deferred("fill_the_shop")
-	
+	call_deferred("unlock_the_buttons")
+
+func unlock_the_buttons():
+	for node in top_lane_nodes:
+		if node.is_in_group("locked"):
+			node.get_node("UnlockButton").disabled = false
+			break
+	for node in middle_lane_nodes:
+		if node.is_in_group("locked"):
+			node.get_node("UnlockButton").disabled = false
+			break
+	for node in bottom_lane_nodes:
+		if node.is_in_group("locked"):
+			node.get_node("UnlockButton").disabled = false
+			break
+
 func fill_the_shop():
 	var index = 0
 	for node in shop_nodes:
@@ -40,7 +56,7 @@ func fill_the_shop():
 		card.add_to_group("shop_card")
 		var resource = all_cards_array.pick_random()
 		card.card_resource = resource
-		node.cards[0] = card
+		node.card = card
 		var position = node.global_position + node.pivot_offset
 		node.add_child(card)
 		card.global_position = position
@@ -51,6 +67,38 @@ func fill_the_shop():
 func _process(delta):
 	if Input.is_action_just_released("open_shop"):
 		open_ui()
+		
+	if Input.is_key_label_pressed(KEY_1):
+		lane_value = 0
+		change_lane()	
+	if Input.is_key_label_pressed(KEY_2):
+		lane_value = 1
+		change_lane()	
+	if Input.is_key_label_pressed(KEY_3):
+		lane_value = 2
+		change_lane()		
+	
+	if Input.is_action_just_pressed("shop_left"):
+		if lane_value <= 0:
+			lane_value = 2
+		else:
+			lane_value -= 1
+		change_lane()
+	if Input.is_action_just_pressed("shop_right"):
+		if lane_value >= 2:
+			lane_value = 0
+		else:
+			lane_value += 1
+		change_lane()
+		
+func change_lane():
+	match lane_value:
+		0: 
+			_on_top_button_pressed()
+		1: 
+			_on_middle_button_pressed()
+		2: 
+			_on_bottom_button_pressed()
 
 func _on_shop_button_pressed():
 	open_ui()
@@ -68,17 +116,8 @@ func open_ui():
 		ui_open = false
 
 func _on_refresh_cards():
-	#for node in deck_nodes:
-		#if !node.cards.is_empty():
-			#for card in node.cards:
-				#if card:
-					#print(node, " ", card, " ", card.current_rest_node , " ", card.lane)
-		#else:
-			#print(" ")
-	#print("\n")
-	print("top: ", top_lane_cards)
-	print("middle: ", middle_lane_cards)
-	print("bottom: ", bottom_lane_cards, "\n")
+	#INFO Debug print of cards WIP
+	pass
 
 func _on_roll_pressed():
 	var cards_to_delete = get_tree().get_nodes_in_group("shop_card")
@@ -90,44 +129,33 @@ func _on_roll_pressed():
 
 
 func _on_top_button_pressed():
-	if lane_value == 0:
-		return
 	lane_value = 0
 	top_button.button_pressed = true
 	middle_button.button_pressed = false
 	bottom_button.button_pressed = false
-	for t_card in top_lane_cards:
-		t_card.visible = true
-	for m_card in middle_lane_cards:
-		m_card.visible = false
-	for b_card in bottom_lane_cards:
-		b_card.visible = false
+	
+	top_lane_deck.visible = true
+	middle_lane_deck.visible = false
+	bottom_lane_deck.visible = false
+
 
 func _on_middle_button_pressed():
-	if lane_value == 1:
-		return
 	lane_value = 1
 	top_button.button_pressed = false
 	middle_button.button_pressed = true
 	bottom_button.button_pressed = false
-	for t_card in top_lane_cards:
-		t_card.visible = false
-	for m_card in middle_lane_cards:
-		m_card.visible = true
-	for b_card in bottom_lane_cards:
-		b_card.visible = false
+	
+	top_lane_deck.visible = false
+	middle_lane_deck.visible = true
+	bottom_lane_deck.visible = false
 
 func _on_bottom_button_pressed():
-	if lane_value == 2:
-		return
 	lane_value = 2
 	top_button.button_pressed = false
 	middle_button.button_pressed = false
 	bottom_button.button_pressed = true
-	for t_card in top_lane_cards:
-		t_card.visible = false
-	for m_card in middle_lane_cards:
-		m_card.visible = false
-	for b_card in bottom_lane_cards:
-		b_card.visible = true
+	
+	top_lane_deck.visible = false
+	middle_lane_deck.visible = false
+	bottom_lane_deck.visible = true
 	
