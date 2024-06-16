@@ -1,10 +1,12 @@
-[gd_resource type="Resource" load_steps=2 format=3 uid="uid://bris4m1i8241g"]
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://bris4m1i8241g"]
 
+[ext_resource type="Texture2D" uid="uid://di2tfg5a7sf2s" path="res://Scenes/Assets/Cards/Orcs/Orc Spearman.png" id="1_b7sti"]
 [ext_resource type="Script" path="res://Scenes/Assets/Cards/card_stats.gd" id="1_c3c88"]
 
 [resource]
 script = ExtResource("1_c3c88")
 name = "Ork Spearman"
+image = ExtResource("1_b7sti")
 race = 1
 tier = 1
 description = ""

@@ -1,12 +1,12 @@
 [gd_resource type="Resource" load_steps=3 format=3 uid="uid://duytcrafgxeb3"]
 
 [ext_resource type="Script" path="res://Scenes/Assets/Cards/card_stats.gd" id="1_liuik"]
-[ext_resource type="Texture2D" uid="uid://xtfpddj5qd3s" path="res://Textures/orc5_picture.jpg" id="1_t5ncu"]
+[ext_resource type="Texture2D" uid="uid://cv3grmp0lk130" path="res://Scenes/Assets/Cards/Orcs/Ork Łowca.png" id="1_lq18p"]
 
 [resource]
 script = ExtResource("1_liuik")
 name = "Ork Łowca"
-image = ExtResource("1_t5ncu")
+image = ExtResource("1_lq18p")
 race = 1
 tier = 0
 description = "Uga Buga"

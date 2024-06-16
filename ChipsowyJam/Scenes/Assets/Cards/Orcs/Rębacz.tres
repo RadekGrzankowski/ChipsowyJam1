@@ -1,10 +1,12 @@
-[gd_resource type="Resource" load_steps=2 format=3 uid="uid://51udocmk0141"]
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://51udocmk0141"]
 
 [ext_resource type="Script" path="res://Scenes/Assets/Cards/card_stats.gd" id="1_oo42y"]
+[ext_resource type="Texture2D" uid="uid://bsd6vn760r5qx" path="res://Scenes/Assets/Cards/Orcs/Rębacz.png" id="1_ykspe"]
 
 [resource]
 script = ExtResource("1_oo42y")
 name = "Rębacz"
+image = ExtResource("1_ykspe")
 race = 1
 tier = 1
 description = "1dmg/1sec"

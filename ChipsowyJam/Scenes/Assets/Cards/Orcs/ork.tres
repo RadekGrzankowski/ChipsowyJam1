@@ -1,12 +1,12 @@
 [gd_resource type="Resource" load_steps=3 format=3 uid="uid://c4jxg1kfqxv83"]
 
-[ext_resource type="Texture2D" uid="uid://c0ooohmhcu7ck" path="res://Textures/orc4_picture.jpg" id="1_r0y4x"]
+[ext_resource type="Texture2D" uid="uid://2mvhxy75bw7l" path="res://Scenes/Assets/Cards/Orcs/Ork.png" id="1_ns358"]
 [ext_resource type="Script" path="res://Scenes/Assets/Cards/card_stats.gd" id="2_c7ypr"]
 
 [resource]
 script = ExtResource("2_c7ypr")
 name = "Ork"
-image = ExtResource("1_r0y4x")
+image = ExtResource("1_ns358")
 race = 1
 tier = 0
 description = "Uga Buga"

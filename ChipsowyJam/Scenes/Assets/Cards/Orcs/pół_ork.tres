@@ -1,12 +1,12 @@
 [gd_resource type="Resource" load_steps=3 format=3 uid="uid://dyyyn6x6h1ypo"]
 
 [ext_resource type="Script" path="res://Scenes/Assets/Cards/card_stats.gd" id="1_j3tkc"]
-[ext_resource type="Texture2D" uid="uid://y1bj8kvqc7tk" path="res://Textures/orc3_picture.jpg" id="1_umvnj"]
+[ext_resource type="Texture2D" uid="uid://2j7ftrsxi1on" path="res://Scenes/Assets/Cards/Orcs/Pół Ork.png" id="1_ot22j"]
 
 [resource]
 script = ExtResource("1_j3tkc")
 name = "Pół Ork"
-image = ExtResource("1_umvnj")
+image = ExtResource("1_ot22j")
 race = 1
 tier = 0
 description = "Uga Buga"

@@ -1,10 +1,12 @@
-[gd_resource type="Resource" load_steps=2 format=3 uid="uid://d0nb3qmebdagp"]
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://d0nb3qmebdagp"]
 
+[ext_resource type="Texture2D" uid="uid://cdcjaa4qakm8e" path="res://Scenes/Assets/Cards/Orcs/Axe Thrower.png" id="1_f44yr"]
 [ext_resource type="Script" path="res://Scenes/Assets/Cards/card_stats.gd" id="1_jyuwa"]
 
 [resource]
 script = ExtResource("1_jyuwa")
 name = "Axe Thrower"
+image = ExtResource("1_f44yr")
 race = 1
 tier = 1
 description = "1dmg/1sec"

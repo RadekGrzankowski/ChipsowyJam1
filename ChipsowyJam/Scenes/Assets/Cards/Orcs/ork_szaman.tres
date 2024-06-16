@@ -1,12 +1,12 @@
 [gd_resource type="Resource" load_steps=3 format=3 uid="uid://c677paac1ok1r"]
 
-[ext_resource type="Texture2D" uid="uid://bvquxytjipkno" path="res://Textures/orc2_picture.jpg" id="1_ctorp"]
+[ext_resource type="Texture2D" uid="uid://dgi5joe2dt4od" path="res://Scenes/Assets/Cards/Orcs/Szaman.png" id="1_cmep8"]
 [ext_resource type="Script" path="res://Scenes/Assets/Cards/card_stats.gd" id="1_f6rah"]
 
 [resource]
 script = ExtResource("1_f6rah")
 name = "Ork Szaman"
-image = ExtResource("1_ctorp")
+image = ExtResource("1_cmep8")
 race = 1
 tier = 0
 description = "Uga Buga"
