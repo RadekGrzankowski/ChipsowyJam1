@@ -1,5 +1,6 @@
 extends "res://Scripts/mob_movement.gd"
 # Generic mobs info
+var mob_name: String
 @export var mob_health: int = 100
 @export var mob_attack: float = 15.0
 @export var mob_armor: float = 2.0
@@ -20,7 +21,8 @@ var path_curve: Curve3D
 
 func _ready():
 	super()
-	health_label.text = str(mob_health)
+	health_label.text = str(mob_name) + " " + str(mob_health) + "HP\n" + \
+	str(mob_attack) + "AD " + str(mob_armor) + "ARM"
 	if teamName == "red":
 		if path == "top":
 			Game.red_minions_top += 1
@@ -36,20 +38,21 @@ func _ready():
 		elif path == "bot":
 			Game.blue_minions_bot += 1
 
-func initialize(name: String, type: String, main_path: String, additional_dmg: int, additional_armor: int):
-	teamName = name
+func initialize(name: String, team: String, type: String, main_path: String, additional_dmg: int, additional_armor: int):
+	mob_name = name
+	teamName = team
 	minion_type = type
 	path = main_path
 	mob_attack += additional_dmg
 	mob_armor += additional_armor
 	if minion_type == "ranged":
 		path_curve = $Path3D.curve
-	if name == "red":
+	if team == "red":
 		remove_child($RootNode_Blue)
 		add_to_group("red_team")
 		$RootNode_Red.visible = true
 		$RootNode_Red.name = "RootNode"
-	elif name == "blue":
+	elif team == "blue":
 		remove_child($RootNode_Red)
 		add_to_group("blue_team")
 		$RootNode_Blue.visible = true
@@ -81,7 +84,8 @@ func take_damage(amount, attacker):
 				Game.red_gold += 5
 			queue_free()
 		else:
-			health_label.text = str(mob_health)
+			health_label.text = str(mob_name) + " " + str(mob_health) + "HP\n" + \
+	str(mob_attack) + "AD " + str(mob_armor) + "ARM"
 
 func _physics_process(delta):
 	super(delta)

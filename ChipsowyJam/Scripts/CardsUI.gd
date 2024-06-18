@@ -17,10 +17,13 @@ signal refresh_cards
 var all_cards_array: Array
 
 @onready var shop_nodes : Array = get_tree().get_nodes_in_group("shop_zone")
+
 @onready var top_lane_nodes: Array = get_tree().get_nodes_in_group("top_zone")
 @export var top_lane_deck: Control
+
 @onready var middle_lane_nodes: Array = get_tree().get_nodes_in_group("middle_zone")
 @export var middle_lane_deck: Control
+
 @onready var bottom_lane_nodes: Array = get_tree().get_nodes_in_group("botton_zone")
 @export var bottom_lane_deck: Control
 

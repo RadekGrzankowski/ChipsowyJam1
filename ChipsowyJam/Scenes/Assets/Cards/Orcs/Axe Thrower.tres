@@ -5,7 +5,7 @@
 
 [resource]
 script = ExtResource("1_jyuwa")
-name = "Axe Thrower"
+name = "Topornik"
 image = ExtResource("1_f44yr")
 race = 1
 tier = 1

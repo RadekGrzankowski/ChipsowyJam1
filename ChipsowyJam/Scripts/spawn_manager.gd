@@ -16,13 +16,27 @@ extends Node3D
 
 @onready var waveTimer = $"../WaveTimer"
 @export var waveTime: int
-@onready var mobTimer = $"../MobTimer"
+@onready var mob_blue_timer = $"../BlueMobTimer"
+@onready var mob_red_timer = $"../RedMobTimer"
 
-@export var waveMobCount: int = 6
-var currentCount: int = 0
+var current_blue_count: int = 0
+var current_red_count: int = 0
+
+var cardsUI: Node
+#amount of blue mobs per lane 
+var wave_blue_max_count: int
+var blue_top_count: int = 3
+var blue_mid_count: int = 3
+var blue_bot_count: int = 3
+#amount of red mobs per lane 
+var wave_red_max_count: int
+var red_top_count: int = 3
+var red_mid_count: int = 3
+var red_bot_count: int = 3
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	cardsUI = get_tree().get_first_node_in_group("CardsUI")
 	waveTimer.wait_time = waveTime
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -30,26 +44,52 @@ func _process(delta):
 	#print(waveTimer.time_left)
 	pass
 
-func spawn_wave():
-	waveTimer.start()
-	mobTimer.start()
+func set_values():
+	#check the value for top lane
+	var index = 0
+	for node in cardsUI.top_lane_nodes:
+		if node.is_in_group("locked"):
+			break
+		index += 1
+	blue_top_count = index
+	#check the value for mid lane
+	index = 0
+	for node in cardsUI.middle_lane_nodes:
+		if node.is_in_group("locked"):
+			break
+		index += 1
+	blue_mid_count = index
+	#check the value for bot lane
+	index = 0
+	for node in cardsUI.bottom_lane_nodes:
+		if node.is_in_group("locked"):
+			break
+		index += 1
+	blue_bot_count = index
+	#get the highest value for the wave count
+	wave_blue_max_count = max(blue_top_count, blue_mid_count, blue_bot_count)
+	wave_red_max_count = max(red_top_count, red_mid_count, red_bot_count)
 
+func spawn_wave():
+	set_values()
+	waveTimer.start()
+	mob_blue_timer.start()
+	mob_red_timer.start()
+	
 func spawn_bot(color: String, path: String, marker: Marker3D):
 	var bot: CharacterBody3D
 	if color == "red":
-		if currentCount <= 3:
-			bot = meleeDemon.instantiate()
-			bot.initialize("red", "melee", path, Game.additional_red_minions_dmg, Game.additional_red_minions_armor)
-		elif currentCount >= 4:
-			bot = rangedDemon.instantiate()
-			bot.initialize("red", "ranged", path, Game.additional_red_minions_dmg, Game.additional_red_minions_armor)
+		bot = meleeDemon.instantiate()
+		bot.initialize("Minionek", "red", "melee", path, Game.additional_red_minions_dmg, Game.additional_red_minions_armor)
+		#elif currentCount >= 4:
+			#bot = rangedDemon.instantiate()
+			#bot.initialize("red", "ranged", path, Game.additional_red_minions_dmg, Game.additional_red_minions_armor)
 	elif color == "blue":
-		if currentCount <= 3:
-			bot = meleeDemon.instantiate()
-			bot.initialize("blue", "melee", path, Game.additional_blue_minions_dmg, Game.additional_blue_minions_armor)
-		elif currentCount >= 4:
-			bot = rangedDemon.instantiate()
-			bot.initialize("blue", "ranged", path, Game.additional_blue_minions_dmg, Game.additional_blue_minions_armor)
+		bot = meleeDemon.instantiate()
+		bot.initialize("Minionek", "blue", "melee", path, Game.additional_blue_minions_dmg, Game.additional_blue_minions_armor)
+		#elif currentCount >= 4:
+			#bot = rangedDemon.instantiate()
+			#bot.initialize("blue", "ranged", path, Game.additional_blue_minions_dmg, Game.additional_blue_minions_armor)
 	var target_positions : Array
 	match path:
 		"bot":
@@ -75,22 +115,39 @@ func spawn_bot(color: String, path: String, marker: Marker3D):
 	add_child(bot)
 
 func _on_wave_timer_timeout():
-	currentCount = 0
-	mobTimer.start()
+	set_values()
+	current_blue_count = 0
+	current_red_count = 0
+	mob_blue_timer.start()
+	mob_red_timer.start()
 
 
-func _on_mob_timer_timeout():
-	currentCount = currentCount + 1
-	spawn_bot("blue", "bot", markerBotBlue)
-	spawn_bot("blue", "mid", markerMidBlue)
-	spawn_bot("blue", "top", markerTopBlue)
+func _on_blue_mob_timer_timeout():
+	if current_blue_count < blue_top_count:
+		spawn_bot("blue", "top", markerTopBlue)
+	if current_blue_count < blue_mid_count:
+		spawn_bot("blue", "mid", markerMidBlue)
+	if current_blue_count < blue_bot_count:
+		spawn_bot("blue", "bot", markerBotBlue)
+
+	current_blue_count = current_blue_count + 1
+	if current_blue_count == wave_blue_max_count:
+		mob_blue_timer.stop()
+
+func _on_red_mob_timer_timeout():
+	if current_red_count < red_top_count:
+		spawn_bot("red", "top", markerTopRed)
+	if current_red_count < red_mid_count:
+		spawn_bot("red", "mid", markerMidRed)
+	if current_red_count < red_bot_count:
+		spawn_bot("red", "bot", markerBotRed)
+		
+	current_red_count = current_red_count + 1
+	if current_red_count == wave_red_max_count:
+		mob_red_timer.stop()
 	
-	spawn_bot("red", "bot", markerBotRed)
-	spawn_bot("red", "mid", markerMidRed)
-	spawn_bot("red", "top", markerTopRed)
-	if currentCount == waveMobCount:
-		mobTimer.stop()
-
-
 func _on_start_delay_timer_timeout():
 	spawn_wave()
+
+
+

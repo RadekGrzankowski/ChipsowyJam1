@@ -527,7 +527,9 @@ text = "PLACEHOLDER"
 [node name="WaveTimer" type="Timer" parent="."]
 wait_time = 45.0
 
-[node name="MobTimer" type="Timer" parent="."]
+[node name="BlueMobTimer" type="Timer" parent="."]
+
+[node name="RedMobTimer" type="Timer" parent="."]
 
 [node name="StartDelayTimer" type="Timer" parent="."]
 wait_time = 5.0
@@ -563,5 +565,6 @@ autostart = true
 [connection signal="pressed" from="GameUIManager/HUD/UpgradeControls/TopTowerUpgrades/ArmorUpgrades/ArmorUpgrade2" to="GameUIManager" method="_on_armor_upgrade_2_pressed" binds= ["top"]]
 [connection signal="pressed" from="GameUIManager/HUD/UpgradeControls/TopTowerUpgrades/ArmorUpgrades/ArmorUpgrade1" to="GameUIManager" method="_on_armor_upgrade_1_pressed" binds= ["top"]]
 [connection signal="timeout" from="WaveTimer" to="SpawnManager" method="_on_wave_timer_timeout"]
-[connection signal="timeout" from="MobTimer" to="SpawnManager" method="_on_mob_timer_timeout"]
+[connection signal="timeout" from="BlueMobTimer" to="SpawnManager" method="_on_blue_mob_timer_timeout"]
+[connection signal="timeout" from="RedMobTimer" to="SpawnManager" method="_on_red_mob_timer_timeout"]
 [connection signal="timeout" from="StartDelayTimer" to="SpawnManager" method="_on_start_delay_timer_timeout"]
