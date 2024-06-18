@@ -1,10 +1,12 @@
-[gd_resource type="Resource" load_steps=2 format=3 uid="uid://cmmejxskmdbqg"]
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://cmmejxskmdbqg"]
 
+[ext_resource type="Texture2D" uid="uid://w625hvaq6yo8" path="res://Scenes/Assets/Cards/Undead/Zainfekowany.png" id="1_1cn8o"]
 [ext_resource type="Script" path="res://Scenes/Assets/Cards/card_stats.gd" id="1_bbv7b"]
 
 [resource]
 script = ExtResource("1_bbv7b")
 name = "Zainfekowany"
+image = ExtResource("1_1cn8o")
 race = 2
 tier = 0
 description = "Aoe 10 dmg on death"

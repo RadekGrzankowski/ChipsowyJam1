@@ -1,10 +1,12 @@
-[gd_resource type="Resource" load_steps=2 format=3 uid="uid://cblt1257e70cy"]
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://cblt1257e70cy"]
 
+[ext_resource type="Texture2D" uid="uid://c2ff4rg2xtxeb" path="res://Scenes/Assets/Cards/Undead/Ghul.png" id="1_7gydo"]
 [ext_resource type="Script" path="res://Scenes/Assets/Cards/card_stats.gd" id="1_usejh"]
 
 [resource]
 script = ExtResource("1_usejh")
 name = "Ghul"
+image = ExtResource("1_7gydo")
 race = 2
 tier = 0
 description = ""
