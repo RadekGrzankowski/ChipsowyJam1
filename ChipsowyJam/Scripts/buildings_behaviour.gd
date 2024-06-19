@@ -17,7 +17,7 @@ var spawned_projectile: Node3D
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	health_label.text = str(building_health)
+	health_label.text = str(building_health) + "HP"
 	if is_in_group("red_team"):
 		teamName = "red"
 	elif is_in_group("blue_team"):
@@ -53,7 +53,7 @@ func take_damage(amount, attacker):
 				Game.winner = "RED"
 			get_tree().change_scene_to_file("res://Scenes/Levels/end_scene.tscn")
 	else:
-		health_label.text = str(building_health)
+		health_label.text = str(building_health) + "HP"
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):

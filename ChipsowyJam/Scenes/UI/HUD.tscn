@@ -1,8 +1,7 @@
-[gd_scene load_steps=12 format=3 uid="uid://0cdht6xykwu7"]
+[gd_scene load_steps=11 format=3 uid="uid://0cdht6xykwu7"]
 
 [ext_resource type="Script" path="res://Scripts/spawn_manager.gd" id="1_bvj0y"]
-[ext_resource type="PackedScene" uid="uid://c8riyqts5q1cc" path="res://Scenes/Assets/Mobs/ranged_minion.tscn" id="3_nfw86"]
-[ext_resource type="PackedScene" uid="uid://chf01dp46evdy" path="res://Scenes/Assets/Mobs/melee_minion.tscn" id="4_qa1mu"]
+[ext_resource type="PackedScene" uid="uid://4s6e7o1jaqku" path="res://Scenes/Assets/Mobs/demon_minion.tscn" id="4_koodm"]
 [ext_resource type="Script" path="res://Scripts/GameUIManager.gd" id="4_v33no"]
 [ext_resource type="Resource" uid="uid://c4jxg1kfqxv83" path="res://Scenes/Assets/Cards/Orcs/Ork.tres" id="5_f0jaq"]
 [ext_resource type="PackedScene" uid="uid://bpcf3shjxg2ll" path="res://Scenes/Assets/Cards/card.tscn" id="5_k520t"]
@@ -18,8 +17,7 @@ font_size = 18
 
 [node name="SpawnManager" type="Node3D" parent="."]
 script = ExtResource("1_bvj0y")
-meleeDemon = ExtResource("4_qa1mu")
-rangedDemon = ExtResource("3_nfw86")
+demonScene = ExtResource("4_koodm")
 waveTime = 45
 
 [node name="GameUIManager" type="Node3D" parent="."]
@@ -532,7 +530,7 @@ wait_time = 45.0
 [node name="RedMobTimer" type="Timer" parent="."]
 
 [node name="StartDelayTimer" type="Timer" parent="."]
-wait_time = 5.0
+wait_time = 15.0
 one_shot = true
 autostart = true
 

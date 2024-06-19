@@ -16,8 +16,11 @@ enum card_tier {COMMON, RARE, EPIC, LEGENDARY}
 @export var armor: int
 @export var attack_speed: float
 
-enum mob_type {MELEE, RANGED, MAGE}
+enum mob_type {MELEE, RANGED, MAGE} #mob's class
 @export var type: mob_type
+
+enum mob_sub_type {WARRIOR, ARCHER, SUPPORT, HEALER, TANK} #mob's sub-class
+@export var sub_type: mob_sub_type
 
 func _init(p_name = "", p_image = null, p_cost = 0, p_race = 0, p_description = "", p_health = 0, 
 p_attack_damage = 0, p_armor = 0, p_attack_speed = 0.0, p_type = 0, p_tier = 0):

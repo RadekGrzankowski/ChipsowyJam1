@@ -1,7 +1,7 @@
-[gd_scene load_steps=38 format=3 uid="uid://c8riyqts5q1cc"]
+[gd_scene load_steps=38 format=3 uid="uid://4s6e7o1jaqku"]
 
-[ext_resource type="Script" path="res://Scripts/mob_behaviour.gd" id="1_0hf05"]
-[ext_resource type="PackedScene" uid="uid://bi3f26bls5dm3" path="res://Scenes/Assets/Mobs/ranged_projectile.tscn" id="2_hk7s8"]
+[ext_resource type="Script" path="res://Scripts/mob_behaviour.gd" id="1_wxusf"]
+[ext_resource type="PackedScene" uid="uid://bi3f26bls5dm3" path="res://Scenes/Assets/Mobs/ranged_projectile.tscn" id="2_r8pre"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3cth0"]
 resource_name = "Demon_Main"
@@ -4545,7 +4545,7 @@ radius = 8.0
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_2fcc8"]
 height = 0.7
-radius = 4.0
+radius = 1.5
 
 [sub_resource type="Curve3D" id="Curve3D_ti6jn"]
 _data = {
@@ -4554,13 +4554,13 @@ _data = {
 }
 point_count = 2
 
-[node name="RangedMinion" type="CharacterBody3D" node_paths=PackedStringArray("health_label", "hit_area3D")]
+[node name="Minion" type="CharacterBody3D" node_paths=PackedStringArray("health_label", "hit_area3D")]
 axis_lock_angular_x = true
 axis_lock_angular_z = true
-script = ExtResource("1_0hf05")
+script = ExtResource("1_wxusf")
 health_label = NodePath("HealthLabel")
 hit_area3D = NodePath("HitArea3D")
-projectile_arrow = ExtResource("2_hk7s8")
+projectile_arrow = ExtResource("2_r8pre")
 movement_speed = 3.5
 look_ahead = 1.5
 num_rays = 19
@@ -5430,7 +5430,7 @@ shape = SubResource("CylinderShape3D_lflvg")
 
 [node name="HitArea3D" type="Area3D" parent="."]
 
-[node name="RangedShape" type="CollisionShape3D" parent="HitArea3D"]
+[node name="CollisionShape" type="CollisionShape3D" parent="HitArea3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.55, 0)
 shape = SubResource("CylinderShape3D_2fcc8")
 

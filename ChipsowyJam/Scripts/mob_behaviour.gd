@@ -1,14 +1,15 @@
 extends "res://Scripts/mob_movement.gd"
 # Generic mobs info
 var mob_name: String
-@export var mob_health: int = 100
-@export var mob_attack: float = 15.0
-@export var mob_armor: float = 2.0
+@export var mob_health: int = 75
+@export var mob_attack: float = 5.0
+@export var mob_armor: float = 0
 @export var health_label: Label3D
 @export var hit_area3D: Area3D
 
 var teamName: String
-var minion_type: String
+enum mob_class {MELEE, RANGED, MAGE}
+var minion_class: mob_class
 var path: String
 
 var enemies_to_attack: Array[Node3D]
@@ -38,15 +39,31 @@ func _ready():
 		elif path == "bot":
 			Game.blue_minions_bot += 1
 
-func initialize(name: String, team: String, type: String, main_path: String, additional_dmg: int, additional_armor: int):
-	mob_name = name
+func initialize(card: Control, team: String, main_path: String):
+	if card != null:
+		mob_name = card.card_name
+		minion_class = card.type
+		mob_health = card.health
+		mob_attack = card.attack_damage
+		mob_armor = card.armor
+	else:
+		mob_name = "Default mob"
+		minion_class = mob_class.MELEE
 	teamName = team
-	minion_type = type
 	path = main_path
-	mob_attack += additional_dmg
-	mob_armor += additional_armor
-	if minion_type == "ranged":
+	mob_attack += Game.additional_red_minions_dmg
+	mob_armor += Game.additional_red_minions_armor
+	if minion_class == mob_class.RANGED:
 		path_curve = $Path3D.curve
+		$HitArea3D/CollisionShape.shape.set_radius(4.0)
+		$DetectionArea3D/CollisionShape3D.shape.set_radius(8.0)
+	elif minion_class == mob_class.MAGE:
+		path_curve = $Path3D.curve
+		$HitArea3D/CollisionShape.shape.set_radius(2.5)
+		$DetectionArea3D/CollisionShape3D.shape.set_radius(7.0)
+	elif minion_class == mob_class.MELEE:
+		$HitArea3D/CollisionShape.shape.set_radius(1.5)
+		$DetectionArea3D/CollisionShape3D.shape.set_radius(6.0)
 	if team == "red":
 		remove_child($RootNode_Blue)
 		add_to_group("red_team")
@@ -61,7 +78,7 @@ func initialize(name: String, team: String, type: String, main_path: String, add
 func take_damage(amount, attacker):
 	#checks if current mob is existing
 	if is_instance_valid(self):
-		mob_health -= amount - mob_armor	
+		mob_health -= abs(amount - mob_armor)
 		if mob_health <= 0:
 			attacker.change_target(self)
 			if teamName == "red":
@@ -100,7 +117,7 @@ func _process(delta):
 		if anim_player.current_animation != "CharacterArmature|Weapon":
 			anim_player.play("CharacterArmature|Weapon")
 			#spawn an arrow from mob position to enemy when the mob is ranged
-			if minion_type == "ranged" || minion_type == "mage":
+			if minion_class == mob_class.RANGED || minion_class == mob_class.MAGE:
 				spawn_projectile()
 	else:
 		if velocity.length() > 0:
@@ -173,7 +190,7 @@ func _on_area_3d_body_exited(body):
 func _on_nav_path_timer_timeout():
 	if opponent_to_attack != null:
 		#refresh the path curve to the active opponent
-		if minion_type == "ranged":
+		if minion_class == mob_class.RANGED:
 			var local_pos: Vector3 = to_local(opponent_to_attack.global_position) + Vector3(0, 1, 0)
 			# setting end point of a curve
 			path_curve.set_point_position(1, local_pos)

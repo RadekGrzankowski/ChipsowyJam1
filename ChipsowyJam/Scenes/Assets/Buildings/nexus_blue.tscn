@@ -133,3 +133,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.80891, 0)
 billboard = 1
 modulate = Color(0, 0.713726, 0.109804, 1)
 font_size = 60
+
+[node name="TimerLabel" type="Label3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.638859, 1.43014, 0.712991)
+billboard = 1
+text = "
+"
+font_size = 60

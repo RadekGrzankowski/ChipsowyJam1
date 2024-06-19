@@ -11,13 +11,14 @@ extends Node3D
 @onready var topPath: Marker3D = get_node("/root/GameNode/Terrain/TopPath")
 @onready var midPath: Marker3D = get_node("/root/GameNode/Terrain/MidPath")
 
-@export var meleeDemon : PackedScene
-@export var rangedDemon : PackedScene
+@export var demonScene: PackedScene
 
 @onready var waveTimer = $"../WaveTimer"
+@onready var startTimer = $"../StartDelayTimer"
 @export var waveTime: int
 @onready var mob_blue_timer = $"../BlueMobTimer"
 @onready var mob_red_timer = $"../RedMobTimer"
+@onready var blue_nexus_label = $"/root/GameNode/Terrain/NexusBlue/TimerLabel"
 
 var current_blue_count: int = 0
 var current_red_count: int = 0
@@ -41,8 +42,10 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	#print(waveTimer.time_left)
-	pass
+	if !waveTimer.is_stopped():
+		blue_nexus_label.set_text("Next wave in: %.fs" % waveTimer.time_left)
+	elif !startTimer.is_stopped():
+		blue_nexus_label.set_text("Next wave in: %.fs" % startTimer.time_left)
 
 func set_values():
 	#check the value for top lane
@@ -77,36 +80,35 @@ func spawn_wave():
 	mob_red_timer.start()
 	
 func spawn_bot(color: String, path: String, marker: Marker3D):
-	var bot: CharacterBody3D
-	if color == "red":
-		bot = meleeDemon.instantiate()
-		bot.initialize("Minionek", "red", "melee", path, Game.additional_red_minions_dmg, Game.additional_red_minions_armor)
-		#elif currentCount >= 4:
-			#bot = rangedDemon.instantiate()
-			#bot.initialize("red", "ranged", path, Game.additional_red_minions_dmg, Game.additional_red_minions_armor)
-	elif color == "blue":
-		bot = meleeDemon.instantiate()
-		bot.initialize("Minionek", "blue", "melee", path, Game.additional_blue_minions_dmg, Game.additional_blue_minions_armor)
-		#elif currentCount >= 4:
-			#bot = rangedDemon.instantiate()
-			#bot.initialize("blue", "ranged", path, Game.additional_blue_minions_dmg, Game.additional_blue_minions_armor)
 	var target_positions : Array
+	var bot_card: Control
 	match path:
 		"bot":
 			if color == "red":
 				target_positions = [botPath.position, markerBotBlue.position]
 			elif color == "blue":
+				bot_card = cardsUI.bottom_lane_nodes[current_blue_count].card
 				target_positions = [botPath.position, markerBotRed.position]
 		"mid":
 			if color == "red":
 				target_positions = [midPath.position, markerMidBlue.position]
 			elif color == "blue":
+				bot_card = cardsUI.middle_lane_nodes[current_blue_count].card
 				target_positions = [midPath.position, markerMidRed.position]
 		"top":
 			if color == "red":
 				target_positions = [topPath.position, markerTopBlue.position]
 			elif color == "blue":
+				bot_card = cardsUI.top_lane_nodes[current_blue_count].card
 				target_positions = [topPath.position, markerTopRed.position]
+		
+	var bot: CharacterBody3D
+	if color == "red":
+		bot = demonScene.instantiate()
+		bot.initialize(null, "red", path)
+	elif color == "blue":
+		bot = demonScene.instantiate()
+		bot.initialize(bot_card, "blue", path)
 		
 	bot.position = marker.position
 	bot.rotation = marker.rotation
