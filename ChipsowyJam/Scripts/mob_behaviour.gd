@@ -2,8 +2,8 @@ extends "res://Scripts/mob_movement.gd"
 # Generic mobs info
 var mob_name: String
 @export var mob_health: int = 75
-@export var mob_attack: float = 50.0
-@export var mob_armor: float = 40
+@export var mob_attack: float = 10.0
+@export var mob_armor: int = 10
 @export var health_label: Label3D
 @export var hit_area3D: Area3D
 
