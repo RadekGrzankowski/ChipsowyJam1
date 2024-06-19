@@ -2,8 +2,8 @@ extends "res://Scripts/mob_movement.gd"
 # Generic mobs info
 var mob_name: String
 @export var mob_health: int = 75
-@export var mob_attack: float = 5.0
-@export var mob_armor: float = 0
+@export var mob_attack: float = 50.0
+@export var mob_armor: float = 40
 @export var health_label: Label3D
 @export var hit_area3D: Area3D
 
@@ -15,6 +15,10 @@ var path: String
 var enemies_to_attack: Array[Node3D]
 var detected_enemies_array: Array[Node3D]
 var opponent_to_attack: Node3D
+
+# Armor related variables
+var armor_divide: float = 100
+var damage_reduction: float = 0
 
 # Ranged units variables
 @export var projectile_arrow: PackedScene
@@ -78,7 +82,7 @@ func initialize(card: Control, team: String, main_path: String):
 func take_damage(amount, attacker):
 	#checks if current mob is existing
 	if is_instance_valid(self):
-		mob_health -= abs(amount - mob_armor)
+		mob_health -= int(amount * get_reduction())
 		if mob_health <= 0:
 			attacker.change_target(self)
 			if teamName == "red":
@@ -103,6 +107,21 @@ func take_damage(amount, attacker):
 		else:
 			health_label.text = str(mob_name) + " " + str(mob_health) + "HP\n" + \
 	str(mob_attack) + "AD " + str(mob_armor) + "ARM"
+	
+func get_reduction():
+	armor_divide = 100
+	if mob_armor == 0:
+		return 1
+	elif mob_armor <= 10:
+		armor_divide *= 0.6
+	elif mob_armor <= 20:
+		armor_divide *= 0.5
+	elif mob_armor <= 30:
+		armor_divide *= 0.4
+	elif mob_armor > 30:
+		armor_divide *= 0.3
+	damage_reduction = armor_divide / (armor_divide + mob_armor)
+	return damage_reduction
 
 func _physics_process(delta):
 	super(delta)
