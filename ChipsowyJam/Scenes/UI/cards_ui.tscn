@@ -1,25 +1,14 @@
-[gd_scene load_steps=13 format=3 uid="uid://drr8l01a1ia4i"]
+[gd_scene load_steps=5 format=3 uid="uid://drr8l01a1ia4i"]
 
 [ext_resource type="Script" path="res://Scripts/CardsUI.gd" id="1_lbyja"]
-[ext_resource type="Resource" uid="uid://c4jxg1kfqxv83" path="res://Scenes/Assets/Cards/Orcs/Ork.tres" id="2_5vv4p"]
 [ext_resource type="PackedScene" uid="uid://bpcf3shjxg2ll" path="res://Scenes/Assets/Cards/card.tscn" id="2_ju84m"]
-[ext_resource type="Resource" uid="uid://c677paac1ok1r" path="res://Scenes/Assets/Cards/Orcs/Ork_szaman.tres" id="3_jupwg"]
-[ext_resource type="Resource" uid="uid://duytcrafgxeb3" path="res://Scenes/Assets/Cards/Orcs/Ork_łowca.tres" id="4_d48qi"]
-[ext_resource type="Resource" uid="uid://dyyyn6x6h1ypo" path="res://Scenes/Assets/Cards/Orcs/Pół_ork.tres" id="5_cqcik"]
-[ext_resource type="Resource" uid="uid://cghb5gashwsrb" path="res://Scenes/Assets/Cards/Orcs/wojownik.tres" id="6_csvxf"]
 [ext_resource type="PackedScene" uid="uid://bln5nembvaqdw" path="res://Scenes/Assets/Cards/card_zone.tscn" id="8_agvxe"]
-[ext_resource type="Resource" uid="uid://ck1jo5iaygoc2" path="res://Scenes/Assets/Cards/Humans/rycerz.tres" id="8_no8tg"]
-[ext_resource type="Resource" uid="uid://bss0s5hx6l8x4" path="res://Scenes/Assets/Cards/Humans/chlop.tres" id="9_du0qi"]
-[ext_resource type="Resource" uid="uid://cblt1257e70cy" path="res://Scenes/Assets/Cards/Undead/ghul.tres" id="10_n37tu"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_mtnm0"]
 
 [node name="CardsUI" type="CanvasLayer" node_paths=PackedStringArray("top_lane_deck", "middle_lane_deck", "bottom_lane_deck") groups=["CardsUI"]]
 script = ExtResource("1_lbyja")
 card_scene = ExtResource("2_ju84m")
-orc_cards_array = [ExtResource("2_5vv4p"), ExtResource("3_jupwg"), ExtResource("4_d48qi"), ExtResource("5_cqcik"), ExtResource("6_csvxf")]
-human_cards_array = [ExtResource("8_no8tg"), ExtResource("9_du0qi")]
-undead_cards_array = [ExtResource("10_n37tu")]
 top_lane_deck = NodePath("CardsUI/CardsPanel/CardsPanelsAndTools/CardsPanels/Deck/DeckCardsTop")
 middle_lane_deck = NodePath("CardsUI/CardsPanel/CardsPanelsAndTools/CardsPanels/Deck/DeckCardsMiddle")
 bottom_lane_deck = NodePath("CardsUI/CardsPanel/CardsPanelsAndTools/CardsPanels/Deck/DeckCardsBottom")

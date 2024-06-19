@@ -1,0 +1,20 @@
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://272ecggr0rhq"]
+
+[ext_resource type="Script" path="res://Scenes/Assets/Cards/card_stats.gd" id="1_mubjw"]
+[ext_resource type="Texture2D" uid="uid://hff111i0trui" path="res://Scenes/Assets/Cards/_Undead/Zombie.png" id="1_qbphe"]
+
+[resource]
+script = ExtResource("1_mubjw")
+name = "Zombie"
+image = ExtResource("1_qbphe")
+race = 5
+tier = 1
+description = "10 aoe dmg on death"
+cost = 30
+health = 400
+attack_damage = 20
+armor = 10
+attack_speed = 0.7
+attack_range = 2.0
+type = 0
+sub_type = 0

@@ -1,0 +1,20 @@
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://c4h2vuckmbckm"]
+
+[ext_resource type="Texture2D" uid="uid://dnea81jrw4kan" path="res://Scenes/Assets/Cards/_Undead/Szkielet.png" id="1_x8vo2"]
+[ext_resource type="Script" path="res://Scenes/Assets/Cards/card_stats.gd" id="1_ykwi7"]
+
+[resource]
+script = ExtResource("1_ykwi7")
+name = "Szkielet"
+image = ExtResource("1_x8vo2")
+race = 5
+tier = 1
+description = ""
+cost = 25
+health = 200
+attack_damage = 20
+armor = 15
+attack_speed = 1.0
+attack_range = 2.0
+type = 0
+sub_type = 0

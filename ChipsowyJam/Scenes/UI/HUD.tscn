@@ -1,14 +1,8 @@
-[gd_scene load_steps=11 format=3 uid="uid://0cdht6xykwu7"]
+[gd_scene load_steps=5 format=3 uid="uid://0cdht6xykwu7"]
 
 [ext_resource type="Script" path="res://Scripts/spawn_manager.gd" id="1_bvj0y"]
 [ext_resource type="PackedScene" uid="uid://4s6e7o1jaqku" path="res://Scenes/Assets/Mobs/demon_minion.tscn" id="4_koodm"]
 [ext_resource type="Script" path="res://Scripts/GameUIManager.gd" id="4_v33no"]
-[ext_resource type="Resource" uid="uid://c4jxg1kfqxv83" path="res://Scenes/Assets/Cards/Orcs/Ork.tres" id="5_f0jaq"]
-[ext_resource type="PackedScene" uid="uid://bpcf3shjxg2ll" path="res://Scenes/Assets/Cards/card.tscn" id="5_k520t"]
-[ext_resource type="Resource" uid="uid://c677paac1ok1r" path="res://Scenes/Assets/Cards/Orcs/Ork_szaman.tres" id="6_7bnmd"]
-[ext_resource type="Resource" uid="uid://dyyyn6x6h1ypo" path="res://Scenes/Assets/Cards/Orcs/Pół_ork.tres" id="6_xm824"]
-[ext_resource type="Resource" uid="uid://duytcrafgxeb3" path="res://Scenes/Assets/Cards/Orcs/Ork_łowca.tres" id="7_7h2cq"]
-[ext_resource type="Resource" uid="uid://cghb5gashwsrb" path="res://Scenes/Assets/Cards/Orcs/wojownik.tres" id="9_sx7ig"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_tnijv"]
 font_size = 18
@@ -22,8 +16,6 @@ waveTime = 45
 
 [node name="GameUIManager" type="Node3D" parent="."]
 script = ExtResource("4_v33no")
-orc_cards_array = [ExtResource("5_f0jaq"), ExtResource("6_7bnmd"), ExtResource("7_7h2cq"), ExtResource("6_xm824"), ExtResource("9_sx7ig")]
-card_scene = ExtResource("5_k520t")
 
 [node name="HUD" type="Node2D" parent="GameUIManager"]
 

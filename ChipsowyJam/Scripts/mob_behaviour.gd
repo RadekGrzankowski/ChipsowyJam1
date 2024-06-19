@@ -2,8 +2,8 @@ extends "res://Scripts/mob_movement.gd"
 # Generic mobs info
 var mob_name: String
 @export var mob_health: int = 75
-@export var mob_attack: float = 10.0
-@export var mob_armor: int = 10
+@export var mob_attack: float = 5.0
+@export var mob_armor: int = 5.0
 @export var health_label: Label3D
 @export var hit_area3D: Area3D
 
@@ -15,10 +15,6 @@ var path: String
 var enemies_to_attack: Array[Node3D]
 var detected_enemies_array: Array[Node3D]
 var opponent_to_attack: Node3D
-
-# Armor related variables
-var armor_divide: float = 100
-var damage_reduction: float = 0
 
 # Ranged units variables
 @export var projectile_arrow: PackedScene
@@ -50,23 +46,22 @@ func initialize(card: Control, team: String, main_path: String):
 		mob_health = card.health
 		mob_attack = card.attack_damage
 		mob_armor = card.armor
+		$HitArea3D/CollisionShape.shape.set_radius(card.attack_range)
 	else:
 		mob_name = "Default mob"
 		minion_class = mob_class.MELEE
+		$HitArea3D/CollisionShape.shape.set_radius(1.5)
 	teamName = team
 	path = main_path
 	mob_attack += Game.additional_red_minions_dmg
 	mob_armor += Game.additional_red_minions_armor
 	if minion_class == mob_class.RANGED:
 		path_curve = $Path3D.curve
-		$HitArea3D/CollisionShape.shape.set_radius(4.0)
 		$DetectionArea3D/CollisionShape3D.shape.set_radius(8.0)
 	elif minion_class == mob_class.MAGE:
 		path_curve = $Path3D.curve
-		$HitArea3D/CollisionShape.shape.set_radius(2.5)
 		$DetectionArea3D/CollisionShape3D.shape.set_radius(7.0)
 	elif minion_class == mob_class.MELEE:
-		$HitArea3D/CollisionShape.shape.set_radius(1.5)
 		$DetectionArea3D/CollisionShape3D.shape.set_radius(6.0)
 	if team == "red":
 		remove_child($RootNode_Blue)
@@ -106,10 +101,10 @@ func take_damage(amount, attacker):
 			queue_free()
 		else:
 			health_label.text = str(mob_name) + " " + str(mob_health) + "HP\n" + \
-	str(mob_attack) + "AD " + str(mob_armor) + "ARM"
+			str(mob_attack) + "AD " + str(mob_armor) + "ARM"
 	
 func get_reduction():
-	armor_divide = 100
+	var armor_divide = 100
 	if mob_armor == 0:
 		return 1
 	elif mob_armor <= 10:
@@ -120,7 +115,7 @@ func get_reduction():
 		armor_divide *= 0.4
 	elif mob_armor > 30:
 		armor_divide *= 0.3
-	damage_reduction = armor_divide / (armor_divide + mob_armor)
+	var damage_reduction = armor_divide / (armor_divide + mob_armor)
 	return damage_reduction
 
 func _physics_process(delta):

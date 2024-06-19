@@ -1,0 +1,18 @@
+[gd_resource type="Resource" load_steps=2 format=3 uid="uid://d2kp4sn8detg8"]
+
+[ext_resource type="Script" path="res://Scenes/Assets/Cards/card_stats.gd" id="1_1s60b"]
+
+[resource]
+script = ExtResource("1_1s60b")
+name = "Giermek Paladyna"
+race = 0
+tier = 1
+description = "-1 arm on Hit"
+cost = 25
+health = 225
+attack_damage = 15
+armor = 25
+attack_speed = 0.7
+attack_range = 2.0
+type = 0
+sub_type = 0

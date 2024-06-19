@@ -9,11 +9,19 @@ var ui_open: bool = false
 
 signal refresh_cards
 
+#DIFFERENT RACES: 
+#HUMAN_KINGDOM, OUTLAWS, MOUNTAIN_CLAN, FOREST_ORCS, 
+#BLOOD_BROTHERHOOD, UNDEAD_PACT, MOON_ELVES, SUN_ELVES, BEAST
 @export var card_scene: PackedScene
-@export var orc_cards_array: Array
-@export var human_cards_array: Array
-@export var undead_cards_array: Array
-@export var elf_cards_array: Array
+@export var human_kingdom_cards_array: Array
+@export var outlaws_cards_array: Array
+@export var mountain_clan_cards_array: Array
+@export var forest_orcs_cards_array: Array
+@export var blood_brotherhood_cards_array: Array
+@export var undead_pact_cards_array: Array
+@export var moon_elves_cards_array: Array
+@export var sun_elves_cards_array: Array
+@export var beast_cards_array: Array
 var all_cards_array: Array
 
 @onready var shop_nodes : Array = get_tree().get_nodes_in_group("shop_zone")
@@ -30,12 +38,18 @@ var all_cards_array: Array
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	top_button.button_pressed = true
-	all_cards_array.append_array(orc_cards_array)
-	all_cards_array.append_array(human_cards_array)
-	all_cards_array.append_array(undead_cards_array)
-	all_cards_array.append_array(elf_cards_array)
-	all_cards_array.shuffle()	
-	call_deferred("fill_the_shop")
+	all_cards_array.append_array(human_kingdom_cards_array)
+	all_cards_array.append_array(outlaws_cards_array)
+	all_cards_array.append_array(mountain_clan_cards_array)
+	all_cards_array.append_array(forest_orcs_cards_array)
+	all_cards_array.append_array(blood_brotherhood_cards_array)
+	all_cards_array.append_array(undead_pact_cards_array)
+	all_cards_array.append_array(moon_elves_cards_array)
+	all_cards_array.append_array(sun_elves_cards_array)
+	all_cards_array.append_array(beast_cards_array)
+	all_cards_array.shuffle()
+	if !all_cards_array.is_empty():
+		call_deferred("fill_the_shop")
 	call_deferred("unlock_the_buttons")
 
 func unlock_the_buttons():
@@ -128,7 +142,8 @@ func _on_roll_pressed():
 		Game.blue_gold -= 10
 		for card in cards_to_delete:
 			card.queue_free()
-		fill_the_shop()
+		if !all_cards_array.is_empty():
+			fill_the_shop()
 
 
 func _on_top_button_pressed():

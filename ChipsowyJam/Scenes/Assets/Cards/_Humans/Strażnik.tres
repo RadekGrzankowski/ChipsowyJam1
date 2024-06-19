@@ -1,0 +1,18 @@
+[gd_resource type="Resource" load_steps=2 format=3 uid="uid://cfagq68ltyl3e"]
+
+[ext_resource type="Script" path="res://Scenes/Assets/Cards/card_stats.gd" id="1_x2jmh"]
+
+[resource]
+script = ExtResource("1_x2jmh")
+name = "Strażnik"
+race = 0
+tier = 1
+description = ""
+cost = 30
+health = 400
+attack_damage = 13
+armor = 40
+attack_speed = 0.65
+attack_range = 2.0
+type = 0
+sub_type = 0

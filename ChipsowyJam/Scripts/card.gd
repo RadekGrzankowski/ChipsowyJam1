@@ -24,13 +24,17 @@ var health: int
 var attack_damage: int
 var armor: int
 var attack_speed: float
+var attack_range: float
 var cost: int
 
-enum mob_race {HUMAN, ORC, UNDEAD, ELVES}
+enum mob_race {HUMAN_KINGDOM, OUTLAWS, MOUNTAIN_CLAN, FOREST_ORCS, BLOOD_BROTHERHOOD, UNDEAD_PACT, MOON_ELVES, SUN_ELVES, BEAST}
 var race: mob_race
 
 enum mob_type {MELEE, RANGED, MAGE}
 var type: mob_type
+
+enum mob_sub_type {WARRIOR, ARCHER, HEALER, TANK, CASTER, AOE, ASSASSIN, ENCHANTER} #mob's sub-class
+var sub_type: mob_sub_type
 
 enum card_tier {COMMON, RARE, EPIC, LEGENDARY}
 var tier: card_tier
@@ -65,9 +69,11 @@ func set_variables():
 	attack_damage = card_resource.attack_damage
 	armor = card_resource.armor
 	attack_speed = card_resource.attack_speed
+	attack_range = card_resource.attack_range
 	cost = card_resource.cost
 	race = card_resource.race
 	type = card_resource.type
+	sub_type = card_resource.sub_type
 	tier = card_resource.tier
 
 func update_card():

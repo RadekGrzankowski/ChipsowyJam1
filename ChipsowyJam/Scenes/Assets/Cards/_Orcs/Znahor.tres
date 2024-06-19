@@ -1,0 +1,20 @@
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://cyom5wo61410d"]
+
+[ext_resource type="Texture2D" uid="uid://blg5wiyg72iup" path="res://Scenes/Assets/Cards/_Orcs/Znahor.png" id="1_ie4a0"]
+[ext_resource type="Script" path="res://Scenes/Assets/Cards/card_stats.gd" id="1_vw62f"]
+
+[resource]
+script = ExtResource("1_vw62f")
+name = "Znahor"
+image = ExtResource("1_ie4a0")
+race = 2
+tier = 1
+description = "AOE HEAL"
+cost = 30
+health = 150
+attack_damage = 10
+armor = 5
+attack_speed = 0.9
+attack_range = 2.0
+type = 2
+sub_type = 0

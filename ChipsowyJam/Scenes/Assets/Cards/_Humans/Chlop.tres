@@ -1,0 +1,18 @@
+[gd_resource type="Resource" load_steps=2 format=3 uid="uid://bss0s5hx6l8x4"]
+
+[ext_resource type="Script" path="res://Scenes/Assets/Cards/card_stats.gd" id="1_vyqhi"]
+
+[resource]
+script = ExtResource("1_vyqhi")
+name = "Chłop"
+race = 0
+tier = 0
+description = ""
+cost = 10
+health = 80
+attack_damage = 12
+armor = 5
+attack_speed = 1.0
+attack_range = 2.0
+type = 0
+sub_type = 0

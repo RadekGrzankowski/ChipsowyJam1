@@ -1,0 +1,20 @@
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://b5pknkd64twe"]
+
+[ext_resource type="Texture2D" uid="uid://c54i4o0dbf6ut" path="res://Scenes/Assets/Cards/_Undead/Abominacja.png" id="1_jvpnd"]
+[ext_resource type="Script" path="res://Scenes/Assets/Cards/card_stats.gd" id="1_xblkf"]
+
+[resource]
+script = ExtResource("1_xblkf")
+name = "Abominacja"
+image = ExtResource("1_jvpnd")
+race = 5
+tier = 1
+description = "25 dmg on death"
+cost = 25
+health = 200
+attack_damage = 10
+armor = 40
+attack_speed = 0.8
+attack_range = 2.0
+type = 0
+sub_type = 0

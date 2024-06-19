@@ -1,0 +1,18 @@
+[gd_resource type="Resource" load_steps=2 format=3 uid="uid://cfclpgfblhycb"]
+
+[ext_resource type="Script" path="res://Scenes/Assets/Cards/card_stats.gd" id="1_thd1n"]
+
+[resource]
+script = ExtResource("1_thd1n")
+name = "Kusznik"
+race = 0
+tier = 1
+description = ""
+cost = 25
+health = 150
+attack_damage = 30
+armor = 10
+attack_speed = 1.0
+attack_range = 2.0
+type = 1
+sub_type = 0

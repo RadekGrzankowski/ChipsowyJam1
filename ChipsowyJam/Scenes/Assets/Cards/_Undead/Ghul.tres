@@ -1,0 +1,20 @@
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://bch1311l7suqw"]
+
+[ext_resource type="Texture2D" uid="uid://c2ff4rg2xtxeb" path="res://Scenes/Assets/Cards/_Undead/Ghul.png" id="1_7gydo"]
+[ext_resource type="Script" path="res://Scenes/Assets/Cards/card_stats.gd" id="1_usejh"]
+
+[resource]
+script = ExtResource("1_usejh")
+name = "Ghul"
+image = ExtResource("1_7gydo")
+race = 5
+tier = 0
+description = ""
+cost = 10
+health = 100
+attack_damage = 10
+armor = 5
+attack_speed = 1.0
+attack_range = 2.0
+type = 0
+sub_type = 0

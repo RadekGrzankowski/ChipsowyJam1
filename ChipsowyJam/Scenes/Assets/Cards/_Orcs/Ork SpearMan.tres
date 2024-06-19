@@ -1,0 +1,20 @@
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://bris4m1i8241g"]
+
+[ext_resource type="Texture2D" uid="uid://di2tfg5a7sf2s" path="res://Scenes/Assets/Cards/_Orcs/Orc Spearman.png" id="1_b7sti"]
+[ext_resource type="Script" path="res://Scenes/Assets/Cards/card_stats.gd" id="1_c3c88"]
+
+[resource]
+script = ExtResource("1_c3c88")
+name = "Włócznik"
+image = ExtResource("1_b7sti")
+race = 2
+tier = 1
+description = ""
+cost = 25
+health = 150
+attack_damage = 40
+armor = 5
+attack_speed = 0.5
+attack_range = 2.0
+type = 1
+sub_type = 0

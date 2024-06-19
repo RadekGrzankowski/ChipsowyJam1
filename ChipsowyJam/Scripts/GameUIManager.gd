@@ -17,9 +17,6 @@ var actual_minions_bot: String
 @onready var shop_ui_anim: AnimationPlayer = $HUD/CanvasLayer/UI/AnimationPlayer
 @onready var shop_ui: Control = $HUD/CanvasLayer/UI
 
-@export var orc_cards_array: Array
-@export var card_scene: PackedScene
-
 func _process(delta):
 	
 	actual_gold_stats = format_gold_stats % [Game.red_gold, Game.blue_gold]
