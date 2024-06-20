@@ -39,6 +39,7 @@ var red_bot_count: int = 3
 func _ready():
 	cardsUI = get_tree().get_first_node_in_group("CardsUI")
 	waveTimer.wait_time = waveTime
+	spawn_wave()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):

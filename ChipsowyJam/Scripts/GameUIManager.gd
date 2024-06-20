@@ -9,6 +9,11 @@ var actual_minions_top: String
 var actual_minions_mid: String
 var actual_minions_bot: String
 
+@onready var towers_upgrade_ui: Panel = $HUD/UpgradesUI/TowersPanel
+@onready var barracks_upgrade_ui: Panel = $HUD/UpgradesUI/BarracksPanel
+@onready var nexus_upgrade_ui: Panel = $HUD/UpgradesUI/NexusPanel
+@onready var upgrades_ui: CanvasLayer = $HUD/UpgradesUI
+
 @onready var gold_label: Label = $HUD/Labels/GoldLabel
 @onready var top_minions_label: Label = $HUD/Labels/TopMinions
 @onready var mid_minions_label: Label = $HUD/Labels/MidMinions
@@ -18,6 +23,12 @@ var actual_minions_bot: String
 @onready var shop_ui: Control = $HUD/CanvasLayer/UI
 
 func _process(delta):
+	
+	if Input.is_action_just_pressed("open_upgrades"):
+		if upgrades_ui.visible == false:
+			upgrades_ui.visible = true
+		else:
+			upgrades_ui.visible = false
 	
 	actual_gold_stats = format_gold_stats % [Game.red_gold, Game.blue_gold]
 	actual_minions_top = format_minions_top % [Game.red_minions_top, Game.blue_minions_top]
@@ -91,3 +102,24 @@ func _on_armor_upgrade_3_pressed(lane: String):
 
 func _on_armor_upgrade_4_pressed(lane: String):
 	_upgrade_tower(lane, "armor", "Armor", 3, 4)
+
+
+func _on_towers_button_pressed():
+	closeTabs()
+	towers_upgrade_ui.visible = true
+
+func _on_barracks_button_pressed():
+	closeTabs()
+	barracks_upgrade_ui.visible = true
+
+func _on_nexus_button_pressed():
+	closeTabs()
+	nexus_upgrade_ui.visible = true
+
+func closeTabs():
+	nexus_upgrade_ui.visible = false
+	barracks_upgrade_ui.visible = false
+	towers_upgrade_ui.visible = false
+
+func _on_exit_button_pressed():
+	upgrades_ui.visible = false
