@@ -94,19 +94,6 @@ func _process(delta):
 	if Input.is_key_label_pressed(KEY_3):
 		lane_value = 2
 		change_lane()		
-	
-	if Input.is_action_just_pressed("shop_left"):
-		if lane_value <= 0:
-			lane_value = 2
-		else:
-			lane_value -= 1
-		change_lane()
-	if Input.is_action_just_pressed("shop_right"):
-		if lane_value >= 2:
-			lane_value = 0
-		else:
-			lane_value += 1
-		change_lane()
 		
 func change_lane():
 	match lane_value:

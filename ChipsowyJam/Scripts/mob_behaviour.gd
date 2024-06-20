@@ -6,6 +6,7 @@ var mob_name: String
 @export var mob_armor: int = 5.0
 @export var health_label: Label3D
 @export var hit_area3D: Area3D
+@export var attack_speed: float = 1.0
 
 var teamName: String
 enum mob_class {MELEE, RANGED, MAGE}
@@ -15,9 +16,6 @@ var path: String
 var enemies_to_attack: Array[Node3D]
 var detected_enemies_array: Array[Node3D]
 var opponent_to_attack: Node3D
-
-# Attack speed value. Default = 1.0
-var attack_speed: float = 5.0
 
 # Ranged units variables
 @export var projectile_arrow: PackedScene
@@ -49,6 +47,7 @@ func initialize(card: Control, team: String, main_path: String):
 		mob_health = card.health
 		mob_attack = card.attack_damage
 		mob_armor = card.armor
+		attack_speed = card.attack_speed
 		$HitArea3D/CollisionShape.shape.set_radius(card.attack_range)
 	else:
 		mob_name = "Default mob"

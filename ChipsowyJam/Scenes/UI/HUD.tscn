@@ -62,65 +62,6 @@ text = "bot minions
 bot minions"
 label_settings = SubResource("LabelSettings_tnijv")
 
-[node name="Buttons" type="CanvasLayer" parent="GameUIManager/HUD"]
-
-[node name="Attack5" type="Button" parent="GameUIManager/HUD/Buttons"]
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -144.0
-offset_top = -398.0
-offset_bottom = -308.0
-grow_horizontal = 0
-grow_vertical = 0
-text = "Attack DMG + 5
-Cost: 80Gold"
-
-[node name="Attack10" type="Button" parent="GameUIManager/HUD/Buttons"]
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -144.0
-offset_top = -298.0
-offset_bottom = -208.0
-grow_horizontal = 0
-grow_vertical = 0
-size_flags_horizontal = 8
-text = "Attack DMG + 10
-Cost: 110Gold"
-
-[node name="Armor1" type="Button" parent="GameUIManager/HUD/Buttons"]
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -144.0
-offset_top = -198.0
-offset_bottom = -108.0
-grow_horizontal = 0
-grow_vertical = 0
-text = "Armor + 1
-Cost: 50Gold"
-
-[node name="Armor3" type="Button" parent="GameUIManager/HUD/Buttons"]
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -144.0
-offset_top = -98.0
-offset_bottom = -8.0
-grow_horizontal = 0
-grow_vertical = 0
-text = "Armor + 3
-Cost: 90Gold"
-
 [node name="UpgradeControls" type="CanvasLayer" parent="GameUIManager/HUD"]
 visible = false
 
@@ -395,6 +336,7 @@ offset_bottom = 288.0
 text = "PLACEHOLDER"
 
 [node name="TopTowerUpgrades" type="Control" parent="GameUIManager/HUD/UpgradeControls"]
+visible = false
 custom_minimum_size = Vector2(384, 296)
 layout_mode = 3
 anchors_preset = 2
@@ -523,6 +465,7 @@ text = "PLACEHOLDER"
 
 [node name="UpgradesUI" type="CanvasLayer" parent="GameUIManager/HUD"]
 layer = 2
+visible = false
 offset = Vector2(150, 20)
 scale = Vector2(0.8, 0.8)
 transform = Transform2D(0.8, 0, 0, 0.8, 150, 20)
@@ -551,6 +494,14 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 30
 text = "Q"
 
+[node name="Panel" type="Panel" parent="GameUIManager/HUD/UpgradesUI/UpperPanel/HBoxContainer/QLabel"]
+show_behind_parent = true
+layout_mode = 0
+offset_left = -6.74999
+offset_top = 3.75
+offset_right = 33.25
+offset_bottom = 43.75
+
 [node name="Spacer" type="Control" parent="GameUIManager/HUD/UpgradesUI/UpperPanel/HBoxContainer"]
 custom_minimum_size = Vector2(20, 0)
 layout_mode = 2
@@ -559,6 +510,8 @@ layout_mode = 2
 custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
 theme_override_font_sizes/font_size = 50
+toggle_mode = true
+button_pressed = true
 text = "Towers"
 
 [node name="Spacer2" type="Control" parent="GameUIManager/HUD/UpgradesUI/UpperPanel/HBoxContainer"]
@@ -569,6 +522,7 @@ layout_mode = 2
 custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
 theme_override_font_sizes/font_size = 50
+toggle_mode = true
 text = "Barracks"
 
 [node name="Spacer3" type="Control" parent="GameUIManager/HUD/UpgradesUI/UpperPanel/HBoxContainer"]
@@ -579,6 +533,7 @@ layout_mode = 2
 custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
 theme_override_font_sizes/font_size = 50
+toggle_mode = true
 text = "Nexus"
 
 [node name="Spacer4" type="Control" parent="GameUIManager/HUD/UpgradesUI/UpperPanel/HBoxContainer"]
@@ -589,6 +544,14 @@ layout_mode = 2
 layout_mode = 2
 theme_override_font_sizes/font_size = 30
 text = "E"
+
+[node name="Panel" type="Panel" parent="GameUIManager/HUD/UpgradesUI/UpperPanel/HBoxContainer/ELabel"]
+show_behind_parent = true
+layout_mode = 0
+offset_left = -10.2499
+offset_top = 2.5
+offset_right = 29.7501
+offset_bottom = 42.5
 
 [node name="TowersPanel" type="Panel" parent="GameUIManager/HUD/UpgradesUI"]
 offset_left = 192.0
@@ -933,6 +896,7 @@ text = "Attack Damage + 5
 200G"
 
 [node name="Line" type="Panel" parent="GameUIManager/HUD/UpgradesUI/TowersPanel"]
+layout_mode = 0
 offset_left = 512.0
 offset_top = 8.0
 offset_right = 512.0
@@ -941,6 +905,7 @@ theme_override_styles/panel = SubResource("StyleBoxLine_hhv55")
 
 [node name="Line2" type="Panel" parent="GameUIManager/HUD/UpgradesUI/TowersPanel"]
 custom_minimum_size = Vector2(2, 0)
+layout_mode = 0
 offset_left = 1024.0
 offset_top = 8.0
 offset_right = 1026.0
@@ -1291,6 +1256,7 @@ text = "Attack Damage + 5
 200G"
 
 [node name="Line" type="Panel" parent="GameUIManager/HUD/UpgradesUI/BarracksPanel"]
+layout_mode = 0
 offset_left = 512.0
 offset_top = 8.0
 offset_right = 512.0
@@ -1299,6 +1265,7 @@ theme_override_styles/panel = SubResource("StyleBoxLine_hhv55")
 
 [node name="Line2" type="Panel" parent="GameUIManager/HUD/UpgradesUI/BarracksPanel"]
 custom_minimum_size = Vector2(2, 0)
+layout_mode = 0
 offset_left = 1024.0
 offset_top = 8.0
 offset_right = 1026.0
@@ -1439,13 +1406,10 @@ wait_time = 45.0
 [node name="RedMobTimer" type="Timer" parent="."]
 
 [node name="StartDelayTimer" type="Timer" parent="."]
+wait_time = 15.0
 one_shot = true
 autostart = true
 
-[connection signal="pressed" from="GameUIManager/HUD/Buttons/Attack5" to="GameUIManager" method="_on_attack_5_pressed"]
-[connection signal="pressed" from="GameUIManager/HUD/Buttons/Attack10" to="GameUIManager" method="_on_attack_10_pressed"]
-[connection signal="pressed" from="GameUIManager/HUD/Buttons/Armor1" to="GameUIManager" method="_on_armor_5_pressed"]
-[connection signal="pressed" from="GameUIManager/HUD/Buttons/Armor3" to="GameUIManager" method="_on_armor_10_pressed"]
 [connection signal="pressed" from="GameUIManager/HUD/UpgradeControls/MidTowerUpgrades/AttackUpgrades/AttackUpgrade4" to="GameUIManager" method="_on_attack_upgrade_4_pressed" binds= ["mid"]]
 [connection signal="pressed" from="GameUIManager/HUD/UpgradeControls/MidTowerUpgrades/AttackUpgrades/AttackUpgrade3" to="GameUIManager" method="_on_attack_upgrade_3_pressed" binds= ["mid"]]
 [connection signal="pressed" from="GameUIManager/HUD/UpgradeControls/MidTowerUpgrades/AttackUpgrades/AttackUpgrade2" to="GameUIManager" method="_on_attack_upgrade_2_pressed" binds= ["mid"]]

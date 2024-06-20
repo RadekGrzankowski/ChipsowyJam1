@@ -47,48 +47,64 @@ text = "TOP"
 custom_minimum_size = Vector2(97, 0)
 layout_mode = 2
 toggle_mode = true
-text = "MIDDLE"
+text = "MID"
 
 [node name="BottomButton" type="Button" parent="CardsUI/LanesPanel/LaneButtons"]
 custom_minimum_size = Vector2(97, 0)
 layout_mode = 2
 toggle_mode = true
-text = "BOTTOM"
+text = "BOT"
 
-[node name="LanesRightPanel" type="Panel" parent="CardsUI/LanesPanel"]
-self_modulate = Color(0, 0, 0, 1)
+[node name="LanesTopPanel" type="Panel" parent="CardsUI/LanesPanel"]
+self_modulate = Color(0.505882, 0.505882, 0.505882, 1)
 layout_mode = 0
-offset_left = 310.0
-offset_top = 17.0
-offset_right = 335.0
-offset_bottom = 42.0
+offset_right = 25.0
+offset_bottom = 25.0
 
-[node name="Label" type="Label" parent="CardsUI/LanesPanel/LanesRightPanel"]
+[node name="Label" type="Label" parent="CardsUI/LanesPanel/LanesTopPanel"]
 layout_mode = 0
 offset_top = -1.0
 offset_right = 25.0
 offset_bottom = 24.0
-text = "E"
+text = "1"
 label_settings = SubResource("LabelSettings_mtnm0")
 horizontal_alignment = 1
 vertical_alignment = 1
 clip_text = true
 text_overrun_behavior = 1
 
-[node name="LanesLeftPanel" type="Panel" parent="CardsUI/LanesPanel"]
-self_modulate = Color(0, 0, 0, 1)
+[node name="LanesMidPanel" type="Panel" parent="CardsUI/LanesPanel"]
+self_modulate = Color(0.505882, 0.505882, 0.505882, 1)
 layout_mode = 0
-offset_left = -35.0
-offset_top = 17.0
-offset_right = -10.0
-offset_bottom = 42.0
+offset_left = 101.0
+offset_right = 126.0
+offset_bottom = 25.0
 
-[node name="Label" type="Label" parent="CardsUI/LanesPanel/LanesLeftPanel"]
+[node name="Label" type="Label" parent="CardsUI/LanesPanel/LanesMidPanel"]
 layout_mode = 0
 offset_top = -1.0
 offset_right = 25.0
 offset_bottom = 24.0
-text = "Q"
+text = "2"
+label_settings = SubResource("LabelSettings_mtnm0")
+horizontal_alignment = 1
+vertical_alignment = 1
+clip_text = true
+text_overrun_behavior = 1
+
+[node name="LanesBotPanel" type="Panel" parent="CardsUI/LanesPanel"]
+self_modulate = Color(0.505882, 0.505882, 0.505882, 1)
+layout_mode = 0
+offset_left = 202.0
+offset_right = 227.0
+offset_bottom = 25.0
+
+[node name="Label" type="Label" parent="CardsUI/LanesPanel/LanesBotPanel"]
+layout_mode = 0
+offset_top = -1.0
+offset_right = 25.0
+offset_bottom = 24.0
+text = "3"
 label_settings = SubResource("LabelSettings_mtnm0")
 horizontal_alignment = 1
 vertical_alignment = 1
