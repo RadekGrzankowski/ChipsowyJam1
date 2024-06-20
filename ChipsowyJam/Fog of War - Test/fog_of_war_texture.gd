@@ -13,14 +13,25 @@ var fog_of_war_main_image : Image
 var fog_of_war_main_texture : ImageTexture
 var fog_of_war_viewport_texture : ImageTexture
 
+var fog_of_war_units_data : Dictionary = {}
+
 var map_rect : Rect2
 
 var dissolve_sprite:Texture2D = preload("res://Materials/Textures/fog_of_war.png") 
 
 func _ready():
 	fog_of_war_sprite.centered = false
-	new_fog_of_war(Rect2(0,0,512,512))
+	fog_of_war_tick_timer.timeout.connect(fog_of_war_tick_loop)
+	#new_fog_of_war(Rect2(0,0,512,512))
 	
+func fog_of_war_tick_loop() -> void:
+	fog_of_war_units_data_process()
+	fog_of_war_dissolve_all_fow_units()
+	
+	fog_of_war_viewport_texture = ImageTexture.create_from_image(
+		fog_of_war_viewport.get_texture().get_image())
+	
+	emit_signal("fow_updated")
 
 func new_fog_of_war(new_map_rect:Rect2):
 	map_rect = new_map_rect
@@ -38,12 +49,12 @@ func new_fog_of_war(new_map_rect:Rect2):
 	fog_of_war_main_image.fill( Color(0.0,0.0,0.0,1.0))
 	update_texture()
 
-func _input(event:InputEvent):
-	if event is InputEventMouseButton \
-	and event.button_index == MOUSE_BUTTON_LEFT \
-	and event.is_pressed():
-		var mouse_pos:Vector2 = get_global_mouse_position()
-		fog_of_war_dissolve(mouse_pos,dissolve_sprite.get_image())
+#func _input(event:InputEvent):
+#	if event is InputEventMouseButton \
+#	and event.button_index == MOUSE_BUTTON_LEFT \
+#	and event.is_pressed():
+#		var mouse_pos:Vector2 = get_global_mouse_position()
+#		fog_of_war_dissolve(mouse_pos,dissolve_sprite.get_image())
 
 func update_texture():
 	fog_of_war_main_texture = ImageTexture.create_from_image(fog_of_war_main_image)
@@ -59,3 +70,31 @@ func fog_of_war_dissolve(dissolve_position:Vector2,dissolbe_image:Image):
 	
 	update_texture()
 	
+func fog_of_war_units_data_process() -> void:
+	# {unit_id : [node_tracking,sprite_node] }
+	
+	for unit_id in fog_of_war_units_data.keys():
+		var unit_data:Array = (fog_of_war_units_data[unit_id] as Array)
+		
+		var position_to_2D:Vector2 = Vector2(
+			(unit_data[0] as Node3D).global_position.x,
+			(unit_data[0] as Node3D).global_position.z) 
+			
+		(unit_data[1] as Sprite2D).set_position(position_to_2D)
+		
+	
+func fog_of_war_dissolve_all_fow_units() -> void:
+	for fow_sprite in fog_of_war_units_treenode.get_children():
+		var fow_sprite_image:Image = (fow_sprite as Sprite2D).get_texture().get_image()
+		
+		var sprite_stored_position_size:Vector3i = Vector3i(
+			(fow_sprite as Sprite2D).position.x,
+			(fow_sprite as Sprite2D).position.y,
+			(fow_sprite as Sprite2D).get_texture().get_size().x)
+		
+		if !sprite_stored_position_size in fog_of_war_stored:
+			var dissolve_position:Vector2 = (fow_sprite as Sprite2D).position
+			fog_of_war_dissolve( dissolve_position , fow_sprite_image )
+			fog_of_war_stored.append(sprite_stored_position_size)
+			
+		

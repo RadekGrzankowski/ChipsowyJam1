@@ -1,37 +1,21 @@
-[gd_scene load_steps=10 format=3 uid="uid://cbvtsbnemkan6"]
+[gd_scene load_steps=12 format=3 uid="uid://cbvtsbnemkan6"]
 
-[ext_resource type="Shader" path="res://Shaders/gdshader.gdshader" id="1_apeg1"]
+[ext_resource type="Script" path="res://Fog of War - Test/shadertest.gd" id="1_7ib8j"]
+[ext_resource type="PackedScene" uid="uid://cjr2v58nwfgxy" path="res://Fog of War - Test/fog_of_war_texture.tscn" id="2_h8tyh"]
+[ext_resource type="Texture2D" uid="uid://dmeclkhqetlpr" path="res://Materials/Textures/TerrainTexture.jpg" id="3_ncf3q"]
 
 [sub_resource type="Environment" id="Environment_emhdc"]
 
 [sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_8ti2j"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_s2lvs"]
-render_priority = 0
-shader = ExtResource("1_apeg1")
-shader_parameter/uv_size = 1.0
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_phw2g"]
+albedo_texture = ExtResource("3_ncf3q")
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_cqy20"]
 
 [sub_resource type="SphereMesh" id="SphereMesh_fmthv"]
 
 [sub_resource type="Animation" id="Animation_n6vd3"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Ball:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(0, 0.488071, 0)]
-}
-
-[sub_resource type="Animation" id="Animation_1783c"]
-resource_name = "new_animation"
 length = 20.0
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -43,7 +27,23 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 5, 10, 15, 20),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 0,
-"values": [Vector3(0, 0.488071, 0), Vector3(-0.319894, 0.48807, -20.0055), Vector3(21.1231, 0.48807, -17.7122), Vector3(25.7898, 0.48807, 20.6661), Vector3(-12.3144, 0.48807, 25.0115)]
+"values": [Vector3(0, 0.488071, 0), Vector3(0, 0.488071, -18.1858), Vector3(19.3732, 0.488071, -18.1858), Vector3(19.3732, 0.488071, 24.596), Vector3(-29.6549, 0.488071, 24.596)]
+}
+
+[sub_resource type="Animation" id="Animation_1783c"]
+resource_name = "new_animation"
+length = 30.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Ball:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 5, 10, 15, 20, 30),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0.488071, 0), Vector3(-0.319894, 0.48807, -20.0055), Vector3(21.1231, 0.48807, -17.7122), Vector3(25.7898, 0.48807, 20.6661), Vector3(-12.3144, 0.48807, 25.0115), Vector3(-15.2819, 0.48807, -16.6219)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_1anfr"]
@@ -52,7 +52,14 @@ _data = {
 "new_animation": SubResource("Animation_1783c")
 }
 
-[node name="Node3D" type="Node3D"]
+[node name="World" type="Node3D"]
+script = ExtResource("1_7ib8j")
+
+[node name="fog_of_war_texture" parent="." instance=ExtResource("2_h8tyh")]
+offset_left = 4.0
+offset_top = -8.0
+offset_right = 4.0
+offset_bottom = -8.0
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_emhdc")
@@ -61,9 +68,9 @@ camera_attributes = SubResource("CameraAttributesPractical_8ti2j")
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.283597, 0.958944, 0, -0.958944, 0.283597, 0, 4.38405, 0)
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+[node name="Map" type="MeshInstance3D" parent="."]
 transform = Transform3D(38.4211, 0, 0, 0, 0.994841, 0, 0, 0, 38.1643, 0, 0, 0)
-material_override = SubResource("ShaderMaterial_s2lvs")
+material_override = SubResource("StandardMaterial3D_phw2g")
 mesh = SubResource("PlaneMesh_cqy20")
 
 [node name="Node3D" type="Node3D" parent="."]
@@ -79,3 +86,4 @@ libraries = {
 }
 
 [node name="Camera3D" type="Camera3D" parent="Node3D"]
+transform = Transform3D(0.998162, 0.0605956, 0, -0.00454865, 0.0749278, 0.997179, 0.0604246, -0.995346, 0.0750657, 0, 23.0236, 0)
