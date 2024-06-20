@@ -16,6 +16,9 @@ var enemies_to_attack: Array[Node3D]
 var detected_enemies_array: Array[Node3D]
 var opponent_to_attack: Node3D
 
+# Attack speed value. Default = 1.0
+var attack_speed: float = 5.0
+
 # Ranged units variables
 @export var projectile_arrow: PackedScene
 var path_curve: Curve3D
@@ -125,6 +128,10 @@ func _physics_process(delta):
 		var look_pos = Vector3(opponent_to_attack.global_position.x, position.y, opponent_to_attack.global_position.z)
 		var look_dir = position.direction_to(look_pos)
 		rotation.y = lerp_angle(rotation.y, atan2(-look_dir.x, -look_dir.z), delta * rotate_speed)
+	if is_attacking:
+		anim_player.speed_scale = attack_speed
+	else:
+		anim_player.speed_scale = 1 
 
 func _process(delta):
 	if is_attacking:
