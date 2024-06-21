@@ -12,6 +12,9 @@ extends Node3D
 @onready var midPath: Marker3D = get_node("/root/GameNode/Terrain/MidPath")
 
 @export var demonScene: PackedScene
+@export var minionScene: PackedScene
+
+@export var minion_models: Array
 
 @onready var waveTimer = $"../WaveTimer"
 @onready var startTimer = $"../StartDelayTimer"
@@ -101,14 +104,20 @@ func spawn_bot(color: String, path: String, marker: Marker3D):
 			elif color == "blue":
 				bot_card = cardsUI.top_lane_nodes[current_blue_count].card
 				target_positions = [topPath.position, markerTopRed.position]
-		
+	var model : PackedScene
+	if bot_card != null:
+		#model = bot_card.model #bot_card.model variable is currently empty
+		#INFO Placeholder model setting based on card race
+		model = minion_models[1]
+	else:
+		model = minion_models[0]
 	var bot: CharacterBody3D
 	if color == "red":
-		bot = demonScene.instantiate()
-		bot.initialize(null, "red", path)
+		bot = minionScene.instantiate()
+		bot.initialize(null, "red", path, model)
 	elif color == "blue":
-		bot = demonScene.instantiate()
-		bot.initialize(bot_card, "blue", path)
+		bot = minionScene.instantiate()
+		bot.initialize(bot_card, "blue", path, model)
 		
 	bot.position = marker.position
 	bot.rotation = marker.rotation

@@ -1,8 +1,16 @@
-[gd_scene load_steps=7 format=3 uid="uid://0cdht6xykwu7"]
+[gd_scene load_steps=15 format=3 uid="uid://0cdht6xykwu7"]
 
 [ext_resource type="Script" path="res://Scripts/spawn_manager.gd" id="1_bvj0y"]
+[ext_resource type="PackedScene" uid="uid://mmq7d6i1fgjc" path="res://Scenes/Assets/Mobs/minion.tscn" id="3_1jksw"]
+[ext_resource type="PackedScene" uid="uid://ct0ynvwh1d4s8" path="res://Models/Anne.glb" id="3_04fm7"]
+[ext_resource type="PackedScene" uid="uid://dphgkjeogkxws" path="res://Models/Ghost.glb" id="3_iv8vs"]
 [ext_resource type="PackedScene" uid="uid://4s6e7o1jaqku" path="res://Scenes/Assets/Mobs/demon_minion.tscn" id="4_koodm"]
+[ext_resource type="PackedScene" uid="uid://xiqap8cn3t28" path="res://Models/Orc.glb" id="4_tujlu"]
 [ext_resource type="Script" path="res://Scripts/GameUIManager.gd" id="4_v33no"]
+[ext_resource type="PackedScene" uid="uid://dg03jtcu2daa0" path="res://Models/Zombie.glb" id="5_y5rpb"]
+[ext_resource type="PackedScene" uid="uid://dhx8rcdw0ltrh" path="res://Models/Skeleton.glb" id="7_7evsf"]
+[ext_resource type="PackedScene" uid="uid://blbheawt22xv2" path="res://Models/Skeleton Mage.glb" id="8_lppic"]
+[ext_resource type="PackedScene" uid="uid://dpnvumh65enja" path="res://Models/Pirate Captain.glb" id="9_lgq1v"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_tnijv"]
 font_size = 18
@@ -19,6 +27,8 @@ color = Color(1, 1, 1, 1)
 [node name="SpawnManager" type="Node3D" parent="."]
 script = ExtResource("1_bvj0y")
 demonScene = ExtResource("4_koodm")
+minionScene = ExtResource("3_1jksw")
+minion_models = [ExtResource("3_iv8vs"), ExtResource("4_tujlu"), ExtResource("5_y5rpb"), ExtResource("7_7evsf"), ExtResource("7_7evsf"), ExtResource("8_lppic"), ExtResource("9_lgq1v"), ExtResource("3_04fm7")]
 waveTime = 45
 
 [node name="GameUIManager" type="Node3D" parent="."]

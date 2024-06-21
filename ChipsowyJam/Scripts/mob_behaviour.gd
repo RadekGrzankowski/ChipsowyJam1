@@ -6,7 +6,7 @@ var mob_name: String
 @export var mob_armor: int = 5.0
 @export var health_label: Label3D
 @export var hit_area3D: Area3D
-@export var attack_speed: float = 1.0
+@export var attack_speed: float = 1.25
 
 var teamName: String
 enum mob_class {MELEE, RANGED, MAGE}
@@ -21,11 +21,18 @@ var opponent_to_attack: Node3D
 @export var projectile_arrow: PackedScene
 var path_curve: Curve3D
 
+# Animation variables
+var attack_anim: String
+var idle_anim: String
+var walk_anim: String
+var death_anim: String
+
 func _ready():
 	super()
 	health_label.text = str(mob_name) + " " + str(mob_health) + "HP\n" + \
 	str(mob_attack) + "AD " + str(mob_armor) + "ARM"
 	if teamName == "red":
+		health_label.modulate = Color.RED
 		if path == "top":
 			Game.red_minions_top += 1
 		elif path == "mid":
@@ -33,14 +40,33 @@ func _ready():
 		elif path == "bot":
 			Game.red_minions_bot += 1
 	elif teamName == "blue":
+		health_label.modulate = Color.DODGER_BLUE
 		if path == "top":
 			Game.blue_minions_top += 1
 		elif path == "mid":
 			Game.blue_minions_mid += 1
 		elif path == "bot":
 			Game.blue_minions_bot += 1
-
-func initialize(card: Control, team: String, main_path: String):
+	#INFO setup animations
+	for animation: String in anim_player.get_animation_list():
+		var _anim: String = animation.get_slice("|", 1)
+		match _anim:
+			"Punch":
+				attack_anim = "CharacterArmature|Punch"
+			"Weapon":
+				attack_anim = "CharacterArmature|Weapon"
+			"Flying_Idle":
+				idle_anim = "CharacterArmature|Flying_Idle"
+			"Idle":
+				idle_anim = "CharacterArmature|Idle"
+			"Fast_Flying":
+				walk_anim = "CharacterArmature|Fast_Flying"
+			"Walk":
+				walk_anim = "CharacterArmature|Walk"
+			"Death":
+				death_anim = "CharacterArmature|Death"
+				
+func initialize(card: Control, team: String, main_path: String, model: PackedScene):
 	if card != null:
 		mob_name = card.card_name
 		minion_class = card.type
@@ -65,16 +91,26 @@ func initialize(card: Control, team: String, main_path: String):
 		$DetectionArea3D/CollisionShape3D.shape.set_radius(7.0)
 	elif minion_class == mob_class.MELEE:
 		$DetectionArea3D/CollisionShape3D.shape.set_radius(6.0)
+		
+	var _model: Node3D = model.instantiate()
+	
+	var _rootnode: Node3D = _model.get_node("RootNode")
+	if _rootnode.get_parent():
+		_rootnode.get_parent().remove_child(_rootnode)
+	add_child(_rootnode)
+	_rootnode.rotation = Vector3(0, -135, 0)
+	_rootnode.scale = Vector3(0.4, 0.4, 0.4)
+	
+	var _anim: AnimationPlayer = _model.get_node("AnimationPlayer")
+	if _anim.get_parent():
+		_anim.get_parent().remove_child(_anim)
+	add_child(_anim)
+	_anim.animation_finished.connect(self._on_animation_player_animation_finished)
+	
 	if team == "red":
-		remove_child($RootNode_Blue)
 		add_to_group("red_team")
-		$RootNode_Red.visible = true
-		$RootNode_Red.name = "RootNode"
 	elif team == "blue":
-		remove_child($RootNode_Red)
 		add_to_group("blue_team")
-		$RootNode_Blue.visible = true
-		$RootNode_Blue.name = "RootNode"
 	
 func take_damage(amount, attacker):
 	#checks if current mob is existing
@@ -134,16 +170,16 @@ func _physics_process(delta):
 
 func _process(delta):
 	if is_attacking:
-		if anim_player.current_animation != "CharacterArmature|Weapon":
-			anim_player.play("CharacterArmature|Weapon")
+		if anim_player.current_animation != attack_anim:
+			anim_player.play(attack_anim)
 			#spawn an arrow from mob position to enemy when the mob is ranged
 			if minion_class == mob_class.RANGED || minion_class == mob_class.MAGE:
 				spawn_projectile()
 	else:
 		if velocity.length() > 0:
-			anim_player.play("CharacterArmature|Walk")
+			anim_player.play(walk_anim)
 		else:
-			anim_player.play("CharacterArmature|Idle")
+			anim_player.play(idle_anim)
 				
 func spawn_projectile():
 	var projectile: PathFollow3D
@@ -241,7 +277,7 @@ func _on_hit_area_3d_body_exited(body):
 		is_attacking = false
 
 func _on_animation_player_animation_finished(anim_name):
-	if anim_name == "CharacterArmature|Weapon":
+	if anim_name == attack_anim:
 		enemies_to_attack[0].take_damage(mob_attack, self)
 
 func _on_navigation_agent_3d_link_reached(details: Dictionary):

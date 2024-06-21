@@ -39,6 +39,8 @@ var sub_type: mob_sub_type
 enum card_tier {COMMON, RARE, EPIC, LEGENDARY}
 var tier: card_tier
 
+var model: PackedScene
+
 @export var card_resource: Resource	
 var is_showing_reverse: bool = false
 
@@ -75,6 +77,7 @@ func set_variables():
 	type = card_resource.type
 	sub_type = card_resource.sub_type
 	tier = card_resource.tier
+	model = card_resource.model
 
 func update_card():
 	if card_resource:
