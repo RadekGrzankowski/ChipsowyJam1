@@ -1,6 +1,7 @@
-[gd_scene load_steps=19 format=3 uid="uid://dap8chf42ts88"]
+[gd_scene load_steps=20 format=3 uid="uid://dap8chf42ts88"]
 
 [ext_resource type="Material" uid="uid://73ufq0fugf4v" path="res://Materials/LightBlue.tres" id="1_gwo01"]
+[ext_resource type="Script" path="res://Scripts/buildings_behaviour.gd" id="1_k0smd"]
 [ext_resource type="Material" uid="uid://dh452p4jgynpo" path="res://Materials/DarkBlue.tres" id="2_0m6ay"]
 [ext_resource type="Material" uid="uid://btge4821qs176" path="res://Materials/Black.tres" id="3_fes5a"]
 
@@ -283,7 +284,9 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_x8et3")
 
-[node name="StaticBody3D" type="StaticBody3D"]
+[node name="StaticBody3D" type="StaticBody3D" node_paths=PackedStringArray("health_label") groups=["barrack", "blue_team"]]
+script = ExtResource("1_k0smd")
+health_label = NodePath("HealthLabel")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1.2, 0, 0, 0, 1, 0, 0, 0, 1.2, 0, 1, 0)
@@ -323,3 +326,9 @@ skeleton = NodePath("")
 transform = Transform3D(-0.833389, -7.28523e-08, -4.37094e-08, 3.64286e-08, 1.59224e-15, -0.999953, 7.28572e-08, -0.833333, 1.9106e-15, 0, 0, -0.833333)
 mesh = SubResource("ArrayMesh_qw2u3")
 skeleton = NodePath("")
+
+[node name="HealthLabel" type="Label3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.40898, 0)
+billboard = 1
+modulate = Color(0, 0.713726, 0.109804, 1)
+font_size = 60

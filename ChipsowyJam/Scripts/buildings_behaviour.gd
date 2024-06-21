@@ -6,7 +6,7 @@ extends Node
 @export var attack_cd: Timer
 @export var projectile_ball: PackedScene
 var teamName: String
-var type: int # 1-Tower 2-Nexus
+var type: int # 1-Tower 2-Barrack 3-Nexus
 var lane: String
 
 var enemies_to_attack: Array[Node3D]
@@ -24,6 +24,8 @@ func _ready():
 		teamName = "blue"
 	
 	if is_in_group("nexus"):
+		type = 3
+	elif is_in_group("barrack"):
 		type = 2
 	elif is_in_group("tower"):
 		type = 1
@@ -35,7 +37,7 @@ func _ready():
 			lane = "bot"
 
 func take_damage(amount, attacker):
-	building_health -= amount - check_armor()
+	building_health -= int(amount * check_armor())
 	if building_health <= 0:
 		if type == 1:
 			attacker.change_target(self)
@@ -47,6 +49,13 @@ func take_damage(amount, attacker):
 				Game.red_gold += 20
 			queue_free()
 		elif type == 2:
+			attacker.change_target(self)
+			if teamName == "red":
+				Game.blue_gold += 100
+			if teamName == "blue":
+				Game.red_gold += 100
+			queue_free()
+		elif type == 3:
 			if teamName == "red":
 				Game.winner = "BLUE"
 			if teamName == "blue":
@@ -111,18 +120,25 @@ func _on_attack_cooldown_timeout():
 	if enemy_to_attack:
 		enemy_to_attack.take_damage(check_damage(), self)
 	can_attack = true
-	
-func check_armor():
-	if teamName == "blue":
-		if lane == "top":
-			return building_armor + Game.additional_blue_top_tower_armor
-		elif lane == "mid":
-			return building_armor + Game.additional_blue_mid_tower_armor
-		elif lane == "bot":
-			return building_armor + Game.additional_blue_bot_tower_armor
-	else:
-		return building_armor
 
+# This solution does not take into account additional armor. We need to get rid of the global variables and make the building_armor to update with upgrading
+func check_armor():
+	var armor_divide: int = 100
+	var damage_reduction: int
+	if building_armor == 0:
+		return 1
+	elif building_armor <= 10:
+		armor_divide *= 0.6
+	elif building_armor <= 20:
+		armor_divide *= 0.5
+	elif building_armor <= 30:
+		armor_divide *= 0.4
+	elif building_armor > 30:
+		armor_divide *= 0.3
+	damage_reduction = armor_divide / (armor_divide + building_armor)
+	return damage_reduction
+
+# same goes here with the additional dmg global variable. This has to be updated with upgrade
 func check_damage():
 	if teamName == "blue":
 		if lane == "top":
