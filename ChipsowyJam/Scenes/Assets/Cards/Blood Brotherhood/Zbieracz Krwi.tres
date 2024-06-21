@@ -1,0 +1,20 @@
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://cixm5tnesb5b8"]
+
+[ext_resource type="Texture2D" uid="uid://domk232ew3xlc" path="res://Scenes/Assets/Cards/Blood Brotherhood/Zbieracz Krwi.png" id="1_x1yly"]
+[ext_resource type="Script" path="res://Scenes/Assets/Cards/card_stats.gd" id="2_3i53x"]
+
+[resource]
+script = ExtResource("2_3i53x")
+name = "Łowca Krwi"
+image = ExtResource("1_x1yly")
+race = 4
+tier = 1
+description = "heal 3 hp on hit"
+cost = 50
+health = 150
+attack_damage = 20
+armor = 20
+attack_speed = 1.2
+attack_range = 1.5
+type = 0
+sub_type = 7

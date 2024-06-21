@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cxcwesjwinpv"
-path="res://.godot/imported/Licz.png-febfdb17c014dbfb476c9ec9d5870072.ctex"
+uid="uid://b87cc7q8h2sse"
+path="res://.godot/imported/Lowca Krwi.png-5fb99c9bce879ad02551f84d0435cd3f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Scenes/Assets/Cards/_Undead/Licz.png"
-dest_files=["res://.godot/imported/Licz.png-febfdb17c014dbfb476c9ec9d5870072.ctex"]
+source_file="res://Scenes/Assets/Cards/Blood Brotherhood/Lowca Krwi.png"
+dest_files=["res://.godot/imported/Lowca Krwi.png-5fb99c9bce879ad02551f84d0435cd3f.ctex"]
 
 [params]
 

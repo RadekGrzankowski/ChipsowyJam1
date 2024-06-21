@@ -1,6 +1,6 @@
 [gd_resource type="Resource" load_steps=3 format=3 uid="uid://bch1311l7suqw"]
 
-[ext_resource type="Texture2D" uid="uid://c2ff4rg2xtxeb" path="res://Scenes/Assets/Cards/_Undead/Ghul.png" id="1_7gydo"]
+[ext_resource type="Texture2D" uid="uid://c2ff4rg2xtxeb" path="res://Scenes/Assets/Cards/Undead Pact/Ghul.png" id="1_7gydo"]
 [ext_resource type="Script" path="res://Scenes/Assets/Cards/card_stats.gd" id="1_usejh"]
 
 [resource]

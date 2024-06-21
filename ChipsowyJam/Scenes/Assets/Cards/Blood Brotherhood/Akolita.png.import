@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://w625hvaq6yo8"
-path="res://.godot/imported/Zainfekowany.png-7ea836eb6ccc02ea3169e5f136bee9b8.ctex"
+uid="uid://buwvi7i7sxpdk"
+path="res://.godot/imported/Akolita.png-bd76f88cfbec7cc37b8b83f6538ad05c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Scenes/Assets/Cards/_Undead/Zainfekowany.png"
-dest_files=["res://.godot/imported/Zainfekowany.png-7ea836eb6ccc02ea3169e5f136bee9b8.ctex"]
+source_file="res://Scenes/Assets/Cards/Blood Brotherhood/Akolita.png"
+dest_files=["res://.godot/imported/Akolita.png-bd76f88cfbec7cc37b8b83f6538ad05c.ctex"]
 
 [params]
 

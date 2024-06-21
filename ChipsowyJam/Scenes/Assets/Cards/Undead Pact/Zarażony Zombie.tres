@@ -1,6 +1,6 @@
 [gd_resource type="Resource" load_steps=3 format=3 uid="uid://5fshsffajkea"]
 
-[ext_resource type="Texture2D" uid="uid://ditklni7w0jc4" path="res://Scenes/Assets/Cards/_Undead/Zarazony Zombie.png" id="1_fmxyb"]
+[ext_resource type="Texture2D" uid="uid://ditklni7w0jc4" path="res://Scenes/Assets/Cards/Undead Pact/Zarazony Zombie.png" id="1_fmxyb"]
 [ext_resource type="Script" path="res://Scenes/Assets/Cards/card_stats.gd" id="1_m2usr"]
 
 [resource]

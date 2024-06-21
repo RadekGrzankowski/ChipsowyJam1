@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://di3mpvif30kwl"
-path="res://.godot/imported/Truchlo.png-68190881e4902f6a4ce81d391843b36b.ctex"
+uid="uid://dnea81jrw4kan"
+path="res://.godot/imported/Szkielet.png-e60a94ff649590907541aeeddb7c447c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Scenes/Assets/Cards/_Undead/Truchlo.png"
-dest_files=["res://.godot/imported/Truchlo.png-68190881e4902f6a4ce81d391843b36b.ctex"]
+source_file="res://Scenes/Assets/Cards/Undead Pact/Szkielet.png"
+dest_files=["res://.godot/imported/Szkielet.png-e60a94ff649590907541aeeddb7c447c.ctex"]
 
 [params]
 

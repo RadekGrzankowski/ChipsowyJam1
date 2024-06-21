@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b87cc7q8h2sse"
-path="res://.godot/imported/Lowca Krwi.png-b78740f9f078427f38b07c3d9abab21a.ctex"
+uid="uid://hff111i0trui"
+path="res://.godot/imported/Zombie.png-6ef71f8d7e4117f7e219925fcbb2aeca.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Scenes/Assets/Cards/_Undead/Lowca Krwi.png"
-dest_files=["res://.godot/imported/Lowca Krwi.png-b78740f9f078427f38b07c3d9abab21a.ctex"]
+source_file="res://Scenes/Assets/Cards/Undead Pact/Zombie.png"
+dest_files=["res://.godot/imported/Zombie.png-6ef71f8d7e4117f7e219925fcbb2aeca.ctex"]
 
 [params]
 

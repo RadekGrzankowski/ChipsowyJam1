@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://domk232ew3xlc"
-path="res://.godot/imported/Zbieracz Krwi.png-ef037f8ff82ff3647d443292600f42f8.ctex"
+uid="uid://cxcwesjwinpv"
+path="res://.godot/imported/Licz.png-aa2927728ea3ffa701ee2a49675c4c4e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Scenes/Assets/Cards/_Undead/Zbieracz Krwi.png"
-dest_files=["res://.godot/imported/Zbieracz Krwi.png-ef037f8ff82ff3647d443292600f42f8.ctex"]
+source_file="res://Scenes/Assets/Cards/Undead Pact/Licz.png"
+dest_files=["res://.godot/imported/Licz.png-aa2927728ea3ffa701ee2a49675c4c4e.ctex"]
 
 [params]
 

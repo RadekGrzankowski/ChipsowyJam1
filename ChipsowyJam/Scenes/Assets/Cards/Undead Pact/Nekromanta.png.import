@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://ws5w7vi85nqp"
-path="res://.godot/imported/Nekromanta.png-85381979d87ef5f2705a465e310d6175.ctex"
+path="res://.godot/imported/Nekromanta.png-86538664e61521a875fc4992def9360e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Scenes/Assets/Cards/_Undead/Nekromanta.png"
-dest_files=["res://.godot/imported/Nekromanta.png-85381979d87ef5f2705a465e310d6175.ctex"]
+source_file="res://Scenes/Assets/Cards/Undead Pact/Nekromanta.png"
+dest_files=["res://.godot/imported/Nekromanta.png-86538664e61521a875fc4992def9360e.ctex"]
 
 [params]
 

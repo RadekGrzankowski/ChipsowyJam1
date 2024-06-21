@@ -1,6 +1,6 @@
 [gd_resource type="Resource" load_steps=3 format=3 uid="uid://cto6duh4swnip"]
 
-[ext_resource type="Texture2D" uid="uid://buwvi7i7sxpdk" path="res://Scenes/Assets/Cards/_Undead/Akolita.png" id="1_8l7a8"]
+[ext_resource type="Texture2D" uid="uid://buwvi7i7sxpdk" path="res://Scenes/Assets/Cards/Blood Brotherhood/Akolita.png" id="1_8l7a8"]
 [ext_resource type="Script" path="res://Scenes/Assets/Cards/card_stats.gd" id="1_hv4kv"]
 
 [resource]

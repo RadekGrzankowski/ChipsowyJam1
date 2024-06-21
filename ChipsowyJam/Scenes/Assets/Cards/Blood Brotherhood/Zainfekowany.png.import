@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ditklni7w0jc4"
-path="res://.godot/imported/Zarazony Zombie.png-6941e32e9da8caf2760bc22f8dc5cc5a.ctex"
+uid="uid://w625hvaq6yo8"
+path="res://.godot/imported/Zainfekowany.png-6b4ff22b8f74def9ab1cc3a0d1486f90.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Scenes/Assets/Cards/_Undead/Zarazony Zombie.png"
-dest_files=["res://.godot/imported/Zarazony Zombie.png-6941e32e9da8caf2760bc22f8dc5cc5a.ctex"]
+source_file="res://Scenes/Assets/Cards/Blood Brotherhood/Zainfekowany.png"
+dest_files=["res://.godot/imported/Zainfekowany.png-6b4ff22b8f74def9ab1cc3a0d1486f90.ctex"]
 
 [params]
 

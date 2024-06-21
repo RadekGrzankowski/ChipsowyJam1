@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://buwvi7i7sxpdk"
-path="res://.godot/imported/Akolita.png-c35b7341e6935feaf5fdba9b021c7300.ctex"
+uid="uid://ditklni7w0jc4"
+path="res://.godot/imported/Zarazony Zombie.png-084b9ad060bf8870228f71e902e10754.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Scenes/Assets/Cards/_Undead/Akolita.png"
-dest_files=["res://.godot/imported/Akolita.png-c35b7341e6935feaf5fdba9b021c7300.ctex"]
+source_file="res://Scenes/Assets/Cards/Undead Pact/Zarazony Zombie.png"
+dest_files=["res://.godot/imported/Zarazony Zombie.png-084b9ad060bf8870228f71e902e10754.ctex"]
 
 [params]
 

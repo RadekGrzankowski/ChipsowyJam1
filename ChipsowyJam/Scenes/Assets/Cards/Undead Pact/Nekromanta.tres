@@ -1,7 +1,7 @@
 [gd_resource type="Resource" load_steps=3 format=3 uid="uid://effa3sdfk2ia"]
 
 [ext_resource type="Script" path="res://Scenes/Assets/Cards/card_stats.gd" id="1_6yirq"]
-[ext_resource type="Texture2D" uid="uid://ws5w7vi85nqp" path="res://Scenes/Assets/Cards/_Undead/Nekromanta.png" id="1_8dwyp"]
+[ext_resource type="Texture2D" uid="uid://ws5w7vi85nqp" path="res://Scenes/Assets/Cards/Undead Pact/Nekromanta.png" id="1_8dwyp"]
 
 [resource]
 script = ExtResource("1_6yirq")

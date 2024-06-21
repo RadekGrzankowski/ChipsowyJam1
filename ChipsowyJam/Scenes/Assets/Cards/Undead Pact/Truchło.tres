@@ -1,7 +1,7 @@
 [gd_resource type="Resource" load_steps=3 format=3 uid="uid://4ohay80jhb7j"]
 
 [ext_resource type="Script" path="res://Scenes/Assets/Cards/card_stats.gd" id="1_pa8o0"]
-[ext_resource type="Texture2D" uid="uid://di3mpvif30kwl" path="res://Scenes/Assets/Cards/_Undead/Truchlo.png" id="1_xd0ox"]
+[ext_resource type="Texture2D" uid="uid://di3mpvif30kwl" path="res://Scenes/Assets/Cards/Undead Pact/Truchlo.png" id="1_xd0ox"]
 
 [resource]
 script = ExtResource("1_pa8o0")

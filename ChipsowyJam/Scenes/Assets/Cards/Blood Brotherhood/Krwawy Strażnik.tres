@@ -1,0 +1,18 @@
+[gd_resource type="Resource" load_steps=2 format=3 uid="uid://oplmgvl8kgqn"]
+
+[ext_resource type="Script" path="res://Scenes/Assets/Cards/card_stats.gd" id="1_bgsum"]
+
+[resource]
+script = ExtResource("1_bgsum")
+name = "Krwawy Strażnik"
+race = 4
+tier = 1
+description = ""
+cost = 50
+health = 200
+attack_damage = 15
+armor = 40
+attack_speed = 1.2
+attack_range = 1.5
+type = 0
+sub_type = 3

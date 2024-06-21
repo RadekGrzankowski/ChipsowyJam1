@@ -1,6 +1,6 @@
 [gd_resource type="Resource" load_steps=3 format=3 uid="uid://jo6kkjmkek71"]
 
-[ext_resource type="Texture2D" uid="uid://cxcwesjwinpv" path="res://Scenes/Assets/Cards/_Undead/Licz.png" id="1_i7nxm"]
+[ext_resource type="Texture2D" uid="uid://cxcwesjwinpv" path="res://Scenes/Assets/Cards/Undead Pact/Licz.png" id="1_i7nxm"]
 [ext_resource type="Script" path="res://Scenes/Assets/Cards/card_stats.gd" id="1_q6j8x"]
 
 [resource]

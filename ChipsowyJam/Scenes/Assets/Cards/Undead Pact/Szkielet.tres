@@ -1,6 +1,6 @@
 [gd_resource type="Resource" load_steps=3 format=3 uid="uid://c4h2vuckmbckm"]
 
-[ext_resource type="Texture2D" uid="uid://dnea81jrw4kan" path="res://Scenes/Assets/Cards/_Undead/Szkielet.png" id="1_x8vo2"]
+[ext_resource type="Texture2D" uid="uid://dnea81jrw4kan" path="res://Scenes/Assets/Cards/Undead Pact/Szkielet.png" id="1_x8vo2"]
 [ext_resource type="Script" path="res://Scenes/Assets/Cards/card_stats.gd" id="1_ykwi7"]
 
 [resource]

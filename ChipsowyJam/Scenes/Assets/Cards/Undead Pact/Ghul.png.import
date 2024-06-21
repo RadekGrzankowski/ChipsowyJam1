@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://hff111i0trui"
-path="res://.godot/imported/Zombie.png-1f512f86deb418417ee0e675145b296d.ctex"
+uid="uid://c2ff4rg2xtxeb"
+path="res://.godot/imported/Ghul.png-2f31ee845a10dd7abaa0baa22cde8be8.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Scenes/Assets/Cards/_Undead/Zombie.png"
-dest_files=["res://.godot/imported/Zombie.png-1f512f86deb418417ee0e675145b296d.ctex"]
+source_file="res://Scenes/Assets/Cards/Undead Pact/Ghul.png"
+dest_files=["res://.godot/imported/Ghul.png-2f31ee845a10dd7abaa0baa22cde8be8.ctex"]
 
 [params]
 

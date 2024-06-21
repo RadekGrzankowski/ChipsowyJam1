@@ -1,6 +1,6 @@
 [gd_resource type="Resource" load_steps=3 format=3 uid="uid://b5pknkd64twe"]
 
-[ext_resource type="Texture2D" uid="uid://c54i4o0dbf6ut" path="res://Scenes/Assets/Cards/_Undead/Abominacja.png" id="1_jvpnd"]
+[ext_resource type="Texture2D" uid="uid://c54i4o0dbf6ut" path="res://Scenes/Assets/Cards/Undead Pact/Abominacja.png" id="1_jvpnd"]
 [ext_resource type="Script" path="res://Scenes/Assets/Cards/card_stats.gd" id="1_xblkf"]
 
 [resource]

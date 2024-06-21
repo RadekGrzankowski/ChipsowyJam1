@@ -1,10 +1,28 @@
-[gd_scene load_steps=9 format=3 uid="uid://dujs37qsrm41c"]
+[gd_scene load_steps=27 format=3 uid="uid://dujs37qsrm41c"]
 
 [ext_resource type="PackedScene" uid="uid://drr8l01a1ia4i" path="res://Scenes/UI/cards_ui.tscn" id="1_1hggn"]
 [ext_resource type="Script" path="res://Scripts/camera_movement.gd" id="1_80gvj"]
 [ext_resource type="PackedScene" uid="uid://vi0aftyh1au0" path="res://Scenes/Assets/terrain.tscn" id="1_gwcpw"]
 [ext_resource type="PackedScene" uid="uid://0cdht6xykwu7" path="res://Scenes/UI/HUD.tscn" id="2_qn11f"]
 [ext_resource type="Script" path="res://Scripts/Camera3D.gd" id="4_rci3m"]
+[ext_resource type="Resource" uid="uid://cto6duh4swnip" path="res://Scenes/Assets/Cards/Blood Brotherhood/Akolita.tres" id="6_hwh2s"]
+[ext_resource type="Resource" uid="uid://bla31feig28aw" path="res://Scenes/Assets/Cards/Blood Brotherhood/Kapłan Krwi.tres" id="7_pj51i"]
+[ext_resource type="Resource" uid="uid://di28xc33otit6" path="res://Scenes/Assets/Cards/Blood Brotherhood/Krwawy Mag.tres" id="8_nt6s7"]
+[ext_resource type="Resource" uid="uid://oplmgvl8kgqn" path="res://Scenes/Assets/Cards/Blood Brotherhood/Krwawy Strażnik.tres" id="9_85p3k"]
+[ext_resource type="Resource" uid="uid://drfwxw1gmj3o4" path="res://Scenes/Assets/Cards/Blood Brotherhood/Rozpruwacz.tres" id="10_gf7to"]
+[ext_resource type="Resource" uid="uid://dtkfhhljyak6s" path="res://Scenes/Assets/Cards/Blood Brotherhood/Starszy Vampir.tres" id="11_530yt"]
+[ext_resource type="Resource" uid="uid://bk6lvcxuoepal" path="res://Scenes/Assets/Cards/Blood Brotherhood/Vampir.tres" id="12_ps2q1"]
+[ext_resource type="Resource" uid="uid://cmmejxskmdbqg" path="res://Scenes/Assets/Cards/Blood Brotherhood/Zainfekowany.tres" id="13_f2h5q"]
+[ext_resource type="Resource" uid="uid://cixm5tnesb5b8" path="res://Scenes/Assets/Cards/Blood Brotherhood/Zbieracz Krwi.tres" id="14_xkmon"]
+[ext_resource type="Resource" uid="uid://cpbkq6r07l75n" path="res://Scenes/Assets/Cards/Blood Brotherhood/Łowca Krwi.tres" id="15_ga2jb"]
+[ext_resource type="Resource" uid="uid://b5pknkd64twe" path="res://Scenes/Assets/Cards/Undead Pact/Abominiacja.tres" id="16_fw74q"]
+[ext_resource type="Resource" uid="uid://bch1311l7suqw" path="res://Scenes/Assets/Cards/Undead Pact/Ghul.tres" id="17_pru3h"]
+[ext_resource type="Resource" uid="uid://jo6kkjmkek71" path="res://Scenes/Assets/Cards/Undead Pact/Licz.tres" id="18_t1u50"]
+[ext_resource type="Resource" uid="uid://effa3sdfk2ia" path="res://Scenes/Assets/Cards/Undead Pact/Nekromanta.tres" id="19_cnonn"]
+[ext_resource type="Resource" uid="uid://c4h2vuckmbckm" path="res://Scenes/Assets/Cards/Undead Pact/Szkielet.tres" id="20_6f02n"]
+[ext_resource type="Resource" uid="uid://4ohay80jhb7j" path="res://Scenes/Assets/Cards/Undead Pact/Truchło.tres" id="21_xd2ou"]
+[ext_resource type="Resource" uid="uid://5fshsffajkea" path="res://Scenes/Assets/Cards/Undead Pact/Zarażony Zombie.tres" id="22_0p5ad"]
+[ext_resource type="Resource" uid="uid://272ecggr0rhq" path="res://Scenes/Assets/Cards/Undead Pact/Zombie.tres" id="23_f6c7l"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_trv5t"]
 sky_top_color = Color(0.764706, 0.827451, 0.917647, 1)
@@ -56,3 +74,5 @@ shadow_enabled = true
 environment = SubResource("Environment_6gxsl")
 
 [node name="CardsUI" parent="." instance=ExtResource("1_1hggn")]
+blood_brotherhood_cards_array = [ExtResource("6_hwh2s"), ExtResource("7_pj51i"), ExtResource("8_nt6s7"), ExtResource("9_85p3k"), ExtResource("10_gf7to"), ExtResource("11_530yt"), ExtResource("12_ps2q1"), ExtResource("13_f2h5q"), ExtResource("14_xkmon"), ExtResource("15_ga2jb")]
+undead_pact_cards_array = [ExtResource("16_fw74q"), ExtResource("17_pru3h"), ExtResource("18_t1u50"), ExtResource("19_cnonn"), ExtResource("20_6f02n"), ExtResource("21_xd2ou"), ExtResource("22_0p5ad"), ExtResource("23_f6c7l")]
