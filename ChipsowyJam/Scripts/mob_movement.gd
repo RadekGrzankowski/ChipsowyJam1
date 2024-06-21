@@ -135,6 +135,8 @@ func _on_navigation_agent_3d_velocity_computed(safe_velocity):
 			for i in get_slide_collision_count():
 				var collision = get_slide_collision(i)
 				if collision:
+					if !collision.get_collider().is_in_group("mob"):
+						return
 					if self.is_in_group("blue_team"):
 						if collision.get_collider().is_in_group("blue_team"):
 							# get the push velocity from normal of the impact and send it to the body's which mob wants to push

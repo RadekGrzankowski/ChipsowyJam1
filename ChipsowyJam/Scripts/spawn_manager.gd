@@ -11,7 +11,6 @@ extends Node3D
 @onready var topPath: Marker3D = get_node("/root/GameNode/Terrain/TopPath")
 @onready var midPath: Marker3D = get_node("/root/GameNode/Terrain/MidPath")
 
-@export var demonScene: PackedScene
 @export var minionScene: PackedScene
 
 @export var minion_models: Array

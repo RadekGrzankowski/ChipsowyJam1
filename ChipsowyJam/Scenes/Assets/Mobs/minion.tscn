@@ -21,7 +21,7 @@ _data = {
 }
 point_count = 2
 
-[node name="Minion" type="CharacterBody3D" node_paths=PackedStringArray("health_label", "hit_area3D")]
+[node name="Minion" type="CharacterBody3D" node_paths=PackedStringArray("health_label", "hit_area3D") groups=["mob"]]
 axis_lock_angular_x = true
 axis_lock_angular_z = true
 script = ExtResource("1_pu2pm")
