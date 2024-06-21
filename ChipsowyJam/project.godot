@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Chipsowy Jam"
-run/main_scene="res://Scenes/Levels/wip_scene.tscn"
+run/main_scene="res://Scenes/Levels/main_menu.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
 config/icon="res://Textures/icon.svg"
 
