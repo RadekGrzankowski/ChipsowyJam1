@@ -1,7 +1,7 @@
 extends Node
 
-var blue_gold: int = 100
-var red_gold: int = 100
+var blue_gold: int = 200
+var red_gold: int = 200
 
 var red_minions_top: int
 var red_minions_mid: int

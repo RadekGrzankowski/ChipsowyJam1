@@ -123,8 +123,7 @@ func _on_attack_cooldown_timeout():
 
 # This solution does not take into account additional armor. We need to get rid of the global variables and make the building_armor to update with upgrading
 func check_armor():
-	var armor_divide: int = 100
-	var damage_reduction: int
+	var armor_divide = 100
 	if building_armor == 0:
 		return 1
 	elif building_armor <= 10:
@@ -135,7 +134,7 @@ func check_armor():
 		armor_divide *= 0.4
 	elif building_armor > 30:
 		armor_divide *= 0.3
-	damage_reduction = armor_divide / (armor_divide + building_armor)
+	var damage_reduction = armor_divide / (armor_divide + building_armor)
 	return damage_reduction
 
 # same goes here with the additional dmg global variable. This has to be updated with upgrade

@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://wpkun5cc4rhu"
-path="res://.godot/imported/Demon.glb-fc565a6fc5a8e863f6f962485d8732cb.scn"
+uid="uid://ct0ynvwh1d4s8"
+path="res://.godot/imported/Anne.glb-087fc3504f46b145932d65aa47fc225e.scn"
 
 [deps]
 
-source_file="res://Models/Demon.glb"
-dest_files=["res://.godot/imported/Demon.glb-fc565a6fc5a8e863f6f962485d8732cb.scn"]
+source_file="res://Models/Imported Models/Anne.glb"
+dest_files=["res://.godot/imported/Anne.glb-087fc3504f46b145932d65aa47fc225e.scn"]
 
 [params]
 

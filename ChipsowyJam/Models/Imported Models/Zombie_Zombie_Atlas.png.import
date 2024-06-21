@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://qnwveq354514"
-path.s3tc="res://.godot/imported/Skeleton Mage_skeleton_texture.png-3ffaf7a0a660b68292b1fac3ae53846e.s3tc.ctex"
+uid="uid://c10ore5wjiugh"
+path.s3tc="res://.godot/imported/Zombie_Zombie_Atlas.png-564eb04cf07e23e2312fc526397fa296.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -12,8 +12,8 @@ generator_parameters={}
 
 [deps]
 
-source_file="res://Models/Skeleton Mage_skeleton_texture.png"
-dest_files=["res://.godot/imported/Skeleton Mage_skeleton_texture.png-3ffaf7a0a660b68292b1fac3ae53846e.s3tc.ctex"]
+source_file="res://Models/Imported Models/Zombie_Zombie_Atlas.png"
+dest_files=["res://.godot/imported/Zombie_Zombie_Atlas.png-564eb04cf07e23e2312fc526397fa296.s3tc.ctex"]
 
 [params]
 

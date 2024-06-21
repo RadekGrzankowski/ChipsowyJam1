@@ -3,7 +3,7 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://hjd631bmtlq"
-path.s3tc="res://.godot/imported/Pirate Captain_Atlas_Pirate.png-855fa5d71ab9c85bc302e82fdf99a7e6.s3tc.ctex"
+path.s3tc="res://.godot/imported/Pirate Captain_Atlas_Pirate.png-5c06746c60e57614a8c55801b71c3f27.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -12,8 +12,8 @@ generator_parameters={}
 
 [deps]
 
-source_file="res://Models/Pirate Captain_Atlas_Pirate.png"
-dest_files=["res://.godot/imported/Pirate Captain_Atlas_Pirate.png-855fa5d71ab9c85bc302e82fdf99a7e6.s3tc.ctex"]
+source_file="res://Models/Imported Models/Pirate Captain_Atlas_Pirate.png"
+dest_files=["res://.godot/imported/Pirate Captain_Atlas_Pirate.png-5c06746c60e57614a8c55801b71c3f27.s3tc.ctex"]
 
 [params]
 

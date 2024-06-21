@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://vi0aftyh1au0"]
+[gd_scene load_steps=17 format=3 uid="uid://vi0aftyh1au0"]
 
 [ext_resource type="Material" uid="uid://jwcxs2rxl3ce" path="res://Materials/DebugBorder.tres" id="1_k1grv"]
 [ext_resource type="Material" uid="uid://cx0atg4k5plkp" path="res://Materials/DebugFloor.tres" id="1_keaj2"]
@@ -7,7 +7,6 @@
 [ext_resource type="PackedScene" uid="uid://wmflvgfbpfu7" path="res://Scenes/Assets/Buildings/nexus_red.tscn" id="5_3h17s"]
 [ext_resource type="PackedScene" uid="uid://dap8chf42ts88" path="res://Scenes/Assets/Buildings/barracks_blue.tscn" id="5_dci7j"]
 [ext_resource type="PackedScene" uid="uid://doqj5dp7gvfmx" path="res://Scenes/Assets/Buildings/tower_red.tscn" id="6_srmdh"]
-[ext_resource type="Script" path="res://Scripts/buildings_behaviour.gd" id="6_xwa7d"]
 [ext_resource type="PackedScene" uid="uid://bpoc4h6bpxrd1" path="res://Scenes/Assets/Buildings/barracks_red.tscn" id="7_56efc"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_260au"]
@@ -131,9 +130,8 @@ transform = Transform3D(-0.883883, 0, -0.883883, 0, 1.25, 0, 0.883883, 0, -0.883
 [node name="TowerRed3" parent="NavigationRegion3D" instance=ExtResource("6_srmdh")]
 transform = Transform3D(0, 0, -1.25, 0, 1.25, 0, 1.25, 0, 0, 44.5, 0.758, -27)
 
-[node name="BarracksBlue1" parent="NavigationRegion3D" groups=["barrack", "blue_team"] instance=ExtResource("5_dci7j")]
+[node name="BarracksBlue1" parent="NavigationRegion3D" instance=ExtResource("5_dci7j")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -41.4, 0, 35)
-script = ExtResource("6_xwa7d")
 
 [node name="NavigationLink3D2" type="NavigationLink3D" parent="NavigationRegion3D/BarracksBlue1" groups=["teleport"]]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
@@ -142,9 +140,8 @@ start_position = Vector3(0, 0, -1.5)
 end_position = Vector3(0, 0, 2)
 travel_cost = 0.5
 
-[node name="BarracksBlue2" parent="NavigationRegion3D" groups=["barrack", "blue_team"] instance=ExtResource("5_dci7j")]
+[node name="BarracksBlue2" parent="NavigationRegion3D" instance=ExtResource("5_dci7j")]
 transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, -36, 0, 36)
-script = ExtResource("6_xwa7d")
 
 [node name="NavigationLink3D3" type="NavigationLink3D" parent="NavigationRegion3D/BarracksBlue2" groups=["teleport"]]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
@@ -153,9 +150,8 @@ start_position = Vector3(0, 0, -2)
 end_position = Vector3(0, 0, 2)
 travel_cost = 0.0
 
-[node name="BarracksBlue3" parent="NavigationRegion3D" groups=["barrack", "blue_team"] instance=ExtResource("5_dci7j")]
+[node name="BarracksBlue3" parent="NavigationRegion3D" instance=ExtResource("5_dci7j")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -35, 0, 41.4)
-script = ExtResource("6_xwa7d")
 
 [node name="NavigationLink3D4" type="NavigationLink3D" parent="NavigationRegion3D/BarracksBlue3" groups=["teleport"]]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
@@ -164,9 +160,8 @@ start_position = Vector3(0, 0, -1.5)
 end_position = Vector3(0, 0, 2)
 travel_cost = 0.5
 
-[node name="BarracksRed1" parent="NavigationRegion3D" groups=["barrack", "red_team"] instance=ExtResource("7_56efc")]
+[node name="BarracksRed1" parent="NavigationRegion3D" instance=ExtResource("7_56efc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 41.4, 1, -35)
-script = ExtResource("6_xwa7d")
 
 [node name="NavigationLink3D" type="NavigationLink3D" parent="NavigationRegion3D/BarracksRed1" groups=["teleport"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
@@ -175,9 +170,8 @@ start_position = Vector3(0, 0, -2)
 end_position = Vector3(0, 0, 2)
 travel_cost = 0.0
 
-[node name="BarracksRed2" parent="NavigationRegion3D" groups=["barrack", "red_team"] instance=ExtResource("7_56efc")]
+[node name="BarracksRed2" parent="NavigationRegion3D" instance=ExtResource("7_56efc")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 35, 1, -41.4)
-script = ExtResource("6_xwa7d")
 
 [node name="NavigationLink3D2" type="NavigationLink3D" parent="NavigationRegion3D/BarracksRed2" groups=["teleport"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
@@ -186,9 +180,8 @@ start_position = Vector3(0, 0, -2)
 end_position = Vector3(0, 0, 2)
 travel_cost = 0.0
 
-[node name="BarracksRed3" parent="NavigationRegion3D" groups=["barrack", "red_team"] instance=ExtResource("7_56efc")]
+[node name="BarracksRed3" parent="NavigationRegion3D" instance=ExtResource("7_56efc")]
 transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, 36, 1, -36)
-script = ExtResource("6_xwa7d")
 
 [node name="NavigationLink3D3" type="NavigationLink3D" parent="NavigationRegion3D/BarracksRed3" groups=["teleport"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)

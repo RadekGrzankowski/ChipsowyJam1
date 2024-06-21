@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://d3j8eu750mlia"
-path="res://.godot/imported/Nexus.glb-6c0c8ef703c4f7baad574212826a27b0.scn"
+path="res://.godot/imported/Nexus.glb-c202ff98bb3fa28170f345b31eb13798.scn"
 
 [deps]
 
-source_file="res://Models/Nexus.glb"
-dest_files=["res://.godot/imported/Nexus.glb-6c0c8ef703c4f7baad574212826a27b0.scn"]
+source_file="res://Models/Imported Models/Nexus.glb"
+dest_files=["res://.godot/imported/Nexus.glb-c202ff98bb3fa28170f345b31eb13798.scn"]
 
 [params]
 

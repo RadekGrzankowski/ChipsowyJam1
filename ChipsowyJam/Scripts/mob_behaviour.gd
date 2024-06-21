@@ -49,22 +49,15 @@ func _ready():
 			Game.blue_minions_bot += 1
 	#INFO setup animations
 	for animation: String in anim_player.get_animation_list():
-		var _anim: String = animation.get_slice("|", 1)
-		match _anim:
-			"Punch":
-				attack_anim = "CharacterArmature|Punch"
-			"Weapon":
-				attack_anim = "CharacterArmature|Weapon"
-			"Flying_Idle":
-				idle_anim = "CharacterArmature|Flying_Idle"
+		match animation:
+			"Attack":
+				attack_anim = "Attack"
 			"Idle":
-				idle_anim = "CharacterArmature|Idle"
-			"Fast_Flying":
-				walk_anim = "CharacterArmature|Fast_Flying"
+				idle_anim = "Idle"
 			"Walk":
-				walk_anim = "CharacterArmature|Walk"
+				walk_anim = "Walk"
 			"Death":
-				death_anim = "CharacterArmature|Death"
+				death_anim = "Death"
 				
 func initialize(card: Control, team: String, main_path: String, model: PackedScene):
 	if card != null:
@@ -98,8 +91,6 @@ func initialize(card: Control, team: String, main_path: String, model: PackedSce
 	if _rootnode.get_parent():
 		_rootnode.get_parent().remove_child(_rootnode)
 	add_child(_rootnode)
-	_rootnode.rotation = Vector3(0, -135, 0)
-	_rootnode.scale = Vector3(0.4, 0.4, 0.4)
 	
 	var _anim: AnimationPlayer = _model.get_node("AnimationPlayer")
 	if _anim.get_parent():

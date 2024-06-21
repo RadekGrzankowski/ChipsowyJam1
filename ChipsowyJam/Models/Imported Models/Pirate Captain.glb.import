@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://blbheawt22xv2"
-path="res://.godot/imported/Skeleton Mage.glb-8b50a464616ab5920061c644e67d9b02.scn"
+uid="uid://dpnvumh65enja"
+path="res://.godot/imported/Pirate Captain.glb-3ea107e160b76f4798f08b8e03e2646c.scn"
 
 [deps]
 
-source_file="res://Models/Skeleton Mage.glb"
-dest_files=["res://.godot/imported/Skeleton Mage.glb-8b50a464616ab5920061c644e67d9b02.scn"]
+source_file="res://Models/Imported Models/Pirate Captain.glb"
+dest_files=["res://.godot/imported/Pirate Captain.glb-3ea107e160b76f4798f08b8e03e2646c.scn"]
 
 [params]
 

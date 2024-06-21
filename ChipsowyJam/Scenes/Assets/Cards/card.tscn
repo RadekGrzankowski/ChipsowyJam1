@@ -193,7 +193,7 @@ offset_right = 138.0
 offset_bottom = -10.0
 grow_vertical = 0
 label_settings = SubResource("LabelSettings_6msuk")
-autowrap_mode = 1
+autowrap_mode = 3
 
 [node name="ArmorLabel" type="Label" parent="CardPanelBig"]
 visible = false

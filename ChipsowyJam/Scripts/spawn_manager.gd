@@ -106,9 +106,25 @@ func spawn_bot(color: String, path: String, marker: Marker3D):
 				target_positions = [topPath.position, markerTopRed.position]
 	var model : PackedScene
 	if bot_card != null:
-		#model = bot_card.model #bot_card.model variable is currently empty
+		#model = bot_card.model #WARNING bot_card.model variable is currently empty
+		
 		#INFO Placeholder model setting based on card race
+		#0 - HUMAN_KINGDOM, 1 - OUTLAWS, 2 - MOUNTAIN_CLAN, 3 - FOREST_ORCS, 4 - BLOOD_BROTHERHOOD
+		#5 - UNDEAD_PACT, 6 - MOON_ELVES, 7 - SUN_ELVES, 8 - BEAST
 		model = minion_models[1]
+		match bot_card.race:
+			0, 6, 7:
+				model = minion_models[7]
+			1:
+				model = minion_models[6]
+			2, 3:
+				model = minion_models[1]
+			4:
+				model = minion_models[5]
+			5:
+				model = minion_models[3]
+			8:
+				model = minion_models[2]
 	else:
 		model = minion_models[0]
 	var bot: CharacterBody3D

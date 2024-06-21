@@ -125,14 +125,20 @@ func update_card():
 		image_rect_small.texture = image
 		cost_label_big.text = str(cost) + "G"
 		cost_label_small.text = str(cost) + "G"
-		race_type_label.text = str(mob_type.keys()[type]) + " " + str(mob_race.keys()[race])
+		race_type_label.text = str(mob_type.keys()[type]) + " " + str(mob_sub_type.keys()[sub_type])
 		health_label_big.text = str(health) + "♥"
 		health_label_small.text = str(health) + "♥"
 		attack_damage_label_big.text = str(attack_damage) + "AD"
 		attack_damage_label_small.text = str(attack_damage) + "AD"
+		var _race = str(mob_race.keys()[race])
+		var _race_words = _race.split("_")
+		if _race_words.size() > 1:
+			_race = _race_words[0].to_pascal_case() + " " + _race_words[1].to_pascal_case()
+		else:
+			_race = _race.to_pascal_case()
 		description_label.text = str(health) + " Health" + "\n" + str(attack_damage) + " Attack Damage" + "\n" + \
 		str(attack_speed) + "/s Attack Speed\n"+ str(armor) + " Armor Points" + "\n" + \
-		str(card_tier.keys()[tier]) + " Tier" + "\n" + str(mob_type.keys()[type]) + " " + str(mob_race.keys()[race]) + " Unit" + "\n" + \
+		str(card_tier.keys()[tier]) + " Tier" + "\n" +  _race + " Unit" + "\n" + \
 		str(cost) + " Gold"
 
 func _physics_process(delta):

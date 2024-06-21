@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://ct0ynvwh1d4s8"
-path="res://.godot/imported/Anne.glb-7631edb832235ebd4a9f302eeb8d8f4e.scn"
+uid="uid://drtnixuto3en1"
+path="res://.godot/imported/Skeleton Warrior.glb-28c06e8841ceb2061b94caadef09a13e.scn"
 
 [deps]
 
-source_file="res://Models/Anne.glb"
-dest_files=["res://.godot/imported/Anne.glb-7631edb832235ebd4a9f302eeb8d8f4e.scn"]
+source_file="res://Models/Imported Models/Skeleton Warrior.glb"
+dest_files=["res://.godot/imported/Skeleton Warrior.glb-28c06e8841ceb2061b94caadef09a13e.scn"]
 
 [params]
 
