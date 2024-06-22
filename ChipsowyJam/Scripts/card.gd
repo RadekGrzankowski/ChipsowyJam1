@@ -64,7 +64,7 @@ func set_rest_node(node: Control):
 	rest_node = node
 
 func set_variables():
-	card_name = card_resource.name
+	card_name = card_resource.card_name
 	image = card_resource.image
 	description = card_resource.description
 	health = card_resource.health

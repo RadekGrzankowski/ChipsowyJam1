@@ -5,7 +5,7 @@
 
 [resource]
 script = ExtResource("1_q6j8x")
-name = "Licz"
+card_name = "Licz"
 image = ExtResource("1_i7nxm")
 race = 5
 tier = 1

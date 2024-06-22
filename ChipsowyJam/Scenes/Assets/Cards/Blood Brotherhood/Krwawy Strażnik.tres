@@ -4,7 +4,7 @@
 
 [resource]
 script = ExtResource("1_bgsum")
-name = "Krwawy Strażnik"
+card_name = "Krwawy Strażnik"
 race = 4
 tier = 1
 description = ""

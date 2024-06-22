@@ -1,0 +1,12 @@
+[gd_scene load_steps=2 format=3 uid="uid://c42pbenlfpvpk"]
+
+[ext_resource type="Script" path="res://Scripts/AIController.gd" id="1_p0lc4"]
+
+[node name="AIController" type="Node"]
+script = ExtResource("1_p0lc4")
+
+[node name="ActionTimer" type="Timer" parent="."]
+wait_time = 10.0
+autostart = true
+
+[connection signal="timeout" from="ActionTimer" to="." method="_on_action_timer_timeout"]

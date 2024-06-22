@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://dujs37qsrm41c"]
+[gd_scene load_steps=28 format=3 uid="uid://dujs37qsrm41c"]
 
 [ext_resource type="PackedScene" uid="uid://drr8l01a1ia4i" path="res://Scenes/UI/cards_ui.tscn" id="1_1hggn"]
 [ext_resource type="Script" path="res://Scripts/camera_movement.gd" id="1_80gvj"]
@@ -23,6 +23,7 @@
 [ext_resource type="Resource" uid="uid://4ohay80jhb7j" path="res://Scenes/Assets/Cards/Undead Pact/Truchło.tres" id="21_xd2ou"]
 [ext_resource type="Resource" uid="uid://5fshsffajkea" path="res://Scenes/Assets/Cards/Undead Pact/Zarażony Zombie.tres" id="22_0p5ad"]
 [ext_resource type="Resource" uid="uid://272ecggr0rhq" path="res://Scenes/Assets/Cards/Undead Pact/Zombie.tres" id="23_f6c7l"]
+[ext_resource type="PackedScene" uid="uid://c42pbenlfpvpk" path="res://Scenes/AI/ai_controller.tscn" id="24_10fj3"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_trv5t"]
 sky_top_color = Color(0.764706, 0.827451, 0.917647, 1)
@@ -76,3 +77,5 @@ environment = SubResource("Environment_6gxsl")
 [node name="CardsUI" parent="." instance=ExtResource("1_1hggn")]
 blood_brotherhood_cards_array = [ExtResource("6_hwh2s"), ExtResource("7_pj51i"), ExtResource("8_nt6s7"), ExtResource("9_85p3k"), ExtResource("10_gf7to"), ExtResource("11_530yt"), ExtResource("12_ps2q1"), ExtResource("13_f2h5q"), ExtResource("14_xkmon"), ExtResource("15_ga2jb")]
 undead_pact_cards_array = [ExtResource("16_fw74q"), ExtResource("17_pru3h"), ExtResource("18_t1u50"), ExtResource("19_cnonn"), ExtResource("20_6f02n"), ExtResource("21_xd2ou"), ExtResource("22_0p5ad"), ExtResource("23_f6c7l")]
+
+[node name="AIController" parent="." instance=ExtResource("24_10fj3")]

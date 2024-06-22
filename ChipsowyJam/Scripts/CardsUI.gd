@@ -78,7 +78,7 @@ func fill_the_shop():
 		node.add_child(card)
 		card.global_position = position
 		card.set_rest_node(node)
-		card.name = "Card" + str(index) + " " + resource.name 
+		card.name = "Card" + str(index) + " " + resource.card_name 
 		index += 1
 
 func _process(delta):
@@ -109,12 +109,10 @@ func _on_shop_button_pressed():
 
 func open_ui():
 	if ui_open == false:
-		print("Shop UI opened")
 		$CardsUI/CardsPanel/CardsPanelsAndTools/Tools/Roll.disabled = false
 		ui.position.y -= 165
 		ui_open = true
 	elif ui_open == true:
-		print("Shop UI closed")
 		$CardsUI/CardsPanel/CardsPanelsAndTools/Tools/Roll.disabled = true
 		ui.position.y += 165
 		ui_open = false

@@ -1,6 +1,6 @@
 extends Resource
 
-@export var name: String
+@export var card_name: String
 @export var image: Texture2D
 
 enum mob_race {HUMAN_KINGDOM, OUTLAWS, MOUNTAIN_CLAN, FOREST_ORCS, BLOOD_BROTHERHOOD, UNDEAD_PACT, MOON_ELVES, SUN_ELVES, BEAST}
@@ -27,7 +27,7 @@ enum mob_sub_type {WARRIOR, ARCHER, HEALER, TANK, CASTER, AOE, ASSASSIN, ENCHANT
 
 func _init(p_name = "", p_image = null, p_cost = 0, p_race = 0, p_description = "", p_health = 0, 
 p_attack_damage = 0, p_armor = 0, p_attack_speed = 0.0, p_type = 0, p_tier = 0, p_sub_type = 0, p_range = 0.0, p_model = null):
-	name = p_name
+	card_name = p_name
 	image = p_image
 	cost = p_cost
 	race = p_race

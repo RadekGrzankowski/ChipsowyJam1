@@ -4,7 +4,7 @@
 
 [resource]
 script = ExtResource("1_gl6jm")
-name = "Kapłan Krwi"
+card_name = "Kapłan Krwi"
 race = 4
 tier = 2
 description = "AOe"

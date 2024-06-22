@@ -4,7 +4,7 @@
 
 [resource]
 script = ExtResource("1_ucqtu")
-name = "Vampir"
+card_name = "Vampir"
 race = 4
 tier = 2
 description = "heal 6 on hit"

@@ -59,7 +59,7 @@ func _ready():
 			"Death":
 				death_anim = "Death"
 				
-func initialize(card: Control, team: String, main_path: String, model: PackedScene):
+func initialize(card, team: String, main_path: String, model: PackedScene):
 	if card != null:
 		mob_name = card.card_name
 		minion_class = card.type
