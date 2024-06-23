@@ -196,6 +196,8 @@ func _on_mouse_click_control_gui_input(event):
 								Game.blue_gold -= cost
 								add_to_group("deck_card")
 								remove_from_group("shop_card")
+								cost_label_big.text = ""
+								cost_label_small.text = ""
 								lane = _lane_value
 								rest_node = node
 								current_rest_node = index
