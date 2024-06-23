@@ -1,10 +1,27 @@
-[gd_scene load_steps=5 format=3 uid="uid://drr8l01a1ia4i"]
+[gd_scene load_steps=7 format=3 uid="uid://drr8l01a1ia4i"]
 
 [ext_resource type="Script" path="res://Scripts/CardsUI.gd" id="1_lbyja"]
 [ext_resource type="PackedScene" uid="uid://bpcf3shjxg2ll" path="res://Scenes/Assets/Cards/card.tscn" id="2_ju84m"]
 [ext_resource type="PackedScene" uid="uid://bln5nembvaqdw" path="res://Scenes/Assets/Cards/card_zone.tscn" id="8_agvxe"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_mtnm0"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yydpg"]
+bg_color = Color(0.180392, 0.180392, 0.180392, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.0627451, 0.0627451, 0.0627451, 1)
+border_blend = true
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+
+[sub_resource type="LabelSettings" id="LabelSettings_wp4o5"]
+font_size = 30
+font_color = Color(0.858824, 0.67451, 0.203922, 1)
 
 [node name="CardsUI" type="CanvasLayer" node_paths=PackedStringArray("top_lane_deck", "middle_lane_deck", "bottom_lane_deck") groups=["CardsUI"]]
 script = ExtResource("1_lbyja")
@@ -324,9 +341,31 @@ disabled = true
 text = "ROLL
 (10G)"
 
+[node name="CardCostPopUp" type="Panel" parent="."]
+visible = false
+offset_right = 91.0
+offset_bottom = 48.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_yydpg")
+
+[node name="Label" type="Label" parent="CardCostPopUp"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+label_settings = SubResource("LabelSettings_wp4o5")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PopUpTimer" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true
+
 [connection signal="refresh_cards" from="." to="." method="_on_refresh_cards"]
 [connection signal="pressed" from="CardsUI/LanesPanel/LaneButtons/TopButton" to="." method="_on_top_button_pressed"]
 [connection signal="pressed" from="CardsUI/LanesPanel/LaneButtons/MiddleButton" to="." method="_on_middle_button_pressed"]
 [connection signal="pressed" from="CardsUI/LanesPanel/LaneButtons/BottomButton" to="." method="_on_bottom_button_pressed"]
 [connection signal="pressed" from="CardsUI/CardsPanel/CardsPanelsAndTools/CardsPanels/ShopSpacer/ShopButton" to="." method="_on_shop_button_pressed"]
 [connection signal="pressed" from="CardsUI/CardsPanel/CardsPanelsAndTools/Tools/Roll" to="." method="_on_roll_pressed"]
+[connection signal="timeout" from="PopUpTimer" to="." method="_on_pop_up_timer_timeout"]

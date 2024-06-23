@@ -41,6 +41,9 @@ var all_cards_legendary: Array
 @onready var bottom_lane_nodes: Array = get_tree().get_nodes_in_group("botton_zone")
 @export var bottom_lane_deck: Control
 
+@onready var card_cost_popup: Control = $CardCostPopUp
+@onready var popup_timer: Timer = $PopUpTimer
+
 func _ready():
 	init_cards_array()
 	top_button.button_pressed = true
@@ -260,3 +263,5 @@ func _on_bottom_button_pressed():
 	middle_lane_deck.visible = false
 	bottom_lane_deck.visible = true
 	
+func _on_pop_up_timer_timeout():
+	card_cost_popup.visible = false

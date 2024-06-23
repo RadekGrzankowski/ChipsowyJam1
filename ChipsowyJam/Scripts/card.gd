@@ -194,6 +194,10 @@ func _on_mouse_click_control_gui_input(event):
 						if distance < shortest_dist:
 							if Game.blue_gold >= cost:
 								Game.blue_gold -= cost
+								cardsUI.card_cost_popup.visible = true
+								cardsUI.card_cost_popup.get_node("Label").text = "-" + str(cost) + "G"
+								cardsUI.popup_timer.start()
+								cardsUI.card_cost_popup.position = node.global_position - Vector2(-25, 70)
 								add_to_group("deck_card")
 								remove_from_group("shop_card")
 								cost_label_big.text = ""
