@@ -173,7 +173,7 @@ func deck_building():
 		#roll the shop, if there is enough money try to buy the card
 		if Game.red_gold >= 10:
 			Game.red_gold -= 10
-			log_label.append_text("Shop empty - rolling it!")
+			log_label.append_text("Shop empty - rolling it!\n")
 			roll_the_shop()
 			if Game.red_gold >= 10:
 				buy_new_card()
@@ -195,7 +195,7 @@ func perform_action():
 func change_action():
 	var value = randf_range(0.0, 1.0)
 	#INFO if value bigger than a threshhold - change action to new slot
-	if value > 0.8:
+	if value > 0.75:
 		state = action_state.NEW_SLOT
 	else:
 		state = action_state.DECK_BUILDING
