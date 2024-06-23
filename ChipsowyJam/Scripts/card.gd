@@ -116,9 +116,9 @@ func update_card():
 			1: #OUTLAWS
 				color = Color.DARK_SLATE_BLUE
 			2: #MOUNTAIN_CLAN
-				color = Color.LIGHT_GREEN
+				color = Color(0.243, 0.529, 0.427)
 			3: #FOREST_ORCS
-				color = Color.DARK_GREEN
+				color = Color(0.244, 0.473, 0.266)
 			4: #BLOOD_BROTHERHOOD
 				color = Color(0.314, 0.1, 0.1)
 			5: #UNDEAD_PACT

@@ -3,9 +3,9 @@
 [ext_resource type="Script" path="res://Scripts/spawn_manager.gd" id="1_bvj0y"]
 [ext_resource type="PackedScene" uid="uid://mmq7d6i1fgjc" path="res://Scenes/Assets/Mobs/minion.tscn" id="3_1jksw"]
 [ext_resource type="PackedScene" uid="uid://jw65hqu1mseq" path="res://Models/Ghost.tscn" id="4_6rao7"]
+[ext_resource type="PackedScene" uid="uid://b77fxsgmsjpkr" path="res://Models/Orc.tscn" id="4_e1iku"]
 [ext_resource type="Script" path="res://Scripts/GameUIManager.gd" id="4_v33no"]
-[ext_resource type="PackedScene" uid="uid://xiqap8cn3t28" path="res://Models/Imported Models/Orc.glb" id="5_biqqt"]
-[ext_resource type="PackedScene" uid="uid://dg03jtcu2daa0" path="res://Models/Imported Models/Zombie.glb" id="6_wf5ax"]
+[ext_resource type="PackedScene" uid="uid://b01khnim0q3yw" path="res://Models/Zombie.tscn" id="5_xy08n"]
 [ext_resource type="PackedScene" uid="uid://c7irlw1101kwc" path="res://Models/Skeleton.tscn" id="7_vue2w"]
 [ext_resource type="PackedScene" uid="uid://bcrmooe1y1vwx" path="res://Models/Pirate Captain.tscn" id="8_qup3b"]
 [ext_resource type="PackedScene" uid="uid://bhq0a6rcwxn30" path="res://Models/Skeleton Mage.tscn" id="8_ykaen"]
@@ -26,7 +26,7 @@ color = Color(1, 1, 1, 1)
 [node name="SpawnManager" type="Node3D" parent="."]
 script = ExtResource("1_bvj0y")
 minionScene = ExtResource("3_1jksw")
-minion_models = [ExtResource("4_6rao7"), ExtResource("5_biqqt"), ExtResource("6_wf5ax"), ExtResource("7_vue2w"), ExtResource("7_vue2w"), ExtResource("8_ykaen"), ExtResource("8_qup3b"), ExtResource("9_hehkg")]
+minion_models = [ExtResource("4_6rao7"), ExtResource("4_e1iku"), ExtResource("5_xy08n"), ExtResource("7_vue2w"), ExtResource("7_vue2w"), ExtResource("8_ykaen"), ExtResource("8_qup3b"), ExtResource("9_hehkg")]
 waveTime = 45
 
 [node name="GameUIManager" type="Node3D" parent="."]

@@ -33,7 +33,6 @@ grow_vertical = 0
 scroll_following = true
 
 [node name="Panel" type="Panel" parent="CanvasLayer/InfoPanel/DebugLabel"]
-modulate = Color(0.356945, 0.110497, 0.584448, 1)
 show_behind_parent = true
 layout_mode = 1
 anchors_preset = 15
