@@ -17,4 +17,4 @@ armor = 10
 attack_speed = 0.7
 attack_range = 2.0
 type = 0
-sub_type = 0
+sub_type = 3
