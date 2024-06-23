@@ -1,0 +1,18 @@
+[gd_resource type="Resource" load_steps=2 format=3 uid="uid://dmpt1t7rj803i"]
+
+[ext_resource type="Script" path="res://Scenes/Assets/Cards/card_stats.gd" id="1_lkf73"]
+
+[resource]
+script = ExtResource("1_lkf73")
+card_name = "Dowódca Paladynów"
+race = 0
+tier = 3
+description = "healing aura 5 hp / sec"
+cost = 100
+health = 350
+attack_damage = 50
+armor = 100
+attack_speed = 0.8
+attack_range = 1.5
+type = 0
+sub_type = 0

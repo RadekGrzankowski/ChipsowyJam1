@@ -1,0 +1,18 @@
+[gd_resource type="Resource" load_steps=2 format=3 uid="uid://tyw5n7v87gxw"]
+
+[ext_resource type="Script" path="res://Scenes/Assets/Cards/card_stats.gd" id="1_y8xde"]
+
+[resource]
+script = ExtResource("1_y8xde")
+card_name = "Paladyn"
+race = 0
+tier = 2
+description = "each 3 hit heal for 30"
+cost = 70
+health = 300
+attack_damage = 35
+armor = 70
+attack_speed = 0.7
+attack_range = 1.5
+type = 0
+sub_type = 7

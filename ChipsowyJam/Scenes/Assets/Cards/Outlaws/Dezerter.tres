@@ -1,0 +1,18 @@
+[gd_resource type="Resource" load_steps=2 format=3 uid="uid://dfrwgb4kti6mn"]
+
+[ext_resource type="Script" path="res://Scenes/Assets/Cards/card_stats.gd" id="1_jsn8p"]
+
+[resource]
+script = ExtResource("1_jsn8p")
+card_name = "Dezerter"
+race = 1
+tier = 2
+description = ""
+cost = 60
+health = 250
+attack_damage = 25
+armor = 50
+attack_speed = 1.5
+attack_range = 1.5
+type = 0
+sub_type = 0

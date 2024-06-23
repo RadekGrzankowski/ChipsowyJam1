@@ -1,0 +1,18 @@
+[gd_resource type="Resource" load_steps=2 format=3 uid="uid://buf3wws01j4kr"]
+
+[ext_resource type="Script" path="res://Scenes/Assets/Cards/card_stats.gd" id="1_tablx"]
+
+[resource]
+script = ExtResource("1_tablx")
+card_name = "Starszy Kapłan"
+race = 0
+tier = 3
+description = "AOE heal"
+cost = 100
+health = 225
+attack_damage = 25
+armor = 15
+attack_speed = 1.0
+attack_range = 4.0
+type = 2
+sub_type = 2

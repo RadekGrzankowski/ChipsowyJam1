@@ -1,0 +1,18 @@
+[gd_resource type="Resource" load_steps=2 format=3 uid="uid://vq7xwjvj06ko"]
+
+[ext_resource type="Script" path="res://Scenes/Assets/Cards/card_stats.gd" id="1_jmuxa"]
+
+[resource]
+script = ExtResource("1_jmuxa")
+card_name = "Wódz Bandytów"
+race = 1
+tier = 2
+description = "+5 gold per kill "
+cost = 70
+health = 300
+attack_damage = 70
+armor = 30
+attack_speed = 0.5
+attack_range = 1.0
+type = 0
+sub_type = 0
