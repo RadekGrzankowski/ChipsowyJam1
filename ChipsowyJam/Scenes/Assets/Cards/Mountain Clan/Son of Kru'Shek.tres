@@ -1,0 +1,18 @@
+[gd_resource type="Resource" load_steps=2 format=3 uid="uid://o7kqfoba7q0m"]
+
+[ext_resource type="Script" path="res://Scenes/Assets/Cards/card_stats.gd" id="1_m7mxq"]
+
+[resource]
+script = ExtResource("1_m7mxq")
+card_name = "Son of Kru'Shek"
+race = 2
+tier = 3
+description = "Less than 20% hp get 20 % ad"
+cost = 100
+health = 500
+attack_damage = 100
+armor = 30
+attack_speed = 0.5
+attack_range = 1.5
+type = 0
+sub_type = 0

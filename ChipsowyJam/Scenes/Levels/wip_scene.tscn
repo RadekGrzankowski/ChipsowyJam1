@@ -1,4 +1,4 @@
-[gd_scene load_steps=46 format=3 uid="uid://dujs37qsrm41c"]
+[gd_scene load_steps=56 format=3 uid="uid://dujs37qsrm41c"]
 
 [ext_resource type="PackedScene" uid="uid://drr8l01a1ia4i" path="res://Scenes/UI/cards_ui.tscn" id="1_1hggn"]
 [ext_resource type="Script" path="res://Scripts/camera_movement.gd" id="1_80gvj"]
@@ -42,6 +42,16 @@
 [ext_resource type="Resource" uid="uid://272ecggr0rhq" path="res://Scenes/Assets/Cards/Undead Pact/Zombie.tres" id="23_f6c7l"]
 [ext_resource type="Resource" uid="uid://b2nyufaf12f5d" path="res://Scenes/Assets/Cards/Outlaws/Łowca Czarownic.tres" id="23_lyny0"]
 [ext_resource type="PackedScene" uid="uid://c42pbenlfpvpk" path="res://Scenes/AI/ai_controller.tscn" id="24_10fj3"]
+[ext_resource type="Resource" uid="uid://bu7docgb3qj2d" path="res://Scenes/Assets/Cards/Mountain Clan/Berserker.tres" id="24_24tdh"]
+[ext_resource type="Resource" uid="uid://bhge7q3nwgdjl" path="res://Scenes/Assets/Cards/Mountain Clan/Duch Ziemi.tres" id="25_w0cu6"]
+[ext_resource type="Resource" uid="uid://cks410ogri57j" path="res://Scenes/Assets/Cards/Mountain Clan/Górski Wojownik.tres" id="26_sdtm7"]
+[ext_resource type="Resource" uid="uid://cnpwd5h8n2mn4" path="res://Scenes/Assets/Cards/Mountain Clan/Ork Spearman.tres" id="27_tpfi4"]
+[ext_resource type="Resource" uid="uid://bfqo8lshtka7f" path="res://Scenes/Assets/Cards/Mountain Clan/Ork Szaman.tres" id="28_kdho1"]
+[ext_resource type="Resource" uid="uid://bmcq3xsufisjl" path="res://Scenes/Assets/Cards/Mountain Clan/Ork.tres" id="29_pd0jy"]
+[ext_resource type="Resource" uid="uid://o7kqfoba7q0m" path="res://Scenes/Assets/Cards/Mountain Clan/Son of Kru'Shek.tres" id="30_qa5bw"]
+[ext_resource type="Resource" uid="uid://cq21a2c7eij7" path="res://Scenes/Assets/Cards/Mountain Clan/Stary Ork.tres" id="31_e6mp0"]
+[ext_resource type="Resource" uid="uid://vhb7g07k4fae" path="res://Scenes/Assets/Cards/Mountain Clan/Władca Run.tres" id="32_clqrf"]
+[ext_resource type="Resource" uid="uid://nb5ogqdbqgeu" path="res://Scenes/Assets/Cards/Mountain Clan/Znahor.tres" id="33_yku2d"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_trv5t"]
 sky_top_color = Color(0.764706, 0.827451, 0.917647, 1)
@@ -95,6 +105,7 @@ environment = SubResource("Environment_6gxsl")
 [node name="CardsUI" parent="." instance=ExtResource("1_1hggn")]
 human_kingdom_cards_array = [ExtResource("6_hrmsv"), ExtResource("7_jl54c"), ExtResource("8_fbhor"), ExtResource("9_k5nwm"), ExtResource("10_4ekxd"), ExtResource("11_qejxs"), ExtResource("12_b06qd"), ExtResource("13_ccm24"), ExtResource("14_iwdh7"), ExtResource("15_uc1f5")]
 outlaws_cards_array = [ExtResource("16_5jdk1"), ExtResource("17_34wgx"), ExtResource("18_ipagx"), ExtResource("19_kucoa"), ExtResource("20_2qlyl"), ExtResource("21_k7574"), ExtResource("22_203mh"), ExtResource("23_lyny0")]
+mountain_clan_cards_array = [ExtResource("24_24tdh"), ExtResource("25_w0cu6"), ExtResource("26_sdtm7"), ExtResource("27_tpfi4"), ExtResource("28_kdho1"), ExtResource("29_pd0jy"), ExtResource("30_qa5bw"), ExtResource("31_e6mp0"), ExtResource("32_clqrf"), ExtResource("33_yku2d")]
 blood_brotherhood_cards_array = [ExtResource("6_hwh2s"), ExtResource("7_pj51i"), ExtResource("8_nt6s7"), ExtResource("9_85p3k"), ExtResource("10_gf7to"), ExtResource("11_530yt"), ExtResource("12_ps2q1"), ExtResource("13_f2h5q"), ExtResource("14_xkmon"), ExtResource("15_ga2jb")]
 undead_pact_cards_array = [ExtResource("16_fw74q"), ExtResource("17_pru3h"), ExtResource("18_t1u50"), ExtResource("19_cnonn"), ExtResource("20_6f02n"), ExtResource("21_xd2ou"), ExtResource("22_0p5ad"), ExtResource("23_f6c7l")]
 
