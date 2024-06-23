@@ -183,6 +183,3 @@ func _on_red_mob_timer_timeout():
 	
 func _on_start_delay_timer_timeout():
 	spawn_wave()
-
-
-

@@ -22,7 +22,13 @@ signal refresh_cards
 @export var moon_elves_cards_array: Array
 @export var sun_elves_cards_array: Array
 @export var beast_cards_array: Array
-var all_cards_array: Array
+
+#var all_cards_array: Array
+#different tiers of all cards
+var all_cards_common: Array
+var all_cards_rare: Array
+var all_cards_epic: Array
+var all_cards_legendary: Array
 
 @onready var shop_nodes : Array = get_tree().get_nodes_in_group("shop_zone")
 
@@ -35,22 +41,108 @@ var all_cards_array: Array
 @onready var bottom_lane_nodes: Array = get_tree().get_nodes_in_group("botton_zone")
 @export var bottom_lane_deck: Control
 
-# Called when the node enters the scene tree for the first time.
 func _ready():
+	init_cards_array()
 	top_button.button_pressed = true
-	all_cards_array.append_array(human_kingdom_cards_array)
-	all_cards_array.append_array(outlaws_cards_array)
-	all_cards_array.append_array(mountain_clan_cards_array)
-	all_cards_array.append_array(forest_orcs_cards_array)
-	all_cards_array.append_array(blood_brotherhood_cards_array)
-	all_cards_array.append_array(undead_pact_cards_array)
-	all_cards_array.append_array(moon_elves_cards_array)
-	all_cards_array.append_array(sun_elves_cards_array)
-	all_cards_array.append_array(beast_cards_array)
-	all_cards_array.shuffle()
-	if !all_cards_array.is_empty():
+	if !all_cards_common.is_empty():
 		call_deferred("fill_the_shop")
 	call_deferred("unlock_the_buttons")
+
+func init_cards_array():
+	for card in human_kingdom_cards_array:
+		match card.tier:
+			0: 
+				all_cards_common.append(card)
+			1:
+				all_cards_rare.append(card)
+			2:
+				all_cards_epic.append(card)
+			3:
+				all_cards_legendary.append(card)
+	for card in outlaws_cards_array:
+		match card.tier:
+			0: 
+				all_cards_common.append(card)
+			1:
+				all_cards_rare.append(card)
+			2:
+				all_cards_epic.append(card)
+			3:
+				all_cards_legendary.append(card)
+	for card in mountain_clan_cards_array:
+		match card.tier:
+			0: 
+				all_cards_common.append(card)
+			1:
+				all_cards_rare.append(card)
+			2:
+				all_cards_epic.append(card)
+			3:
+				all_cards_legendary.append(card)	
+	for card in forest_orcs_cards_array:
+		match card.tier:
+			0: 
+				all_cards_common.append(card)
+			1:
+				all_cards_rare.append(card)
+			2:
+				all_cards_epic.append(card)
+			3:
+				all_cards_legendary.append(card)
+	for card in blood_brotherhood_cards_array:
+		match card.tier:
+			0: 
+				all_cards_common.append(card)
+			1:
+				all_cards_rare.append(card)
+			2:
+				all_cards_epic.append(card)
+			3:
+				all_cards_legendary.append(card)	
+	for card in undead_pact_cards_array:
+		match card.tier:
+			0: 
+				all_cards_common.append(card)
+			1:
+				all_cards_rare.append(card)
+			2:
+				all_cards_epic.append(card)
+			3:
+				all_cards_legendary.append(card)	
+	for card in moon_elves_cards_array:
+		match card.tier:
+			0: 
+				all_cards_common.append(card)
+			1:
+				all_cards_rare.append(card)
+			2:
+				all_cards_epic.append(card)
+			3:
+				all_cards_legendary.append(card)
+	for card in sun_elves_cards_array:
+		match card.tier:
+			0: 
+				all_cards_common.append(card)
+			1:
+				all_cards_rare.append(card)
+			2:
+				all_cards_epic.append(card)
+			3:
+				all_cards_legendary.append(card)
+	for card in beast_cards_array:
+		match card.tier:
+			0: 
+				all_cards_common.append(card)
+			1:
+				all_cards_rare.append(card)
+			2:
+				all_cards_epic.append(card)
+			3:
+				all_cards_legendary.append(card)
+	all_cards_common.shuffle()
+	all_cards_rare.shuffle()
+	all_cards_epic.shuffle()
+	all_cards_legendary.shuffle()
 
 func unlock_the_buttons():
 	for node in top_lane_nodes:
@@ -71,7 +163,13 @@ func fill_the_shop():
 	for node in shop_nodes:
 		var card: Control = card_scene.instantiate()
 		card.add_to_group("shop_card")
-		var resource = all_cards_array.pick_random()
+		var tier = Game.return_tier(Game.blue_barracks_level)
+		var resource
+		match tier:
+			0: resource = all_cards_common.pick_random()
+			1: resource = all_cards_rare.pick_random()
+			2: resource = all_cards_epic.pick_random()
+			3: resource = all_cards_legendary.pick_random()
 		card.card_resource = resource
 		node.card = card
 		var position = node.global_position + node.pivot_offset
@@ -127,7 +225,7 @@ func _on_roll_pressed():
 		Game.blue_gold -= 10
 		for card in cards_to_delete:
 			card.queue_free()
-		if !all_cards_array.is_empty():
+		if !all_cards_common.is_empty():
 			fill_the_shop()
 
 

@@ -43,6 +43,13 @@ offset_bottom = 86.0
 text = "gold label"
 label_settings = SubResource("LabelSettings_tnijv")
 
+[node name="BarrackLevelLabel" type="Label" parent="GameUIManager/HUD/Labels"]
+offset_top = 86.0
+offset_right = 128.0
+offset_bottom = 156.0
+text = "barracks levels"
+label_settings = SubResource("LabelSettings_tnijv")
+
 [node name="TopMinions" type="Label" parent="GameUIManager/HUD/Labels"]
 offset_left = 186.0
 offset_top = 16.0
@@ -70,14 +77,14 @@ text = "bot minions
 bot minions"
 label_settings = SubResource("LabelSettings_tnijv")
 
-[node name="Upgrades" type="Label" parent="GameUIManager/HUD/Labels"]
+[node name="UpgradesKey" type="Label" parent="GameUIManager/HUD/Labels"]
 offset_left = 999.0
 offset_top = 16.0
 offset_right = 1130.0
 offset_bottom = 67.0
 text = "Upgrades - U key"
 
-[node name="Panel" type="Label" parent="GameUIManager/HUD/Labels"]
+[node name="AIPanelKey" type="Label" parent="GameUIManager/HUD/Labels"]
 offset_left = 1173.0
 offset_top = 16.0
 offset_right = 1321.0
@@ -1307,104 +1314,116 @@ offset_top = 88.0
 offset_right = 1536.0
 offset_bottom = 712.0
 
-[node name="MidUpgrades" type="VBoxContainer" parent="GameUIManager/HUD/UpgradesUI/NexusPanel/Upgrades"]
+[node name="HBoxContainer" type="HBoxContainer" parent="GameUIManager/HUD/UpgradesUI/NexusPanel/Upgrades"]
 layout_mode = 2
 size_flags_horizontal = 3
+size_flags_vertical = 3
+alignment = 1
 
-[node name="HBoxContainer" type="HBoxContainer" parent="GameUIManager/HUD/UpgradesUI/NexusPanel/Upgrades/MidUpgrades"]
+[node name="HBoxContainer5" type="HBoxContainer" parent="GameUIManager/HUD/UpgradesUI/NexusPanel/Upgrades/HBoxContainer"]
+visible = false
 layout_mode = 2
 size_flags_vertical = 3
 alignment = 1
 
-[node name="Button" type="Button" parent="GameUIManager/HUD/UpgradesUI/NexusPanel/Upgrades/MidUpgrades/HBoxContainer"]
+[node name="Button" type="Button" parent="GameUIManager/HUD/UpgradesUI/NexusPanel/Upgrades/HBoxContainer/HBoxContainer5"]
 layout_mode = 2
 text = "Attack Speed + 10%
 200G"
 
-[node name="Spacer" type="Control" parent="GameUIManager/HUD/UpgradesUI/NexusPanel/Upgrades/MidUpgrades/HBoxContainer"]
+[node name="Spacer" type="Control" parent="GameUIManager/HUD/UpgradesUI/NexusPanel/Upgrades/HBoxContainer/HBoxContainer5"]
 custom_minimum_size = Vector2(80, 0)
 layout_mode = 2
 
-[node name="Button2" type="Button" parent="GameUIManager/HUD/UpgradesUI/NexusPanel/Upgrades/MidUpgrades/HBoxContainer"]
+[node name="Button2" type="Button" parent="GameUIManager/HUD/UpgradesUI/NexusPanel/Upgrades/HBoxContainer/HBoxContainer5"]
 layout_mode = 2
 text = "Attack Damage + 5
 200G"
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="GameUIManager/HUD/UpgradesUI/NexusPanel/Upgrades/MidUpgrades"]
+[node name="HBoxContainer4" type="HBoxContainer" parent="GameUIManager/HUD/UpgradesUI/NexusPanel/Upgrades/HBoxContainer"]
+visible = false
 layout_mode = 2
 size_flags_vertical = 3
 alignment = 1
 
-[node name="Button" type="Button" parent="GameUIManager/HUD/UpgradesUI/NexusPanel/Upgrades/MidUpgrades/HBoxContainer2"]
+[node name="Button" type="Button" parent="GameUIManager/HUD/UpgradesUI/NexusPanel/Upgrades/HBoxContainer/HBoxContainer4"]
 layout_mode = 2
 text = "Attack Speed + 10%
 200G"
 
-[node name="Spacer" type="Control" parent="GameUIManager/HUD/UpgradesUI/NexusPanel/Upgrades/MidUpgrades/HBoxContainer2"]
+[node name="Spacer" type="Control" parent="GameUIManager/HUD/UpgradesUI/NexusPanel/Upgrades/HBoxContainer/HBoxContainer4"]
 custom_minimum_size = Vector2(80, 0)
 layout_mode = 2
 
-[node name="Button2" type="Button" parent="GameUIManager/HUD/UpgradesUI/NexusPanel/Upgrades/MidUpgrades/HBoxContainer2"]
+[node name="Button2" type="Button" parent="GameUIManager/HUD/UpgradesUI/NexusPanel/Upgrades/HBoxContainer/HBoxContainer4"]
 layout_mode = 2
 text = "Attack Damage + 5
 200G"
 
-[node name="HBoxContainer3" type="HBoxContainer" parent="GameUIManager/HUD/UpgradesUI/NexusPanel/Upgrades/MidUpgrades"]
+[node name="HBoxContainer3" type="HBoxContainer" parent="GameUIManager/HUD/UpgradesUI/NexusPanel/Upgrades/HBoxContainer"]
+visible = false
 layout_mode = 2
 size_flags_vertical = 3
 alignment = 1
 
-[node name="Button" type="Button" parent="GameUIManager/HUD/UpgradesUI/NexusPanel/Upgrades/MidUpgrades/HBoxContainer3"]
+[node name="Button" type="Button" parent="GameUIManager/HUD/UpgradesUI/NexusPanel/Upgrades/HBoxContainer/HBoxContainer3"]
 layout_mode = 2
 text = "Attack Speed + 10%
 200G"
 
-[node name="Spacer" type="Control" parent="GameUIManager/HUD/UpgradesUI/NexusPanel/Upgrades/MidUpgrades/HBoxContainer3"]
+[node name="Spacer" type="Control" parent="GameUIManager/HUD/UpgradesUI/NexusPanel/Upgrades/HBoxContainer/HBoxContainer3"]
 custom_minimum_size = Vector2(80, 0)
 layout_mode = 2
 
-[node name="Button2" type="Button" parent="GameUIManager/HUD/UpgradesUI/NexusPanel/Upgrades/MidUpgrades/HBoxContainer3"]
+[node name="Button2" type="Button" parent="GameUIManager/HUD/UpgradesUI/NexusPanel/Upgrades/HBoxContainer/HBoxContainer3"]
 layout_mode = 2
 text = "Attack Damage + 5
 200G"
 
-[node name="HBoxContainer4" type="HBoxContainer" parent="GameUIManager/HUD/UpgradesUI/NexusPanel/Upgrades/MidUpgrades"]
+[node name="BarrackLevels" type="VBoxContainer" parent="GameUIManager/HUD/UpgradesUI/NexusPanel/Upgrades/HBoxContainer"]
+custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
-size_flags_vertical = 3
-alignment = 1
+size_flags_horizontal = 6
+size_flags_vertical = 8
 
-[node name="Button" type="Button" parent="GameUIManager/HUD/UpgradesUI/NexusPanel/Upgrades/MidUpgrades/HBoxContainer4"]
+[node name="BarrackUpgrade4" type="Button" parent="GameUIManager/HUD/UpgradesUI/NexusPanel/Upgrades/HBoxContainer/BarrackLevels"]
+custom_minimum_size = Vector2(150, 80)
 layout_mode = 2
-text = "Attack Speed + 10%
+disabled = true
+text = "Barracks Level 4
+400G"
+
+[node name="Spacer3" type="Control" parent="GameUIManager/HUD/UpgradesUI/NexusPanel/Upgrades/HBoxContainer/BarrackLevels"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+
+[node name="BarrackUpgrade3" type="Button" parent="GameUIManager/HUD/UpgradesUI/NexusPanel/Upgrades/HBoxContainer/BarrackLevels"]
+custom_minimum_size = Vector2(150, 80)
+layout_mode = 2
+disabled = true
+text = "Barracks Level 3
+300G"
+
+[node name="Spacer" type="Control" parent="GameUIManager/HUD/UpgradesUI/NexusPanel/Upgrades/HBoxContainer/BarrackLevels"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+
+[node name="BarrackUpgrade2" type="Button" parent="GameUIManager/HUD/UpgradesUI/NexusPanel/Upgrades/HBoxContainer/BarrackLevels"]
+custom_minimum_size = Vector2(150, 80)
+layout_mode = 2
+disabled = true
+text = "Barracks Level 2
 200G"
 
-[node name="Spacer" type="Control" parent="GameUIManager/HUD/UpgradesUI/NexusPanel/Upgrades/MidUpgrades/HBoxContainer4"]
-custom_minimum_size = Vector2(80, 0)
+[node name="Spacer2" type="Control" parent="GameUIManager/HUD/UpgradesUI/NexusPanel/Upgrades/HBoxContainer/BarrackLevels"]
+custom_minimum_size = Vector2(0, 40)
 layout_mode = 2
 
-[node name="Button2" type="Button" parent="GameUIManager/HUD/UpgradesUI/NexusPanel/Upgrades/MidUpgrades/HBoxContainer4"]
+[node name="BarrackUpgrade1" type="Button" parent="GameUIManager/HUD/UpgradesUI/NexusPanel/Upgrades/HBoxContainer/BarrackLevels"]
+custom_minimum_size = Vector2(150, 80)
 layout_mode = 2
-text = "Attack Damage + 5
-200G"
-
-[node name="HBoxContainer5" type="HBoxContainer" parent="GameUIManager/HUD/UpgradesUI/NexusPanel/Upgrades/MidUpgrades"]
-layout_mode = 2
-size_flags_vertical = 3
-alignment = 1
-
-[node name="Button" type="Button" parent="GameUIManager/HUD/UpgradesUI/NexusPanel/Upgrades/MidUpgrades/HBoxContainer5"]
-layout_mode = 2
-text = "Attack Speed + 10%
-200G"
-
-[node name="Spacer" type="Control" parent="GameUIManager/HUD/UpgradesUI/NexusPanel/Upgrades/MidUpgrades/HBoxContainer5"]
-custom_minimum_size = Vector2(80, 0)
-layout_mode = 2
-
-[node name="Button2" type="Button" parent="GameUIManager/HUD/UpgradesUI/NexusPanel/Upgrades/MidUpgrades/HBoxContainer5"]
-layout_mode = 2
-text = "Attack Damage + 5
-200G"
+text = "Barracks Level 1
+100G"
 
 [node name="Line" type="Panel" parent="GameUIManager/HUD/UpgradesUI"]
 offset_left = 192.0
@@ -1414,10 +1433,11 @@ offset_bottom = 328.0
 theme_override_styles/panel = SubResource("StyleBoxLine_8ln8o")
 
 [node name="ExitButton" type="Button" parent="GameUIManager/HUD/UpgradesUI"]
-offset_left = 1656.0
-offset_top = 128.0
-offset_right = 1728.0
-offset_bottom = 176.0
+offset_left = 1668.75
+offset_top = 128.75
+offset_right = 1728.75
+offset_bottom = 183.75
+theme_override_font_sizes/font_size = 30
 text = "X"
 
 [node name="WaveTimer" type="Timer" parent="."]
@@ -1459,6 +1479,10 @@ autostart = true
 [connection signal="pressed" from="GameUIManager/HUD/UpgradesUI/UpperPanel/HBoxContainer/TowersButton" to="GameUIManager" method="_on_towers_button_pressed"]
 [connection signal="pressed" from="GameUIManager/HUD/UpgradesUI/UpperPanel/HBoxContainer/BarracksButton" to="GameUIManager" method="_on_barracks_button_pressed"]
 [connection signal="pressed" from="GameUIManager/HUD/UpgradesUI/UpperPanel/HBoxContainer/NexusButton" to="GameUIManager" method="_on_nexus_button_pressed"]
+[connection signal="pressed" from="GameUIManager/HUD/UpgradesUI/NexusPanel/Upgrades/HBoxContainer/BarrackLevels/BarrackUpgrade4" to="GameUIManager" method="_on_barrack_upgrade_button_pressed" binds= [4, 400]]
+[connection signal="pressed" from="GameUIManager/HUD/UpgradesUI/NexusPanel/Upgrades/HBoxContainer/BarrackLevels/BarrackUpgrade3" to="GameUIManager" method="_on_barrack_upgrade_button_pressed" binds= [3, 300]]
+[connection signal="pressed" from="GameUIManager/HUD/UpgradesUI/NexusPanel/Upgrades/HBoxContainer/BarrackLevels/BarrackUpgrade2" to="GameUIManager" method="_on_barrack_upgrade_button_pressed" binds= [2, 200]]
+[connection signal="pressed" from="GameUIManager/HUD/UpgradesUI/NexusPanel/Upgrades/HBoxContainer/BarrackLevels/BarrackUpgrade1" to="GameUIManager" method="_on_barrack_upgrade_button_pressed" binds= [1, 100]]
 [connection signal="pressed" from="GameUIManager/HUD/UpgradesUI/ExitButton" to="GameUIManager" method="_on_exit_button_pressed"]
 [connection signal="timeout" from="WaveTimer" to="SpawnManager" method="_on_wave_timer_timeout"]
 [connection signal="timeout" from="BlueMobTimer" to="SpawnManager" method="_on_blue_mob_timer_timeout"]

@@ -25,9 +25,7 @@ func _init():
 	
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	for index in shop_cards.size():
-		var resource = cardsUI.all_cards_array.pick_random()
-		shop_cards[index] = resource
+	roll_the_shop()
 	perform_action()
 	
 func _process(delta):
@@ -147,7 +145,13 @@ func is_shop_empty():
 	
 func roll_the_shop():
 	for index in shop_cards.size():
-		var resource = cardsUI.all_cards_array.pick_random()
+		var tier = Game.return_tier(Game.blue_barracks_level)
+		var resource
+		match tier:
+			0: resource = cardsUI.all_cards_common.pick_random()
+			1: resource = cardsUI.all_cards_rare.pick_random()
+			2: resource = cardsUI.all_cards_epic.pick_random()
+			3: resource = cardsUI.all_cards_legendary.pick_random()
 		shop_cards[index] = resource
 							
 func pick_best_from_shop():
