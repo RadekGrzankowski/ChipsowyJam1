@@ -1,18 +1,17 @@
 extends Node2D
 
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
-
+@onready var blue_gold_box: SpinBox = $MainMenu/DebugPanel/BlueGoldInputBox
+@onready var red_gold_box: SpinBox = $MainMenu/DebugPanel/RedGoldInputBox
+@onready var blue_barrack_box: SpinBox = $MainMenu/DebugPanel/BlueBarrackInputBox
+@onready var red_barrack_box: SpinBox = $MainMenu/DebugPanel/RedBarrackInputBox
 
 func _on_play_button_pressed():
+	Game.red_gold = red_gold_box.value
+	Game.blue_gold = blue_gold_box.value
+	Game.red_barracks_level = red_barrack_box.value
+	Game.blue_barracks_level = blue_barrack_box.value
+	Game.reset_values()
 	get_tree().change_scene_to_file("res://Scenes/Levels/wip_scene.tscn")
-
 
 func _on_exit_button_pressed():
 	get_tree().quit()

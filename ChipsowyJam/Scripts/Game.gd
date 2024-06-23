@@ -1,7 +1,7 @@
 extends Node
 
-var blue_gold: int = 10000
-var red_gold: int = 200
+var blue_gold: int = 100
+var red_gold: int = 100
 
 var red_barracks_level: int = 0
 var blue_barracks_level: int = 0
@@ -59,6 +59,16 @@ var legendary_1: int = 3
 var legendary_2: int = 7
 var legendary_3: int = 12
 var legendary_4: int = 20
+
+func reset_values():
+	red_minions_killed = 0
+	blue_minions_killed = 0
+	red_minions_bot = 0
+	red_minions_mid = 0
+	red_minions_top = 0
+	blue_minions_bot = 0
+	blue_minions_mid = 0
+	blue_minions_top = 0
 
 func return_tier(level: int):
 	var rand_value = randi_range(0, 100)

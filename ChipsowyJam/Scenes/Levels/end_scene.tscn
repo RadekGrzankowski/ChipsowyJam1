@@ -36,3 +36,19 @@ offset_left = 1016.0
 offset_right = 1096.0
 offset_bottom = 296.0
 label_settings = SubResource("LabelSettings_lkrcj")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Button" type="Button" parent="CanvasLayer"]
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 103.0
+offset_top = 67.0
+offset_right = 403.0
+offset_bottom = 167.0
+grow_vertical = 2
+theme_override_font_sizes/font_size = 25
+text = "Go back to Main Menu!"
+
+[connection signal="pressed" from="CanvasLayer/Button" to="." method="_on_button_pressed"]
