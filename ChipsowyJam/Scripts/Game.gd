@@ -6,6 +6,9 @@ var red_gold: int = 100
 var red_barracks_level: int = 0
 var blue_barracks_level: int = 0
 
+var start_delay_time: int = 15
+var wave_time: int = 45
+
 var red_minions_top: int
 var red_minions_mid: int
 var red_minions_bot: int

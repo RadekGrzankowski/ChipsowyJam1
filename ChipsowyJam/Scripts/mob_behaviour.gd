@@ -4,9 +4,9 @@ var mob_name: String
 @export var mob_health: int = 75
 @export var mob_attack: float = 5.0
 @export var mob_armor: int = 5.0
-@export var health_label: Label3D
-@export var hit_area3D: Area3D
 @export var attack_speed: float = 1.25
+@onready var health_label: Label3D = $HealthLabel
+@onready var health_bar: ProgressBar = $HealthBar/SubViewport/Panel/ProgressBar
 
 var teamName: String
 enum mob_class {MELEE, RANGED, MAGE}
@@ -58,6 +58,9 @@ func _ready():
 				walk_anim = "Walk"
 			"Death":
 				death_anim = "Death"
+	
+	health_bar.set_max(mob_health)
+	health_bar.set_value(mob_health)
 				
 func initialize(card, team: String, main_path: String, model: PackedScene):
 	if card != null:
@@ -102,6 +105,7 @@ func initialize(card, team: String, main_path: String, model: PackedScene):
 		add_to_group("red_team")
 	elif team == "blue":
 		add_to_group("blue_team")
+
 	
 func take_damage(amount, attacker):
 	#checks if current mob is existing
@@ -129,6 +133,7 @@ func take_damage(amount, attacker):
 				Game.red_gold += 5
 			queue_free()
 		else:
+			health_bar.set_value(mob_health)
 			health_label.text = str(mob_name) + " " + str(mob_health) + "HP\n" + \
 			str(mob_attack) + "AD " + str(mob_armor) + "ARM"
 	

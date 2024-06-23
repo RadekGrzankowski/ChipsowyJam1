@@ -19,7 +19,6 @@ extends Node3D
 
 @onready var waveTimer = $"../WaveTimer"
 @onready var startTimer = $"../StartDelayTimer"
-@export var waveTime: int
 @onready var mob_blue_timer = $"../BlueMobTimer"
 @onready var mob_red_timer = $"../RedMobTimer"
 @onready var blue_nexus_label = $"/root/GameNode/Terrain/NexusBlue/TimerLabel"
@@ -42,7 +41,9 @@ var red_bot_count: int = 3
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	cardsUI = get_tree().get_first_node_in_group("CardsUI")
-	waveTimer.wait_time = waveTime
+	startTimer.wait_time = Game.start_delay_time
+	waveTimer.wait_time = Game.wave_time
+	startTimer.start()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):

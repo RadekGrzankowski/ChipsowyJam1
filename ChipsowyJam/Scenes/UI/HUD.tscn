@@ -27,7 +27,6 @@ color = Color(1, 1, 1, 1)
 script = ExtResource("1_bvj0y")
 minionScene = ExtResource("3_1jksw")
 minion_models = [ExtResource("4_6rao7"), ExtResource("4_e1iku"), ExtResource("5_xy08n"), ExtResource("7_vue2w"), ExtResource("7_vue2w"), ExtResource("8_ykaen"), ExtResource("8_qup3b"), ExtResource("9_hehkg")]
-waveTime = 45
 
 [node name="GameUIManager" type="Node3D" parent="."]
 script = ExtResource("4_v33no")
@@ -1450,7 +1449,6 @@ wait_time = 45.0
 [node name="StartDelayTimer" type="Timer" parent="."]
 wait_time = 15.0
 one_shot = true
-autostart = true
 
 [connection signal="pressed" from="GameUIManager/HUD/UpgradeControls/MidTowerUpgrades/AttackUpgrades/AttackUpgrade4" to="GameUIManager" method="_on_attack_upgrade_4_pressed" binds= ["mid"]]
 [connection signal="pressed" from="GameUIManager/HUD/UpgradeControls/MidTowerUpgrades/AttackUpgrades/AttackUpgrade3" to="GameUIManager" method="_on_attack_upgrade_3_pressed" binds= ["mid"]]

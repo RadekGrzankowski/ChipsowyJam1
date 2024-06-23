@@ -72,9 +72,9 @@ anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = -528.0
-offset_top = -211.0
+offset_top = -247.0
 offset_right = -28.0
-offset_bottom = -35.0
+offset_bottom = -24.0
 grow_horizontal = 0
 grow_vertical = 0
 
@@ -164,6 +164,48 @@ offset_top = 104.0
 offset_right = 360.0
 offset_bottom = 138.0
 text = "Red Barrack LVL"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="WaveTimeInputBox" type="SpinBox" parent="MainMenu/DebugPanel"]
+layout_mode = 0
+offset_left = 103.0
+offset_top = 159.0
+offset_right = 213.0
+offset_bottom = 194.0
+min_value = 10.0
+max_value = 120.0
+value = 45.0
+suffix = "s"
+
+[node name="WaveTimeLabel" type="Label" parent="MainMenu/DebugPanel"]
+layout_mode = 0
+offset_left = 13.0
+offset_top = 159.0
+offset_right = 95.0
+offset_bottom = 193.0
+text = "Wave Time"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="StartTimeInputBox" type="SpinBox" parent="MainMenu/DebugPanel"]
+layout_mode = 0
+offset_left = 369.0
+offset_top = 159.0
+offset_right = 479.0
+offset_bottom = 194.0
+min_value = 1.0
+max_value = 60.0
+value = 15.0
+suffix = "s"
+
+[node name="StartTimeLabel" type="Label" parent="MainMenu/DebugPanel"]
+layout_mode = 0
+offset_left = 234.0
+offset_top = 159.0
+offset_right = 360.0
+offset_bottom = 193.0
+text = "Start Time"
 horizontal_alignment = 1
 vertical_alignment = 1
 
