@@ -9,4 +9,56 @@ script = ExtResource("1_p0lc4")
 wait_time = 10.0
 autostart = true
 
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="InfoPanel" type="Panel" parent="CanvasLayer"]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -489.0
+offset_top = 24.0
+offset_right = -28.0
+offset_bottom = 364.0
+grow_horizontal = 0
+
+[node name="DebugLabel" type="RichTextLabel" parent="CanvasLayer/InfoPanel"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -172.0
+grow_horizontal = 2
+grow_vertical = 0
+scroll_following = true
+
+[node name="Panel" type="Panel" parent="CanvasLayer/InfoPanel/DebugLabel"]
+modulate = Color(0.356945, 0.110497, 0.584448, 1)
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="StatsLabel" type="RichTextLabel" parent="CanvasLayer/InfoPanel"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 168.0
+grow_horizontal = 2
+
+[node name="CloseButton" type="Button" parent="CanvasLayer/InfoPanel"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -32.0
+offset_bottom = 31.0
+grow_horizontal = 0
+text = "X"
+
 [connection signal="timeout" from="ActionTimer" to="." method="_on_action_timer_timeout"]
+[connection signal="pressed" from="CanvasLayer/InfoPanel/CloseButton" to="." method="_on_button_pressed"]

@@ -7,9 +7,9 @@
 [ext_resource type="PackedScene" uid="uid://xiqap8cn3t28" path="res://Models/Imported Models/Orc.glb" id="5_biqqt"]
 [ext_resource type="PackedScene" uid="uid://dg03jtcu2daa0" path="res://Models/Imported Models/Zombie.glb" id="6_wf5ax"]
 [ext_resource type="PackedScene" uid="uid://c7irlw1101kwc" path="res://Models/Skeleton.tscn" id="7_vue2w"]
+[ext_resource type="PackedScene" uid="uid://bcrmooe1y1vwx" path="res://Models/Pirate Captain.tscn" id="8_qup3b"]
 [ext_resource type="PackedScene" uid="uid://bhq0a6rcwxn30" path="res://Models/Skeleton Mage.tscn" id="8_ykaen"]
-[ext_resource type="PackedScene" uid="uid://dpnvumh65enja" path="res://Models/Imported Models/Pirate Captain.glb" id="9_xgvyc"]
-[ext_resource type="PackedScene" uid="uid://ct0ynvwh1d4s8" path="res://Models/Imported Models/Anne.glb" id="10_chucb"]
+[ext_resource type="PackedScene" uid="uid://w7h88cq200j0" path="res://Models/Anne.tscn" id="9_hehkg"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_tnijv"]
 font_size = 18
@@ -26,7 +26,7 @@ color = Color(1, 1, 1, 1)
 [node name="SpawnManager" type="Node3D" parent="."]
 script = ExtResource("1_bvj0y")
 minionScene = ExtResource("3_1jksw")
-minion_models = [ExtResource("4_6rao7"), ExtResource("5_biqqt"), ExtResource("6_wf5ax"), ExtResource("7_vue2w"), ExtResource("7_vue2w"), ExtResource("8_ykaen"), ExtResource("9_xgvyc"), ExtResource("10_chucb")]
+minion_models = [ExtResource("4_6rao7"), ExtResource("5_biqqt"), ExtResource("6_wf5ax"), ExtResource("7_vue2w"), ExtResource("7_vue2w"), ExtResource("8_ykaen"), ExtResource("8_qup3b"), ExtResource("9_hehkg")]
 waveTime = 45
 
 [node name="GameUIManager" type="Node3D" parent="."]
@@ -44,31 +44,45 @@ text = "gold label"
 label_settings = SubResource("LabelSettings_tnijv")
 
 [node name="TopMinions" type="Label" parent="GameUIManager/HUD/Labels"]
-offset_left = 152.0
+offset_left = 186.0
 offset_top = 16.0
-offset_right = 336.0
+offset_right = 370.0
 offset_bottom = 86.0
 text = "top minions
 top minions"
 label_settings = SubResource("LabelSettings_tnijv")
 
 [node name="MidMinions" type="Label" parent="GameUIManager/HUD/Labels"]
-offset_left = 360.0
+offset_left = 426.0
 offset_top = 16.0
-offset_right = 544.0
+offset_right = 610.0
 offset_bottom = 86.0
 text = "mid minions
 mid minions"
 label_settings = SubResource("LabelSettings_tnijv")
 
 [node name="BotMinions" type="Label" parent="GameUIManager/HUD/Labels"]
-offset_left = 568.0
+offset_left = 676.0
 offset_top = 16.0
-offset_right = 752.0
+offset_right = 860.0
 offset_bottom = 86.0
 text = "bot minions
 bot minions"
 label_settings = SubResource("LabelSettings_tnijv")
+
+[node name="Upgrades" type="Label" parent="GameUIManager/HUD/Labels"]
+offset_left = 999.0
+offset_top = 16.0
+offset_right = 1130.0
+offset_bottom = 67.0
+text = "Upgrades - U key"
+
+[node name="Panel" type="Label" parent="GameUIManager/HUD/Labels"]
+offset_left = 1173.0
+offset_top = 16.0
+offset_right = 1321.0
+offset_bottom = 67.0
+text = "Bot AI Panel - F1 key"
 
 [node name="UpgradeControls" type="CanvasLayer" parent="GameUIManager/HUD"]
 visible = false

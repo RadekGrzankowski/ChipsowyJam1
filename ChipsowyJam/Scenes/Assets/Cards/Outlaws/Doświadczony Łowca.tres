@@ -4,7 +4,7 @@
 
 [resource]
 script = ExtResource("1_gppax")
-card_name = "Łowca Czarownic"
+card_name = "Doświadczony Łowca"
 race = 1
 tier = 2
 description = ""

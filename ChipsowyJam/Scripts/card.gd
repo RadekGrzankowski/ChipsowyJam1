@@ -107,18 +107,30 @@ func update_card():
 		name_label_small.label_settings = ls
 		#modify card's background color depending on card's race
 		var color
+		#0 - HUMAN_KINGDOM, 1 - OUTLAWS, 2 - MOUNTAIN_CLAN, 3 - FOREST_ORCS, 4 - BLOOD_BROTHERHOOD
+		#5 - UNDEAD_PACT, 6 - MOON_ELVES, 7 - SUN_ELVES, 8 - BEAST
 		var race_value: int = race
 		match race_value:
-			0: #HUMAN
-				color = Color(0.24, 0.395, 0.493)
-			1: #ORC
-				color = Color(0.267, 0.435, 0.267)
-			2: #UNDEAD
-				color = Color(0.423, 0.331, 0.577)
-			3: #ELVES
-				color = Color(0.433, 0.382, 0.256)
-			_: #Default case - HUMAN
-				color = Color(0.24, 0.395, 0.493)
+			0: #HUMAN_KINGDOM
+				color = Color.ROYAL_BLUE
+			1: #OUTLAWS
+				color = Color.DARK_SLATE_BLUE
+			2: #MOUNTAIN_CLAN
+				color = Color.LIGHT_GREEN
+			3: #FOREST_ORCS
+				color = Color.DARK_GREEN
+			4: #BLOOD_BROTHERHOOD
+				color = Color(0.314, 0.1, 0.1)
+			5: #UNDEAD_PACT
+				color = Color(0.357, 0.11, 0.584)
+			6: #MOON_ELVES
+				color = Color.LEMON_CHIFFON
+			7: #SUN_ELVES
+				color = Color.DARK_ORANGE
+			8: #BEAST
+				color = Color.DIM_GRAY
+			_: #Default case - HUMAN_KINGDOM
+				color = Color.ROYAL_BLUE
 		$CardPanelBig/Panel.modulate = color
 		$CardPanelSmall/Panel.modulate = color
 		image_rect_big.texture = image
@@ -139,7 +151,7 @@ func update_card():
 		description_label.text = str(health) + " Health" + "\n" + str(attack_damage) + " Attack Damage" + "\n" + \
 		str(attack_speed) + "/s Attack Speed\n"+ str(armor) + " Armor Points" + "\n" + \
 		str(card_tier.keys()[tier]) + " Tier" + "\n" +  _race + " Unit" + "\n" + \
-		str(cost) + " Gold"
+		str(attack_range) + " Attack Range"
 
 func _physics_process(delta):
 	if selected:

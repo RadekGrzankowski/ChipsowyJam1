@@ -133,7 +133,7 @@ func check_armor():
 	elif building_armor <= 30:
 		armor_divide *= 0.4
 	elif building_armor > 30:
-		armor_divide *= 0.3"res://Scenes/Assets/Cards/Outlaws/Banita.tres"
+		armor_divide *= 0.3
 	var damage_reduction = armor_divide / (armor_divide + building_armor)
 	return damage_reduction
 

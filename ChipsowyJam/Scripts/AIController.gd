@@ -11,6 +11,11 @@ var shop_cards: Array
 enum action_state {DECK_BUILDING, NEW_SLOT, FULL_DECK, FULL_DECK_NO_MORE_SLOTS}
 var state: action_state
 
+#Debug section - info panel
+@onready var info_panel = $CanvasLayer/InfoPanel
+@onready var log_label: RichTextLabel = $CanvasLayer/InfoPanel/DebugLabel
+@onready var stats_label: RichTextLabel = $CanvasLayer/InfoPanel/StatsLabel
+
 func _init():
 	state = action_state.DECK_BUILDING
 	top_lane_cards.resize(3)
@@ -25,16 +30,34 @@ func _ready():
 		shop_cards[index] = resource
 	perform_action()
 	
+func _process(delta):
+	if Input.is_key_label_pressed(KEY_F1):
+		info_panel.visible = true
+	if info_panel.visible == true:
+		show_info()
+	
 func show_info():
-	print("Available gold: ", Game.red_gold)
-	for card in shop_cards:
+	var top_cards_string: String
+	var mid_cards_string: String
+	var bot_cards_string: String
+	for card in top_lane_cards:
 		if card != null:
-			print(card.card_name , ", ", card.health, "HP, ", card.cost , ' Gold')
+			top_cards_string += card.card_name + ", "
 		else:
-			print("Null")
-	print(top_lane_cards)
-	print(middle_lane_cards)
-	print(bottom_lane_cards)
+			top_cards_string += "Null, "
+	for card in middle_lane_cards:
+		if card != null:
+			mid_cards_string += card.card_name + ", "
+		else:
+			mid_cards_string += "Null, "
+	for card in bottom_lane_cards:
+		if card != null:
+			bot_cards_string += card.card_name + ", "
+		else:
+			bot_cards_string += "Null, "
+	stats_label.text = "Available gold: " + str(Game.red_gold) + "\n" + \
+	"Top Lane: " + top_cards_string + "\n" + "Mid Lane: "+  mid_cards_string + "\n" + "Bot Lane: " + bot_cards_string + \
+	"\nCurrent AI state: " + str(action_state.keys()[state])+"\n"
 	
 func buy_new_slot():
 	var lane = randi_range(0, 2)
@@ -42,15 +65,15 @@ func buy_new_slot():
 		0:
 			if top_lane_cards.size() < 6:
 				top_lane_cards.append(null)
-				print("Bot bought new slot at top!")
+				log_label.append_text("Bot bought new slot at top!\n")
 		1:
 			if middle_lane_cards.size() < 6:
 				middle_lane_cards.append(null)
-				print("Bot bought new slot at mid!")
+				log_label.append_text("Bot bought new slot at mid!\n")
 		2:
 			if bottom_lane_cards.size() < 6:
 				bottom_lane_cards.append(null)
-				print("Bot bought new slot at bot!")
+				log_label.append_text("Bot bought new slot at bot!\n")
 	#INFO - after perfoming one action bot has a chance to change current action state
 	change_action()
 				
@@ -61,7 +84,7 @@ func buy_new_card():
 	var no_space_bot: bool = false
 	while(!card_bought_or_no_space):
 		if no_space_bot && no_space_mid && no_space_top:
-			print("All decks full!")
+			log_label.append_text("All decks full!")
 			card_bought_or_no_space = true
 			state = action_state.FULL_DECK
 			break
@@ -74,7 +97,7 @@ func buy_new_card():
 						if card == null:
 							return
 						top_lane_cards[index] = card
-						print("Bot bought new card at top: ", card.card_name , ", ", card.health, "HP, ", card.cost , ' Gold')
+						log_label.append_text("Bot have new card at top: " + card.card_name + ", " + str(card.health) + "HP, "+ str(card.cost) +' Gold\n')
 						Game.red_gold -= card.cost
 						var card_to_remove = shop_cards.find(card)
 						shop_cards[card_to_remove] = null
@@ -90,7 +113,7 @@ func buy_new_card():
 						if card == null:
 							return
 						middle_lane_cards[index] = card
-						print("Bot bought new card at mid: ", card.card_name , ", ", card.health, "HP, ", card.cost , ' Gold')
+						log_label.append_text("Bot have new card at mid: " + card.card_name + ", " + str(card.health) + "HP, "+ str(card.cost) +' Gold\n')
 						Game.red_gold -= card.cost
 						var card_to_remove = shop_cards.find(card)
 						shop_cards[card_to_remove] = null
@@ -106,7 +129,7 @@ func buy_new_card():
 						if card == null:
 							return
 						bottom_lane_cards[index] = card
-						print("Bot bought new card at bot: ", card.card_name , ", ", card.health, "HP, ", card.cost , ' Gold')
+						log_label.append_text("Bot have new card at bot: " + card.card_name + ", " + str(card.health) + "HP, "+ str(card.cost) +' Gold\n')
 						Game.red_gold -= card.cost
 						var card_to_remove = shop_cards.find(card)
 						shop_cards[card_to_remove] = null
@@ -150,7 +173,7 @@ func deck_building():
 		#roll the shop, if there is enough money try to buy the card
 		if Game.red_gold >= 10:
 			Game.red_gold -= 10
-			print("Shop empty - rolling it!")
+			log_label.append_text("Shop empty - rolling it!")
 			roll_the_shop()
 			if Game.red_gold >= 10:
 				buy_new_card()
@@ -176,7 +199,11 @@ func change_action():
 		state = action_state.NEW_SLOT
 	else:
 		state = action_state.DECK_BUILDING
-	print("New state action: ", str(action_state.keys()[state]))
+	log_label.append_text("New state action: " + str(action_state.keys()[state])+"\n")
 
 func _on_action_timer_timeout():
 	perform_action()
+
+
+func _on_button_pressed():
+	info_panel.visible = false

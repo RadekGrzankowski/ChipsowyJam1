@@ -67,23 +67,23 @@ func initialize(card, team: String, main_path: String, model: PackedScene):
 		mob_attack = card.attack_damage
 		mob_armor = card.armor
 		attack_speed = card.attack_speed
-		$HitArea3D/CollisionShape.shape.set_radius(card.attack_range)
+		$HitArea3D/CollisionShape.shape.radius = card.attack_range
 	else:
 		mob_name = "Default mob"
 		minion_class = mob_class.MELEE
-		$HitArea3D/CollisionShape.shape.set_radius(1.5)
+		$HitArea3D/CollisionShape.shape.radius = 1.5
 	teamName = team
 	path = main_path
 	mob_attack += Game.additional_red_minions_dmg
 	mob_armor += Game.additional_red_minions_armor
 	if minion_class == mob_class.RANGED:
 		path_curve = $Path3D.curve
-		$DetectionArea3D/CollisionShape3D.shape.set_radius(8.0)
+		$DetectionArea3D/CollisionShape3D.shape.radius = 8.0
 	elif minion_class == mob_class.MAGE:
 		path_curve = $Path3D.curve
-		$DetectionArea3D/CollisionShape3D.shape.set_radius(7.0)
+		$DetectionArea3D/CollisionShape3D.shape.radius = 7.0
 	elif minion_class == mob_class.MELEE:
-		$DetectionArea3D/CollisionShape3D.shape.set_radius(6.0)
+		$DetectionArea3D/CollisionShape3D.shape.radius = 6.0
 		
 	var _model: Node3D = model.instantiate()
 	
@@ -237,7 +237,7 @@ func _on_area_3d_body_exited(body):
 func _on_nav_path_timer_timeout():
 	if opponent_to_attack != null:
 		#refresh the path curve to the active opponent
-		if minion_class == mob_class.RANGED:
+		if minion_class == mob_class.RANGED || minion_class == mob_class.MAGE:
 			var local_pos: Vector3 = to_local(opponent_to_attack.global_position) + Vector3(0, 1, 0)
 			# setting end point of a curve
 			path_curve.set_point_position(1, local_pos)
