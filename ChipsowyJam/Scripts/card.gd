@@ -228,8 +228,6 @@ func _on_mouse_click_control_gui_input(event):
 								break
 					index += 1
 				if !is_card_moved:
-					#if card wasn't moved to any slot, check whenever player moved the card to sell spot
-					print("check sell")
 					var sell_zone = get_tree().get_first_node_in_group("sell_zone")
 					var distance = global_position.distance_to(sell_zone.global_position + sell_zone.pivot_offset)
 					if distance < shortest_dist:

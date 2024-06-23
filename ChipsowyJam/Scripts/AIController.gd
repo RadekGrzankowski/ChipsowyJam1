@@ -8,7 +8,11 @@ var bottom_lane_cards: Array
 
 var shop_cards: Array
 
+enum action_state {DECK_BUILDING, NEW_SLOT, FULL_DECK, FULL_DECK_NO_MORE_SLOTS}
+var state: action_state
+
 func _init():
+	state = action_state.DECK_BUILDING
 	top_lane_cards.resize(3)
 	middle_lane_cards.resize(3)
 	bottom_lane_cards.resize(3)
@@ -38,21 +42,17 @@ func buy_new_slot():
 		0:
 			if top_lane_cards.size() < 6:
 				top_lane_cards.append(null)
-				return true
-			else:
-				return false
+				print("Bot bought new slot at top!")
 		1:
 			if middle_lane_cards.size() < 6:
 				middle_lane_cards.append(null)
-				return true
-			else:
-				return false
+				print("Bot bought new slot at mid!")
 		2:
 			if bottom_lane_cards.size() < 6:
 				bottom_lane_cards.append(null)
-				return true
-			else:
-				return false
+				print("Bot bought new slot at bot!")
+	#INFO - after perfoming one action bot has a chance to change current action state
+	change_action()
 				
 func buy_new_card():
 	var card_bought_or_no_space: bool = false
@@ -61,7 +61,9 @@ func buy_new_card():
 	var no_space_bot: bool = false
 	while(!card_bought_or_no_space):
 		if no_space_bot && no_space_mid && no_space_top:
+			print("All decks full!")
 			card_bought_or_no_space = true
+			state = action_state.FULL_DECK
 			break
 		var lane = randi_range(0, 2)
 		match lane:
@@ -69,40 +71,49 @@ func buy_new_card():
 				for index in top_lane_cards.size():
 					if top_lane_cards[index] == null:
 						var card = pick_best_from_shop()
-						if card != null:
-							top_lane_cards[index] = card
-							print("Bot bought new card: ", card.card_name , ", ", card.health, "HP, ", card.cost , ' Gold')
-							Game.red_gold -= card.cost
-							var card_to_remove = shop_cards.find(card)
-							shop_cards[card_to_remove] = null
-							card_bought_or_no_space = true
-							break
-				no_space_top = true			
+						if card == null:
+							return
+						top_lane_cards[index] = card
+						print("Bot bought new card at top: ", card.card_name , ", ", card.health, "HP, ", card.cost , ' Gold')
+						Game.red_gold -= card.cost
+						var card_to_remove = shop_cards.find(card)
+						shop_cards[card_to_remove] = null
+						card_bought_or_no_space = true
+						#INFO - after perfoming one action bot has a chance to change current action state
+						change_action()
+						break
+				no_space_top = true		
 			1: #middle
 				for index in middle_lane_cards.size():
 					if middle_lane_cards[index] == null:
 						var card = pick_best_from_shop()
-						if card != null:
-							middle_lane_cards[index] = card
-							print("Bot bought new card: ", card.card_name , ", ", card.health, "HP, ", card.cost , ' Gold')
-							Game.red_gold -= card.cost
-							var card_to_remove = shop_cards.find(card)
-							shop_cards[card_to_remove] = null
-							card_bought_or_no_space = true
-							break
+						if card == null:
+							return
+						middle_lane_cards[index] = card
+						print("Bot bought new card at mid: ", card.card_name , ", ", card.health, "HP, ", card.cost , ' Gold')
+						Game.red_gold -= card.cost
+						var card_to_remove = shop_cards.find(card)
+						shop_cards[card_to_remove] = null
+						card_bought_or_no_space = true
+						#INFO - after perfoming one action bot has a chance to change current action state
+						change_action()
+						break
 				no_space_mid = true
 			2: #bottom
 				for index in bottom_lane_cards.size():
 					if bottom_lane_cards[index] == null:
 						var card = pick_best_from_shop()
-						if card != null:
-							bottom_lane_cards[index] = card
-							print("Bot bought new card: ", card.card_name , ", ", card.health, "HP, ", card.cost , ' Gold')
-							Game.red_gold -= card.cost
-							var card_to_remove = shop_cards.find(card)
-							shop_cards[card_to_remove] = null
-							card_bought_or_no_space = true
-							break
+						if card == null:
+							return
+						bottom_lane_cards[index] = card
+						print("Bot bought new card at bot: ", card.card_name , ", ", card.health, "HP, ", card.cost , ' Gold')
+						Game.red_gold -= card.cost
+						var card_to_remove = shop_cards.find(card)
+						shop_cards[card_to_remove] = null
+						card_bought_or_no_space = true
+						#INFO - after perfoming one action bot has a chance to change current action state
+						change_action()
+						break
 				no_space_bot = true
 				
 func is_shop_empty():
@@ -110,7 +121,6 @@ func is_shop_empty():
 		if card != null:
 			return false
 	return true
-	
 	
 func roll_the_shop():
 	for index in shop_cards.size():
@@ -129,23 +139,44 @@ func pick_best_from_shop():
 		return null
 	else:
 		return best_card		
-	
 
-#INFO AI decides what action to perform
-func perform_action():
+func deck_building():
 	#before buying card check if there are any cards left in shop - if not roll
 	if !is_shop_empty():
 		if Game.red_gold >= 10:
 			buy_new_card()
-			show_info()
+			#show_info()
 	else:
 		#roll the shop, if there is enough money try to buy the card
 		if Game.red_gold >= 10:
 			Game.red_gold -= 10
+			print("Shop empty - rolling it!")
 			roll_the_shop()
 			if Game.red_gold >= 10:
 				buy_new_card()
-			show_info()
+			#show_info()
+
+#INFO AI decides what action to perform
+func perform_action():
+	if state == action_state.DECK_BUILDING:
+		deck_building()
+	elif state == action_state.NEW_SLOT:
+		if Game.red_gold >= 100:
+			Game.red_gold -= 100
+			buy_new_slot()
+	elif state == action_state.FULL_DECK:
+		if Game.red_gold >= 100:
+			Game.red_gold -= 100
+			buy_new_slot()
 	
+func change_action():
+	var value = randf_range(0.0, 1.0)
+	#INFO if value bigger than a threshhold - change action to new slot
+	if value > 0.8:
+		state = action_state.NEW_SLOT
+	else:
+		state = action_state.DECK_BUILDING
+	print("New state action: ", str(action_state.keys()[state]))
+
 func _on_action_timer_timeout():
 	perform_action()
