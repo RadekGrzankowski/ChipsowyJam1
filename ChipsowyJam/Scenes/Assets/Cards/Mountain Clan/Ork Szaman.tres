@@ -1,0 +1,18 @@
+[gd_resource type="Resource" load_steps=2 format=3 uid="uid://bfqo8lshtka7f"]
+
+[ext_resource type="Script" path="res://Scenes/Assets/Cards/card_stats.gd" id="1_2nj0l"]
+
+[resource]
+script = ExtResource("1_2nj0l")
+card_name = "Ork Szaman"
+race = 2
+tier = 0
+description = "Heal"
+cost = 20
+health = 90
+attack_damage = 5
+armor = 10
+attack_speed = 1.0
+attack_range = 3.0
+type = 2
+sub_type = 2
