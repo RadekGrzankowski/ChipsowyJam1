@@ -5,12 +5,14 @@ var mob_name: String
 @export var mob_attack: float = 5.0
 @export var mob_armor: int = 5.0
 @export var attack_speed: float = 1.25
-@onready var health_label: Label3D = $HealthLabel
+@onready var info_label: Label3D = $InfoLabel
 @onready var health_bar: ProgressBar = $HealthBar/SubViewport/Panel/ProgressBar
+@onready var health_label: Label = $HealthBar/SubViewport/Panel/ProgressBar/HealthLabel
 
 var teamName: String
 enum mob_class {MELEE, RANGED, MAGE}
 var minion_class: mob_class
+var mob_tier: int = 0
 var path: String
 
 var enemies_to_attack: Array[Node3D]
@@ -29,10 +31,33 @@ var death_anim: String
 
 func _ready():
 	super()
-	health_label.text = str(mob_name) + " " + str(mob_health) + "HP\n" + \
+	info_label.text = str(mob_name) + " " + str(mob_health) + "HP\n" + \
 	str(mob_attack) + "AD " + str(mob_armor) + "ARM"
+	health_bar.set_max(mob_health)
+	health_bar.set_value(mob_health)
+	
+	health_label.text = str(mob_health) + "HP"
+	var ls = LabelSettings.new()
+	#modify label color depending on mob's tier
+	match mob_tier:
+		0: #COMMON tier
+			ls.font_color = Color.WHITE
+		1: #RARE tier
+			ls.font_color = Color.SKY_BLUE
+		2: #EPIC tier
+			ls.font_color = Color.MEDIUM_PURPLE
+		3: #LEGENDARY tier
+			ls.font_color = Color.DARK_ORANGE
+		_: #Default case
+			ls.font_color = Color.WHITE
+	ls.outline_size = 6
+	ls.outline_color = Color.BLACK
+	ls.font_size = 30
+	health_label.label_settings = ls
+
+	var style = health_bar.get_theme_stylebox("fill")
 	if teamName == "red":
-		health_label.modulate = Color.RED
+		style.bg_color = Color(1, 0.45, 0.45)
 		if path == "top":
 			Game.red_minions_top += 1
 		elif path == "mid":
@@ -40,7 +65,7 @@ func _ready():
 		elif path == "bot":
 			Game.red_minions_bot += 1
 	elif teamName == "blue":
-		health_label.modulate = Color.DODGER_BLUE
+		style.bg_color = Color(0.40, 0.70, 1)
 		if path == "top":
 			Game.blue_minions_top += 1
 		elif path == "mid":
@@ -59,9 +84,6 @@ func _ready():
 			"Death":
 				death_anim = "Death"
 	
-	health_bar.set_max(mob_health)
-	health_bar.set_value(mob_health)
-				
 func initialize(card, team: String, main_path: String, model: PackedScene):
 	if card != null:
 		mob_name = card.card_name
@@ -70,6 +92,7 @@ func initialize(card, team: String, main_path: String, model: PackedScene):
 		mob_attack = card.attack_damage
 		mob_armor = card.armor
 		attack_speed = card.attack_speed
+		mob_tier = card.tier
 		$HitArea3D/CollisionShape.shape.radius = card.attack_range
 	else:
 		mob_name = "Default mob"
@@ -134,7 +157,8 @@ func take_damage(amount, attacker):
 			queue_free()
 		else:
 			health_bar.set_value(mob_health)
-			health_label.text = str(mob_name) + " " + str(mob_health) + "HP\n" + \
+			health_label.text = str(mob_health) + "HP"
+			info_label.text = str(mob_name) + " " + str(mob_health) + "HP\n" + \
 			str(mob_attack) + "AD " + str(mob_armor) + "ARM"
 	
 func get_reduction():

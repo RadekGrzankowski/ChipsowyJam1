@@ -57,7 +57,7 @@ shape = SubResource("CylinderShape3D_lflvg")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.55, 0)
 shape = SubResource("CylinderShape3D_2fcc8")
 
-[node name="HealthLabel" type="Label3D" parent="."]
+[node name="InfoLabel" type="Label3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
 visible = false
 billboard = 1
