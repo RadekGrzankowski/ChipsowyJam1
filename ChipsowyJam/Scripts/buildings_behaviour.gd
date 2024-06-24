@@ -1,12 +1,17 @@
 extends Node
+
+enum building_type {TOWER, BARRACK, NEXUS}
+@export var type: building_type
 @export var building_damage: int = 20
 @export var building_armor: int = 5
 @export var building_health: int = 500
-@export var health_label: Label3D
-@export var attack_cd: Timer
+
+@onready var attack_cooldown: Timer = $AttackTimer
+@onready var health_bar: ProgressBar = $HealthBar/SubViewport/Panel/ProgressBar
+@onready var health_label: Label = $HealthBar/SubViewport/Panel/ProgressBar/HealthLabel
+
 @export var projectile_ball: PackedScene
 var teamName: String
-var type: int # 1-Tower 2-Barrack 3-Nexus
 var lane: String
 
 var enemies_to_attack: Array[Node3D]
@@ -17,18 +22,23 @@ var spawned_projectile: Node3D
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	health_bar.set_max(building_health)
+	health_bar.set_value(building_health)
 	health_label.text = str(building_health) + "HP"
+	var ls = LabelSettings.new()
+	ls.outline_size = 6
+	ls.outline_color = Color.BLACK
+	ls.font_size = 30
+	health_label.label_settings = ls
+	
+	var style = health_bar.get_theme_stylebox("fill")
 	if is_in_group("red_team"):
+		style.bg_color = Game.red_color
 		teamName = "red"
 	elif is_in_group("blue_team"):
+		style.bg_color = Game.blue_color
 		teamName = "blue"
-	
-	if is_in_group("nexus"):
-		type = 3
-	elif is_in_group("barrack"):
-		type = 2
-	elif is_in_group("tower"):
-		type = 1
+	if type == building_type.TOWER:
 		if is_in_group("top_tower"):
 			lane = "top"
 		elif is_in_group("mid_tower"):
@@ -39,23 +49,23 @@ func _ready():
 func take_damage(amount, attacker):
 	building_health -= int(amount * check_armor())
 	if building_health <= 0:
-		if type == 1:
+		if type == building_type.TOWER:
 			attacker.change_target(self)
 			if teamName == "red":
 				Game.red_towers_destroyed += 1
-				Game.blue_gold += 20
+				Game.blue_gold += 50
 			if teamName == "blue":
 				Game.blue_towers_destroyed += 1
-				Game.red_gold += 20
+				Game.red_gold += 50
 			queue_free()
-		elif type == 2:
+		elif type == building_type.BARRACK:
 			attacker.change_target(self)
 			if teamName == "red":
 				Game.blue_gold += 100
 			if teamName == "blue":
 				Game.red_gold += 100
 			queue_free()
-		elif type == 3:
+		elif type == building_type.NEXUS:
 			if teamName == "red":
 				Game.winner = "BLUE"
 			if teamName == "blue":
@@ -63,15 +73,16 @@ func take_damage(amount, attacker):
 			get_tree().change_scene_to_file("res://Scenes/Levels/end_scene.tscn")
 	else:
 		health_label.text = str(building_health) + "HP"
+		health_bar.set_value(building_health)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	if type == 1:
+	if type == building_type.TOWER || type == building_type.BARRACK:
 		if is_attacking:
 			if can_attack:
 				enemy_to_attack = closest_target()
 				can_attack = false
-				attack_cd.start()
+				attack_cooldown.start()
 				spawn_projectile()
 				
 func spawn_projectile():
@@ -117,8 +128,9 @@ func _on_detection_area_body_exited(body):
 			enemy_to_attack = closest_target()
 
 func _on_attack_cooldown_timeout():
-	if enemy_to_attack:
-		enemy_to_attack.take_damage(check_damage(), self)
+	if enemy_to_attack != null:
+		if is_instance_valid(enemy_to_attack):
+			enemy_to_attack.take_damage(check_damage(), self)
 	can_attack = true
 
 # This solution does not take into account additional armor. We need to get rid of the global variables and make the building_armor to update with upgrading

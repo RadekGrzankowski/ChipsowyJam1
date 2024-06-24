@@ -56,7 +56,6 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/background = SubResource("StyleBoxFlat_2kei0")
 theme_override_styles/fill = SubResource("StyleBoxFlat_aggu5")
-value = 100.0
 show_percentage = false
 
 [node name="HealthLabel" type="Label" parent="SubViewport/Panel/ProgressBar"]
@@ -68,7 +67,6 @@ offset_top = -3.0
 offset_bottom = -1.0
 grow_horizontal = 2
 grow_vertical = 2
-text = "500HP"
 label_settings = SubResource("LabelSettings_bl266")
 horizontal_alignment = 1
 vertical_alignment = 1

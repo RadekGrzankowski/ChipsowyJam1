@@ -83,3 +83,24 @@ func return_tier(level: int):
 		return 2
 	elif rand_value <= (get("common_"+str(level)) + get("rare_"+str(level)) + get("epic_"+str(level)) + get("legendary_"+str(level))):
 		return 3
+
+#static variables for different colors in game
+var blue_color: Color = Color.CORNFLOWER_BLUE
+var red_color: Color = Color(1, 0.4, 0.3)
+
+#colors for card's tier
+var common_color: Color = Color.WHITE
+var rare_color: Color = Color(0.50, 0.77, 1)
+var epic_color: Color = Color.MEDIUM_ORCHID
+var legendary_color: Color = Color.DARK_ORANGE
+
+#background colors for card's races
+var human_kingdom_color = Color.ROYAL_BLUE
+var outlaws_color = Color.DARK_SLATE_BLUE
+var mountain_clan_color = Color(0.243, 0.529, 0.427)
+var forest_orcs_color = Color(0.244, 0.473, 0.266)
+var blood_brotherhood_color = Color(0.314, 0.1, 0.1)
+var undead_pact_color = Color(0.357, 0.11, 0.584)
+var moon_elves_color = Color.LEMON_CHIFFON
+var sun_elves_color = Color.DARK_ORANGE
+var beast_color = Color.DIM_GRAY

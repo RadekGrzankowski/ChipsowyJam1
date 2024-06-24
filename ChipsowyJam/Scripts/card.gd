@@ -92,15 +92,15 @@ func update_card():
 		var tier_value: int = tier
 		match tier_value:
 			0: #COMMON tier
-				ls.font_color =  Color.WHITE
+				ls.font_color =  Game.common_color
 			1: #RARE tier
-				ls.font_color =  Color.SKY_BLUE
+				ls.font_color =  Game.rare_color
 			2: #EPIC tier
-				ls.font_color =  Color.MEDIUM_PURPLE
+				ls.font_color =  Game.epic_color
 			3: #LEGENDARY tier
-				ls.font_color =  Color.DARK_ORANGE
+				ls.font_color =  Game.legendary_color
 			_: #Default case
-				ls.font_color =  Color.WHITE
+				ls.font_color =  Game.common_color
 		ls.outline_size = 3
 		ls.outline_color = Color.BLACK
 		name_label_big.label_settings = ls
@@ -112,25 +112,25 @@ func update_card():
 		var race_value: int = race
 		match race_value:
 			0: #HUMAN_KINGDOM
-				color = Color.ROYAL_BLUE
+				color = Game.human_kingdom_color
 			1: #OUTLAWS
-				color = Color.DARK_SLATE_BLUE
+				color = Game.outlaws_color
 			2: #MOUNTAIN_CLAN
-				color = Color(0.243, 0.529, 0.427)
+				color = Game.mountain_clan_color
 			3: #FOREST_ORCS
-				color = Color(0.244, 0.473, 0.266)
+				color = Game.forest_orcs_color
 			4: #BLOOD_BROTHERHOOD
-				color = Color(0.314, 0.1, 0.1)
+				color = Game.blood_brotherhood_color
 			5: #UNDEAD_PACT
-				color = Color(0.357, 0.11, 0.584)
+				color = Game.undead_pact_color
 			6: #MOON_ELVES
-				color = Color.LEMON_CHIFFON
+				color = Game.moon_elves_color
 			7: #SUN_ELVES
-				color = Color.DARK_ORANGE
+				color = Game.sun_elves_color
 			8: #BEAST
-				color = Color.DIM_GRAY
+				color = Game.beast_color
 			_: #Default case - HUMAN_KINGDOM
-				color = Color.ROYAL_BLUE
+				color = Game.human_kingdom_color
 		$CardPanelBig/Panel.modulate = color
 		$CardPanelSmall/Panel.modulate = color
 		image_rect_big.texture = image

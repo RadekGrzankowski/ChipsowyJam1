@@ -73,7 +73,6 @@ func change_upgrade_panel():
 		2: 
 			_on_nexus_button_pressed()
 
-
 func _on_towers_button_pressed():
 	closeTabs()
 	button_value = 0

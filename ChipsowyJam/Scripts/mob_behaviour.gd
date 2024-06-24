@@ -41,15 +41,15 @@ func _ready():
 	#modify label color depending on mob's tier
 	match mob_tier:
 		0: #COMMON tier
-			ls.font_color = Color.WHITE
+			ls.font_color = Game.common_color
 		1: #RARE tier
-			ls.font_color = Color.SKY_BLUE
+			ls.font_color = Game.rare_color
 		2: #EPIC tier
-			ls.font_color = Color.MEDIUM_PURPLE
+			ls.font_color = Game.epic_color
 		3: #LEGENDARY tier
-			ls.font_color = Color.DARK_ORANGE
+			ls.font_color = Game.legendary_color
 		_: #Default case
-			ls.font_color = Color.WHITE
+			ls.font_color = Game.common_color
 	ls.outline_size = 6
 	ls.outline_color = Color.BLACK
 	ls.font_size = 30
@@ -57,7 +57,7 @@ func _ready():
 
 	var style = health_bar.get_theme_stylebox("fill")
 	if teamName == "red":
-		style.bg_color = Color(1, 0.45, 0.45)
+		style.bg_color = Game.red_color
 		if path == "top":
 			Game.red_minions_top += 1
 		elif path == "mid":
@@ -65,7 +65,7 @@ func _ready():
 		elif path == "bot":
 			Game.red_minions_bot += 1
 	elif teamName == "blue":
-		style.bg_color = Color(0.40, 0.70, 1)
+		style.bg_color = Game.blue_color
 		if path == "top":
 			Game.blue_minions_top += 1
 		elif path == "mid":

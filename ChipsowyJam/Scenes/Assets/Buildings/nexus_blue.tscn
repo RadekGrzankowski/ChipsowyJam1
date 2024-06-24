@@ -1,10 +1,11 @@
-[gd_scene load_steps=9 format=3 uid="uid://c48r8mrlw0ksn"]
+[gd_scene load_steps=11 format=3 uid="uid://c48r8mrlw0ksn"]
 
 [ext_resource type="Material" uid="uid://73ufq0fugf4v" path="res://Materials/LightBlue.tres" id="1_fkl1m"]
 [ext_resource type="Material" uid="uid://dh452p4jgynpo" path="res://Materials/DarkBlue.tres" id="2_khkct"]
 [ext_resource type="Material" uid="uid://btge4821qs176" path="res://Materials/Black.tres" id="3_rs0g3"]
 [ext_resource type="Material" uid="uid://bbkw76hl73anf" path="res://Materials/Green.tres" id="4_mdsg8"]
 [ext_resource type="Script" path="res://Scripts/buildings_behaviour.gd" id="5_0wlp4"]
+[ext_resource type="PackedScene" uid="uid://8cdq6wa0c78s" path="res://Scenes/Assets/health_ui.tscn" id="6_b5hkl"]
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_xboxu"]
 _surfaces = [{
@@ -115,11 +116,14 @@ shadow_mesh = SubResource("ArrayMesh_xboxu")
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_a84i3"]
 points = PackedVector3Array(0.508953, -1.23765, 1.1077, -0.509187, -1.23765, 1.1077, 0.602338, -1.45915, 1.10553, 0.602338, -1.2308, 1.10553, 0.544703, -0.337441, 0.999921, -0.602572, -1.2308, 1.10553, -0.602572, -1.45915, 1.10553, -0.544937, -0.337441, 0.999921, 1.10545, -1.45915, 0.602207, 1.10545, -1.2308, 0.602207, 0.99993, -0.337441, 0.54474, 0.769392, 0.637366, 0.144424, 0.144295, 0.637366, 0.769403, -8.70228e-06, 0.66553, 0.832074, -8.70228e-06, 0.290779, 0.923587, -1.10568, -1.2308, 0.602207, -1.00016, -0.337441, 0.54474, -1.10568, -1.45915, 0.602207, -0.144529, 0.637366, 0.769403, -0.769626, 0.637366, 0.144424, 1.10545, -1.45915, -0.602427, 1.10783, -1.23816, 0.503104, 0.99993, -0.337441, -0.54496, 0.923662, 0.290779, -1.66893e-06, 0.83201, 0.66553, -1.66893e-06, 0.575904, 0.965939, -1.66893e-06, 0.532353, 0.915194, 0.144424, 0.144295, 0.915194, 0.532379, -8.70228e-06, 0.965939, 0.575751, -0.144529, 0.915194, 0.532379, -1.10568, -1.23055, -0.602427, -1.00016, -0.337441, -0.54496, -0.832244, 0.66553, -1.66893e-06, -0.923896, 0.290779, -1.66893e-06, -1.10568, -1.45915, -0.602427, -0.532587, 0.915194, 0.144424, 0.602338, -1.45915, -1.10575, 1.10545, -1.2308, -0.602427, 1.10783, -1.23816, -0.503324, 0.602338, -1.2308, -1.10575, 0.544703, -0.337441, -1.00014, 0.769392, 0.637366, -0.144645, -8.70228e-06, 0.965939, -0.575971, -8.70228e-06, 1.13264, -0.205581, 0.205396, 1.13264, -1.66893e-06, -8.70228e-06, 1.13264, 0.205361, 0.532353, 0.915194, -0.144645, -0.20563, 1.13264, -1.66893e-06, -0.575922, 0.965939, -1.66893e-06, -0.602572, -1.2308, -1.10575, -0.544937, -0.337441, -1.00014, -0.769626, 0.637366, -0.144645, -0.532587, 0.915194, -0.144645, -0.602572, -1.45915, -1.10575, 0.508953, -1.23765, -1.1077, -8.70228e-06, 0.290779, -0.923808, -8.70228e-06, 0.66553, -0.832294, 0.144295, 0.637366, -0.769623, 0.144295, 0.915194, -0.5326, -0.144529, 0.915194, -0.5326, -0.509187, -1.23765, -1.1077, -0.144529, 0.637366, -0.769623)
 
-[node name="StaticBody3D" type="StaticBody3D" node_paths=PackedStringArray("health_label") groups=["blue_team", "nexus"]]
+[sub_resource type="ViewportTexture" id="ViewportTexture_e7kyn"]
+viewport_path = NodePath("SubViewport")
+
+[node name="StaticBody3D" type="StaticBody3D" groups=["blue_team", "nexus"]]
 script = ExtResource("5_0wlp4")
+type = 2
 building_damage = 0
-building_armor = 10
-health_label = NodePath("HealthLabel")
+building_armor = 20
 
 [node name="NexusBlue" type="MeshInstance3D" parent="."]
 mesh = SubResource("ArrayMesh_i0my5")
@@ -128,15 +132,13 @@ skeleton = NodePath("")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("ConvexPolygonShape3D_a84i3")
 
-[node name="HealthLabel" type="Label3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.80891, 0)
-billboard = 1
-modulate = Color(0, 0.713726, 0.109804, 1)
-font_size = 60
-
 [node name="TimerLabel" type="Label3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.638859, 1.43014, 0.712991)
 billboard = 1
 text = "
 "
 font_size = 60
+
+[node name="HealthBar" parent="." instance=ExtResource("6_b5hkl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+texture = SubResource("ViewportTexture_e7kyn")
