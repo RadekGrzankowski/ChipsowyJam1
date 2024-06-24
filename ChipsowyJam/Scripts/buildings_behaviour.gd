@@ -129,7 +129,7 @@ func _on_detection_area_body_exited(body):
 
 func _on_attack_cooldown_timeout():
 	if enemy_to_attack != null:
-		if is_instance_valid(enemy_to_attack):
+		if is_instance_valid(enemy_to_attack) && is_instance_valid(self):
 			enemy_to_attack.take_damage(check_damage(), self)
 	can_attack = true
 

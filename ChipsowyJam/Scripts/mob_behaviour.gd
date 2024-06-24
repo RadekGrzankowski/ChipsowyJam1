@@ -14,6 +14,7 @@ enum mob_class {MELEE, RANGED, MAGE}
 var minion_class: mob_class
 var mob_tier: int = 0
 var path: String
+var is_hitted: bool = false
 
 var enemies_to_attack: Array[Node3D]
 var detected_enemies_array: Array[Node3D]
@@ -131,35 +132,42 @@ func initialize(card, team: String, main_path: String, model: PackedScene):
 
 	
 func take_damage(amount, attacker):
-	#checks if current mob is existing
-	if is_instance_valid(self):
-		mob_health -= int(amount * get_reduction())
-		if mob_health <= 0:
-			attacker.change_target(self)
-			if teamName == "red":
-				if path == "top":
-					Game.red_minions_top -= 1
-				elif path == "mid":
-					Game.red_minions_mid -= 1
-				elif path == "bot":
-					Game.red_minions_bot -= 1
-				Game.red_minions_killed += 1
-				Game.blue_gold += 5
-			if teamName == "blue":
-				if path == "top":
-					Game.blue_minions_top -= 1
-				elif path == "mid":
-					Game.blue_minions_mid -= 1
-				elif path == "bot":
-					Game.blue_minions_bot -= 1
-				Game.blue_minions_killed += 1
-				Game.red_gold += 5
-			queue_free()
-		else:
-			health_bar.set_value(mob_health)
-			health_label.text = str(mob_health) + "HP"
-			info_label.text = str(mob_name) + " " + str(mob_health) + "HP\n" + \
-			str(mob_attack) + "AD " + str(mob_armor) + "ARM"
+	if !is_instance_valid(self) || !is_instance_valid(attacker):
+		return
+	if amount == null:
+		return
+	if is_hitted:
+		return
+	is_hitted = true
+	mob_health -= int(amount * get_reduction())
+	if mob_health <= 0:
+		attacker.change_target(self)
+		if teamName == "red":
+			if path == "top":
+				Game.red_minions_top -= 1
+			elif path == "mid":
+				Game.red_minions_mid -= 1
+			elif path == "bot":
+				Game.red_minions_bot -= 1
+			Game.red_minions_killed += 1
+			Game.blue_gold += 5
+		if teamName == "blue":
+			if path == "top":
+				Game.blue_minions_top -= 1
+			elif path == "mid":
+				Game.blue_minions_mid -= 1
+			elif path == "bot":
+				Game.blue_minions_bot -= 1
+			Game.blue_minions_killed += 1
+			Game.red_gold += 5
+		is_hitted = false
+		queue_free()
+	else:
+		health_bar.set_value(mob_health)
+		health_label.text = str(mob_health) + "HP"
+		info_label.text = str(mob_name) + " " + str(mob_health) + "HP\n" + \
+		str(mob_attack) + "AD " + str(mob_armor) + "ARM"
+		is_hitted = false
 	
 func get_reduction():
 	var armor_divide = 100
