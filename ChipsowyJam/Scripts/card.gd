@@ -200,7 +200,6 @@ func _on_mouse_click_control_gui_input(event):
 								cardsUI.card_cost_popup.position = node.global_position - Vector2(-25, 70)
 								add_to_group("deck_card")
 								remove_from_group("shop_card")
-								cost_label_big.text = ""
 								cost_label_small.text = ""
 								lane = _lane_value
 								rest_node = node

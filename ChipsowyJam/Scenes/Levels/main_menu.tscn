@@ -5,8 +5,10 @@
 [sub_resource type="LabelSettings" id="LabelSettings_6tgql"]
 font_size = 22
 
-[node name="MainMenu" type="Node2D"]
+[node name="MainMenu" type="Node2D" node_paths=PackedStringArray("blue_team_color", "red_team_color")]
 script = ExtResource("1_1hkjt")
+blue_team_color = NodePath("MainMenu/DebugPanel/BlueTeamColor")
+red_team_color = NodePath("MainMenu/DebugPanel/RedTeamColor")
 
 [node name="MainMenu" type="CanvasLayer" parent="."]
 
@@ -72,9 +74,9 @@ anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = -528.0
-offset_top = -247.0
+offset_top = -290.0
 offset_right = -28.0
-offset_bottom = -24.0
+offset_bottom = -18.0
 grow_horizontal = 0
 grow_vertical = 0
 
@@ -86,14 +88,13 @@ offset_bottom = 41.0
 grow_horizontal = 2
 text = "Adjust variables before starting the game"
 label_settings = SubResource("LabelSettings_6tgql")
-horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="BlueGoldInputBox" type="SpinBox" parent="MainMenu/DebugPanel"]
 layout_mode = 0
-offset_left = 103.0
+offset_left = 111.0
 offset_top = 51.0
-offset_right = 213.0
+offset_right = 221.0
 offset_bottom = 86.0
 max_value = 10000.0
 value = 100.0
@@ -101,19 +102,18 @@ suffix = "G"
 
 [node name="BlueGoldLabel" type="Label" parent="MainMenu/DebugPanel"]
 layout_mode = 0
-offset_left = 13.0
+offset_left = 9.0
 offset_top = 51.0
-offset_right = 95.0
+offset_right = 91.0
 offset_bottom = 85.0
 text = "Blue Gold"
-horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="RedGoldInputBox" type="SpinBox" parent="MainMenu/DebugPanel"]
 layout_mode = 0
-offset_left = 103.0
+offset_left = 111.0
 offset_top = 104.0
-offset_right = 213.0
+offset_right = 221.0
 offset_bottom = 139.0
 max_value = 10000.0
 value = 100.0
@@ -121,12 +121,11 @@ suffix = "G"
 
 [node name="RedGoldLabel" type="Label" parent="MainMenu/DebugPanel"]
 layout_mode = 0
-offset_left = 13.0
+offset_left = 9.0
 offset_top = 104.0
-offset_right = 95.0
+offset_right = 91.0
 offset_bottom = 138.0
 text = "Red Gold"
-horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="BlueBarrackInputBox" type="SpinBox" parent="MainMenu/DebugPanel"]
@@ -140,12 +139,11 @@ suffix = "LVL"
 
 [node name="BlueBarrackLabel" type="Label" parent="MainMenu/DebugPanel"]
 layout_mode = 0
-offset_left = 228.0
+offset_left = 234.0
 offset_top = 51.0
-offset_right = 371.0
+offset_right = 377.0
 offset_bottom = 85.0
 text = "Blue Barrack LVL"
-horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="RedBarrackInputBox" type="SpinBox" parent="MainMenu/DebugPanel"]
@@ -164,14 +162,13 @@ offset_top = 104.0
 offset_right = 360.0
 offset_bottom = 138.0
 text = "Red Barrack LVL"
-horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="WaveTimeInputBox" type="SpinBox" parent="MainMenu/DebugPanel"]
 layout_mode = 0
-offset_left = 103.0
+offset_left = 111.0
 offset_top = 159.0
-offset_right = 213.0
+offset_right = 221.0
 offset_bottom = 194.0
 min_value = 10.0
 max_value = 120.0
@@ -180,12 +177,11 @@ suffix = "s"
 
 [node name="WaveTimeLabel" type="Label" parent="MainMenu/DebugPanel"]
 layout_mode = 0
-offset_left = 13.0
+offset_left = 9.0
 offset_top = 159.0
-offset_right = 95.0
+offset_right = 94.0
 offset_bottom = 193.0
 text = "Wave Time"
-horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="StartTimeInputBox" type="SpinBox" parent="MainMenu/DebugPanel"]
@@ -206,8 +202,61 @@ offset_top = 159.0
 offset_right = 360.0
 offset_bottom = 193.0
 text = "Start Time"
-horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="BlueTeamColorLabel" type="Label" parent="MainMenu/DebugPanel"]
+layout_mode = 0
+offset_left = 9.0
+offset_top = 214.0
+offset_right = 101.0
+offset_bottom = 248.0
+text = "Player color"
+vertical_alignment = 1
+
+[node name="RedTeamColorLabel" type="Label" parent="MainMenu/DebugPanel"]
+layout_mode = 0
+offset_left = 234.0
+offset_top = 214.0
+offset_right = 360.0
+offset_bottom = 248.0
+text = "AI Color"
+vertical_alignment = 1
+
+[node name="BlueTeamColor" type="OptionButton" parent="MainMenu/DebugPanel"]
+layout_mode = 0
+offset_left = 111.0
+offset_top = 214.0
+offset_right = 207.0
+offset_bottom = 248.0
+item_count = 4
+selected = 0
+popup/item_0/text = "Green"
+popup/item_0/id = 0
+popup/item_1/text = "Blue"
+popup/item_1/id = 1
+popup/item_2/text = "Red"
+popup/item_2/id = 2
+popup/item_3/text = "Yellow"
+popup/item_3/id = 3
+
+[node name="RedTeamColor" type="OptionButton" parent="MainMenu/DebugPanel"]
+layout_mode = 0
+offset_left = 369.0
+offset_top = 214.0
+offset_right = 465.0
+offset_bottom = 248.0
+item_count = 4
+selected = 2
+popup/item_0/text = "Green"
+popup/item_0/id = 0
+popup/item_1/text = "Blue"
+popup/item_1/id = 1
+popup/item_2/text = "Red"
+popup/item_2/id = 2
+popup/item_3/text = "Yellow"
+popup/item_3/id = 3
 
 [connection signal="pressed" from="MainMenu/HBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer/PlayButton" to="." method="_on_play_button_pressed"]
 [connection signal="pressed" from="MainMenu/HBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer/ExitButton" to="." method="_on_exit_button_pressed"]
+[connection signal="item_selected" from="MainMenu/DebugPanel/BlueTeamColor" to="." method="_on_blue_team_color_item_selected"]
+[connection signal="item_selected" from="MainMenu/DebugPanel/RedTeamColor" to="." method="_on_red_team_color_item_selected"]

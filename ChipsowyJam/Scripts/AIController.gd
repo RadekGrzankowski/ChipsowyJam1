@@ -145,7 +145,7 @@ func is_shop_empty():
 	
 func roll_the_shop():
 	for index in shop_cards.size():
-		var tier = Game.return_tier(Game.blue_barracks_level)
+		var tier = Game.return_tier(Game.red_barracks_level)
 		var resource
 		match tier:
 			0: resource = cardsUI.all_cards_common.pick_random()

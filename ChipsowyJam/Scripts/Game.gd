@@ -84,9 +84,14 @@ func return_tier(level: int):
 	elif rand_value <= (get("common_"+str(level)) + get("rare_"+str(level)) + get("epic_"+str(level)) + get("legendary_"+str(level))):
 		return 3
 
-#static variables for different colors in game
+#variables used in code for player and AI bot
 var blue_color: Color = Color.CORNFLOWER_BLUE
 var red_color: Color = Color(1, 0.4, 0.3)
+#static variables for different colors in game
+var _blue_color: Color = Color.CORNFLOWER_BLUE
+var _red_color: Color = Color(1, 0.4, 0.3)
+var green_color: Color = Color.FOREST_GREEN
+var yellow_color: Color = Color.YELLOW
 
 #colors for card's tier
 var common_color: Color = Color.WHITE
