@@ -121,3 +121,11 @@ var undead_pact_color = Color(0.357, 0.11, 0.584)
 var moon_elves_color = Color.LEMON_CHIFFON
 var sun_elves_color = Color.DARK_ORANGE
 var beast_color = Color.DIM_GRAY
+
+var current_version: String = "0.1.116"
+
+func _ready():
+	var version_label: Label = Label.new()
+	version_label.set_anchors_and_offsets_preset(Control.PRESET_BOTTOM_LEFT, Control.PRESET_MODE_MINSIZE, 5)
+	version_label.text = "Minion Commander v"+current_version
+	add_child(version_label)
