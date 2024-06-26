@@ -1,10 +1,30 @@
-[gd_scene load_steps=7 format=3 uid="uid://drr8l01a1ia4i"]
+[gd_scene load_steps=11 format=3 uid="uid://drr8l01a1ia4i"]
 
 [ext_resource type="Script" path="res://Scripts/CardsUI.gd" id="1_lbyja"]
 [ext_resource type="PackedScene" uid="uid://bpcf3shjxg2ll" path="res://Scenes/Assets/Cards/card.tscn" id="2_ju84m"]
 [ext_resource type="PackedScene" uid="uid://bln5nembvaqdw" path="res://Scenes/Assets/Cards/card_zone.tscn" id="8_agvxe"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_mtnm0"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_4vpfv"]
+line_spacing = 0.0
+outline_size = 2
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_kmsga"]
+font_color = Color(0.5, 0.77, 1, 1)
+outline_size = 2
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_010pb"]
+font_color = Color(0.729, 0.333, 0.827, 1)
+outline_size = 2
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_eesh4"]
+font_color = Color(1, 0.54, 0, 1)
+outline_size = 2
+outline_color = Color(0, 0, 0, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yydpg"]
 bg_color = Color(0.180392, 0.180392, 0.180392, 1)
@@ -142,6 +162,7 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="CardsPanelsAndTools" type="HBoxContainer" parent="CardsUI/CardsPanel"]
+custom_minimum_size = Vector2(115, 0)
 layout_mode = 2
 
 [node name="CardsPanels" type="VBoxContainer" parent="CardsUI/CardsPanel/CardsPanelsAndTools"]
@@ -255,11 +276,12 @@ text = "SHOP "
 
 [node name="ShopKeyPanel" type="Panel" parent="CardsUI/CardsPanel/CardsPanelsAndTools/CardsPanels/ShopSpacer/ShopButton"]
 self_modulate = Color(0.317647, 0.317647, 0.317647, 1)
-layout_mode = 0
+layout_mode = 1
 offset_left = 459.0
 offset_top = 6.0
 offset_right = 479.0
 offset_bottom = 26.0
+mouse_filter = 2
 
 [node name="Label" type="Label" parent="CardsUI/CardsPanel/CardsPanelsAndTools/CardsPanels/ShopSpacer/ShopButton/ShopKeyPanel"]
 layout_mode = 0
@@ -341,6 +363,53 @@ disabled = true
 text = "ROLL
 (10G)"
 
+[node name="PercentageBox" type="Panel" parent="CardsUI"]
+visible = false
+self_modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(60, 0)
+layout_mode = 2
+offset_left = -350.0
+offset_top = -33.0
+offset_right = 350.0
+offset_bottom = -2.0
+mouse_filter = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CardsUI/PercentageBox"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_constants/separation = 60
+alignment = 2
+
+[node name="Label" type="Label" parent="CardsUI/PercentageBox/HBoxContainer"]
+layout_mode = 2
+text = "Roll chances:"
+label_settings = SubResource("LabelSettings_4vpfv")
+
+[node name="CommonLabel" type="Label" parent="CardsUI/PercentageBox/HBoxContainer"]
+layout_mode = 2
+text = "Common: 80%"
+label_settings = SubResource("LabelSettings_4vpfv")
+
+[node name="RareLabel" type="Label" parent="CardsUI/PercentageBox/HBoxContainer"]
+layout_mode = 2
+text = "Rare: 20%"
+label_settings = SubResource("LabelSettings_kmsga")
+
+[node name="EpicLabel" type="Label" parent="CardsUI/PercentageBox/HBoxContainer"]
+layout_mode = 2
+text = "Epic: 0%"
+label_settings = SubResource("LabelSettings_010pb")
+
+[node name="LegendaryLabel" type="Label" parent="CardsUI/PercentageBox/HBoxContainer"]
+layout_mode = 2
+text = "Legendary: 0%"
+label_settings = SubResource("LabelSettings_eesh4")
+
 [node name="CardCostPopUp" type="Panel" parent="."]
 visible = false
 offset_right = 91.0
@@ -362,7 +431,6 @@ vertical_alignment = 1
 wait_time = 0.5
 one_shot = true
 
-[connection signal="refresh_cards" from="." to="." method="_on_refresh_cards"]
 [connection signal="pressed" from="CardsUI/LanesPanel/LaneButtons/TopButton" to="." method="_on_top_button_pressed"]
 [connection signal="pressed" from="CardsUI/LanesPanel/LaneButtons/MiddleButton" to="." method="_on_middle_button_pressed"]
 [connection signal="pressed" from="CardsUI/LanesPanel/LaneButtons/BottomButton" to="." method="_on_bottom_button_pressed"]

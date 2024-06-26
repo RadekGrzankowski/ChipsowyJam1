@@ -1,15 +1,17 @@
 extends Node3D
-var format_gold_stats: String = "RED GOLD: %s\nBLUE GOLD: %s"
-var format_minions_top: String = "RED MINIONS TOP: %s\nBLUE MINIONS TOP: %s"
-var format_minions_mid: String = "RED MINIONS MID: %s\nBLUE MINIONS MID: %s"
-var format_minions_bot: String = "RED MINIONS BOT: %s\nBLUE MINIONS BOT: %s"
-var format_barracks_stats: String = "RED BARRACKS: %sLVL\nBLUE BARRACKS: %sLVL"
+var format_gold_stats: String = "PLAYER 1 GOLD: %s\nPLAYER 2(AI) GOLD: %s"
+var format_minions_top: String = "P1 MINIONS TOP: %s\nP2 MINIONS TOP: %s"
+var format_minions_mid: String = "P1 MINIONS MID: %s\nP2 MINIONS MID: %s"
+var format_minions_bot: String = "P1 MINIONS BOT: %s\nP2 MINIONS BOT: %s"
+var format_barracks_stats: String = "P1 BARRACKS: %sLVL\nP2 BARRACKS: %sLVL"
 
 var actual_gold_stats: String
 var actual_minions_top: String
 var actual_minions_mid: String
 var actual_minions_bot: String
 var actual_barracks_stats: String
+
+signal new_barracks_level
 
 @onready var towers_upgrade_ui: Panel = $HUD/UpgradesUI/TowersPanel
 @onready var barracks_upgrade_ui: Panel = $HUD/UpgradesUI/BarracksPanel
@@ -50,12 +52,12 @@ func _process(delta):
 			button_value += 1
 		change_upgrade_panel()
 	
-	actual_gold_stats = format_gold_stats % [Game.red_gold, Game.blue_gold]
-	actual_minions_top = format_minions_top % [Game.red_minions_top, Game.blue_minions_top]
-	actual_minions_mid = format_minions_mid % [Game.red_minions_mid, Game.blue_minions_mid]
-	actual_minions_bot = format_minions_bot % [Game.red_minions_bot, Game.blue_minions_bot]
+	actual_gold_stats = format_gold_stats % [Game.player1_gold, Game.player2_gold]
+	actual_minions_top = format_minions_top % [Game.player1_minions_top, Game.player2_minions_top]
+	actual_minions_mid = format_minions_mid % [Game.player1_minions_mid, Game.player2_minions_mid]
+	actual_minions_bot = format_minions_bot % [Game.player1_minions_bot, Game.player2_minions_bot]
 	
-	actual_barracks_stats = format_barracks_stats % [Game.blue_barracks_level, Game.red_barracks_level]
+	actual_barracks_stats = format_barracks_stats % [Game.player1_barracks_level, Game.player2_barracks_level]
 	
 	gold_label.text = actual_gold_stats
 	top_minions_label.text = actual_minions_top
@@ -103,11 +105,11 @@ func _on_exit_button_pressed():
 	upgrades_ui.visible = false
 
 func _upgrade_tower(lane: String, buff_type_of: String, node_type_of: String, value: int, level_of_upgrade: int):
-	Game.blue_gold -= 100
+	Game.player1_gold -= 100
 	var upgrade_string = ""
 	var node_string = ""
 	
-	upgrade_string = "additional_blue_"+lane+"_tower_"+buff_type_of
+	upgrade_string = "additional_player1_"+lane+"_tower_"+buff_type_of
 	node_string = "HUD/UpgradeControls/"+str(lane).capitalize()+"TowerUpgrades/"+node_type_of+"Upgrades/"+node_type_of+"Upgrade"
 	if level_of_upgrade < 4:
 		var curr_node = node_string + str(level_of_upgrade)
@@ -139,12 +141,13 @@ func _on_armor_upgrade_4_pressed(lane: String):
 	_upgrade_tower(lane, "armor", "Armor", 3, 4)
 
 func _on_barrack_upgrade_button_pressed(level: int, cost: int):
-	if Game.blue_gold >= cost:
+	if Game.player1_gold >= cost:
 		upgrade_barracks(level, cost)
 	
 func upgrade_barracks(level: int, cost: int):
-	Game.blue_gold -= cost
-	Game.blue_barracks_level += 1
+	Game.player1_gold -= cost
+	Game.player1_barracks_level += 1
+	new_barracks_level.emit()
 	var node_string = ""
 	node_string = "HUD/UpgradesUI/NexusPanel/Upgrades/HBoxContainer/BarrackLevels/BarrackUpgrade"
 	if level < 4:

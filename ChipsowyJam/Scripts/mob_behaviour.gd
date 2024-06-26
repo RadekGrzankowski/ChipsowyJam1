@@ -13,6 +13,7 @@ var teamName: String
 enum mob_class {MELEE, RANGED, MAGE}
 var minion_class: mob_class
 var mob_tier: int = 0
+var card_value: float
 var path: String
 var is_hitted: bool = false
 
@@ -58,21 +59,21 @@ func _ready():
 
 	var style = health_bar.get_theme_stylebox("fill")
 	if teamName == "red":
-		style.bg_color = Game.red_color
+		style.bg_color = Game.player2_color
 		if path == "top":
-			Game.red_minions_top += 1
+			Game.player2_minions_top += 1
 		elif path == "mid":
-			Game.red_minions_mid += 1
+			Game.player2_minions_mid += 1
 		elif path == "bot":
-			Game.red_minions_bot += 1
+			Game.player2_minions_bot += 1
 	elif teamName == "blue":
-		style.bg_color = Game.blue_color
+		style.bg_color = Game.player1_color
 		if path == "top":
-			Game.blue_minions_top += 1
+			Game.player1_minions_top += 1
 		elif path == "mid":
-			Game.blue_minions_mid += 1
+			Game.player1_minions_mid += 1
 		elif path == "bot":
-			Game.blue_minions_bot += 1
+			Game.player1_minions_bot += 1
 	#INFO setup animations
 	for animation: String in anim_player.get_animation_list():
 		match animation:
@@ -93,6 +94,7 @@ func initialize(card, team: String, main_path: String, model: PackedScene):
 		mob_attack = card.attack_damage
 		mob_armor = card.armor
 		attack_speed = card.attack_speed
+		card_value = card.cost
 		mob_tier = card.tier
 		$HitArea3D/CollisionShape.shape.radius = card.attack_range
 	else:
@@ -101,8 +103,6 @@ func initialize(card, team: String, main_path: String, model: PackedScene):
 		$HitArea3D/CollisionShape.shape.radius = 1.5
 	teamName = team
 	path = main_path
-	mob_attack += Game.additional_red_minions_dmg
-	mob_armor += Game.additional_red_minions_armor
 	if minion_class == mob_class.RANGED:
 		path_curve = $Path3D.curve
 		$DetectionArea3D/CollisionShape3D.shape.radius = 8.0
@@ -127,8 +127,12 @@ func initialize(card, team: String, main_path: String, model: PackedScene):
 	
 	if team == "red":
 		add_to_group("red_team")
+		mob_attack += Game.additional_player2_minions_dmg
+		mob_armor += Game.additional_player2_minions_armor
 	elif team == "blue":
 		add_to_group("blue_team")
+		mob_attack += Game.additional_player1_minions_dmg
+		mob_armor += Game.additional_player1_minions_armor
 
 	
 func take_damage(amount, attacker):
@@ -144,22 +148,22 @@ func take_damage(amount, attacker):
 		attacker.change_target(self)
 		if teamName == "red":
 			if path == "top":
-				Game.red_minions_top -= 1
+				Game.player2_minions_top -= 1
 			elif path == "mid":
-				Game.red_minions_mid -= 1
+				Game.player2_minions_mid -= 1
 			elif path == "bot":
-				Game.red_minions_bot -= 1
-			Game.red_minions_killed += 1
-			Game.blue_gold += 5
+				Game.player2_minions_bot -= 1
+			Game.player2_minions_killed += 1
+			Game.player1_gold += (5 + (card_value * 0.1))
 		if teamName == "blue":
 			if path == "top":
-				Game.blue_minions_top -= 1
+				Game.player1_minions_top -= 1
 			elif path == "mid":
-				Game.blue_minions_mid -= 1
+				Game.player1_minions_mid -= 1
 			elif path == "bot":
-				Game.blue_minions_bot -= 1
-			Game.blue_minions_killed += 1
-			Game.red_gold += 5
+				Game.player1_minions_bot -= 1
+			Game.player1_minions_killed += 1
+			Game.player2_gold += (5 + (card_value * 0.1))
 		is_hitted = false
 		queue_free()
 	else:
@@ -313,4 +317,3 @@ func _on_navigation_agent_3d_link_reached(details: Dictionary):
 		_link_end_point = details.link_exit_position
 		_is_travelling_links = true
 		look_ahead = 0.25
-		# TODO code minion transformation and apply buffs

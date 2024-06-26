@@ -112,22 +112,22 @@ skeleton = NodePath("")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/MiddleMeshInstance3D1/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_560p8")
 
-[node name="TowerBlue" parent="NavigationRegion3D" groups=["top_tower"] instance=ExtResource("4_wne1o")]
+[node name="P1TowerTop" parent="NavigationRegion3D" groups=["top_tower"] instance=ExtResource("4_wne1o")]
 transform = Transform3D(1.25, 0, 0, 0, 1.25, 0, 0, 0, 1.25, -44.5, 0.72, 27)
 
-[node name="TowerBlue2" parent="NavigationRegion3D" groups=["mid_tower"] instance=ExtResource("4_wne1o")]
+[node name="P1TowerMid" parent="NavigationRegion3D" groups=["mid_tower"] instance=ExtResource("4_wne1o")]
 transform = Transform3D(0.883883, 0, 0.883883, 0, 1.25, 0, -0.883883, 0, 0.883883, -31, 0.72, 31)
 
-[node name="TowerBlue3" parent="NavigationRegion3D" groups=["bot_tower"] instance=ExtResource("4_wne1o")]
+[node name="P1TowerBot" parent="NavigationRegion3D" groups=["bot_tower"] instance=ExtResource("4_wne1o")]
 transform = Transform3D(0, 0, 1.25, 0, 1.25, 0, -1.25, 0, 0, -27, 0.72, 44.5)
 
-[node name="TowerRed" parent="NavigationRegion3D" instance=ExtResource("6_srmdh")]
+[node name="P2TowerTop" parent="NavigationRegion3D" instance=ExtResource("6_srmdh")]
 transform = Transform3D(0, 0, -1.25, 0, 1.25, 0, 1.25, 0, 0, 27, 0.758, -44.5)
 
-[node name="TowerRed2" parent="NavigationRegion3D" instance=ExtResource("6_srmdh")]
+[node name="P2TowerMid" parent="NavigationRegion3D" instance=ExtResource("6_srmdh")]
 transform = Transform3D(-0.883883, 0, -0.883883, 0, 1.25, 0, 0.883883, 0, -0.883883, 31, 0.758, -31)
 
-[node name="TowerRed3" parent="NavigationRegion3D" instance=ExtResource("6_srmdh")]
+[node name="P2TowerBot" parent="NavigationRegion3D" instance=ExtResource("6_srmdh")]
 transform = Transform3D(0, 0, -1.25, 0, 1.25, 0, 1.25, 0, 0, 44.5, 0.758, -27)
 
 [node name="BarracksBlue1" parent="NavigationRegion3D" instance=ExtResource("5_dci7j")]

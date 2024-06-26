@@ -1,14 +1,22 @@
-[gd_scene load_steps=3 format=3 uid="uid://dncc5j2hqxpam"]
+[gd_scene load_steps=7 format=3 uid="uid://dncc5j2hqxpam"]
 
 [ext_resource type="Script" path="res://Scenes/Levels/main_menu.gd" id="1_1hkjt"]
+[ext_resource type="Material" uid="uid://dh452p4jgynpo" path="res://Materials/DarkBlue.tres" id="2_fwvex"]
+[ext_resource type="Material" uid="uid://73ufq0fugf4v" path="res://Materials/LightBlue.tres" id="3_4lufk"]
+[ext_resource type="Material" uid="uid://d0yx377qfl3wg" path="res://Materials/DarkRed.tres" id="4_fgcxb"]
+[ext_resource type="Material" uid="uid://cye5080d8ya1i" path="res://Materials/LightRed.tres" id="5_pucnn"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_6tgql"]
 font_size = 22
 
-[node name="MainMenu" type="Node2D" node_paths=PackedStringArray("blue_team_color", "red_team_color")]
+[node name="MainMenu" type="Node2D" node_paths=PackedStringArray("player1_team_color", "player2_team_color")]
 script = ExtResource("1_1hkjt")
-blue_team_color = NodePath("MainMenu/DebugPanel/BlueTeamColor")
-red_team_color = NodePath("MainMenu/DebugPanel/RedTeamColor")
+player1_team_color = NodePath("MainMenu/DebugPanel/P1TeamColor")
+player2_team_color = NodePath("MainMenu/DebugPanel/P2TeamColor")
+player1_dark_mat = ExtResource("2_fwvex")
+player1_light_mat = ExtResource("3_4lufk")
+player2_dark_mat = ExtResource("4_fgcxb")
+player2_light_mat = ExtResource("5_pucnn")
 
 [node name="MainMenu" type="CanvasLayer" parent="."]
 
@@ -90,7 +98,7 @@ text = "Adjust variables before starting the game"
 label_settings = SubResource("LabelSettings_6tgql")
 vertical_alignment = 1
 
-[node name="BlueGoldInputBox" type="SpinBox" parent="MainMenu/DebugPanel"]
+[node name="P1GoldInputBox" type="SpinBox" parent="MainMenu/DebugPanel"]
 layout_mode = 0
 offset_left = 111.0
 offset_top = 51.0
@@ -100,16 +108,16 @@ max_value = 10000.0
 value = 100.0
 suffix = "G"
 
-[node name="BlueGoldLabel" type="Label" parent="MainMenu/DebugPanel"]
+[node name="P1GoldLabel" type="Label" parent="MainMenu/DebugPanel"]
 layout_mode = 0
 offset_left = 9.0
 offset_top = 51.0
 offset_right = 91.0
 offset_bottom = 85.0
-text = "Blue Gold"
+text = "Player 1"
 vertical_alignment = 1
 
-[node name="RedGoldInputBox" type="SpinBox" parent="MainMenu/DebugPanel"]
+[node name="P2GoldInputBox" type="SpinBox" parent="MainMenu/DebugPanel"]
 layout_mode = 0
 offset_left = 111.0
 offset_top = 104.0
@@ -119,16 +127,16 @@ max_value = 10000.0
 value = 100.0
 suffix = "G"
 
-[node name="RedGoldLabel" type="Label" parent="MainMenu/DebugPanel"]
+[node name="P2GoldLabel" type="Label" parent="MainMenu/DebugPanel"]
 layout_mode = 0
 offset_left = 9.0
 offset_top = 104.0
 offset_right = 91.0
 offset_bottom = 138.0
-text = "Red Gold"
+text = "Player 2"
 vertical_alignment = 1
 
-[node name="BlueBarrackInputBox" type="SpinBox" parent="MainMenu/DebugPanel"]
+[node name="P1BarrackInputBox" type="SpinBox" parent="MainMenu/DebugPanel"]
 layout_mode = 0
 offset_left = 369.0
 offset_top = 51.0
@@ -137,16 +145,16 @@ offset_bottom = 86.0
 max_value = 4.0
 suffix = "LVL"
 
-[node name="BlueBarrackLabel" type="Label" parent="MainMenu/DebugPanel"]
+[node name="P1BarrackLabel" type="Label" parent="MainMenu/DebugPanel"]
 layout_mode = 0
 offset_left = 234.0
 offset_top = 51.0
 offset_right = 377.0
 offset_bottom = 85.0
-text = "Blue Barrack LVL"
+text = "P1 Barrack LVL"
 vertical_alignment = 1
 
-[node name="RedBarrackInputBox" type="SpinBox" parent="MainMenu/DebugPanel"]
+[node name="P2BarrackInputBox" type="SpinBox" parent="MainMenu/DebugPanel"]
 layout_mode = 0
 offset_left = 369.0
 offset_top = 104.0
@@ -155,13 +163,13 @@ offset_bottom = 139.0
 max_value = 4.0
 suffix = "LVL"
 
-[node name="RedBarrackLabel" type="Label" parent="MainMenu/DebugPanel"]
+[node name="P2BarrackLabel" type="Label" parent="MainMenu/DebugPanel"]
 layout_mode = 0
 offset_left = 234.0
 offset_top = 104.0
 offset_right = 360.0
 offset_bottom = 138.0
-text = "Red Barrack LVL"
+text = "P2 Barrack LVL"
 vertical_alignment = 1
 
 [node name="WaveTimeInputBox" type="SpinBox" parent="MainMenu/DebugPanel"]
@@ -204,25 +212,25 @@ offset_bottom = 193.0
 text = "Start Time"
 vertical_alignment = 1
 
-[node name="BlueTeamColorLabel" type="Label" parent="MainMenu/DebugPanel"]
+[node name="P1TeamColorLabel" type="Label" parent="MainMenu/DebugPanel"]
 layout_mode = 0
 offset_left = 9.0
 offset_top = 214.0
 offset_right = 101.0
 offset_bottom = 248.0
-text = "Player color"
+text = "P1 Color"
 vertical_alignment = 1
 
-[node name="RedTeamColorLabel" type="Label" parent="MainMenu/DebugPanel"]
+[node name="P2TeamColorLabel" type="Label" parent="MainMenu/DebugPanel"]
 layout_mode = 0
 offset_left = 234.0
 offset_top = 214.0
 offset_right = 360.0
 offset_bottom = 248.0
-text = "AI Color"
+text = "P2 Color"
 vertical_alignment = 1
 
-[node name="BlueTeamColor" type="OptionButton" parent="MainMenu/DebugPanel"]
+[node name="P1TeamColor" type="OptionButton" parent="MainMenu/DebugPanel"]
 layout_mode = 0
 offset_left = 111.0
 offset_top = 214.0
@@ -239,7 +247,7 @@ popup/item_2/id = 2
 popup/item_3/text = "Yellow"
 popup/item_3/id = 3
 
-[node name="RedTeamColor" type="OptionButton" parent="MainMenu/DebugPanel"]
+[node name="P2TeamColor" type="OptionButton" parent="MainMenu/DebugPanel"]
 layout_mode = 0
 offset_left = 369.0
 offset_top = 214.0
@@ -258,5 +266,5 @@ popup/item_3/id = 3
 
 [connection signal="pressed" from="MainMenu/HBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer/PlayButton" to="." method="_on_play_button_pressed"]
 [connection signal="pressed" from="MainMenu/HBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer/ExitButton" to="." method="_on_exit_button_pressed"]
-[connection signal="item_selected" from="MainMenu/DebugPanel/BlueTeamColor" to="." method="_on_blue_team_color_item_selected"]
-[connection signal="item_selected" from="MainMenu/DebugPanel/RedTeamColor" to="." method="_on_red_team_color_item_selected"]
+[connection signal="item_selected" from="MainMenu/DebugPanel/P1TeamColor" to="." method="_on_player1_team_color_item_selected"]
+[connection signal="item_selected" from="MainMenu/DebugPanel/P2TeamColor" to="." method="_on_player2_team_color_item_selected"]

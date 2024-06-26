@@ -7,8 +7,6 @@ extends CanvasLayer
 var lane_value: int = 0 #0 - top, 1 - middle, 2 - bottom
 var ui_open: bool = false
 
-signal refresh_cards
-
 #DIFFERENT RACES: 
 #HUMAN_KINGDOM, OUTLAWS, MOUNTAIN_CLAN, FOREST_ORCS, 
 #BLOOD_BROTHERHOOD, UNDEAD_PACT, MOON_ELVES, SUN_ELVES, BEAST
@@ -44,12 +42,29 @@ var all_cards_legendary: Array
 @onready var card_cost_popup: Control = $CardCostPopUp
 @onready var popup_timer: Timer = $PopUpTimer
 
+@onready var shop_button: Button = $CardsUI/CardsPanel/CardsPanelsAndTools/CardsPanels/ShopSpacer/ShopButton
+@onready var shop_key: Control = $CardsUI/CardsPanel/CardsPanelsAndTools/CardsPanels/ShopSpacer/ShopButton/ShopKeyPanel
+@onready var percentage_box : Control = $CardsUI/PercentageBox
+@onready var common_label: Label = $CardsUI/PercentageBox/HBoxContainer/CommonLabel
+@onready var rare_label: Label = $CardsUI/PercentageBox/HBoxContainer/RareLabel
+@onready var epic_label: Label = $CardsUI/PercentageBox/HBoxContainer/EpicLabel
+@onready var legendary_label: Label = $CardsUI/PercentageBox/HBoxContainer/LegendaryLabel
+
 func _ready():
 	init_cards_array()
 	top_button.button_pressed = true
 	if !all_cards_common.is_empty():
 		call_deferred("fill_the_shop")
 	call_deferred("unlock_the_buttons")
+	var ui_manager: Node3D = get_node("/root/GameNode/HUD/GameUIManager")
+	ui_manager.new_barracks_level.connect(self.on_new_barrack_level)
+	
+func on_new_barrack_level():
+	var barrack_level: int = Game.player1_barracks_level
+	common_label.text = "Common: " + str(Game.get("common_"+str(barrack_level))) + "%"
+	rare_label.text = "Rare: "+str(Game.get("rare_"+str(barrack_level))) + "%"
+	epic_label.text = "Epic: "+ str(Game.get("epic_"+str(barrack_level))) + "%"
+	legendary_label.text = "Legendary: " + str(Game.get("legendary_"+str(barrack_level))) + "%"
 
 func init_cards_array():
 	for card in human_kingdom_cards_array:
@@ -166,7 +181,7 @@ func fill_the_shop():
 	for node in shop_nodes:
 		var card: Control = card_scene.instantiate()
 		card.add_to_group("shop_card")
-		var tier = Game.return_tier(Game.blue_barracks_level)
+		var tier = Game.return_tier(Game.player1_barracks_level)
 		var resource
 		match tier:
 			0: resource = all_cards_common.pick_random()
@@ -211,21 +226,23 @@ func _on_shop_button_pressed():
 func open_ui():
 	if ui_open == false:
 		$CardsUI/CardsPanel/CardsPanelsAndTools/Tools/Roll.disabled = false
+		percentage_box.visible = true
+		shop_key.position = Vector2(53,6)
+		shop_button.alignment = HORIZONTAL_ALIGNMENT_LEFT
 		ui.position.y -= 165
 		ui_open = true
 	elif ui_open == true:
 		$CardsUI/CardsPanel/CardsPanelsAndTools/Tools/Roll.disabled = true
+		percentage_box.visible = false
+		shop_key.position  = Vector2(459,6)
+		shop_button.alignment  = HORIZONTAL_ALIGNMENT_CENTER
 		ui.position.y += 165
 		ui_open = false
 
-func _on_refresh_cards():
-	#INFO Debug print of cards WIP
-	pass
-
 func _on_roll_pressed():
 	var cards_to_delete = get_tree().get_nodes_in_group("shop_card")
-	if Game.blue_gold >= 10:
-		Game.blue_gold -= 10
+	if Game.player1_gold >= 10:
+		Game.player1_gold -= 10
 		for card in cards_to_delete:
 			card.queue_free()
 		if !all_cards_common.is_empty():

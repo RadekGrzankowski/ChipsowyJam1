@@ -53,7 +53,7 @@ func show_info():
 			bot_cards_string += card.card_name + ", "
 		else:
 			bot_cards_string += "Null, "
-	stats_label.text = "Available gold: " + str(Game.red_gold) + "\n" + \
+	stats_label.text = "Available gold: " + str(Game.player2_gold) + "\n" + \
 	"Top Lane: " + top_cards_string + "\n" + "Mid Lane: "+  mid_cards_string + "\n" + "Bot Lane: " + bot_cards_string + \
 	"\nCurrent AI state: " + str(action_state.keys()[state])+"\n"
 	
@@ -96,7 +96,7 @@ func buy_new_card():
 							return
 						top_lane_cards[index] = card
 						log_label.append_text("Bot have new card at top: " + card.card_name + ", " + str(card.health) + "HP, "+ str(card.cost) +' Gold\n')
-						Game.red_gold -= card.cost
+						Game.player2_gold -= card.cost
 						var card_to_remove = shop_cards.find(card)
 						shop_cards[card_to_remove] = null
 						card_bought_or_no_space = true
@@ -112,7 +112,7 @@ func buy_new_card():
 							return
 						middle_lane_cards[index] = card
 						log_label.append_text("Bot have new card at mid: " + card.card_name + ", " + str(card.health) + "HP, "+ str(card.cost) +' Gold\n')
-						Game.red_gold -= card.cost
+						Game.player2_gold -= card.cost
 						var card_to_remove = shop_cards.find(card)
 						shop_cards[card_to_remove] = null
 						card_bought_or_no_space = true
@@ -128,7 +128,7 @@ func buy_new_card():
 							return
 						bottom_lane_cards[index] = card
 						log_label.append_text("Bot have new card at bot: " + card.card_name + ", " + str(card.health) + "HP, "+ str(card.cost) +' Gold\n')
-						Game.red_gold -= card.cost
+						Game.player2_gold -= card.cost
 						var card_to_remove = shop_cards.find(card)
 						shop_cards[card_to_remove] = null
 						card_bought_or_no_space = true
@@ -145,7 +145,7 @@ func is_shop_empty():
 	
 func roll_the_shop():
 	for index in shop_cards.size():
-		var tier = Game.return_tier(Game.red_barracks_level)
+		var tier = Game.return_tier(Game.player2_barracks_level)
 		var resource
 		match tier:
 			0: resource = cardsUI.all_cards_common.pick_random()
@@ -159,7 +159,7 @@ func pick_best_from_shop():
 	var cost = 0
 	for card in shop_cards:	
 		if card != null:
-			if card.cost > cost && Game.red_gold >= card.cost:
+			if card.cost > cost && Game.player2_gold >= card.cost:
 				cost = card.cost
 				best_card = card
 	if cost == 0:
@@ -170,16 +170,16 @@ func pick_best_from_shop():
 func deck_building():
 	#before buying card check if there are any cards left in shop - if not roll
 	if !is_shop_empty():
-		if Game.red_gold >= 10:
+		if Game.player2_gold >= 10:
 			buy_new_card()
 			#show_info()
 	else:
 		#roll the shop, if there is enough money try to buy the card
-		if Game.red_gold >= 10:
-			Game.red_gold -= 10
+		if Game.player2_gold >= 10:
+			Game.player2_gold -= 10
 			log_label.append_text("Shop empty - rolling it!\n")
 			roll_the_shop()
-			if Game.red_gold >= 10:
+			if Game.player2_gold >= 10:
 				buy_new_card()
 			#show_info()
 
@@ -188,12 +188,12 @@ func perform_action():
 	if state == action_state.DECK_BUILDING:
 		deck_building()
 	elif state == action_state.NEW_SLOT:
-		if Game.red_gold >= 100:
-			Game.red_gold -= 100
+		if Game.player2_gold >= 100:
+			Game.player2_gold -= 100
 			buy_new_slot()
 	elif state == action_state.FULL_DECK:
-		if Game.red_gold >= 100:
-			Game.red_gold -= 100
+		if Game.player2_gold >= 100:
+			Game.player2_gold -= 100
 			buy_new_slot()
 	
 func change_action():

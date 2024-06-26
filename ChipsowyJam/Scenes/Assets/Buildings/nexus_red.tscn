@@ -1,6 +1,7 @@
-[gd_scene load_steps=11 format=3 uid="uid://wmflvgfbpfu7"]
+[gd_scene load_steps=12 format=3 uid="uid://wmflvgfbpfu7"]
 
 [ext_resource type="Material" uid="uid://btge4821qs176" path="res://Materials/Black.tres" id="1_of1dp"]
+[ext_resource type="PackedScene" uid="uid://yswx1jx6ncbw" path="res://Scenes/Assets/Buildings/tower_projectile.tscn" id="2_bibre"]
 [ext_resource type="Material" uid="uid://cye5080d8ya1i" path="res://Materials/LightRed.tres" id="2_t3ror"]
 [ext_resource type="Material" uid="uid://d0yx377qfl3wg" path="res://Materials/DarkRed.tres" id="3_qb0m4"]
 [ext_resource type="Material" uid="uid://bbkw76hl73anf" path="res://Materials/Green.tres" id="4_c40o2"]
@@ -56,6 +57,7 @@ _surfaces = [{
 blend_shape_mode = 0
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_tuski"]
+resource_local_to_scene = true
 resource_name = "Nexus_Cube_002"
 _surfaces = [{
 "aabb": AABB(-1.10568, -1.45915, -0.936502, 2.0341, 1.48649, 1.89414),
@@ -119,11 +121,13 @@ points = PackedVector3Array(0.508953, -1.23765, 1.1077, -0.509187, -1.23765, 1.1
 [sub_resource type="ViewportTexture" id="ViewportTexture_utcjt"]
 viewport_path = NodePath("SubViewport")
 
-[node name="StaticBody3D" type="StaticBody3D" groups=["nexus", "red_team"]]
+[node name="StaticBody3D" type="StaticBody3D" node_paths=PackedStringArray("mesh_instance") groups=["nexus", "red_team"]]
 script = ExtResource("5_k4qj2")
 type = 2
 building_damage = 0
 building_armor = 20
+mesh_instance = NodePath("NexusRed")
+projectile_ball = ExtResource("2_bibre")
 
 [node name="NexusRed" type="MeshInstance3D" parent="."]
 mesh = SubResource("ArrayMesh_tuski")

@@ -32,12 +32,12 @@ func _ready():
 	health_label.label_settings = ls
 	
 	var style = health_bar.get_theme_stylebox("fill")
-	if is_in_group("red_team"):
-		style.bg_color = Game.red_color
-		teamName = "red"
-	elif is_in_group("blue_team"):
-		style.bg_color = Game.blue_color
+	if is_in_group("blue_team"):
+		style.bg_color = Game.player1_color
 		teamName = "blue"
+	elif is_in_group("red_team"):
+		style.bg_color = Game.player2_color
+		teamName = "red"
 	if type == building_type.TOWER:
 		if is_in_group("top_tower"):
 			lane = "top"
@@ -52,18 +52,18 @@ func take_damage(amount, attacker):
 		if type == building_type.TOWER:
 			attacker.change_target(self)
 			if teamName == "red":
-				Game.red_towers_destroyed += 1
-				Game.blue_gold += 50
+				Game.player2_towers_destroyed += 1
+				Game.player1_gold += 50
 			if teamName == "blue":
-				Game.blue_towers_destroyed += 1
-				Game.red_gold += 50
+				Game.player1_towers_destroyed += 1
+				Game.player2_gold += 50
 			queue_free()
 		elif type == building_type.BARRACK:
 			attacker.change_target(self)
 			if teamName == "red":
-				Game.blue_gold += 100
+				Game.player1_gold += 100
 			if teamName == "blue":
-				Game.red_gold += 100
+				Game.player2_gold += 100
 			queue_free()
 		elif type == building_type.NEXUS:
 			if teamName == "red":
@@ -153,10 +153,10 @@ func check_armor():
 func check_damage():
 	if teamName == "blue":
 		if lane == "top":
-			return building_damage + Game.additional_blue_top_tower_damage
+			return building_damage + Game.additional_player1_top_tower_damage
 		elif lane == "mid":
-			return building_damage + Game.additional_blue_mid_tower_damage
+			return building_damage + Game.additional_player1_mid_tower_damage
 		elif lane == "bot":
-			return building_damage + Game.additional_blue_bot_tower_damage
+			return building_damage + Game.additional_player1_bot_tower_damage
 	else:
 		return building_damage

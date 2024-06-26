@@ -16,8 +16,8 @@ func _ready():
 		$UnlockButton.disabled = true
 
 func _unlock(cost: int):
-	if Game.blue_gold >= cost:
-		Game.blue_gold -= cost
+	if Game.player1_gold >= cost:
+		Game.player1_gold -= cost
 		remove_from_group("locked")
 		$PadlockTexture.visible = false
 		$LockedLabel.visible = false

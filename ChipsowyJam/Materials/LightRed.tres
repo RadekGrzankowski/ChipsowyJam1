@@ -3,5 +3,5 @@
 [resource]
 resource_name = "LightRed"
 cull_mode = 2
-albedo_color = Color(0.906486, 0.552305, 0.512881, 1)
+albedo_color = Color(0.882353, 0.435294, 0.45098, 1)
 roughness = 0.5

@@ -192,8 +192,8 @@ func _on_mouse_click_control_gui_input(event):
 					if node.card == null:
 						var distance = global_position.distance_to(node.global_position + node.pivot_offset)
 						if distance < shortest_dist:
-							if Game.blue_gold >= cost:
-								Game.blue_gold -= cost
+							if Game.player1_gold >= cost:
+								Game.player1_gold -= cost
 								cardsUI.card_cost_popup.visible = true
 								cardsUI.card_cost_popup.get_node("Label").text = "-" + str(cost) + "G"
 								cardsUI.popup_timer.start()
@@ -249,10 +249,9 @@ func _on_mouse_click_control_gui_input(event):
 					var distance = global_position.distance_to(sell_zone.global_position + sell_zone.pivot_offset)
 					if distance < shortest_dist:
 						#INFO sell the card, as the rest node is the sell zone
-						Game.blue_gold += (cost / 2)
+						Game.player1_gold += (cost / 2)
 						rest_nodes[current_rest_node].card = null
 						queue_free()
-			cardsUI.refresh_cards.emit()
 			selected = false
 			#reset the top level and position to not obstruct other cards
 			var position = global_position

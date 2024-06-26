@@ -55,6 +55,7 @@ _surfaces = [{
 blend_shape_mode = 0
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_he336"]
+resource_local_to_scene = true
 resource_name = "Nexus_Icosphere_002"
 _surfaces = [{
 "aabb": AABB(-0.482411, -0.997194, -0.4824, 0.964822, 0.127915, 0.964811),
@@ -119,11 +120,12 @@ radius = 7.5
 [sub_resource type="ViewportTexture" id="ViewportTexture_sf1cx"]
 viewport_path = NodePath("SubViewport")
 
-[node name="StaticBody3D" type="StaticBody3D" groups=["red_team", "tower"]]
+[node name="StaticBody3D" type="StaticBody3D" node_paths=PackedStringArray("mesh_instance") groups=["red_team", "tower"]]
 script = ExtResource("5_xk2dl")
 building_damage = 25
 building_armor = 10
 building_health = 250
+mesh_instance = NodePath("TowerRed")
 projectile_ball = ExtResource("2_kgcfu")
 
 [node name="TowerRed" type="MeshInstance3D" parent="."]
