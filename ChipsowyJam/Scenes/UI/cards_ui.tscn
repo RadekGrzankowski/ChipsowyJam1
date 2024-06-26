@@ -295,6 +295,52 @@ vertical_alignment = 1
 clip_text = true
 text_overrun_behavior = 1
 
+[node name="PercentageBox" type="Panel" parent="CardsUI/CardsPanel/CardsPanelsAndTools/CardsPanels/ShopSpacer"]
+visible = false
+self_modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(60, 0)
+layout_mode = 2
+offset_left = 144.0
+offset_right = 844.0
+offset_bottom = 31.0
+mouse_filter = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CardsUI/CardsPanel/CardsPanelsAndTools/CardsPanels/ShopSpacer/PercentageBox"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_constants/separation = 60
+alignment = 2
+
+[node name="Label" type="Label" parent="CardsUI/CardsPanel/CardsPanelsAndTools/CardsPanels/ShopSpacer/PercentageBox/HBoxContainer"]
+layout_mode = 2
+text = "Roll chances:"
+label_settings = SubResource("LabelSettings_4vpfv")
+
+[node name="CommonLabel" type="Label" parent="CardsUI/CardsPanel/CardsPanelsAndTools/CardsPanels/ShopSpacer/PercentageBox/HBoxContainer"]
+layout_mode = 2
+text = "Common: 80%"
+label_settings = SubResource("LabelSettings_4vpfv")
+
+[node name="RareLabel" type="Label" parent="CardsUI/CardsPanel/CardsPanelsAndTools/CardsPanels/ShopSpacer/PercentageBox/HBoxContainer"]
+layout_mode = 2
+text = "Rare: 20%"
+label_settings = SubResource("LabelSettings_kmsga")
+
+[node name="EpicLabel" type="Label" parent="CardsUI/CardsPanel/CardsPanelsAndTools/CardsPanels/ShopSpacer/PercentageBox/HBoxContainer"]
+layout_mode = 2
+text = "Epic: 0%"
+label_settings = SubResource("LabelSettings_010pb")
+
+[node name="LegendaryLabel" type="Label" parent="CardsUI/CardsPanel/CardsPanelsAndTools/CardsPanels/ShopSpacer/PercentageBox/HBoxContainer"]
+layout_mode = 2
+text = "Legendary: 0%"
+label_settings = SubResource("LabelSettings_eesh4")
+
 [node name="Shop" type="Panel" parent="CardsUI/CardsPanel/CardsPanelsAndTools/CardsPanels"]
 layout_mode = 2
 size_flags_horizontal = 3
@@ -362,53 +408,6 @@ size_flags_stretch_ratio = 8.0
 disabled = true
 text = "ROLL
 (10G)"
-
-[node name="PercentageBox" type="Panel" parent="CardsUI"]
-visible = false
-self_modulate = Color(1, 1, 1, 0)
-custom_minimum_size = Vector2(60, 0)
-layout_mode = 2
-offset_left = -350.0
-offset_top = -33.0
-offset_right = 350.0
-offset_bottom = -2.0
-mouse_filter = 2
-
-[node name="HBoxContainer" type="HBoxContainer" parent="CardsUI/PercentageBox"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-theme_override_constants/separation = 60
-alignment = 2
-
-[node name="Label" type="Label" parent="CardsUI/PercentageBox/HBoxContainer"]
-layout_mode = 2
-text = "Roll chances:"
-label_settings = SubResource("LabelSettings_4vpfv")
-
-[node name="CommonLabel" type="Label" parent="CardsUI/PercentageBox/HBoxContainer"]
-layout_mode = 2
-text = "Common: 80%"
-label_settings = SubResource("LabelSettings_4vpfv")
-
-[node name="RareLabel" type="Label" parent="CardsUI/PercentageBox/HBoxContainer"]
-layout_mode = 2
-text = "Rare: 20%"
-label_settings = SubResource("LabelSettings_kmsga")
-
-[node name="EpicLabel" type="Label" parent="CardsUI/PercentageBox/HBoxContainer"]
-layout_mode = 2
-text = "Epic: 0%"
-label_settings = SubResource("LabelSettings_010pb")
-
-[node name="LegendaryLabel" type="Label" parent="CardsUI/PercentageBox/HBoxContainer"]
-layout_mode = 2
-text = "Legendary: 0%"
-label_settings = SubResource("LabelSettings_eesh4")
 
 [node name="CardCostPopUp" type="Panel" parent="."]
 visible = false

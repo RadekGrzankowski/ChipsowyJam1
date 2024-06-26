@@ -44,11 +44,11 @@ var all_cards_legendary: Array
 
 @onready var shop_button: Button = $CardsUI/CardsPanel/CardsPanelsAndTools/CardsPanels/ShopSpacer/ShopButton
 @onready var shop_key: Control = $CardsUI/CardsPanel/CardsPanelsAndTools/CardsPanels/ShopSpacer/ShopButton/ShopKeyPanel
-@onready var percentage_box : Control = $CardsUI/PercentageBox
-@onready var common_label: Label = $CardsUI/PercentageBox/HBoxContainer/CommonLabel
-@onready var rare_label: Label = $CardsUI/PercentageBox/HBoxContainer/RareLabel
-@onready var epic_label: Label = $CardsUI/PercentageBox/HBoxContainer/EpicLabel
-@onready var legendary_label: Label = $CardsUI/PercentageBox/HBoxContainer/LegendaryLabel
+@onready var percentage_box : Control = $CardsUI/CardsPanel/CardsPanelsAndTools/CardsPanels/ShopSpacer/PercentageBox
+@onready var common_label: Label = $CardsUI/CardsPanel/CardsPanelsAndTools/CardsPanels/ShopSpacer/PercentageBox/HBoxContainer/CommonLabel
+@onready var rare_label: Label = $CardsUI/CardsPanel/CardsPanelsAndTools/CardsPanels/ShopSpacer/PercentageBox/HBoxContainer/RareLabel
+@onready var epic_label: Label = $CardsUI/CardsPanel/CardsPanelsAndTools/CardsPanels/ShopSpacer/PercentageBox/HBoxContainer/EpicLabel
+@onready var legendary_label: Label = $CardsUI/CardsPanel/CardsPanelsAndTools/CardsPanels/ShopSpacer/PercentageBox/HBoxContainer/LegendaryLabel
 
 func _ready():
 	init_cards_array()
