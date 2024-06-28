@@ -1,0 +1,18 @@
+[gd_resource type="Resource" load_steps=2 format=3 uid="uid://bkyrt6uirgmuy"]
+
+[ext_resource type="Script" path="res://Scenes/Assets/Cards/card_stats.gd" id="1_mdjam"]
+
+[resource]
+script = ExtResource("1_mdjam")
+card_name = "Łowca Olbrzymów"
+race = 3
+tier = 1
+description = "deal 25 % more to unit with 300 + HP"
+cost = 50
+health = 175
+attack_damage = 30
+armor = 30
+attack_speed = 0.7
+attack_range = 1.5
+type = 0
+sub_type = 0

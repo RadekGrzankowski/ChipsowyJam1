@@ -1,0 +1,18 @@
+[gd_resource type="Resource" load_steps=2 format=3 uid="uid://bmmxkt3k85vnr"]
+
+[ext_resource type="Script" path="res://Scenes/Assets/Cards/card_stats.gd" id="1_tac6b"]
+
+[resource]
+script = ExtResource("1_tac6b")
+card_name = "Pająk"
+race = 8
+tier = 0
+description = "1 toxic / 5 s Stacking"
+cost = 20
+health = 110
+attack_damage = 5
+armor = 0
+attack_speed = 1.5
+attack_range = 3.0
+type = 1
+sub_type = 7

@@ -1,0 +1,18 @@
+[gd_resource type="Resource" load_steps=2 format=3 uid="uid://dup21rwc5xnny"]
+
+[ext_resource type="Script" path="res://Scenes/Assets/Cards/card_stats.gd" id="1_ys34b"]
+
+[resource]
+script = ExtResource("1_ys34b")
+card_name = "Troll"
+race = 8
+tier = 3
+description = ""
+cost = 120
+health = 300
+attack_damage = 100
+armor = 50
+attack_speed = 0.3
+attack_range = 1.5
+type = 0
+sub_type = 0

@@ -1,0 +1,18 @@
+[gd_resource type="Resource" load_steps=2 format=3 uid="uid://bte7kf52gftj8"]
+
+[ext_resource type="Script" path="res://Scenes/Assets/Cards/card_stats.gd" id="1_fyml2"]
+
+[resource]
+script = ExtResource("1_fyml2")
+card_name = "Beast Master"
+race = 3
+tier = 3
+description = "after death summon 3 wolfs"
+cost = 200
+health = 400
+attack_damage = 50
+armor = 50
+attack_speed = 2.0
+attack_range = 5.0
+type = 1
+sub_type = 1

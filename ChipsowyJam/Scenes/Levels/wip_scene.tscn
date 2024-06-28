@@ -1,4 +1,4 @@
-[gd_scene load_steps=56 format=3 uid="uid://dujs37qsrm41c"]
+[gd_scene load_steps=72 format=3 uid="uid://dujs37qsrm41c"]
 
 [ext_resource type="PackedScene" uid="uid://drr8l01a1ia4i" path="res://Scenes/UI/cards_ui.tscn" id="1_1hggn"]
 [ext_resource type="Script" path="res://Scripts/camera_movement.gd" id="1_80gvj"]
@@ -52,6 +52,22 @@
 [ext_resource type="Resource" uid="uid://cq21a2c7eij7" path="res://Scenes/Assets/Cards/Mountain Clan/Stary Ork.tres" id="31_e6mp0"]
 [ext_resource type="Resource" uid="uid://vhb7g07k4fae" path="res://Scenes/Assets/Cards/Mountain Clan/Władca Run.tres" id="32_clqrf"]
 [ext_resource type="Resource" uid="uid://nb5ogqdbqgeu" path="res://Scenes/Assets/Cards/Mountain Clan/Znahor.tres" id="33_yku2d"]
+[ext_resource type="Resource" uid="uid://bte7kf52gftj8" path="res://Scenes/Assets/Cards/Forest Orcs/Beast Master.tres" id="34_x4wfr"]
+[ext_resource type="Resource" uid="uid://c2r0llxpkr7bh" path="res://Scenes/Assets/Cards/Forest Orcs/Duch Wiatru.tres" id="35_a4ifx"]
+[ext_resource type="Resource" uid="uid://dp2hujmk16se8" path="res://Scenes/Assets/Cards/Forest Orcs/Duch Wody.tres" id="36_erwpc"]
+[ext_resource type="Resource" uid="uid://xt8x1gg2oe42" path="res://Scenes/Assets/Cards/Forest Orcs/Ork Łowca.tres" id="37_tytlo"]
+[ext_resource type="Resource" uid="uid://cv26k3uti3e23" path="res://Scenes/Assets/Cards/Forest Orcs/Pół Ork.tres" id="38_mvdxc"]
+[ext_resource type="Resource" uid="uid://c3o0cnokla6g8" path="res://Scenes/Assets/Cards/Forest Orcs/Stary Łowca.tres" id="39_vbfm7"]
+[ext_resource type="Resource" uid="uid://tam5qjj23gqb" path="res://Scenes/Assets/Cards/Forest Orcs/Wódz Wojennyt.tres" id="40_o6sds"]
+[ext_resource type="Resource" uid="uid://dj08a1k43rwfp" path="res://Scenes/Assets/Cards/Forest Orcs/Włócznik.tres" id="41_xvy6o"]
+[ext_resource type="Resource" uid="uid://bkyrt6uirgmuy" path="res://Scenes/Assets/Cards/Forest Orcs/Łowca Olbrzymów.tres" id="42_ktcwg"]
+[ext_resource type="Resource" uid="uid://bg34pac10a7ur" path="res://Scenes/Assets/Cards/Beast/Anakonda.tres" id="61_ytpjj"]
+[ext_resource type="Resource" uid="uid://r37do3g5symw" path="res://Scenes/Assets/Cards/Beast/Bies.tres" id="62_6qrxl"]
+[ext_resource type="Resource" uid="uid://inw77towcek3" path="res://Scenes/Assets/Cards/Beast/Gryf.tres" id="63_m54xj"]
+[ext_resource type="Resource" uid="uid://yfdqdijfylh6" path="res://Scenes/Assets/Cards/Beast/Niedzwiedz.tres" id="64_0qqpx"]
+[ext_resource type="Resource" uid="uid://bmmxkt3k85vnr" path="res://Scenes/Assets/Cards/Beast/Pająk.tres" id="65_quriq"]
+[ext_resource type="Resource" uid="uid://dup21rwc5xnny" path="res://Scenes/Assets/Cards/Beast/Troll.tres" id="66_m07xw"]
+[ext_resource type="Resource" uid="uid://iqp5h0ja1kye" path="res://Scenes/Assets/Cards/Beast/Wilk.tres" id="67_eongi"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_trv5t"]
 sky_top_color = Color(0.764706, 0.827451, 0.917647, 1)
@@ -106,7 +122,9 @@ environment = SubResource("Environment_6gxsl")
 human_kingdom_cards_array = [ExtResource("6_hrmsv"), ExtResource("7_jl54c"), ExtResource("8_fbhor"), ExtResource("9_k5nwm"), ExtResource("10_4ekxd"), ExtResource("11_qejxs"), ExtResource("12_b06qd"), ExtResource("13_ccm24"), ExtResource("14_iwdh7"), ExtResource("15_uc1f5")]
 outlaws_cards_array = [ExtResource("16_5jdk1"), ExtResource("17_34wgx"), ExtResource("18_ipagx"), ExtResource("19_kucoa"), ExtResource("20_2qlyl"), ExtResource("21_k7574"), ExtResource("22_203mh"), ExtResource("23_lyny0")]
 mountain_clan_cards_array = [ExtResource("24_24tdh"), ExtResource("25_w0cu6"), ExtResource("26_sdtm7"), ExtResource("27_tpfi4"), ExtResource("28_kdho1"), ExtResource("29_pd0jy"), ExtResource("30_qa5bw"), ExtResource("31_e6mp0"), ExtResource("32_clqrf"), ExtResource("33_yku2d")]
+forest_orcs_cards_array = [ExtResource("34_x4wfr"), ExtResource("35_a4ifx"), ExtResource("36_erwpc"), ExtResource("37_tytlo"), ExtResource("38_mvdxc"), ExtResource("39_vbfm7"), ExtResource("40_o6sds"), ExtResource("41_xvy6o"), ExtResource("42_ktcwg")]
 blood_brotherhood_cards_array = [ExtResource("6_hwh2s"), ExtResource("7_pj51i"), ExtResource("8_nt6s7"), ExtResource("9_85p3k"), ExtResource("10_gf7to"), ExtResource("11_530yt"), ExtResource("12_ps2q1"), ExtResource("13_f2h5q"), ExtResource("14_xkmon"), ExtResource("15_ga2jb")]
 undead_pact_cards_array = [ExtResource("16_fw74q"), ExtResource("17_pru3h"), ExtResource("18_t1u50"), ExtResource("19_cnonn"), ExtResource("20_6f02n"), ExtResource("21_xd2ou"), ExtResource("22_0p5ad"), ExtResource("23_f6c7l")]
+beast_cards_array = [ExtResource("61_ytpjj"), ExtResource("62_6qrxl"), ExtResource("63_m54xj"), ExtResource("64_0qqpx"), ExtResource("65_quriq"), ExtResource("66_m07xw"), ExtResource("67_eongi")]
 
 [node name="AIController" parent="." instance=ExtResource("24_10fj3")]

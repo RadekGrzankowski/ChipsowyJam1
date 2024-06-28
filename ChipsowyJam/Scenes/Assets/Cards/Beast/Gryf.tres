@@ -1,0 +1,18 @@
+[gd_resource type="Resource" load_steps=2 format=3 uid="uid://inw77towcek3"]
+
+[ext_resource type="Script" path="res://Scenes/Assets/Cards/card_stats.gd" id="1_uubcf"]
+
+[resource]
+script = ExtResource("1_uubcf")
+card_name = "Gryf"
+race = 8
+tier = 3
+description = "20 % to Stun on hit"
+cost = 200
+health = 350
+attack_damage = 60
+armor = 50
+attack_speed = 2.0
+attack_range = 1.5
+type = 0
+sub_type = 0

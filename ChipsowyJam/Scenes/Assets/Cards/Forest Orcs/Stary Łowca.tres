@@ -1,0 +1,18 @@
+[gd_resource type="Resource" load_steps=2 format=3 uid="uid://c3o0cnokla6g8"]
+
+[ext_resource type="Script" path="res://Scenes/Assets/Cards/card_stats.gd" id="1_ai312"]
+
+[resource]
+script = ExtResource("1_ai312")
+card_name = "Stary Łowca"
+race = 3
+tier = 2
+description = ""
+cost = 120
+health = 250
+attack_damage = 75
+armor = 50
+attack_speed = 1.0
+attack_range = 4.0
+type = 1
+sub_type = 1
