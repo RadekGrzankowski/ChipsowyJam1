@@ -1,25 +1,18 @@
-[gd_scene load_steps=14 format=3 uid="uid://0cdht6xykwu7"]
+[gd_scene load_steps=12 format=3 uid="uid://0cdht6xykwu7"]
 
 [ext_resource type="Script" path="res://Scripts/spawn_manager.gd" id="1_bvj0y"]
 [ext_resource type="PackedScene" uid="uid://mmq7d6i1fgjc" path="res://Scenes/Assets/Mobs/minion.tscn" id="3_1jksw"]
-[ext_resource type="PackedScene" uid="uid://jw65hqu1mseq" path="res://Models/Ghost.tscn" id="4_6rao7"]
+[ext_resource type="PackedScene" path="res://Models/Ghost.tscn" id="4_6rao7"]
 [ext_resource type="PackedScene" uid="uid://b77fxsgmsjpkr" path="res://Models/Orc.tscn" id="4_e1iku"]
 [ext_resource type="Script" path="res://Scripts/GameUIManager.gd" id="4_v33no"]
 [ext_resource type="PackedScene" uid="uid://b01khnim0q3yw" path="res://Models/Zombie.tscn" id="5_xy08n"]
-[ext_resource type="PackedScene" uid="uid://c7irlw1101kwc" path="res://Models/Skeleton.tscn" id="7_vue2w"]
+[ext_resource type="PackedScene" path="res://Models/Skeleton.tscn" id="7_vue2w"]
 [ext_resource type="PackedScene" uid="uid://bcrmooe1y1vwx" path="res://Models/Pirate Captain.tscn" id="8_qup3b"]
-[ext_resource type="PackedScene" uid="uid://bhq0a6rcwxn30" path="res://Models/Skeleton Mage.tscn" id="8_ykaen"]
+[ext_resource type="PackedScene" path="res://Models/Skeleton Mage.tscn" id="8_ykaen"]
 [ext_resource type="PackedScene" uid="uid://w7h88cq200j0" path="res://Models/Anne.tscn" id="9_hehkg"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_tnijv"]
 font_size = 18
-
-[sub_resource type="StyleBoxLine" id="StyleBoxLine_hhv55"]
-color = Color(1, 1, 1, 1)
-vertical = true
-
-[sub_resource type="StyleBoxLine" id="StyleBoxLine_8ln8o"]
-color = Color(1, 1, 1, 1)
 
 [node name="UIController" type="Node3D"]
 
@@ -30,6 +23,7 @@ minion_models = [ExtResource("4_6rao7"), ExtResource("4_e1iku"), ExtResource("5_
 
 [node name="GameUIManager" type="Node3D" parent="."]
 script = ExtResource("4_v33no")
+upgrade_info_array = [NodePath("HUD/UpgradesUI/BackgroundPanel/HBoxContainer/TowerUpgrades/TopTower/Upgrade info"), NodePath("HUD/UpgradesUI/BackgroundPanel/HBoxContainer/TowerUpgrades/MidTower/Upgrade info"), NodePath("HUD/UpgradesUI/BackgroundPanel/HBoxContainer/TowerUpgrades/BotTower/Upgrade info"), NodePath("HUD/UpgradesUI/BackgroundPanel/HBoxContainer/BarrackUpgrades/TopBarrack/Upgrade info"), NodePath("HUD/UpgradesUI/BackgroundPanel/HBoxContainer/BarrackUpgrades/MidBarrack/Upgrade info"), NodePath("HUD/UpgradesUI/BackgroundPanel/HBoxContainer/BarrackUpgrades/BotBarrack/Upgrade info"), NodePath("HUD/UpgradesUI/BackgroundPanel/HBoxContainer/Nexus/Upgrade info")]
 
 [node name="HUD" type="Node2D" parent="GameUIManager"]
 
@@ -493,949 +487,265 @@ text = "PLACEHOLDER"
 
 [node name="UpgradesUI" type="CanvasLayer" parent="GameUIManager/HUD"]
 layer = 2
-visible = false
 offset = Vector2(150, 20)
 scale = Vector2(0.8, 0.8)
 transform = Transform2D(0.8, 0, 0, 0.8, 150, 20)
 
 [node name="BackgroundPanel" type="Panel" parent="GameUIManager/HUD/UpgradesUI"]
-offset_left = 192.0
-offset_top = 128.0
-offset_right = 1728.0
-offset_bottom = 960.0
+offset_left = 362.5
+offset_top = 485.0
+offset_right = 1381.5
+offset_bottom = 915.0
 
-[node name="UpperPanel" type="Panel" parent="GameUIManager/HUD/UpgradesUI"]
-offset_left = 192.0
-offset_top = 128.0
-offset_right = 1728.0
-offset_bottom = 216.0
+[node name="HBoxContainer" type="HBoxContainer" parent="GameUIManager/HUD/UpgradesUI/BackgroundPanel"]
+offset_top = 60.0
+offset_right = 1019.0
+offset_bottom = 430.0
 
-[node name="HBoxContainer" type="HBoxContainer" parent="GameUIManager/HUD/UpgradesUI/UpperPanel"]
-layout_mode = 2
-offset_top = 5.0
-offset_right = 1536.0
-offset_bottom = 82.0
-alignment = 1
-
-[node name="QLabel" type="Label" parent="GameUIManager/HUD/UpgradesUI/UpperPanel/HBoxContainer"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 30
-text = "Q"
-
-[node name="Panel" type="Panel" parent="GameUIManager/HUD/UpgradesUI/UpperPanel/HBoxContainer/QLabel"]
-show_behind_parent = true
-layout_mode = 0
-offset_left = -6.74999
-offset_top = 3.75
-offset_right = 33.25
-offset_bottom = 43.75
-
-[node name="Spacer" type="Control" parent="GameUIManager/HUD/UpgradesUI/UpperPanel/HBoxContainer"]
-custom_minimum_size = Vector2(20, 0)
-layout_mode = 2
-
-[node name="TowersButton" type="Button" parent="GameUIManager/HUD/UpgradesUI/UpperPanel/HBoxContainer"]
-custom_minimum_size = Vector2(300, 0)
-layout_mode = 2
-theme_override_font_sizes/font_size = 50
-toggle_mode = true
-button_pressed = true
-text = "Towers"
-
-[node name="Spacer2" type="Control" parent="GameUIManager/HUD/UpgradesUI/UpperPanel/HBoxContainer"]
-custom_minimum_size = Vector2(70, 0)
-layout_mode = 2
-
-[node name="BarracksButton" type="Button" parent="GameUIManager/HUD/UpgradesUI/UpperPanel/HBoxContainer"]
-custom_minimum_size = Vector2(300, 0)
-layout_mode = 2
-theme_override_font_sizes/font_size = 50
-toggle_mode = true
-text = "Barracks"
-
-[node name="Spacer3" type="Control" parent="GameUIManager/HUD/UpgradesUI/UpperPanel/HBoxContainer"]
-custom_minimum_size = Vector2(70, 0)
-layout_mode = 2
-
-[node name="NexusButton" type="Button" parent="GameUIManager/HUD/UpgradesUI/UpperPanel/HBoxContainer"]
-custom_minimum_size = Vector2(300, 0)
-layout_mode = 2
-theme_override_font_sizes/font_size = 50
-toggle_mode = true
-text = "Nexus"
-
-[node name="Spacer4" type="Control" parent="GameUIManager/HUD/UpgradesUI/UpperPanel/HBoxContainer"]
-custom_minimum_size = Vector2(20, 0)
-layout_mode = 2
-
-[node name="ELabel" type="Label" parent="GameUIManager/HUD/UpgradesUI/UpperPanel/HBoxContainer"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 30
-text = "E"
-
-[node name="Panel" type="Panel" parent="GameUIManager/HUD/UpgradesUI/UpperPanel/HBoxContainer/ELabel"]
-show_behind_parent = true
-layout_mode = 0
-offset_left = -10.2499
-offset_top = 2.5
-offset_right = 29.7501
-offset_bottom = 42.5
-
-[node name="TowersPanel" type="Panel" parent="GameUIManager/HUD/UpgradesUI"]
-offset_left = 192.0
-offset_top = 216.0
-offset_right = 1728.0
-offset_bottom = 960.0
-
-[node name="Labels" type="HBoxContainer" parent="GameUIManager/HUD/UpgradesUI/TowersPanel"]
-clip_contents = true
-layout_mode = 0
-offset_top = 16.0
-offset_right = 1536.0
-offset_bottom = 64.0
-alignment = 1
-
-[node name="TOP" type="Label" parent="GameUIManager/HUD/UpgradesUI/TowersPanel/Labels"]
-layout_mode = 2
-size_flags_horizontal = 3
-theme_override_font_sizes/font_size = 26
-text = "TOP"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="MID" type="Label" parent="GameUIManager/HUD/UpgradesUI/TowersPanel/Labels"]
-layout_mode = 2
-size_flags_horizontal = 3
-theme_override_font_sizes/font_size = 26
-text = "MID"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="BOT" type="Label" parent="GameUIManager/HUD/UpgradesUI/TowersPanel/Labels"]
-layout_mode = 2
-size_flags_horizontal = 3
-theme_override_font_sizes/font_size = 26
-text = "BOT"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Upgrades" type="HBoxContainer" parent="GameUIManager/HUD/UpgradesUI/TowersPanel"]
-layout_mode = 0
-offset_top = 88.0
-offset_right = 1536.0
-offset_bottom = 712.0
-
-[node name="TopUpgrades" type="VBoxContainer" parent="GameUIManager/HUD/UpgradesUI/TowersPanel/Upgrades"]
-layout_mode = 2
-size_flags_horizontal = 3
-alignment = 2
-
-[node name="HBoxContainer" type="HBoxContainer" parent="GameUIManager/HUD/UpgradesUI/TowersPanel/Upgrades/TopUpgrades"]
-layout_mode = 2
-size_flags_vertical = 3
-alignment = 1
-
-[node name="Button" type="Button" parent="GameUIManager/HUD/UpgradesUI/TowersPanel/Upgrades/TopUpgrades/HBoxContainer"]
-layout_mode = 2
-text = "Attack Speed + 10%
-200G"
-
-[node name="Spacer" type="Control" parent="GameUIManager/HUD/UpgradesUI/TowersPanel/Upgrades/TopUpgrades/HBoxContainer"]
-custom_minimum_size = Vector2(80, 0)
-layout_mode = 2
-
-[node name="Button2" type="Button" parent="GameUIManager/HUD/UpgradesUI/TowersPanel/Upgrades/TopUpgrades/HBoxContainer"]
-layout_mode = 2
-text = "Attack Damage + 5
-200G"
-
-[node name="HBoxContainer2" type="HBoxContainer" parent="GameUIManager/HUD/UpgradesUI/TowersPanel/Upgrades/TopUpgrades"]
-layout_mode = 2
-size_flags_vertical = 3
-alignment = 1
-
-[node name="Button" type="Button" parent="GameUIManager/HUD/UpgradesUI/TowersPanel/Upgrades/TopUpgrades/HBoxContainer2"]
-layout_mode = 2
-text = "Attack Speed + 10%
-200G"
-
-[node name="Spacer" type="Control" parent="GameUIManager/HUD/UpgradesUI/TowersPanel/Upgrades/TopUpgrades/HBoxContainer2"]
-custom_minimum_size = Vector2(80, 0)
-layout_mode = 2
-
-[node name="Button2" type="Button" parent="GameUIManager/HUD/UpgradesUI/TowersPanel/Upgrades/TopUpgrades/HBoxContainer2"]
-layout_mode = 2
-text = "Attack Damage + 5
-200G"
-
-[node name="HBoxContainer3" type="HBoxContainer" parent="GameUIManager/HUD/UpgradesUI/TowersPanel/Upgrades/TopUpgrades"]
-layout_mode = 2
-size_flags_vertical = 3
-alignment = 1
-
-[node name="Button" type="Button" parent="GameUIManager/HUD/UpgradesUI/TowersPanel/Upgrades/TopUpgrades/HBoxContainer3"]
-layout_mode = 2
-text = "Attack Speed + 10%
-200G"
-
-[node name="Spacer" type="Control" parent="GameUIManager/HUD/UpgradesUI/TowersPanel/Upgrades/TopUpgrades/HBoxContainer3"]
-custom_minimum_size = Vector2(80, 0)
-layout_mode = 2
-
-[node name="Button2" type="Button" parent="GameUIManager/HUD/UpgradesUI/TowersPanel/Upgrades/TopUpgrades/HBoxContainer3"]
-layout_mode = 2
-text = "Attack Damage + 5
-200G"
-
-[node name="HBoxContainer4" type="HBoxContainer" parent="GameUIManager/HUD/UpgradesUI/TowersPanel/Upgrades/TopUpgrades"]
-layout_mode = 2
-size_flags_vertical = 3
-alignment = 1
-
-[node name="Button" type="Button" parent="GameUIManager/HUD/UpgradesUI/TowersPanel/Upgrades/TopUpgrades/HBoxContainer4"]
-layout_mode = 2
-text = "Attack Speed + 10%
-200G"
-
-[node name="Spacer" type="Control" parent="GameUIManager/HUD/UpgradesUI/TowersPanel/Upgrades/TopUpgrades/HBoxContainer4"]
-custom_minimum_size = Vector2(80, 0)
-layout_mode = 2
-
-[node name="Button2" type="Button" parent="GameUIManager/HUD/UpgradesUI/TowersPanel/Upgrades/TopUpgrades/HBoxContainer4"]
-layout_mode = 2
-text = "Attack Damage + 5
-200G"
-
-[node name="HBoxContainer5" type="HBoxContainer" parent="GameUIManager/HUD/UpgradesUI/TowersPanel/Upgrades/TopUpgrades"]
-layout_mode = 2
-size_flags_vertical = 3
-alignment = 1
-
-[node name="Button" type="Button" parent="GameUIManager/HUD/UpgradesUI/TowersPanel/Upgrades/TopUpgrades/HBoxContainer5"]
-layout_mode = 2
-text = "Attack Speed + 10%
-200G"
-
-[node name="Spacer" type="Control" parent="GameUIManager/HUD/UpgradesUI/TowersPanel/Upgrades/TopUpgrades/HBoxContainer5"]
-custom_minimum_size = Vector2(80, 0)
-layout_mode = 2
-
-[node name="Button2" type="Button" parent="GameUIManager/HUD/UpgradesUI/TowersPanel/Upgrades/TopUpgrades/HBoxContainer5"]
-layout_mode = 2
-text = "Attack Damage + 5
-200G"
-
-[node name="MidUpgrades" type="VBoxContainer" parent="GameUIManager/HUD/UpgradesUI/TowersPanel/Upgrades"]
+[node name="TowerUpgrades" type="VBoxContainer" parent="GameUIManager/HUD/UpgradesUI/BackgroundPanel/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="HBoxContainer" type="HBoxContainer" parent="GameUIManager/HUD/UpgradesUI/TowersPanel/Upgrades/MidUpgrades"]
+[node name="TopTower" type="Button" parent="GameUIManager/HUD/UpgradesUI/BackgroundPanel/HBoxContainer/TowerUpgrades"]
 layout_mode = 2
 size_flags_vertical = 3
-alignment = 1
+text = "TOP TOWER UPGRADE [Tier]
+"
 
-[node name="Button" type="Button" parent="GameUIManager/HUD/UpgradesUI/TowersPanel/Upgrades/MidUpgrades/HBoxContainer"]
-layout_mode = 2
-text = "Attack Speed + 10%
-200G"
-
-[node name="Spacer" type="Control" parent="GameUIManager/HUD/UpgradesUI/TowersPanel/Upgrades/MidUpgrades/HBoxContainer"]
-custom_minimum_size = Vector2(80, 0)
-layout_mode = 2
-
-[node name="Button2" type="Button" parent="GameUIManager/HUD/UpgradesUI/TowersPanel/Upgrades/MidUpgrades/HBoxContainer"]
-layout_mode = 2
-text = "Attack Damage + 5
-200G"
-
-[node name="HBoxContainer2" type="HBoxContainer" parent="GameUIManager/HUD/UpgradesUI/TowersPanel/Upgrades/MidUpgrades"]
-layout_mode = 2
-size_flags_vertical = 3
-alignment = 1
-
-[node name="Button" type="Button" parent="GameUIManager/HUD/UpgradesUI/TowersPanel/Upgrades/MidUpgrades/HBoxContainer2"]
-layout_mode = 2
-text = "Attack Speed + 10%
-200G"
-
-[node name="Spacer" type="Control" parent="GameUIManager/HUD/UpgradesUI/TowersPanel/Upgrades/MidUpgrades/HBoxContainer2"]
-custom_minimum_size = Vector2(80, 0)
-layout_mode = 2
-
-[node name="Button2" type="Button" parent="GameUIManager/HUD/UpgradesUI/TowersPanel/Upgrades/MidUpgrades/HBoxContainer2"]
-layout_mode = 2
-text = "Attack Damage + 5
-200G"
-
-[node name="HBoxContainer3" type="HBoxContainer" parent="GameUIManager/HUD/UpgradesUI/TowersPanel/Upgrades/MidUpgrades"]
-layout_mode = 2
-size_flags_vertical = 3
-alignment = 1
-
-[node name="Button" type="Button" parent="GameUIManager/HUD/UpgradesUI/TowersPanel/Upgrades/MidUpgrades/HBoxContainer3"]
-layout_mode = 2
-text = "Attack Speed + 10%
-200G"
-
-[node name="Spacer" type="Control" parent="GameUIManager/HUD/UpgradesUI/TowersPanel/Upgrades/MidUpgrades/HBoxContainer3"]
-custom_minimum_size = Vector2(80, 0)
-layout_mode = 2
-
-[node name="Button2" type="Button" parent="GameUIManager/HUD/UpgradesUI/TowersPanel/Upgrades/MidUpgrades/HBoxContainer3"]
-layout_mode = 2
-text = "Attack Damage + 5
-200G"
-
-[node name="HBoxContainer4" type="HBoxContainer" parent="GameUIManager/HUD/UpgradesUI/TowersPanel/Upgrades/MidUpgrades"]
-layout_mode = 2
-size_flags_vertical = 3
-alignment = 1
-
-[node name="Button" type="Button" parent="GameUIManager/HUD/UpgradesUI/TowersPanel/Upgrades/MidUpgrades/HBoxContainer4"]
-layout_mode = 2
-text = "Attack Speed + 10%
-200G"
-
-[node name="Spacer" type="Control" parent="GameUIManager/HUD/UpgradesUI/TowersPanel/Upgrades/MidUpgrades/HBoxContainer4"]
-custom_minimum_size = Vector2(80, 0)
-layout_mode = 2
-
-[node name="Button2" type="Button" parent="GameUIManager/HUD/UpgradesUI/TowersPanel/Upgrades/MidUpgrades/HBoxContainer4"]
-layout_mode = 2
-text = "Attack Damage + 5
-200G"
-
-[node name="HBoxContainer5" type="HBoxContainer" parent="GameUIManager/HUD/UpgradesUI/TowersPanel/Upgrades/MidUpgrades"]
-layout_mode = 2
-size_flags_vertical = 3
-alignment = 1
-
-[node name="Button" type="Button" parent="GameUIManager/HUD/UpgradesUI/TowersPanel/Upgrades/MidUpgrades/HBoxContainer5"]
-layout_mode = 2
-text = "Attack Speed + 10%
-200G"
-
-[node name="Spacer" type="Control" parent="GameUIManager/HUD/UpgradesUI/TowersPanel/Upgrades/MidUpgrades/HBoxContainer5"]
-custom_minimum_size = Vector2(80, 0)
-layout_mode = 2
-
-[node name="Button2" type="Button" parent="GameUIManager/HUD/UpgradesUI/TowersPanel/Upgrades/MidUpgrades/HBoxContainer5"]
-layout_mode = 2
-text = "Attack Damage + 5
-200G"
-
-[node name="BotUpgrades" type="VBoxContainer" parent="GameUIManager/HUD/UpgradesUI/TowersPanel/Upgrades"]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="HBoxContainer" type="HBoxContainer" parent="GameUIManager/HUD/UpgradesUI/TowersPanel/Upgrades/BotUpgrades"]
-layout_mode = 2
-size_flags_vertical = 3
-alignment = 1
-
-[node name="Button" type="Button" parent="GameUIManager/HUD/UpgradesUI/TowersPanel/Upgrades/BotUpgrades/HBoxContainer"]
-layout_mode = 2
-text = "Attack Speed + 10%
-200G"
-
-[node name="Spacer" type="Control" parent="GameUIManager/HUD/UpgradesUI/TowersPanel/Upgrades/BotUpgrades/HBoxContainer"]
-custom_minimum_size = Vector2(80, 0)
-layout_mode = 2
-
-[node name="Button2" type="Button" parent="GameUIManager/HUD/UpgradesUI/TowersPanel/Upgrades/BotUpgrades/HBoxContainer"]
-layout_mode = 2
-text = "Attack Damage + 5
-200G"
-
-[node name="HBoxContainer2" type="HBoxContainer" parent="GameUIManager/HUD/UpgradesUI/TowersPanel/Upgrades/BotUpgrades"]
-layout_mode = 2
-size_flags_vertical = 3
-alignment = 1
-
-[node name="Button" type="Button" parent="GameUIManager/HUD/UpgradesUI/TowersPanel/Upgrades/BotUpgrades/HBoxContainer2"]
-layout_mode = 2
-text = "Attack Speed + 10%
-200G"
-
-[node name="Spacer" type="Control" parent="GameUIManager/HUD/UpgradesUI/TowersPanel/Upgrades/BotUpgrades/HBoxContainer2"]
-custom_minimum_size = Vector2(80, 0)
-layout_mode = 2
-
-[node name="Button2" type="Button" parent="GameUIManager/HUD/UpgradesUI/TowersPanel/Upgrades/BotUpgrades/HBoxContainer2"]
-layout_mode = 2
-text = "Attack Damage + 5
-200G"
-
-[node name="HBoxContainer3" type="HBoxContainer" parent="GameUIManager/HUD/UpgradesUI/TowersPanel/Upgrades/BotUpgrades"]
-layout_mode = 2
-size_flags_vertical = 3
-alignment = 1
-
-[node name="Button" type="Button" parent="GameUIManager/HUD/UpgradesUI/TowersPanel/Upgrades/BotUpgrades/HBoxContainer3"]
-layout_mode = 2
-text = "Attack Speed + 10%
-200G"
-
-[node name="Spacer" type="Control" parent="GameUIManager/HUD/UpgradesUI/TowersPanel/Upgrades/BotUpgrades/HBoxContainer3"]
-custom_minimum_size = Vector2(80, 0)
-layout_mode = 2
-
-[node name="Button2" type="Button" parent="GameUIManager/HUD/UpgradesUI/TowersPanel/Upgrades/BotUpgrades/HBoxContainer3"]
-layout_mode = 2
-text = "Attack Damage + 5
-200G"
-
-[node name="HBoxContainer4" type="HBoxContainer" parent="GameUIManager/HUD/UpgradesUI/TowersPanel/Upgrades/BotUpgrades"]
-layout_mode = 2
-size_flags_vertical = 3
-alignment = 1
-
-[node name="Button" type="Button" parent="GameUIManager/HUD/UpgradesUI/TowersPanel/Upgrades/BotUpgrades/HBoxContainer4"]
-layout_mode = 2
-text = "Attack Speed + 10%
-200G"
-
-[node name="Spacer" type="Control" parent="GameUIManager/HUD/UpgradesUI/TowersPanel/Upgrades/BotUpgrades/HBoxContainer4"]
-custom_minimum_size = Vector2(80, 0)
-layout_mode = 2
-
-[node name="Button2" type="Button" parent="GameUIManager/HUD/UpgradesUI/TowersPanel/Upgrades/BotUpgrades/HBoxContainer4"]
-layout_mode = 2
-text = "Attack Damage + 5
-200G"
-
-[node name="HBoxContainer5" type="HBoxContainer" parent="GameUIManager/HUD/UpgradesUI/TowersPanel/Upgrades/BotUpgrades"]
-layout_mode = 2
-size_flags_vertical = 3
-alignment = 1
-
-[node name="Button" type="Button" parent="GameUIManager/HUD/UpgradesUI/TowersPanel/Upgrades/BotUpgrades/HBoxContainer5"]
-layout_mode = 2
-text = "Attack Speed + 10%
-200G"
-
-[node name="Spacer" type="Control" parent="GameUIManager/HUD/UpgradesUI/TowersPanel/Upgrades/BotUpgrades/HBoxContainer5"]
-custom_minimum_size = Vector2(80, 0)
-layout_mode = 2
-
-[node name="Button2" type="Button" parent="GameUIManager/HUD/UpgradesUI/TowersPanel/Upgrades/BotUpgrades/HBoxContainer5"]
-layout_mode = 2
-text = "Attack Damage + 5
-200G"
-
-[node name="Line" type="Panel" parent="GameUIManager/HUD/UpgradesUI/TowersPanel"]
-layout_mode = 0
-offset_left = 512.0
-offset_top = 8.0
-offset_right = 512.0
-offset_bottom = 744.0
-theme_override_styles/panel = SubResource("StyleBoxLine_hhv55")
-
-[node name="Line2" type="Panel" parent="GameUIManager/HUD/UpgradesUI/TowersPanel"]
-custom_minimum_size = Vector2(2, 0)
-layout_mode = 0
-offset_left = 1024.0
-offset_top = 8.0
-offset_right = 1026.0
-offset_bottom = 744.0
-theme_override_styles/panel = SubResource("StyleBoxLine_hhv55")
-
-[node name="BarracksPanel" type="Panel" parent="GameUIManager/HUD/UpgradesUI"]
+[node name="Upgrade info" type="Panel" parent="GameUIManager/HUD/UpgradesUI/BackgroundPanel/HBoxContainer/TowerUpgrades/TopTower"]
 visible = false
-offset_left = 192.0
-offset_top = 216.0
-offset_right = 1728.0
-offset_bottom = 960.0
+self_modulate = Color(0, 0, 0, 1)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.445
+anchor_top = -0.667
+anchor_right = -0.445
+anchor_bottom = -0.417
+offset_left = -140.035
+offset_top = -99.96
+offset_right = 139.965
+offset_bottom = 300.04
 
-[node name="Labels" type="HBoxContainer" parent="GameUIManager/HUD/UpgradesUI/BarracksPanel"]
-clip_contents = true
+[node name="Title" type="Label" parent="GameUIManager/HUD/UpgradesUI/BackgroundPanel/HBoxContainer/TowerUpgrades/TopTower/Upgrade info"]
 layout_mode = 0
-offset_top = 16.0
-offset_right = 1536.0
-offset_bottom = 64.0
-alignment = 1
-
-[node name="TOP" type="Label" parent="GameUIManager/HUD/UpgradesUI/BarracksPanel/Labels"]
-layout_mode = 2
-size_flags_horizontal = 3
-theme_override_font_sizes/font_size = 26
-text = "TOP"
+offset_right = 280.0
+offset_bottom = 60.0
+text = "Tower upgrade tier [Tier]"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="MID" type="Label" parent="GameUIManager/HUD/UpgradesUI/BarracksPanel/Labels"]
+[node name="Description" type="Label" parent="GameUIManager/HUD/UpgradesUI/BackgroundPanel/HBoxContainer/TowerUpgrades/TopTower/Upgrade info"]
+layout_mode = 0
+offset_top = 60.0
+offset_right = 280.0
+offset_bottom = 430.0
+theme_override_font_sizes/font_size = 13
+text = "PLACEHOLDER UPGRADE DESCRIPTION"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="MidTower" type="Button" parent="GameUIManager/HUD/UpgradesUI/BackgroundPanel/HBoxContainer/TowerUpgrades"]
 layout_mode = 2
-size_flags_horizontal = 3
-theme_override_font_sizes/font_size = 26
-text = "MID"
+size_flags_vertical = 3
+text = "MID TOWER UPGRADE [Tier]"
+
+[node name="Upgrade info" type="Panel" parent="GameUIManager/HUD/UpgradesUI/BackgroundPanel/HBoxContainer/TowerUpgrades/MidTower"]
+visible = false
+self_modulate = Color(0, 0, 0, 1)
+offset_left = -290.0
+offset_top = -164.0
+offset_right = -10.0
+offset_bottom = 266.0
+
+[node name="Title" type="Label" parent="GameUIManager/HUD/UpgradesUI/BackgroundPanel/HBoxContainer/TowerUpgrades/MidTower/Upgrade info"]
+layout_mode = 0
+offset_right = 280.0
+offset_bottom = 60.0
+text = "Tower upgrade tier [Tier]"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="BOT" type="Label" parent="GameUIManager/HUD/UpgradesUI/BarracksPanel/Labels"]
+[node name="Description" type="Label" parent="GameUIManager/HUD/UpgradesUI/BackgroundPanel/HBoxContainer/TowerUpgrades/MidTower/Upgrade info"]
+layout_mode = 0
+offset_top = 60.0
+offset_right = 280.0
+offset_bottom = 430.0
+theme_override_font_sizes/font_size = 13
+text = "PLACEHOLDER UPGRADE DESCRIPTION"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="BotTower" type="Button" parent="GameUIManager/HUD/UpgradesUI/BackgroundPanel/HBoxContainer/TowerUpgrades"]
 layout_mode = 2
-size_flags_horizontal = 3
-theme_override_font_sizes/font_size = 26
-text = "BOT"
+size_flags_vertical = 3
+text = "BOT TOWER UPGRADE [Tier]"
+
+[node name="Upgrade info" type="Panel" parent="GameUIManager/HUD/UpgradesUI/BackgroundPanel/HBoxContainer/TowerUpgrades/BotTower"]
+visible = false
+self_modulate = Color(0, 0, 0, 1)
+offset_left = -290.0
+offset_top = -199.0
+offset_right = -10.0
+offset_bottom = 231.0
+
+[node name="Title" type="Label" parent="GameUIManager/HUD/UpgradesUI/BackgroundPanel/HBoxContainer/TowerUpgrades/BotTower/Upgrade info"]
+layout_mode = 0
+offset_right = 280.0
+offset_bottom = 60.0
+text = "Tower upgrade tier [Tier]"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Upgrades" type="HBoxContainer" parent="GameUIManager/HUD/UpgradesUI/BarracksPanel"]
+[node name="Description" type="Label" parent="GameUIManager/HUD/UpgradesUI/BackgroundPanel/HBoxContainer/TowerUpgrades/BotTower/Upgrade info"]
 layout_mode = 0
-offset_top = 88.0
-offset_right = 1536.0
-offset_bottom = 712.0
+offset_top = 60.0
+offset_right = 280.0
+offset_bottom = 430.0
+theme_override_font_sizes/font_size = 13
+text = "PLACEHOLDER UPGRADE DESCRIPTION"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
 
-[node name="TopUpgrades" type="VBoxContainer" parent="GameUIManager/HUD/UpgradesUI/BarracksPanel/Upgrades"]
-layout_mode = 2
-size_flags_horizontal = 3
-alignment = 2
-
-[node name="HBoxContainer" type="HBoxContainer" parent="GameUIManager/HUD/UpgradesUI/BarracksPanel/Upgrades/TopUpgrades"]
-layout_mode = 2
-size_flags_vertical = 3
-alignment = 1
-
-[node name="Button" type="Button" parent="GameUIManager/HUD/UpgradesUI/BarracksPanel/Upgrades/TopUpgrades/HBoxContainer"]
-layout_mode = 2
-text = "Attack Speed + 10%
-200G"
-
-[node name="Spacer" type="Control" parent="GameUIManager/HUD/UpgradesUI/BarracksPanel/Upgrades/TopUpgrades/HBoxContainer"]
-custom_minimum_size = Vector2(80, 0)
-layout_mode = 2
-
-[node name="Button2" type="Button" parent="GameUIManager/HUD/UpgradesUI/BarracksPanel/Upgrades/TopUpgrades/HBoxContainer"]
-layout_mode = 2
-text = "Attack Damage + 5
-200G"
-
-[node name="HBoxContainer2" type="HBoxContainer" parent="GameUIManager/HUD/UpgradesUI/BarracksPanel/Upgrades/TopUpgrades"]
-layout_mode = 2
-size_flags_vertical = 3
-alignment = 1
-
-[node name="Button" type="Button" parent="GameUIManager/HUD/UpgradesUI/BarracksPanel/Upgrades/TopUpgrades/HBoxContainer2"]
-layout_mode = 2
-text = "Attack Speed + 10%
-200G"
-
-[node name="Spacer" type="Control" parent="GameUIManager/HUD/UpgradesUI/BarracksPanel/Upgrades/TopUpgrades/HBoxContainer2"]
-custom_minimum_size = Vector2(80, 0)
-layout_mode = 2
-
-[node name="Button2" type="Button" parent="GameUIManager/HUD/UpgradesUI/BarracksPanel/Upgrades/TopUpgrades/HBoxContainer2"]
-layout_mode = 2
-text = "Attack Damage + 5
-200G"
-
-[node name="HBoxContainer3" type="HBoxContainer" parent="GameUIManager/HUD/UpgradesUI/BarracksPanel/Upgrades/TopUpgrades"]
-layout_mode = 2
-size_flags_vertical = 3
-alignment = 1
-
-[node name="Button" type="Button" parent="GameUIManager/HUD/UpgradesUI/BarracksPanel/Upgrades/TopUpgrades/HBoxContainer3"]
-layout_mode = 2
-text = "Attack Speed + 10%
-200G"
-
-[node name="Spacer" type="Control" parent="GameUIManager/HUD/UpgradesUI/BarracksPanel/Upgrades/TopUpgrades/HBoxContainer3"]
-custom_minimum_size = Vector2(80, 0)
-layout_mode = 2
-
-[node name="Button2" type="Button" parent="GameUIManager/HUD/UpgradesUI/BarracksPanel/Upgrades/TopUpgrades/HBoxContainer3"]
-layout_mode = 2
-text = "Attack Damage + 5
-200G"
-
-[node name="HBoxContainer4" type="HBoxContainer" parent="GameUIManager/HUD/UpgradesUI/BarracksPanel/Upgrades/TopUpgrades"]
-layout_mode = 2
-size_flags_vertical = 3
-alignment = 1
-
-[node name="Button" type="Button" parent="GameUIManager/HUD/UpgradesUI/BarracksPanel/Upgrades/TopUpgrades/HBoxContainer4"]
-layout_mode = 2
-text = "Attack Speed + 10%
-200G"
-
-[node name="Spacer" type="Control" parent="GameUIManager/HUD/UpgradesUI/BarracksPanel/Upgrades/TopUpgrades/HBoxContainer4"]
-custom_minimum_size = Vector2(80, 0)
-layout_mode = 2
-
-[node name="Button2" type="Button" parent="GameUIManager/HUD/UpgradesUI/BarracksPanel/Upgrades/TopUpgrades/HBoxContainer4"]
-layout_mode = 2
-text = "Attack Damage + 5
-200G"
-
-[node name="HBoxContainer5" type="HBoxContainer" parent="GameUIManager/HUD/UpgradesUI/BarracksPanel/Upgrades/TopUpgrades"]
-layout_mode = 2
-size_flags_vertical = 3
-alignment = 1
-
-[node name="Button" type="Button" parent="GameUIManager/HUD/UpgradesUI/BarracksPanel/Upgrades/TopUpgrades/HBoxContainer5"]
-layout_mode = 2
-text = "Attack Speed + 10%
-200G"
-
-[node name="Spacer" type="Control" parent="GameUIManager/HUD/UpgradesUI/BarracksPanel/Upgrades/TopUpgrades/HBoxContainer5"]
-custom_minimum_size = Vector2(80, 0)
-layout_mode = 2
-
-[node name="Button2" type="Button" parent="GameUIManager/HUD/UpgradesUI/BarracksPanel/Upgrades/TopUpgrades/HBoxContainer5"]
-layout_mode = 2
-text = "Attack Damage + 5
-200G"
-
-[node name="MidUpgrades" type="VBoxContainer" parent="GameUIManager/HUD/UpgradesUI/BarracksPanel/Upgrades"]
+[node name="BarrackUpgrades" type="VBoxContainer" parent="GameUIManager/HUD/UpgradesUI/BackgroundPanel/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="HBoxContainer" type="HBoxContainer" parent="GameUIManager/HUD/UpgradesUI/BarracksPanel/Upgrades/MidUpgrades"]
+[node name="TopBarrack" type="Button" parent="GameUIManager/HUD/UpgradesUI/BackgroundPanel/HBoxContainer/BarrackUpgrades"]
 layout_mode = 2
 size_flags_vertical = 3
-alignment = 1
+text = "TOP BARRACK UPGRADE [Tier]"
 
-[node name="Button" type="Button" parent="GameUIManager/HUD/UpgradesUI/BarracksPanel/Upgrades/MidUpgrades/HBoxContainer"]
-layout_mode = 2
-text = "Attack Speed + 10%
-200G"
+[node name="Upgrade info" type="Panel" parent="GameUIManager/HUD/UpgradesUI/BackgroundPanel/HBoxContainer/BarrackUpgrades/TopBarrack"]
+visible = false
+self_modulate = Color(0, 0, 0, 1)
+offset_left = -291.0
+offset_top = -170.0
+offset_right = -11.0001
+offset_bottom = 260.0
 
-[node name="Spacer" type="Control" parent="GameUIManager/HUD/UpgradesUI/BarracksPanel/Upgrades/MidUpgrades/HBoxContainer"]
-custom_minimum_size = Vector2(80, 0)
-layout_mode = 2
+[node name="Title" type="Label" parent="GameUIManager/HUD/UpgradesUI/BackgroundPanel/HBoxContainer/BarrackUpgrades/TopBarrack/Upgrade info"]
+layout_mode = 0
+offset_right = 280.0
+offset_bottom = 60.0
+text = "Barrack upgrade tier [Tier]"
+horizontal_alignment = 1
+vertical_alignment = 1
 
-[node name="Button2" type="Button" parent="GameUIManager/HUD/UpgradesUI/BarracksPanel/Upgrades/MidUpgrades/HBoxContainer"]
-layout_mode = 2
-text = "Attack Damage + 5
-200G"
+[node name="Description" type="Label" parent="GameUIManager/HUD/UpgradesUI/BackgroundPanel/HBoxContainer/BarrackUpgrades/TopBarrack/Upgrade info"]
+layout_mode = 0
+offset_top = 60.0
+offset_right = 280.0
+offset_bottom = 430.0
+theme_override_font_sizes/font_size = 13
+text = "PLACEHOLDER UPGRADE DESCRIPTION"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="GameUIManager/HUD/UpgradesUI/BarracksPanel/Upgrades/MidUpgrades"]
-layout_mode = 2
-size_flags_vertical = 3
-alignment = 1
-
-[node name="Button" type="Button" parent="GameUIManager/HUD/UpgradesUI/BarracksPanel/Upgrades/MidUpgrades/HBoxContainer2"]
-layout_mode = 2
-text = "Attack Speed + 10%
-200G"
-
-[node name="Spacer" type="Control" parent="GameUIManager/HUD/UpgradesUI/BarracksPanel/Upgrades/MidUpgrades/HBoxContainer2"]
-custom_minimum_size = Vector2(80, 0)
-layout_mode = 2
-
-[node name="Button2" type="Button" parent="GameUIManager/HUD/UpgradesUI/BarracksPanel/Upgrades/MidUpgrades/HBoxContainer2"]
-layout_mode = 2
-text = "Attack Damage + 5
-200G"
-
-[node name="HBoxContainer3" type="HBoxContainer" parent="GameUIManager/HUD/UpgradesUI/BarracksPanel/Upgrades/MidUpgrades"]
+[node name="MidBarrack" type="Button" parent="GameUIManager/HUD/UpgradesUI/BackgroundPanel/HBoxContainer/BarrackUpgrades"]
 layout_mode = 2
 size_flags_vertical = 3
-alignment = 1
+text = "MID BARRACK UPGRADE [Tier]"
 
-[node name="Button" type="Button" parent="GameUIManager/HUD/UpgradesUI/BarracksPanel/Upgrades/MidUpgrades/HBoxContainer3"]
-layout_mode = 2
-text = "Attack Speed + 10%
-200G"
+[node name="Upgrade info" type="Panel" parent="GameUIManager/HUD/UpgradesUI/BackgroundPanel/HBoxContainer/BarrackUpgrades/MidBarrack"]
+visible = false
+self_modulate = Color(0, 0, 0, 1)
+offset_left = -291.0
+offset_top = -154.0
+offset_right = -11.0001
+offset_bottom = 276.0
 
-[node name="Spacer" type="Control" parent="GameUIManager/HUD/UpgradesUI/BarracksPanel/Upgrades/MidUpgrades/HBoxContainer3"]
-custom_minimum_size = Vector2(80, 0)
-layout_mode = 2
+[node name="Title" type="Label" parent="GameUIManager/HUD/UpgradesUI/BackgroundPanel/HBoxContainer/BarrackUpgrades/MidBarrack/Upgrade info"]
+layout_mode = 0
+offset_right = 280.0
+offset_bottom = 60.0
+text = "Barrack upgrade tier [Tier]"
+horizontal_alignment = 1
+vertical_alignment = 1
 
-[node name="Button2" type="Button" parent="GameUIManager/HUD/UpgradesUI/BarracksPanel/Upgrades/MidUpgrades/HBoxContainer3"]
-layout_mode = 2
-text = "Attack Damage + 5
-200G"
+[node name="Description" type="Label" parent="GameUIManager/HUD/UpgradesUI/BackgroundPanel/HBoxContainer/BarrackUpgrades/MidBarrack/Upgrade info"]
+layout_mode = 0
+offset_top = 60.0
+offset_right = 280.0
+offset_bottom = 430.0
+theme_override_font_sizes/font_size = 13
+text = "PLACEHOLDER UPGRADE DESCRIPTION"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
 
-[node name="HBoxContainer4" type="HBoxContainer" parent="GameUIManager/HUD/UpgradesUI/BarracksPanel/Upgrades/MidUpgrades"]
-layout_mode = 2
-size_flags_vertical = 3
-alignment = 1
-
-[node name="Button" type="Button" parent="GameUIManager/HUD/UpgradesUI/BarracksPanel/Upgrades/MidUpgrades/HBoxContainer4"]
-layout_mode = 2
-text = "Attack Speed + 10%
-200G"
-
-[node name="Spacer" type="Control" parent="GameUIManager/HUD/UpgradesUI/BarracksPanel/Upgrades/MidUpgrades/HBoxContainer4"]
-custom_minimum_size = Vector2(80, 0)
-layout_mode = 2
-
-[node name="Button2" type="Button" parent="GameUIManager/HUD/UpgradesUI/BarracksPanel/Upgrades/MidUpgrades/HBoxContainer4"]
-layout_mode = 2
-text = "Attack Damage + 5
-200G"
-
-[node name="HBoxContainer5" type="HBoxContainer" parent="GameUIManager/HUD/UpgradesUI/BarracksPanel/Upgrades/MidUpgrades"]
+[node name="BotBarrack" type="Button" parent="GameUIManager/HUD/UpgradesUI/BackgroundPanel/HBoxContainer/BarrackUpgrades"]
 layout_mode = 2
 size_flags_vertical = 3
-alignment = 1
+text = "BOT BARRACK UPGRADE [Tier]"
 
-[node name="Button" type="Button" parent="GameUIManager/HUD/UpgradesUI/BarracksPanel/Upgrades/MidUpgrades/HBoxContainer5"]
-layout_mode = 2
-text = "Attack Speed + 10%
-200G"
+[node name="Upgrade info" type="Panel" parent="GameUIManager/HUD/UpgradesUI/BackgroundPanel/HBoxContainer/BarrackUpgrades/BotBarrack"]
+visible = false
+self_modulate = Color(0, 0, 0, 1)
+offset_left = -291.0
+offset_top = -179.0
+offset_right = -11.0001
+offset_bottom = 251.0
 
-[node name="Spacer" type="Control" parent="GameUIManager/HUD/UpgradesUI/BarracksPanel/Upgrades/MidUpgrades/HBoxContainer5"]
-custom_minimum_size = Vector2(80, 0)
-layout_mode = 2
+[node name="Title" type="Label" parent="GameUIManager/HUD/UpgradesUI/BackgroundPanel/HBoxContainer/BarrackUpgrades/BotBarrack/Upgrade info"]
+layout_mode = 0
+offset_right = 280.0
+offset_bottom = 60.0
+text = "Barrack upgrade tier [Tier]"
+horizontal_alignment = 1
+vertical_alignment = 1
 
-[node name="Button2" type="Button" parent="GameUIManager/HUD/UpgradesUI/BarracksPanel/Upgrades/MidUpgrades/HBoxContainer5"]
-layout_mode = 2
-text = "Attack Damage + 5
-200G"
+[node name="Description" type="Label" parent="GameUIManager/HUD/UpgradesUI/BackgroundPanel/HBoxContainer/BarrackUpgrades/BotBarrack/Upgrade info"]
+layout_mode = 0
+offset_top = 60.0
+offset_right = 280.0
+offset_bottom = 430.0
+theme_override_font_sizes/font_size = 13
+text = "PLACEHOLDER UPGRADE DESCRIPTION"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
 
-[node name="BotUpgrades" type="VBoxContainer" parent="GameUIManager/HUD/UpgradesUI/BarracksPanel/Upgrades"]
+[node name="Nexus" type="Button" parent="GameUIManager/HUD/UpgradesUI/BackgroundPanel/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
+text = "NEXUS UPGRADE [Tier]"
 
-[node name="HBoxContainer" type="HBoxContainer" parent="GameUIManager/HUD/UpgradesUI/BarracksPanel/Upgrades/BotUpgrades"]
-layout_mode = 2
-size_flags_vertical = 3
-alignment = 1
+[node name="Upgrade info" type="Panel" parent="GameUIManager/HUD/UpgradesUI/BackgroundPanel/HBoxContainer/Nexus"]
+visible = false
+self_modulate = Color(0, 0, 0, 1)
+offset_left = -292.0
+offset_top = -50.0
+offset_right = -11.9999
+offset_bottom = 380.0
 
-[node name="Button" type="Button" parent="GameUIManager/HUD/UpgradesUI/BarracksPanel/Upgrades/BotUpgrades/HBoxContainer"]
-layout_mode = 2
-text = "Attack Speed + 10%
-200G"
-
-[node name="Spacer" type="Control" parent="GameUIManager/HUD/UpgradesUI/BarracksPanel/Upgrades/BotUpgrades/HBoxContainer"]
-custom_minimum_size = Vector2(80, 0)
-layout_mode = 2
-
-[node name="Button2" type="Button" parent="GameUIManager/HUD/UpgradesUI/BarracksPanel/Upgrades/BotUpgrades/HBoxContainer"]
-layout_mode = 2
-text = "Attack Damage + 5
-200G"
-
-[node name="HBoxContainer2" type="HBoxContainer" parent="GameUIManager/HUD/UpgradesUI/BarracksPanel/Upgrades/BotUpgrades"]
-layout_mode = 2
-size_flags_vertical = 3
-alignment = 1
-
-[node name="Button" type="Button" parent="GameUIManager/HUD/UpgradesUI/BarracksPanel/Upgrades/BotUpgrades/HBoxContainer2"]
-layout_mode = 2
-text = "Attack Speed + 10%
-200G"
-
-[node name="Spacer" type="Control" parent="GameUIManager/HUD/UpgradesUI/BarracksPanel/Upgrades/BotUpgrades/HBoxContainer2"]
-custom_minimum_size = Vector2(80, 0)
-layout_mode = 2
-
-[node name="Button2" type="Button" parent="GameUIManager/HUD/UpgradesUI/BarracksPanel/Upgrades/BotUpgrades/HBoxContainer2"]
-layout_mode = 2
-text = "Attack Damage + 5
-200G"
-
-[node name="HBoxContainer3" type="HBoxContainer" parent="GameUIManager/HUD/UpgradesUI/BarracksPanel/Upgrades/BotUpgrades"]
-layout_mode = 2
-size_flags_vertical = 3
-alignment = 1
-
-[node name="Button" type="Button" parent="GameUIManager/HUD/UpgradesUI/BarracksPanel/Upgrades/BotUpgrades/HBoxContainer3"]
-layout_mode = 2
-text = "Attack Speed + 10%
-200G"
-
-[node name="Spacer" type="Control" parent="GameUIManager/HUD/UpgradesUI/BarracksPanel/Upgrades/BotUpgrades/HBoxContainer3"]
-custom_minimum_size = Vector2(80, 0)
-layout_mode = 2
-
-[node name="Button2" type="Button" parent="GameUIManager/HUD/UpgradesUI/BarracksPanel/Upgrades/BotUpgrades/HBoxContainer3"]
-layout_mode = 2
-text = "Attack Damage + 5
-200G"
-
-[node name="HBoxContainer4" type="HBoxContainer" parent="GameUIManager/HUD/UpgradesUI/BarracksPanel/Upgrades/BotUpgrades"]
-layout_mode = 2
-size_flags_vertical = 3
-alignment = 1
-
-[node name="Button" type="Button" parent="GameUIManager/HUD/UpgradesUI/BarracksPanel/Upgrades/BotUpgrades/HBoxContainer4"]
-layout_mode = 2
-text = "Attack Speed + 10%
-200G"
-
-[node name="Spacer" type="Control" parent="GameUIManager/HUD/UpgradesUI/BarracksPanel/Upgrades/BotUpgrades/HBoxContainer4"]
-custom_minimum_size = Vector2(80, 0)
-layout_mode = 2
-
-[node name="Button2" type="Button" parent="GameUIManager/HUD/UpgradesUI/BarracksPanel/Upgrades/BotUpgrades/HBoxContainer4"]
-layout_mode = 2
-text = "Attack Damage + 5
-200G"
-
-[node name="HBoxContainer5" type="HBoxContainer" parent="GameUIManager/HUD/UpgradesUI/BarracksPanel/Upgrades/BotUpgrades"]
-layout_mode = 2
-size_flags_vertical = 3
-alignment = 1
-
-[node name="Button" type="Button" parent="GameUIManager/HUD/UpgradesUI/BarracksPanel/Upgrades/BotUpgrades/HBoxContainer5"]
-layout_mode = 2
-text = "Attack Speed + 10%
-200G"
-
-[node name="Spacer" type="Control" parent="GameUIManager/HUD/UpgradesUI/BarracksPanel/Upgrades/BotUpgrades/HBoxContainer5"]
-custom_minimum_size = Vector2(80, 0)
-layout_mode = 2
-
-[node name="Button2" type="Button" parent="GameUIManager/HUD/UpgradesUI/BarracksPanel/Upgrades/BotUpgrades/HBoxContainer5"]
-layout_mode = 2
-text = "Attack Damage + 5
-200G"
-
-[node name="Line" type="Panel" parent="GameUIManager/HUD/UpgradesUI/BarracksPanel"]
+[node name="Title" type="Label" parent="GameUIManager/HUD/UpgradesUI/BackgroundPanel/HBoxContainer/Nexus/Upgrade info"]
 layout_mode = 0
-offset_left = 512.0
-offset_top = 8.0
-offset_right = 512.0
-offset_bottom = 744.0
-theme_override_styles/panel = SubResource("StyleBoxLine_hhv55")
+offset_right = 280.0
+offset_bottom = 60.0
+text = "Nexus upgrade tier [Tier]"
+horizontal_alignment = 1
+vertical_alignment = 1
 
-[node name="Line2" type="Panel" parent="GameUIManager/HUD/UpgradesUI/BarracksPanel"]
-custom_minimum_size = Vector2(2, 0)
+[node name="Description" type="Label" parent="GameUIManager/HUD/UpgradesUI/BackgroundPanel/HBoxContainer/Nexus/Upgrade info"]
 layout_mode = 0
-offset_left = 1024.0
-offset_top = 8.0
-offset_right = 1026.0
-offset_bottom = 744.0
-theme_override_styles/panel = SubResource("StyleBoxLine_hhv55")
-
-[node name="NexusPanel" type="Panel" parent="GameUIManager/HUD/UpgradesUI"]
-visible = false
-offset_left = 192.0
-offset_top = 216.0
-offset_right = 1728.0
-offset_bottom = 960.0
-
-[node name="Upgrades" type="HBoxContainer" parent="GameUIManager/HUD/UpgradesUI/NexusPanel"]
-layout_mode = 0
-offset_top = 88.0
-offset_right = 1536.0
-offset_bottom = 712.0
-
-[node name="HBoxContainer" type="HBoxContainer" parent="GameUIManager/HUD/UpgradesUI/NexusPanel/Upgrades"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-alignment = 1
-
-[node name="HBoxContainer5" type="HBoxContainer" parent="GameUIManager/HUD/UpgradesUI/NexusPanel/Upgrades/HBoxContainer"]
-visible = false
-layout_mode = 2
-size_flags_vertical = 3
-alignment = 1
-
-[node name="Button" type="Button" parent="GameUIManager/HUD/UpgradesUI/NexusPanel/Upgrades/HBoxContainer/HBoxContainer5"]
-layout_mode = 2
-text = "Attack Speed + 10%
-200G"
-
-[node name="Spacer" type="Control" parent="GameUIManager/HUD/UpgradesUI/NexusPanel/Upgrades/HBoxContainer/HBoxContainer5"]
-custom_minimum_size = Vector2(80, 0)
-layout_mode = 2
-
-[node name="Button2" type="Button" parent="GameUIManager/HUD/UpgradesUI/NexusPanel/Upgrades/HBoxContainer/HBoxContainer5"]
-layout_mode = 2
-text = "Attack Damage + 5
-200G"
-
-[node name="HBoxContainer4" type="HBoxContainer" parent="GameUIManager/HUD/UpgradesUI/NexusPanel/Upgrades/HBoxContainer"]
-visible = false
-layout_mode = 2
-size_flags_vertical = 3
-alignment = 1
-
-[node name="Button" type="Button" parent="GameUIManager/HUD/UpgradesUI/NexusPanel/Upgrades/HBoxContainer/HBoxContainer4"]
-layout_mode = 2
-text = "Attack Speed + 10%
-200G"
-
-[node name="Spacer" type="Control" parent="GameUIManager/HUD/UpgradesUI/NexusPanel/Upgrades/HBoxContainer/HBoxContainer4"]
-custom_minimum_size = Vector2(80, 0)
-layout_mode = 2
-
-[node name="Button2" type="Button" parent="GameUIManager/HUD/UpgradesUI/NexusPanel/Upgrades/HBoxContainer/HBoxContainer4"]
-layout_mode = 2
-text = "Attack Damage + 5
-200G"
-
-[node name="HBoxContainer3" type="HBoxContainer" parent="GameUIManager/HUD/UpgradesUI/NexusPanel/Upgrades/HBoxContainer"]
-visible = false
-layout_mode = 2
-size_flags_vertical = 3
-alignment = 1
-
-[node name="Button" type="Button" parent="GameUIManager/HUD/UpgradesUI/NexusPanel/Upgrades/HBoxContainer/HBoxContainer3"]
-layout_mode = 2
-text = "Attack Speed + 10%
-200G"
-
-[node name="Spacer" type="Control" parent="GameUIManager/HUD/UpgradesUI/NexusPanel/Upgrades/HBoxContainer/HBoxContainer3"]
-custom_minimum_size = Vector2(80, 0)
-layout_mode = 2
-
-[node name="Button2" type="Button" parent="GameUIManager/HUD/UpgradesUI/NexusPanel/Upgrades/HBoxContainer/HBoxContainer3"]
-layout_mode = 2
-text = "Attack Damage + 5
-200G"
-
-[node name="BarrackLevels" type="VBoxContainer" parent="GameUIManager/HUD/UpgradesUI/NexusPanel/Upgrades/HBoxContainer"]
-custom_minimum_size = Vector2(200, 0)
-layout_mode = 2
-size_flags_horizontal = 6
-size_flags_vertical = 8
-
-[node name="BarrackUpgrade4" type="Button" parent="GameUIManager/HUD/UpgradesUI/NexusPanel/Upgrades/HBoxContainer/BarrackLevels"]
-custom_minimum_size = Vector2(150, 80)
-layout_mode = 2
-disabled = true
-text = "Barracks Level 4
-400G"
-
-[node name="Spacer3" type="Control" parent="GameUIManager/HUD/UpgradesUI/NexusPanel/Upgrades/HBoxContainer/BarrackLevels"]
-custom_minimum_size = Vector2(0, 40)
-layout_mode = 2
-
-[node name="BarrackUpgrade3" type="Button" parent="GameUIManager/HUD/UpgradesUI/NexusPanel/Upgrades/HBoxContainer/BarrackLevels"]
-custom_minimum_size = Vector2(150, 80)
-layout_mode = 2
-disabled = true
-text = "Barracks Level 3
-300G"
-
-[node name="Spacer" type="Control" parent="GameUIManager/HUD/UpgradesUI/NexusPanel/Upgrades/HBoxContainer/BarrackLevels"]
-custom_minimum_size = Vector2(0, 40)
-layout_mode = 2
-
-[node name="BarrackUpgrade2" type="Button" parent="GameUIManager/HUD/UpgradesUI/NexusPanel/Upgrades/HBoxContainer/BarrackLevels"]
-custom_minimum_size = Vector2(150, 80)
-layout_mode = 2
-disabled = true
-text = "Barracks Level 2
-200G"
-
-[node name="Spacer2" type="Control" parent="GameUIManager/HUD/UpgradesUI/NexusPanel/Upgrades/HBoxContainer/BarrackLevels"]
-custom_minimum_size = Vector2(0, 40)
-layout_mode = 2
-
-[node name="BarrackUpgrade1" type="Button" parent="GameUIManager/HUD/UpgradesUI/NexusPanel/Upgrades/HBoxContainer/BarrackLevels"]
-custom_minimum_size = Vector2(150, 80)
-layout_mode = 2
-text = "Barracks Level 1
-100G"
-
-[node name="Line" type="Panel" parent="GameUIManager/HUD/UpgradesUI"]
-offset_left = 192.0
-offset_top = 224.0
-offset_right = 1728.0
-offset_bottom = 328.0
-theme_override_styles/panel = SubResource("StyleBoxLine_8ln8o")
+offset_top = 60.0
+offset_right = 280.0
+offset_bottom = 430.0
+theme_override_font_sizes/font_size = 13
+text = "PLACEHOLDER UPGRADE DESCRIPTION"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
 
 [node name="ExitButton" type="Button" parent="GameUIManager/HUD/UpgradesUI"]
-offset_left = 1668.75
-offset_top = 128.75
-offset_right = 1728.75
-offset_bottom = 183.75
+offset_left = 1322.0
+offset_top = 485.0
+offset_right = 1382.0
+offset_bottom = 540.0
 theme_override_font_sizes/font_size = 30
 text = "X"
 
@@ -1474,13 +784,20 @@ one_shot = true
 [connection signal="pressed" from="GameUIManager/HUD/UpgradeControls/TopTowerUpgrades/ArmorUpgrades/ArmorUpgrade3" to="GameUIManager" method="_on_armor_upgrade_3_pressed" binds= ["top"]]
 [connection signal="pressed" from="GameUIManager/HUD/UpgradeControls/TopTowerUpgrades/ArmorUpgrades/ArmorUpgrade2" to="GameUIManager" method="_on_armor_upgrade_2_pressed" binds= ["top"]]
 [connection signal="pressed" from="GameUIManager/HUD/UpgradeControls/TopTowerUpgrades/ArmorUpgrades/ArmorUpgrade1" to="GameUIManager" method="_on_armor_upgrade_1_pressed" binds= ["top"]]
-[connection signal="pressed" from="GameUIManager/HUD/UpgradesUI/UpperPanel/HBoxContainer/TowersButton" to="GameUIManager" method="_on_towers_button_pressed"]
-[connection signal="pressed" from="GameUIManager/HUD/UpgradesUI/UpperPanel/HBoxContainer/BarracksButton" to="GameUIManager" method="_on_barracks_button_pressed"]
-[connection signal="pressed" from="GameUIManager/HUD/UpgradesUI/UpperPanel/HBoxContainer/NexusButton" to="GameUIManager" method="_on_nexus_button_pressed"]
-[connection signal="pressed" from="GameUIManager/HUD/UpgradesUI/NexusPanel/Upgrades/HBoxContainer/BarrackLevels/BarrackUpgrade4" to="GameUIManager" method="_on_barrack_upgrade_button_pressed" binds= [4, 400]]
-[connection signal="pressed" from="GameUIManager/HUD/UpgradesUI/NexusPanel/Upgrades/HBoxContainer/BarrackLevels/BarrackUpgrade3" to="GameUIManager" method="_on_barrack_upgrade_button_pressed" binds= [3, 300]]
-[connection signal="pressed" from="GameUIManager/HUD/UpgradesUI/NexusPanel/Upgrades/HBoxContainer/BarrackLevels/BarrackUpgrade2" to="GameUIManager" method="_on_barrack_upgrade_button_pressed" binds= [2, 200]]
-[connection signal="pressed" from="GameUIManager/HUD/UpgradesUI/NexusPanel/Upgrades/HBoxContainer/BarrackLevels/BarrackUpgrade1" to="GameUIManager" method="_on_barrack_upgrade_button_pressed" binds= [1, 100]]
+[connection signal="mouse_entered" from="GameUIManager/HUD/UpgradesUI/BackgroundPanel/HBoxContainer/TowerUpgrades/TopTower" to="GameUIManager" method="_on_upgrade_button_mouse_entered" binds= ["tower", "top"]]
+[connection signal="mouse_exited" from="GameUIManager/HUD/UpgradesUI/BackgroundPanel/HBoxContainer/TowerUpgrades/TopTower" to="GameUIManager" method="_on_upgrade_button_mouse_exited"]
+[connection signal="mouse_entered" from="GameUIManager/HUD/UpgradesUI/BackgroundPanel/HBoxContainer/TowerUpgrades/MidTower" to="GameUIManager" method="_on_upgrade_button_mouse_entered" binds= ["tower", "mid"]]
+[connection signal="mouse_exited" from="GameUIManager/HUD/UpgradesUI/BackgroundPanel/HBoxContainer/TowerUpgrades/MidTower" to="GameUIManager" method="_on_upgrade_button_mouse_exited"]
+[connection signal="mouse_entered" from="GameUIManager/HUD/UpgradesUI/BackgroundPanel/HBoxContainer/TowerUpgrades/BotTower" to="GameUIManager" method="_on_upgrade_button_mouse_entered" binds= ["tower", "bot"]]
+[connection signal="mouse_exited" from="GameUIManager/HUD/UpgradesUI/BackgroundPanel/HBoxContainer/TowerUpgrades/BotTower" to="GameUIManager" method="_on_upgrade_button_mouse_exited"]
+[connection signal="mouse_entered" from="GameUIManager/HUD/UpgradesUI/BackgroundPanel/HBoxContainer/BarrackUpgrades/TopBarrack" to="GameUIManager" method="_on_upgrade_button_mouse_entered" binds= ["barrack", "top"]]
+[connection signal="mouse_exited" from="GameUIManager/HUD/UpgradesUI/BackgroundPanel/HBoxContainer/BarrackUpgrades/TopBarrack" to="GameUIManager" method="_on_upgrade_button_mouse_exited"]
+[connection signal="mouse_entered" from="GameUIManager/HUD/UpgradesUI/BackgroundPanel/HBoxContainer/BarrackUpgrades/MidBarrack" to="GameUIManager" method="_on_upgrade_button_mouse_entered" binds= ["barrack", "mid"]]
+[connection signal="mouse_exited" from="GameUIManager/HUD/UpgradesUI/BackgroundPanel/HBoxContainer/BarrackUpgrades/MidBarrack" to="GameUIManager" method="_on_upgrade_button_mouse_exited"]
+[connection signal="mouse_entered" from="GameUIManager/HUD/UpgradesUI/BackgroundPanel/HBoxContainer/BarrackUpgrades/BotBarrack" to="GameUIManager" method="_on_upgrade_button_mouse_entered" binds= ["barrack", "bot"]]
+[connection signal="mouse_exited" from="GameUIManager/HUD/UpgradesUI/BackgroundPanel/HBoxContainer/BarrackUpgrades/BotBarrack" to="GameUIManager" method="_on_upgrade_button_mouse_exited"]
+[connection signal="mouse_entered" from="GameUIManager/HUD/UpgradesUI/BackgroundPanel/HBoxContainer/Nexus" to="GameUIManager" method="_on_upgrade_button_mouse_entered" binds= ["nexus", "none"]]
+[connection signal="mouse_exited" from="GameUIManager/HUD/UpgradesUI/BackgroundPanel/HBoxContainer/Nexus" to="GameUIManager" method="_on_upgrade_button_mouse_exited"]
 [connection signal="pressed" from="GameUIManager/HUD/UpgradesUI/ExitButton" to="GameUIManager" method="_on_exit_button_pressed"]
 [connection signal="timeout" from="WaveTimer" to="SpawnManager" method="_on_wave_timer_timeout"]
 [connection signal="timeout" from="BlueMobTimer" to="SpawnManager" method="_on_blue_mob_timer_timeout"]

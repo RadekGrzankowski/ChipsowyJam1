@@ -13,6 +13,8 @@ var actual_barracks_stats: String
 
 signal new_barracks_level
 
+@export var upgrade_info_array: Array ## 0,1,2* Towers | 3,4,5* Barracks | 6 Nexus (TOP, MID, BOT)*
+
 @onready var towers_upgrade_ui: Panel = $HUD/UpgradesUI/TowersPanel
 @onready var barracks_upgrade_ui: Panel = $HUD/UpgradesUI/BarracksPanel
 @onready var nexus_upgrade_ui: Panel = $HUD/UpgradesUI/NexusPanel
@@ -21,7 +23,7 @@ signal new_barracks_level
 @onready var tower_button: Button = $HUD/UpgradesUI/UpperPanel/HBoxContainer/TowersButton
 @onready var barracks_button: Button = $HUD/UpgradesUI/UpperPanel/HBoxContainer/BarracksButton
 @onready var nexus_button: Button = $HUD/UpgradesUI/UpperPanel/HBoxContainer/NexusButton
-var button_value: int = 0 #0 - tower, 1 - barracks, 2 - nexus
+var button_value: int = 0 ##0 - tower, 1 - barracks, 2 - nexus
 
 @onready var gold_label: Label = $HUD/Labels/GoldLabel
 @onready var barracks_label: Label = $HUD/Labels/BarrackLevelLabel
@@ -160,3 +162,33 @@ func upgrade_barracks(level: int, cost: int):
 		var curr_node = node_string + str(level)
 		get_node(curr_node).disabled = true
 
+
+func _on_upgrade_button_mouse_entered(type: String, lane: String):
+	match type:
+		"tower":
+			match lane:
+				"top":
+					get_node("HUD/UpgradesUI/BackgroundPanel/HBoxContainer/TowerUpgrades/TopTower/Upgrade info").visible = true
+				"mid":
+					get_node("HUD/UpgradesUI/BackgroundPanel/HBoxContainer/TowerUpgrades/MidTower/Upgrade info").visible = true
+				"bot":
+					get_node("HUD/UpgradesUI/BackgroundPanel/HBoxContainer/TowerUpgrades/BotTower/Upgrade info").visible = true
+		"barrack":
+			match lane:
+				"top":
+					get_node("HUD/UpgradesUI/BackgroundPanel/HBoxContainer/BarrackUpgrades/TopBarrack/Upgrade info").visible = true
+				"mid":
+					get_node("HUD/UpgradesUI/BackgroundPanel/HBoxContainer/BarrackUpgrades/MidBarrack/Upgrade info").visible = true
+				"bot":
+					get_node("HUD/UpgradesUI/BackgroundPanel/HBoxContainer/BarrackUpgrades/BotBarrack/Upgrade info").visible = true
+		"nexus":
+			get_node("HUD/UpgradesUI/BackgroundPanel/HBoxContainer/Nexus/Upgrade info").visible = true
+
+func _on_upgrade_button_mouse_exited():
+	for upgrade in upgrade_info_array:
+		get_node(upgrade).visible = false
+	## The upgrade info box should appear near the mouse - get_node("HUD/UpgradesUI/BackgroundPanel/HBoxContainer/TowerUpgrades/TopTower/Upgrade info").position = 
+	
+func _on_upgrade_button_pressed(type: String, lane: String, tier: int):
+	## Searching for a proper button and functionality of the upgrade
+	pass

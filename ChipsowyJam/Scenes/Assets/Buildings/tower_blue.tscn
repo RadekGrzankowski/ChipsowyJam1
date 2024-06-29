@@ -120,12 +120,11 @@ radius = 7.5
 [sub_resource type="ViewportTexture" id="ViewportTexture_m67bi"]
 viewport_path = NodePath("SubViewport")
 
-[node name="StaticBody3D" type="StaticBody3D" node_paths=PackedStringArray("mesh_instance") groups=["blue_team", "tower"]]
+[node name="StaticBody3D" type="StaticBody3D" groups=["blue_team", "tower"]]
 script = ExtResource("5_o0x8h")
 building_damage = 25
 building_armor = 10
 building_health = 250
-mesh_instance = NodePath("TowerBlue")
 projectile_ball = ExtResource("2_xsu2x")
 
 [node name="TowerBlue" type="MeshInstance3D" parent="."]

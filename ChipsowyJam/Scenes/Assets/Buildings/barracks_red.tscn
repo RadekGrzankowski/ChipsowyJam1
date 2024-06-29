@@ -293,14 +293,13 @@ radius = 3.5
 [sub_resource type="ViewportTexture" id="ViewportTexture_60ill"]
 viewport_path = NodePath("SubViewport")
 
-[node name="StaticBody3D" type="StaticBody3D" node_paths=PackedStringArray("mesh_instance") groups=["barrack", "red_team"]]
+[node name="StaticBody3D" type="StaticBody3D" groups=["barrack", "red_team"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 script = ExtResource("1_g6kw2")
 type = 1
 building_damage = 15
 building_armor = 15
 building_health = 400
-mesh_instance = NodePath("BarracksRed")
 projectile_ball = ExtResource("2_rfcbb")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
