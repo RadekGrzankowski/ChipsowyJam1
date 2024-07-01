@@ -1,0 +1,18 @@
+[gd_resource type="Resource" load_steps=2 format=3 uid="uid://byd006ffprlk"]
+
+[ext_resource type="Script" path="res://Scenes/Assets/Cards/card_stats.gd" id="1_qfcw5"]
+
+[resource]
+script = ExtResource("1_qfcw5")
+card_name = "Nimfa"
+race = 6
+tier = 0
+description = "AOE"
+cost = 20
+health = 75
+attack_damage = 5
+armor = 0
+attack_speed = 1.0
+attack_range = 3.0
+type = 2
+sub_type = 5

@@ -1,0 +1,18 @@
+[gd_resource type="Resource" load_steps=2 format=3 uid="uid://d3yhbml721br8"]
+
+[ext_resource type="Script" path="res://Scenes/Assets/Cards/card_stats.gd" id="1_6ckvq"]
+
+[resource]
+script = ExtResource("1_6ckvq")
+card_name = "Siostra Słońca"
+race = 7
+tier = 3
+description = "On Kill deal 40 to near Units"
+cost = 200
+health = 225
+attack_damage = 45
+armor = 35
+attack_speed = 1.5
+attack_range = 4.0
+type = 2
+sub_type = 4

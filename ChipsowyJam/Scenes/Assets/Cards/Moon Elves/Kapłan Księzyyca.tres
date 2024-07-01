@@ -1,0 +1,18 @@
+[gd_resource type="Resource" load_steps=2 format=3 uid="uid://dxahp34apqjbd"]
+
+[ext_resource type="Script" path="res://Scenes/Assets/Cards/card_stats.gd" id="1_sufkc"]
+
+[resource]
+script = ExtResource("1_sufkc")
+card_name = "Kapłan Księżyca"
+race = 6
+tier = 1
+description = "Aoe Heal / Next hit get 15 armor pen"
+cost = 50
+health = 115
+attack_damage = 10
+armor = 10
+attack_speed = 1.0
+attack_range = 3.0
+type = 2
+sub_type = 2

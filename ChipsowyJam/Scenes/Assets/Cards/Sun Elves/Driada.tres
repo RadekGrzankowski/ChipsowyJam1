@@ -1,0 +1,18 @@
+[gd_resource type="Resource" load_steps=2 format=3 uid="uid://cs67fkdlc6587"]
+
+[ext_resource type="Script" path="res://Scenes/Assets/Cards/card_stats.gd" id="1_jytva"]
+
+[resource]
+script = ExtResource("1_jytva")
+card_name = "Driada"
+race = 7
+tier = 0
+description = ""
+cost = 20
+health = 60
+attack_damage = 15
+armor = 5
+attack_speed = 1.0
+attack_range = 3.0
+type = 2
+sub_type = 4

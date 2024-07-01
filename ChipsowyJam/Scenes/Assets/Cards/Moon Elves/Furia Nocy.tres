@@ -1,0 +1,18 @@
+[gd_resource type="Resource" load_steps=2 format=3 uid="uid://uhvuwqevwyp5"]
+
+[ext_resource type="Script" path="res://Scenes/Assets/Cards/card_stats.gd" id="1_at81s"]
+
+[resource]
+script = ExtResource("1_at81s")
+card_name = "Furia Nocy"
+race = 6
+tier = 2
+description = "20 armor pen"
+cost = 120
+health = 175
+attack_damage = 30
+armor = 25
+attack_speed = 2.0
+attack_range = 1.5
+type = 0
+sub_type = 6
