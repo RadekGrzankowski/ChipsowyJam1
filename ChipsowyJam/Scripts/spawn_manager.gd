@@ -1,11 +1,20 @@
 extends Node3D
 
-@onready var markerTopRed: Marker3D = get_node("/root/GameNode/Terrain/TopSpawnerRed")
-@onready var markerMidRed: Marker3D = get_node("/root/GameNode/Terrain/MidSpawnerRed")
-@onready var markerBotRed: Marker3D = get_node("/root/GameNode/Terrain/BotSpawnerRed")
-@onready var markerTopBlue: Marker3D = get_node("/root/GameNode/Terrain/TopSpawnerBlue")
-@onready var markerMidBlue: Marker3D = get_node("/root/GameNode/Terrain/MidSpawnerBlue")
-@onready var markerBotBlue: Marker3D = get_node("/root/GameNode/Terrain/BotSpawnerBlue")
+@onready var p1_marker_top: Marker3D = get_node("/root/GameNode/Terrain/Player1_TopSpawner")
+@onready var p1_marker_mid: Marker3D = get_node("/root/GameNode/Terrain/Player1_MidSpawner")
+@onready var p1_marker_bot: Marker3D = get_node("/root/GameNode/Terrain/Player1_BotSpawner")
+
+@onready var p2_marker_top: Marker3D = get_node("/root/GameNode/Terrain/Player2_TopSpawner")
+@onready var p2_marker_mid: Marker3D = get_node("/root/GameNode/Terrain/Player2_MidSpawner")
+@onready var p2_marker_bot: Marker3D = get_node("/root/GameNode/Terrain/Player2_BotSpawner")
+
+@onready var p1_marker_top_exit: Marker3D = get_node("/root/GameNode/Terrain/Player1_TopExit")
+@onready var p1_marker_mid_exit: Marker3D = get_node("/root/GameNode/Terrain/Player1_MidExit")
+@onready var p1_marker_bot_exit: Marker3D = get_node("/root/GameNode/Terrain/Player1_BotExit")
+
+@onready var p2_marker_top_exit: Marker3D = get_node("/root/GameNode/Terrain/Player2_TopExit")
+@onready var p2_marker_mid_exit: Marker3D = get_node("/root/GameNode/Terrain/Player2_MidExit")
+@onready var p2_marker_bot_exit: Marker3D = get_node("/root/GameNode/Terrain/Player2_BotExit")
 
 @onready var botPath: Marker3D = get_node("/root/GameNode/Terrain/BotPath")
 @onready var topPath: Marker3D = get_node("/root/GameNode/Terrain/TopPath")
@@ -94,25 +103,25 @@ func spawn_bot(color: String, path: String, marker: Marker3D):
 	match path:
 		"bot":
 			if color == "red":
-				target_positions = [botPath.position, markerBotBlue.position]
+				target_positions = [p2_marker_bot_exit.position, botPath.position, p1_marker_bot_exit.position, p1_marker_bot.position]
 				bot_card = ai_controller.bottom_lane_cards[current_red_count]
 			elif color == "blue":
 				bot_card = cardsUI.bottom_lane_nodes[current_blue_count].card
-				target_positions = [botPath.position, markerBotRed.position]
+				target_positions = [p1_marker_bot_exit.position, botPath.position, p2_marker_bot_exit.position, p2_marker_bot.position]
 		"mid":
 			if color == "red":
 				bot_card = ai_controller.middle_lane_cards[current_red_count]
-				target_positions = [midPath.position, markerMidBlue.position]
+				target_positions = [p2_marker_mid_exit.position, midPath.position, p1_marker_mid_exit.position, p1_marker_mid.position]
 			elif color == "blue":
 				bot_card = cardsUI.middle_lane_nodes[current_blue_count].card
-				target_positions = [midPath.position, markerMidRed.position]
+				target_positions = [p1_marker_mid_exit.position, midPath.position, p2_marker_mid_exit.position, p2_marker_mid.position]
 		"top":
 			if color == "red":
 				bot_card = ai_controller.top_lane_cards[current_red_count]
-				target_positions = [topPath.position, markerTopBlue.position]
+				target_positions = [p2_marker_top_exit.position, topPath.position, p1_marker_top_exit.position, p1_marker_top.position]
 			elif color == "blue":
 				bot_card = cardsUI.top_lane_nodes[current_blue_count].card
-				target_positions = [topPath.position, markerTopRed.position]
+				target_positions = [p1_marker_top_exit.position, topPath.position, p2_marker_top_exit.position, p2_marker_top.position]
 	var model : PackedScene
 	if bot_card != null:
 		#model = bot_card.model #WARNING bot_card.model variable is currently empty
@@ -160,11 +169,11 @@ func _on_wave_timer_timeout():
 
 func _on_blue_mob_timer_timeout():
 	if current_blue_count < blue_top_count:
-		spawn_bot("blue", "top", markerTopBlue)
+		spawn_bot("blue", "top", p1_marker_top)
 	if current_blue_count < blue_mid_count:
-		spawn_bot("blue", "mid", markerMidBlue)
+		spawn_bot("blue", "mid", p1_marker_mid)
 	if current_blue_count < blue_bot_count:
-		spawn_bot("blue", "bot", markerBotBlue)
+		spawn_bot("blue", "bot", p1_marker_bot)
 
 	current_blue_count = current_blue_count + 1
 	if current_blue_count == wave_blue_max_count:
@@ -172,11 +181,11 @@ func _on_blue_mob_timer_timeout():
 
 func _on_red_mob_timer_timeout():
 	if current_red_count < red_top_count:
-		spawn_bot("red", "top", markerTopRed)
+		spawn_bot("red", "top", p2_marker_top)
 	if current_red_count < red_mid_count:
-		spawn_bot("red", "mid", markerMidRed)
+		spawn_bot("red", "mid", p2_marker_mid)
 	if current_red_count < red_bot_count:
-		spawn_bot("red", "bot", markerBotRed)
+		spawn_bot("red", "bot", p2_marker_bot)
 		
 	current_red_count = current_red_count + 1
 	if current_red_count == wave_red_max_count:

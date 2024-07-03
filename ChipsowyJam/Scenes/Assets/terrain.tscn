@@ -248,23 +248,41 @@ building_armor = 50
 building_health = 1000
 building_lane = 1
 
-[node name="MidSpawnerRed" type="Marker3D" parent="."]
+[node name="Player2_MidSpawner" type="Marker3D" parent="."]
 transform = Transform3D(-0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, -0.707107, 38.6, 0, -38.6)
 
-[node name="BotSpawnerRed" type="Marker3D" parent="."]
+[node name="Player2_MidExit" type="Marker3D" parent="."]
+transform = Transform3D(-0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, -0.707107, 23, 0, -23)
+
+[node name="Player2_BotSpawner" type="Marker3D" parent="."]
 transform = Transform3D(-0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, -0.707107, 41.4, 0, -38.6)
 
-[node name="TopSpawnerRed" type="Marker3D" parent="."]
+[node name="Player2_BotExit" type="Marker3D" parent="."]
+transform = Transform3D(-0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, -0.707107, 40, 0, -14)
+
+[node name="Player2_TopSpawner" type="Marker3D" parent="."]
 transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 38.6, 0, -41.4)
 
-[node name="MidSpawnerBlue" type="Marker3D" parent="."]
+[node name="Player2_TopExit" type="Marker3D" parent="."]
+transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 14, 0, -40)
+
+[node name="Player1_MidSpawner" type="Marker3D" parent="."]
 transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, -38.6, 0, 38.6)
 
-[node name="BotSpawnerBlue" type="Marker3D" parent="."]
+[node name="Player1_MidExit" type="Marker3D" parent="."]
+transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, -23, 0, 23)
+
+[node name="Player1_BotSpawner" type="Marker3D" parent="."]
 transform = Transform3D(-0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, -0.707107, -38.6, 0, 41.4)
 
-[node name="TopSpawnerBlue" type="Marker3D" parent="."]
+[node name="Player1_BotExit" type="Marker3D" parent="."]
+transform = Transform3D(-0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, -0.707107, -14, 0, 40)
+
+[node name="Player1_TopSpawner" type="Marker3D" parent="."]
 transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, -41.4, 0, 38.6)
+
+[node name="Player1_TopExit" type="Marker3D" parent="."]
+transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, -40, 0, 14)
 
 [node name="BotPath" type="Marker3D" parent="."]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 40, 1.5, 40)

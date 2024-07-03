@@ -21,10 +21,10 @@ var teamName: String
 @onready var light_red: BaseMaterial3D = preload("res://Materials/LightRed.tres")
 
 @onready var attack_cooldown: Timer = $AttackTimer
-@onready var tier_label: Label3D = $TierLabel
 @onready var health_bar: ProgressBar = $HealthBar/SubViewport/Panel/ProgressBar
 @onready var health_label: Label = $HealthBar/SubViewport/Panel/ProgressBar/HealthLabel
 @onready var detection_shape: CollisionShape3D = $DetectionArea/DetectionShape
+@onready var stats_label: Label3D = $StatsLabel
 
 @export var projectile_ball: PackedScene
 
@@ -79,6 +79,9 @@ func _ready():
 				_mesh.mesh.surface_set_material(0, light_red)
 				_mesh.mesh.surface_set_material(1, dark_red)
 	detection_shape.shape.radius = building_range
+	stats_label.text = str(type.keys()[building_type]) + " - " + str(lane.keys()[building_lane]) + "\n" +\
+	str(building_damage) + "AD" + " - " + str(building_armor) + "ARMOR" + "\n" +\
+	str(building_tier) + " Tier"
 	
 func take_damage(amount, attacker):
 	building_health -= int(amount * check_armor())
