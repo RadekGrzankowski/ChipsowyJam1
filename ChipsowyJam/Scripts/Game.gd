@@ -3,9 +3,6 @@ extends Node
 var player1_gold: int = 100
 var player2_gold: int = 100
 
-var player1_barracks_level: int = 0
-var player2_barracks_level: int = 0
-
 var start_delay_time: int = 15
 var wave_time: int = 45
 
@@ -23,20 +20,6 @@ var player1_towers_destroyed: int = 0
 var player2_towers_destroyed: int = 0
 
 var winner: String
-
-var additional_player1_minions_dmg: int = 0 
-var additional_player2_minions_dmg: int = 0 
-
-var additional_player1_minions_armor: int = 0 
-var additional_player2_minions_armor: int = 0 
-
-var additional_player1_top_tower_damage: int = 0
-var additional_player1_mid_tower_damage: int = 0
-var additional_player1_bot_tower_damage: int = 0
-
-var additional_player2_top_tower_armor: int = 0
-var additional_player2_mid_tower_armor: int = 0
-var additional_player2_bot_tower_armor: int = 0
 
 #static percentages for different barrack levels and card tiers
 var common_0: int = 80
@@ -102,7 +85,7 @@ var dark_red_color: Color = Color(0.824, 0.302, 0.188)
 var light_red_color: Color = Color(0.882, 0.435, 0.451)
 var dark_green_color: Color = Color(0.188, 0.494, 0.286)
 var light_green_color: Color = Color(0.50, 0.91, 0.52)
-var dark_yellow_color: Color = Color(0.6, 0.6, 0.1)
+var dark_yellow_color: Color = Color(0.7, 0.65, 0.08)
 var light_yellow_color: Color = Color(0.75, 0.75, 0.1)
 
 #colors for card's tier

@@ -3,20 +3,20 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://dhx8rcdw0ltrh"
-path="res://.godot/imported/Skeleton.glb-b5dcd66822326d424d10b1afd8bf8a89.scn"
+uid="uid://bplpl3g5an4bl"
+path="res://.godot/imported/Blue_Demon.glb-10684bb15079a498b5a5ff740fe784f6.scn"
 
 [deps]
 
-source_file="res://Models/Imported Models/Skeleton.glb"
-dest_files=["res://.godot/imported/Skeleton.glb-b5dcd66822326d424d10b1afd8bf8a89.scn"]
+source_file="res://Models/Blue_Demon.glb"
+dest_files=["res://.godot/imported/Blue_Demon.glb-10684bb15079a498b5a5ff740fe784f6.scn"]
 
 [params]
 
 nodes/root_type=""
 nodes/root_name=""
 nodes/apply_root_scale=true
-nodes/root_scale=2.2
+nodes/root_scale=1.0
 meshes/ensure_tangents=true
 meshes/generate_lods=true
 meshes/create_shadow_meshes=true

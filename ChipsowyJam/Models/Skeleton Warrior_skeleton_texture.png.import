@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://qnwveq354514"
-path.s3tc="res://.godot/imported/Skeleton Mage_skeleton_texture.png-2dc5f2ff432ebfc84d4d8fb5e0c92285.s3tc.ctex"
+uid="uid://cbujvmf8fhlw"
+path.s3tc="res://.godot/imported/Skeleton Warrior_skeleton_texture.png-5e1b919ed8b886215881d51f68a9b423.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -12,8 +12,8 @@ generator_parameters={}
 
 [deps]
 
-source_file="res://Models/Imported Models/Skeleton Mage_skeleton_texture.png"
-dest_files=["res://.godot/imported/Skeleton Mage_skeleton_texture.png-2dc5f2ff432ebfc84d4d8fb5e0c92285.s3tc.ctex"]
+source_file="res://Models/Skeleton Warrior_skeleton_texture.png"
+dest_files=["res://.godot/imported/Skeleton Warrior_skeleton_texture.png-5e1b919ed8b886215881d51f68a9b423.s3tc.ctex"]
 
 [params]
 

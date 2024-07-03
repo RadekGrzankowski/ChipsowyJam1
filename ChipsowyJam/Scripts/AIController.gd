@@ -1,6 +1,7 @@
 extends Node
 
 @onready var cardsUI: Node = get_node("/root/GameNode/CardsUI")
+@onready var nexusNode: Node3D = get_node("/root/GameNode/Terrain/NavigationRegion3D/Player2_Nexus")
 
 var top_lane_cards: Array
 var middle_lane_cards: Array
@@ -27,6 +28,7 @@ func _init():
 func _ready():
 	roll_the_shop()
 	perform_action()
+	
 	
 func _process(delta):
 	if Input.is_key_label_pressed(KEY_F1):
@@ -145,7 +147,7 @@ func is_shop_empty():
 	
 func roll_the_shop():
 	for index in shop_cards.size():
-		var tier = Game.return_tier(Game.player2_barracks_level)
+		var tier = Game.return_tier(nexusNode.building_tier)
 		var resource
 		match tier:
 			0: resource = cardsUI.all_cards_common.pick_random()

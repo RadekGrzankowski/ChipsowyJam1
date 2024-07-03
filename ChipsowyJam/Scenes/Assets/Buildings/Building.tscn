@@ -1,0 +1,42 @@
+[gd_scene load_steps=6 format=3 uid="uid://j3r26g4shmbm"]
+
+[ext_resource type="Script" path="res://Scripts/buildings_behaviour.gd" id="1_b4qcv"]
+[ext_resource type="PackedScene" uid="uid://yswx1jx6ncbw" path="res://Scenes/Assets/Buildings/Tower Projectile.tscn" id="2_w41p0"]
+[ext_resource type="PackedScene" uid="uid://8cdq6wa0c78s" path="res://Scenes/Assets/health_ui.tscn" id="3_s02xx"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_e7kyn"]
+viewport_path = NodePath("SubViewport")
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_ra674"]
+resource_local_to_scene = true
+
+[node name="Building" type="StaticBody3D" groups=["building"]]
+script = ExtResource("1_b4qcv")
+building_damage = 0
+building_armor = 0
+building_range = 0.0
+projectile_ball = ExtResource("2_w41p0")
+
+[node name="StatsLabel" type="Label3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.13, -0.5)
+billboard = 1
+font_size = 60
+
+[node name="HealthBar" parent="." instance=ExtResource("3_s02xx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.8, 0)
+texture = SubResource("ViewportTexture_e7kyn")
+
+[node name="DetectionArea" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+
+[node name="DetectionShape" type="CollisionShape3D" parent="DetectionArea"]
+shape = SubResource("CylinderShape3D_ra674")
+
+[node name="AttackTimer" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true
+autostart = true
+
+[connection signal="body_entered" from="DetectionArea" to="." method="_on_detection_area_body_entered"]
+[connection signal="body_exited" from="DetectionArea" to="." method="_on_detection_area_body_exited"]
+[connection signal="timeout" from="AttackTimer" to="." method="_on_attack_cooldown_timeout"]

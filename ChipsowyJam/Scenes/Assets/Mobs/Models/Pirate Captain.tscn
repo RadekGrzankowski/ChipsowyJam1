@@ -1,6 +1,6 @@
 [gd_scene load_steps=14 format=3 uid="uid://bcrmooe1y1vwx"]
 
-[ext_resource type="Texture2D" uid="uid://hjd631bmtlq" path="res://Models/Imported Models/Pirate Captain_Atlas_Pirate.png" id="1_kjpsr"]
+[ext_resource type="Texture2D" uid="uid://hjd631bmtlq" path="res://Models/Pirate Captain_Atlas_Pirate.png" id="1_kjpsr"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_p0uif"]
 resource_name = "AtlasMaterial"

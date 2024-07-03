@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://dpnvumh65enja"
-path="res://.godot/imported/Pirate Captain.glb-3ea107e160b76f4798f08b8e03e2646c.scn"
+path="res://.godot/imported/Pirate Captain.glb-06a9bec55aa9f47ab630baadf91c4f06.scn"
 
 [deps]
 
-source_file="res://Models/Imported Models/Pirate Captain.glb"
-dest_files=["res://.godot/imported/Pirate Captain.glb-3ea107e160b76f4798f08b8e03e2646c.scn"]
+source_file="res://Models/Pirate Captain.glb"
+dest_files=["res://.godot/imported/Pirate Captain.glb-06a9bec55aa9f47ab630baadf91c4f06.scn"]
 
 [params]
 

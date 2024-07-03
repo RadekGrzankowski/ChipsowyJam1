@@ -21,7 +21,7 @@ extends Node3D
 @onready var startTimer = $"../StartDelayTimer"
 @onready var mob_blue_timer = $"../BlueMobTimer"
 @onready var mob_red_timer = $"../RedMobTimer"
-@onready var blue_nexus_label = $"/root/GameNode/Terrain/NexusBlue/TimerLabel"
+@onready var blue_nexus_label = $"/root/GameNode/Terrain/NavigationRegion3D/Player1_Nexus/TimerLabel"
 
 var current_blue_count: int = 0
 var current_red_count: int = 0

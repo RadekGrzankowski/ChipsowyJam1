@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://wpkun5cc4rhu"
-path="res://.godot/imported/Demon.glb-5d214f2b1c6017519f928d711023b122.scn"
+uid="uid://xiqap8cn3t28"
+path="res://.godot/imported/Orc.glb-62507b294935a2fef0047eef2f444db2.scn"
 
 [deps]
 
-source_file="res://Models/Imported Models/Demon.glb"
-dest_files=["res://.godot/imported/Demon.glb-5d214f2b1c6017519f928d711023b122.scn"]
+source_file="res://Models/Orc.glb"
+dest_files=["res://.godot/imported/Orc.glb-62507b294935a2fef0047eef2f444db2.scn"]
 
 [params]
 

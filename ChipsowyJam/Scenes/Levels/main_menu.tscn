@@ -82,9 +82,9 @@ anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = -528.0
-offset_top = -290.0
+offset_top = -254.0
 offset_right = -28.0
-offset_bottom = -18.0
+offset_bottom = -24.0
 grow_horizontal = 0
 grow_vertical = 0
 
@@ -96,13 +96,14 @@ offset_bottom = 41.0
 grow_horizontal = 2
 text = "Adjust variables before starting the game"
 label_settings = SubResource("LabelSettings_6tgql")
+horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="P1GoldInputBox" type="SpinBox" parent="MainMenu/DebugPanel"]
 layout_mode = 0
-offset_left = 111.0
+offset_left = 126.0
 offset_top = 51.0
-offset_right = 221.0
+offset_right = 236.0
 offset_bottom = 86.0
 max_value = 10000.0
 value = 100.0
@@ -110,18 +111,18 @@ suffix = "G"
 
 [node name="P1GoldLabel" type="Label" parent="MainMenu/DebugPanel"]
 layout_mode = 0
-offset_left = 9.0
+offset_left = 24.0
 offset_top = 51.0
-offset_right = 91.0
+offset_right = 106.0
 offset_bottom = 85.0
 text = "Player 1"
 vertical_alignment = 1
 
 [node name="P2GoldInputBox" type="SpinBox" parent="MainMenu/DebugPanel"]
 layout_mode = 0
-offset_left = 111.0
+offset_left = 126.0
 offset_top = 104.0
-offset_right = 221.0
+offset_right = 236.0
 offset_bottom = 139.0
 max_value = 10000.0
 value = 100.0
@@ -129,74 +130,38 @@ suffix = "G"
 
 [node name="P2GoldLabel" type="Label" parent="MainMenu/DebugPanel"]
 layout_mode = 0
-offset_left = 9.0
+offset_left = 24.0
 offset_top = 104.0
-offset_right = 91.0
+offset_right = 106.0
 offset_bottom = 138.0
 text = "Player 2"
 vertical_alignment = 1
 
-[node name="P1BarrackInputBox" type="SpinBox" parent="MainMenu/DebugPanel"]
-layout_mode = 0
-offset_left = 369.0
-offset_top = 51.0
-offset_right = 479.0
-offset_bottom = 86.0
-max_value = 4.0
-suffix = "LVL"
-
-[node name="P1BarrackLabel" type="Label" parent="MainMenu/DebugPanel"]
-layout_mode = 0
-offset_left = 234.0
-offset_top = 51.0
-offset_right = 377.0
-offset_bottom = 85.0
-text = "P1 Barrack LVL"
-vertical_alignment = 1
-
-[node name="P2BarrackInputBox" type="SpinBox" parent="MainMenu/DebugPanel"]
-layout_mode = 0
-offset_left = 369.0
-offset_top = 104.0
-offset_right = 479.0
-offset_bottom = 139.0
-max_value = 4.0
-suffix = "LVL"
-
-[node name="P2BarrackLabel" type="Label" parent="MainMenu/DebugPanel"]
-layout_mode = 0
-offset_left = 234.0
-offset_top = 104.0
-offset_right = 360.0
-offset_bottom = 138.0
-text = "P2 Barrack LVL"
-vertical_alignment = 1
-
 [node name="WaveTimeInputBox" type="SpinBox" parent="MainMenu/DebugPanel"]
 layout_mode = 0
-offset_left = 111.0
+offset_left = 126.0
 offset_top = 159.0
-offset_right = 221.0
+offset_right = 236.0
 offset_bottom = 194.0
-min_value = 10.0
-max_value = 120.0
-value = 45.0
+min_value = 5.0
+max_value = 180.0
+value = 30.0
 suffix = "s"
 
 [node name="WaveTimeLabel" type="Label" parent="MainMenu/DebugPanel"]
 layout_mode = 0
-offset_left = 9.0
+offset_left = 24.0
 offset_top = 159.0
-offset_right = 94.0
+offset_right = 109.0
 offset_bottom = 193.0
 text = "Wave Time"
 vertical_alignment = 1
 
 [node name="StartTimeInputBox" type="SpinBox" parent="MainMenu/DebugPanel"]
 layout_mode = 0
-offset_left = 369.0
+offset_left = 374.0
 offset_top = 159.0
-offset_right = 479.0
+offset_right = 484.0
 offset_bottom = 194.0
 min_value = 1.0
 max_value = 60.0
@@ -205,37 +170,37 @@ suffix = "s"
 
 [node name="StartTimeLabel" type="Label" parent="MainMenu/DebugPanel"]
 layout_mode = 0
-offset_left = 234.0
+offset_left = 272.0
 offset_top = 159.0
-offset_right = 360.0
+offset_right = 398.0
 offset_bottom = 193.0
 text = "Start Time"
 vertical_alignment = 1
 
 [node name="P1TeamColorLabel" type="Label" parent="MainMenu/DebugPanel"]
 layout_mode = 0
-offset_left = 9.0
-offset_top = 214.0
-offset_right = 101.0
-offset_bottom = 248.0
+offset_left = 272.0
+offset_top = 51.0
+offset_right = 364.0
+offset_bottom = 85.0
 text = "P1 Color"
 vertical_alignment = 1
 
 [node name="P2TeamColorLabel" type="Label" parent="MainMenu/DebugPanel"]
 layout_mode = 0
-offset_left = 234.0
-offset_top = 214.0
-offset_right = 360.0
-offset_bottom = 248.0
+offset_left = 272.0
+offset_top = 104.0
+offset_right = 358.0
+offset_bottom = 138.0
 text = "P2 Color"
 vertical_alignment = 1
 
 [node name="P1TeamColor" type="OptionButton" parent="MainMenu/DebugPanel"]
 layout_mode = 0
-offset_left = 111.0
-offset_top = 214.0
-offset_right = 207.0
-offset_bottom = 248.0
+offset_left = 374.0
+offset_top = 51.0
+offset_right = 470.0
+offset_bottom = 85.0
 item_count = 4
 selected = 0
 popup/item_0/text = "Green"
@@ -249,10 +214,10 @@ popup/item_3/id = 3
 
 [node name="P2TeamColor" type="OptionButton" parent="MainMenu/DebugPanel"]
 layout_mode = 0
-offset_left = 369.0
-offset_top = 214.0
-offset_right = 465.0
-offset_bottom = 248.0
+offset_left = 374.0
+offset_top = 104.0
+offset_right = 470.0
+offset_bottom = 138.0
 item_count = 4
 selected = 2
 popup/item_0/text = "Green"

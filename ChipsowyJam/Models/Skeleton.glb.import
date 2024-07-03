@@ -3,20 +3,20 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://dphgkjeogkxws"
-path="res://.godot/imported/Ghost.glb-afc1ea56f3437075781338893c13b500.scn"
+uid="uid://dhx8rcdw0ltrh"
+path="res://.godot/imported/Skeleton.glb-dd05f740b964700aaf0345f6cdead796.scn"
 
 [deps]
 
-source_file="res://Models/Imported Models/Ghost.glb"
-dest_files=["res://.godot/imported/Ghost.glb-afc1ea56f3437075781338893c13b500.scn"]
+source_file="res://Models/Skeleton.glb"
+dest_files=["res://.godot/imported/Skeleton.glb-dd05f740b964700aaf0345f6cdead796.scn"]
 
 [params]
 
 nodes/root_type=""
 nodes/root_name=""
 nodes/apply_root_scale=true
-nodes/root_scale=1.0
+nodes/root_scale=2.2
 meshes/ensure_tangents=true
 meshes/generate_lods=true
 meshes/create_shadow_meshes=true

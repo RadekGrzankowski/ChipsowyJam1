@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://uo672klwvjh"
-path="res://.godot/imported/Barracks.glb-4e428483733d2630b532801099303246.scn"
+path="res://.godot/imported/Barracks.glb-9d821c55a621dbc8cb3fca8cea2a1117.scn"
 
 [deps]
 
-source_file="res://Models/Imported Models/Barracks.glb"
-dest_files=["res://.godot/imported/Barracks.glb-4e428483733d2630b532801099303246.scn"]
+source_file="res://Models/Barracks.glb"
+dest_files=["res://.godot/imported/Barracks.glb-9d821c55a621dbc8cb3fca8cea2a1117.scn"]
 
 [params]
 

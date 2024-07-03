@@ -1,6 +1,6 @@
 [gd_scene load_steps=11 format=3 uid="uid://b01khnim0q3yw"]
 
-[ext_resource type="Texture2D" uid="uid://c10ore5wjiugh" path="res://Models/Imported Models/Zombie_Zombie_Atlas.png" id="1_g0j2p"]
+[ext_resource type="Texture2D" uid="uid://c10ore5wjiugh" path="res://Models/Zombie_Zombie_Atlas.png" id="1_g0j2p"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_h7jef"]
 resource_name = "Atlas"

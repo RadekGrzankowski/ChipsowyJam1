@@ -127,14 +127,9 @@ func initialize(card, team: String, main_path: String, model: PackedScene):
 	
 	if team == "red":
 		add_to_group("red_team")
-		mob_attack += Game.additional_player2_minions_dmg
-		mob_armor += Game.additional_player2_minions_armor
 	elif team == "blue":
 		add_to_group("blue_team")
-		mob_attack += Game.additional_player1_minions_dmg
-		mob_armor += Game.additional_player1_minions_armor
 
-	
 func take_damage(amount, attacker):
 	if !is_instance_valid(self) || !is_instance_valid(attacker):
 		return

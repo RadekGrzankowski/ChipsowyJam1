@@ -7,6 +7,8 @@ extends CanvasLayer
 var lane_value: int = 0 #0 - top, 1 - middle, 2 - bottom
 var ui_open: bool = false
 
+@onready var nexusNode: Node3D = get_node("/root/GameNode/Terrain/NavigationRegion3D/Player1_Nexus")
+
 #DIFFERENT RACES: 
 #HUMAN_KINGDOM, OUTLAWS, MOUNTAIN_CLAN, FOREST_ORCS, 
 #BLOOD_BROTHERHOOD, UNDEAD_PACT, MOON_ELVES, SUN_ELVES, BEAST
@@ -181,7 +183,7 @@ func fill_the_shop():
 	for node in shop_nodes:
 		var card: Control = card_scene.instantiate()
 		card.add_to_group("shop_card")
-		var tier = Game.return_tier(Game.player1_barracks_level)
+		var tier = Game.return_tier(nexusNode.building_tier)
 		var resource
 		match tier:
 			0: resource = all_cards_common.pick_random()

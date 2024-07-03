@@ -3,13 +3,11 @@ var format_gold_stats: String = "PLAYER 1 GOLD: %s\nPLAYER 2(AI) GOLD: %s"
 var format_minions_top: String = "P1 MINIONS TOP: %s\nP2 MINIONS TOP: %s"
 var format_minions_mid: String = "P1 MINIONS MID: %s\nP2 MINIONS MID: %s"
 var format_minions_bot: String = "P1 MINIONS BOT: %s\nP2 MINIONS BOT: %s"
-var format_barracks_stats: String = "P1 BARRACKS: %sLVL\nP2 BARRACKS: %sLVL"
 
 var actual_gold_stats: String
 var actual_minions_top: String
 var actual_minions_mid: String
 var actual_minions_bot: String
-var actual_barracks_stats: String
 
 signal new_barracks_level
 
@@ -26,7 +24,6 @@ signal new_barracks_level
 var button_value: int = 0 ##0 - tower, 1 - barracks, 2 - nexus
 
 @onready var gold_label: Label = $HUD/Labels/GoldLabel
-@onready var barracks_label: Label = $HUD/Labels/BarrackLevelLabel
 @onready var top_minions_label: Label = $HUD/Labels/TopMinions
 @onready var mid_minions_label: Label = $HUD/Labels/MidMinions
 @onready var bot_minions_label: Label = $HUD/Labels/BotMinions
@@ -59,14 +56,10 @@ func _process(delta):
 	actual_minions_mid = format_minions_mid % [Game.player1_minions_mid, Game.player2_minions_mid]
 	actual_minions_bot = format_minions_bot % [Game.player1_minions_bot, Game.player2_minions_bot]
 	
-	actual_barracks_stats = format_barracks_stats % [Game.player1_barracks_level, Game.player2_barracks_level]
-	
 	gold_label.text = actual_gold_stats
 	top_minions_label.text = actual_minions_top
 	mid_minions_label.text = actual_minions_mid
 	bot_minions_label.text = actual_minions_bot
-	
-	barracks_label.text = actual_barracks_stats
 
 func change_upgrade_panel():
 	match button_value:

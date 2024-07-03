@@ -2,13 +2,10 @@ extends Node2D
 
 @onready var player1_gold_box: SpinBox = $MainMenu/DebugPanel/P1GoldInputBox
 @onready var player2_gold_box: SpinBox = $MainMenu/DebugPanel/P2GoldInputBox
-@onready var player1_barrack_box: SpinBox = $MainMenu/DebugPanel/P1BarrackInputBox
-@onready var player2_barrack_box: SpinBox = $MainMenu/DebugPanel/P2BarrackInputBox
 @onready var wave_time_box: SpinBox = $MainMenu/DebugPanel/WaveTimeInputBox
 @onready var start_time_box: SpinBox = $MainMenu/DebugPanel/StartTimeInputBox
 @export var player1_team_color: OptionButton
 @export var player2_team_color: OptionButton
-
 @export var player1_dark_mat: BaseMaterial3D
 @export var player1_light_mat: BaseMaterial3D
 @export var player2_dark_mat: BaseMaterial3D
@@ -18,8 +15,6 @@ func _on_play_button_pressed():
 	
 	Game.player1_gold = player1_gold_box.value
 	Game.player2_gold = player2_gold_box.value
-	Game.player1_barracks_level = player1_barrack_box.value
-	Game.player2_barracks_level = player2_barrack_box.value
 	Game.start_delay_time = start_time_box.value
 	Game.wave_time = wave_time_box.value
 	var color: Color

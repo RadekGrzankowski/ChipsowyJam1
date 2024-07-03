@@ -1,6 +1,6 @@
 [gd_scene load_steps=12 format=3 uid="uid://w7h88cq200j0"]
 
-[ext_resource type="Texture2D" uid="uid://1b8j611wyap3" path="res://Models/Imported Models/Anne_Atlas_Pirate.png" id="1_xlxo6"]
+[ext_resource type="Texture2D" uid="uid://1b8j611wyap3" path="res://Models/Anne_Atlas_Pirate.png" id="1_xlxo6"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3pcv3"]
 resource_name = "AtlasMaterial"

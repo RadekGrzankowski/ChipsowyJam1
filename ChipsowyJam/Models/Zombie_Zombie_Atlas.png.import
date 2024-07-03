@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://1b8j611wyap3"
-path.s3tc="res://.godot/imported/Anne_Atlas_Pirate.png-8f01854cd9c987d078981b8b227c04f5.s3tc.ctex"
+uid="uid://c10ore5wjiugh"
+path.s3tc="res://.godot/imported/Zombie_Zombie_Atlas.png-fdbcc13330d385de42c0073aac6a2609.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -12,8 +12,8 @@ generator_parameters={}
 
 [deps]
 
-source_file="res://Models/Imported Models/Anne_Atlas_Pirate.png"
-dest_files=["res://.godot/imported/Anne_Atlas_Pirate.png-8f01854cd9c987d078981b8b227c04f5.s3tc.ctex"]
+source_file="res://Models/Zombie_Zombie_Atlas.png"
+dest_files=["res://.godot/imported/Zombie_Zombie_Atlas.png-fdbcc13330d385de42c0073aac6a2609.s3tc.ctex"]
 
 [params]
 

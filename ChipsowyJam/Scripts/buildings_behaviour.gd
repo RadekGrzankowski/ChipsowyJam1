@@ -1,18 +1,32 @@
 extends Node
 
-enum building_type {TOWER, BARRACK, NEXUS}
-@export var type: building_type
+enum type {TOWER, BARRACK, NEXUS}
+enum lane {TOP, MIDDLE, BOTTOM}
+@export var building_type: type
 @export var building_damage: int = 20
 @export var building_armor: int = 5
 @export var building_health: int = 500
+@export var building_tier: int = 0 #TOWER Tiers: 0-3, BARRACK Tiers: 0-4, NEXUS Tiers: 0-4
+@export var building_range: float = 5.0
+@export var building_lane: lane
+var teamName: String
+
+@onready var nexus_model: PackedScene = preload("res://Scenes/Assets/Buildings/Models/Nexus.tscn")
+@onready var barrack_model: PackedScene = preload("res://Scenes/Assets/Buildings/Models/Barrack.tscn")
+@onready var tower_model: PackedScene = preload("res://Scenes/Assets/Buildings/Models/Tower.tscn")
+
+@onready var dark_blue: BaseMaterial3D = preload("res://Materials/DarkBlue.tres")
+@onready var light_blue: BaseMaterial3D = preload("res://Materials/LightBlue.tres")
+@onready var dark_red: BaseMaterial3D = preload("res://Materials/DarkRed.tres")
+@onready var light_red: BaseMaterial3D = preload("res://Materials/LightRed.tres")
 
 @onready var attack_cooldown: Timer = $AttackTimer
+@onready var tier_label: Label3D = $TierLabel
 @onready var health_bar: ProgressBar = $HealthBar/SubViewport/Panel/ProgressBar
 @onready var health_label: Label = $HealthBar/SubViewport/Panel/ProgressBar/HealthLabel
+@onready var detection_shape: CollisionShape3D = $DetectionArea/DetectionShape
 
 @export var projectile_ball: PackedScene
-var teamName: String
-var lane: String
 
 var enemies_to_attack: Array[Node3D]
 var enemy_to_attack: Node3D
@@ -30,26 +44,46 @@ func _ready():
 	ls.outline_color = Color.BLACK
 	ls.font_size = 30
 	health_label.label_settings = ls
-	
 	var style = health_bar.get_theme_stylebox("fill")
+	var _model: StaticBody3D 
+	match building_type:
+		0: _model = tower_model.instantiate()
+		1: _model = barrack_model.instantiate()
+		2: _model = nexus_model.instantiate()
+	var _mesh: MeshInstance3D = _model.get_node("Mesh")
+	if _mesh.get_parent():
+		_mesh.get_parent().remove_child(_mesh)
+	add_child(_mesh)
+	var _collision_shape: CollisionShape3D = _model.get_node("CollisionShape3D")
+	if _collision_shape.get_parent():
+		_collision_shape.get_parent().remove_child(_collision_shape)
+	add_child(_collision_shape)
 	if is_in_group("blue_team"):
 		style.bg_color = Game.player1_color
 		teamName = "blue"
+		match building_type:
+			0: #TOWER
+				_mesh.mesh.surface_set_material(1, dark_blue)
+				_mesh.mesh.surface_set_material(3, light_blue)
+			1, 2: #BARRACK & NEXUS
+				_mesh.mesh.surface_set_material(0, light_blue)
+				_mesh.mesh.surface_set_material(1, dark_blue)
 	elif is_in_group("red_team"):
 		style.bg_color = Game.player2_color
 		teamName = "red"
-	if type == building_type.TOWER:
-		if is_in_group("top_tower"):
-			lane = "top"
-		elif is_in_group("mid_tower"):
-			lane = "mid"
-		if is_in_group("bot_tower"):
-			lane = "bot"
-
+		match building_type:
+			0: #TOWER
+				_mesh.mesh.surface_set_material(1, dark_red)
+				_mesh.mesh.surface_set_material(3, light_red)
+			1, 2: #BARRACK & NEXUS
+				_mesh.mesh.surface_set_material(0, light_red)
+				_mesh.mesh.surface_set_material(1, dark_red)
+	detection_shape.shape.radius = building_range
+	
 func take_damage(amount, attacker):
 	building_health -= int(amount * check_armor())
 	if building_health <= 0:
-		if type == building_type.TOWER:
+		if building_type == type.TOWER:
 			attacker.change_target(self)
 			if teamName == "red":
 				Game.player2_towers_destroyed += 1
@@ -58,18 +92,18 @@ func take_damage(amount, attacker):
 				Game.player1_towers_destroyed += 1
 				Game.player2_gold += 50
 			queue_free()
-		elif type == building_type.BARRACK:
+		elif building_type == type.BARRACK:
 			attacker.change_target(self)
 			if teamName == "red":
 				Game.player1_gold += 100
 			if teamName == "blue":
 				Game.player2_gold += 100
 			queue_free()
-		elif type == building_type.NEXUS:
+		elif building_type == type.NEXUS:
 			if teamName == "red":
-				Game.winner = "BLUE"
+				Game.winner = "PLAYER 1"
 			if teamName == "blue":
-				Game.winner = "RED"
+				Game.winner = "PLAYER 2"
 			get_tree().change_scene_to_file("res://Scenes/Levels/end_scene.tscn")
 	else:
 		health_label.text = str(building_health) + "HP"
@@ -77,13 +111,14 @@ func take_damage(amount, attacker):
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	if type == building_type.TOWER || type == building_type.BARRACK:
-		if is_attacking:
-			if can_attack:
-				enemy_to_attack = closest_target()
-				can_attack = false
-				attack_cooldown.start()
-				spawn_projectile()
+	if building_damage <= 0:
+		return
+	if is_attacking:
+		if can_attack:
+			enemy_to_attack = closest_target()
+			can_attack = false
+			attack_cooldown.start()
+			spawn_projectile()
 				
 func spawn_projectile():
 	var projectile: StaticBody3D
@@ -111,6 +146,8 @@ func closest_target():
 		return enemy_to_attack
 
 func _on_detection_area_body_entered(body):
+	if building_damage <= 0:
+		return
 	if teamName == "blue":
 		if body.is_in_group("red_team"):
 			enemies_to_attack.append(body)
@@ -151,12 +188,4 @@ func check_armor():
 
 # same goes here with the additional dmg global variable. This has to be updated with upgrade
 func check_damage():
-	if teamName == "blue":
-		if lane == "top":
-			return building_damage + Game.additional_player1_top_tower_damage
-		elif lane == "mid":
-			return building_damage + Game.additional_player1_mid_tower_damage
-		elif lane == "bot":
-			return building_damage + Game.additional_player1_bot_tower_damage
-	else:
-		return building_damage
+	return building_damage
