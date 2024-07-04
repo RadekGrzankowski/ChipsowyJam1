@@ -6,7 +6,7 @@ extends Control
 @export var cost_label_big: Label
 @export var race_type_label: Label
 @export var health_label_big: Label
-@export var armor_label: Label
+@export var armor_label_big: Label
 @export var attack_damage_label_big: Label
 
 @export var name_label_small: Label
@@ -14,7 +14,7 @@ extends Control
 @export var cost_label_small: Label
 @export var health_label_small: Label
 @export var attack_damage_label_small: Label
-
+@export var armor_label_small: Label
 
 var card_name: String
 var image: Texture2D
@@ -135,13 +135,15 @@ func update_card():
 		$CardPanelSmall/Panel.modulate = color
 		image_rect_big.texture = image
 		image_rect_small.texture = image
-		cost_label_big.text = str(cost) + "G"
-		cost_label_small.text = str(cost) + "G"
+		cost_label_big.text = str(cost)
+		cost_label_small.text = str(cost)
 		race_type_label.text = str(mob_type.keys()[type]) + " " + str(mob_sub_type.keys()[sub_type])
-		health_label_big.text = str(health) + "♥"
-		health_label_small.text = str(health) + "♥"
-		attack_damage_label_big.text = str(attack_damage) + "AD"
-		attack_damage_label_small.text = str(attack_damage) + "AD"
+		health_label_big.text = str(health)
+		health_label_small.text = str(health)
+		attack_damage_label_big.text = str(attack_damage)
+		attack_damage_label_small.text = str(attack_damage)
+		armor_label_small.text = str(armor)
+		armor_label_big.text = str(armor)
 		var _race = str(mob_race.keys()[race])
 		var _race_words = _race.split("_")
 		if _race_words.size() > 1:
@@ -158,7 +160,10 @@ func _physics_process(delta):
 		global_position = lerp(global_position, get_global_mouse_position(), 25 * delta)
 	else:
 		if rest_node != null:
-			global_position = lerp(global_position, rest_node.global_position + rest_node.pivot_offset, 10 * delta)
+			var position = rest_node.global_position + rest_node.pivot_offset
+			if is_hovering_above == true:
+				position = position - Vector2(0, 15)
+			global_position = lerp(global_position, position, 10 * delta)
 
 func _on_mouse_click_control_gui_input(event):
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
@@ -273,6 +278,7 @@ func _on_mouse_click_control_mouse_entered():
 	is_hovering_above = true
 	$CardPanelBig.visible = true
 	$CardPanelSmall.visible = false
+	position = position - Vector2(0, 20)
 
 func _on_mouse_click_control_mouse_exited():
 	is_hovering_above = false

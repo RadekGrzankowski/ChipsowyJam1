@@ -1,35 +1,40 @@
-[gd_scene load_steps=8 format=3 uid="uid://bpcf3shjxg2ll"]
+[gd_scene load_steps=20 format=3 uid="uid://bpcf3shjxg2ll"]
 
 [ext_resource type="Script" path="res://Scripts/card.gd" id="1_5v28u"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rgrjn"]
 border_width_left = 6
-border_width_top = 24
+border_width_top = 10
 border_width_right = 6
 border_width_bottom = 6
-border_color = Color(0.788235, 0.788235, 0.788235, 1)
+border_blend = true
 corner_radius_top_left = 5
 corner_radius_top_right = 5
 corner_radius_bottom_right = 5
 corner_radius_bottom_left = 5
 shadow_size = 2
-anti_aliasing = false
 
 [sub_resource type="LabelSettings" id="LabelSettings_xioda"]
 
+[sub_resource type="FontVariation" id="FontVariation_otmhx"]
+variation_embolden = 0.85
+
 [sub_resource type="LabelSettings" id="LabelSettings_88qp0"]
-font_color = Color(0.858824, 0.67451, 0.203922, 1)
+line_spacing = 0.0
+font = SubResource("FontVariation_otmhx")
+font_color = Color(0.92549, 0.737255, 0.278431, 1)
 outline_size = 2
 outline_color = Color(0, 0, 0, 1)
+shadow_size = 0
 
 [sub_resource type="LabelSettings" id="LabelSettings_4ajj6"]
-font_color = Color(0.980392, 0.27451, 0.145098, 1)
-outline_size = 2
+font_color = Color(0.32549, 0.764706, 0.286275, 1)
+outline_size = 3
 outline_color = Color(0, 0, 0, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_416wt"]
-font_color = Color(0.164706, 0.592157, 0.721569, 1)
-outline_size = 2
+font_color = Color(0.988235, 0.560784, 0.470588, 1)
+outline_size = 3
 outline_color = Color(0, 0, 0, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_6msuk"]
@@ -37,7 +42,77 @@ font_size = 12
 outline_size = 2
 outline_color = Color(0, 0, 0, 1)
 
-[node name="Card" type="Control" node_paths=PackedStringArray("name_label_big", "image_rect_big", "description_label", "cost_label_big", "race_type_label", "health_label_big", "armor_label", "attack_damage_label_big", "name_label_small", "image_rect_small", "cost_label_small", "health_label_small", "attack_damage_label_small")]
+[sub_resource type="Gradient" id="Gradient_dxljn"]
+resource_local_to_scene = true
+offsets = PackedFloat32Array(0, 0.90873, 0.988095)
+colors = PackedColorArray(0.270588, 0.623529, 0.239216, 1, 0.160784, 0.384314, 0.141176, 1, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_ps2s7"]
+gradient = SubResource("Gradient_dxljn")
+width = 32
+height = 32
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(1, 0.5)
+
+[sub_resource type="Gradient" id="Gradient_771yy"]
+resource_local_to_scene = true
+offsets = PackedFloat32Array(0, 0.90873, 0.988095)
+colors = PackedColorArray(0.92549, 0.278431, 0.14902, 1, 0.654902, 0.168627, 0.0666667, 1, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_idfms"]
+gradient = SubResource("Gradient_771yy")
+width = 32
+height = 32
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(1, 0.5)
+
+[sub_resource type="Gradient" id="Gradient_ty1ac"]
+resource_local_to_scene = true
+offsets = PackedFloat32Array(0, 0.90873, 0.988095)
+colors = PackedColorArray(0.113725, 0.580392, 0.796078, 1, 0.0470588, 0.380392, 0.529412, 1, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_ud7lu"]
+gradient = SubResource("Gradient_ty1ac")
+width = 32
+height = 32
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(1, 0.5)
+
+[sub_resource type="LabelSettings" id="LabelSettings_wulo1"]
+font_color = Color(0.215686, 0.690196, 0.92549, 1)
+outline_size = 3
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="Gradient" id="Gradient_52uv2"]
+resource_local_to_scene = true
+offsets = PackedFloat32Array(0, 0.90873, 0.988095)
+colors = PackedColorArray(0.858824, 0.67451, 0.203922, 1, 0.491521, 0.379495, 0.0886272, 1, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_fe3wu"]
+gradient = SubResource("Gradient_52uv2")
+width = 32
+height = 32
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(1, 0.5)
+
+[sub_resource type="Gradient" id="Gradient_2kccw"]
+resource_local_to_scene = true
+offsets = PackedFloat32Array(0, 0.90873, 0.988095)
+colors = PackedColorArray(1, 1, 1, 1, 0.441759, 0.445315, 0.428937, 1, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_3aa8h"]
+gradient = SubResource("Gradient_2kccw")
+width = 32
+height = 32
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(1, 0.5)
+
+[node name="Card" type="Control" node_paths=PackedStringArray("name_label_big", "image_rect_big", "description_label", "cost_label_big", "race_type_label", "health_label_big", "armor_label_big", "attack_damage_label_big", "name_label_small", "image_rect_small", "cost_label_small", "health_label_small", "attack_damage_label_small", "armor_label_small")]
 layout_mode = 3
 anchors_preset = 0
 script = ExtResource("1_5v28u")
@@ -47,13 +122,14 @@ description_label = NodePath("CardPanelBig/ReverseSide/DescriptionLabel")
 cost_label_big = NodePath("CardPanelBig/CostLabel")
 race_type_label = NodePath("CardPanelBig/FaceSide/RaceTypeLabel")
 health_label_big = NodePath("CardPanelBig/FaceSide/HealthLabel")
-armor_label = NodePath("CardPanelBig/ArmorLabel")
+armor_label_big = NodePath("CardPanelBig/ArmorLabel")
 attack_damage_label_big = NodePath("CardPanelBig/FaceSide/ADLabel")
 name_label_small = NodePath("CardPanelSmall/NameLabel")
 image_rect_small = NodePath("CardPanelSmall/ImagePanel/TextureRect")
-cost_label_small = NodePath("CardPanelSmall/CostLabel")
-health_label_small = NodePath("CardPanelSmall/HealthLabel")
-attack_damage_label_small = NodePath("CardPanelSmall/ADLabel")
+cost_label_small = NodePath("CardPanelSmall/CostSprite/CostLabel")
+health_label_small = NodePath("CardPanelSmall/HealthSprite/HealthLabel")
+attack_damage_label_small = NodePath("CardPanelSmall/DamageSprite/ADLabel")
+armor_label_small = NodePath("CardPanelSmall/ArmorSprite/ArmorLabel")
 
 [node name="CardPanelBig" type="Control" parent="."]
 visible = false
@@ -221,7 +297,6 @@ offset_right = 70.0
 offset_bottom = 88.0
 
 [node name="Panel" type="Panel" parent="CardPanelSmall"]
-modulate = Color(0.240396, 0.394721, 0.493195, 1)
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -230,30 +305,6 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_rgrjn")
 
-[node name="NameLabel" type="Label" parent="CardPanelSmall"]
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -30.0
-offset_right = 69.0
-offset_bottom = 25.0
-grow_horizontal = 2
-label_settings = SubResource("LabelSettings_xioda")
-horizontal_alignment = 2
-
-[node name="CostLabel" type="Label" parent="CardPanelSmall"]
-layout_mode = 1
-anchors_preset = 2
-anchor_top = 1.0
-anchor_bottom = 1.0
-offset_left = 2.0
-offset_top = -160.0
-offset_right = 42.0
-offset_bottom = -137.0
-grow_vertical = 0
-label_settings = SubResource("LabelSettings_88qp0")
-
 [node name="ImagePanel" type="Panel" parent="CardPanelSmall"]
 clip_contents = true
 layout_mode = 1
@@ -261,9 +312,9 @@ anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = 7.0
-offset_top = 25.0
-offset_right = -7.0
-offset_bottom = -11.0
+offset_top = 11.0
+offset_right = -6.99989
+offset_bottom = -25.0001
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -278,33 +329,111 @@ grow_vertical = 2
 expand_mode = 5
 stretch_mode = 5
 
-[node name="HealthLabel" type="Label" parent="CardPanelSmall"]
+[node name="NameLabel" type="Label" parent="CardPanelSmall"]
 layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -63.0
+offset_top = 136.0
+offset_right = 63.0
+offset_bottom = 159.0
+grow_horizontal = 2
+horizontal_alignment = 1
+vertical_alignment = 3
+text_overrun_behavior = 3
+
+[node name="HealthSprite" type="Sprite2D" parent="CardPanelSmall"]
+position = Vector2(23, 125)
+texture = SubResource("GradientTexture2D_ps2s7")
+
+[node name="HealthLabel" type="Label" parent="CardPanelSmall/HealthSprite"]
 anchors_preset = 4
 anchor_top = 0.5
 anchor_bottom = 0.5
-offset_left = 7.0
-offset_top = 55.0
-offset_right = 89.0
-offset_bottom = 78.0
+offset_left = -15.0
+offset_top = -29.0
+offset_right = 16.0
+offset_bottom = -4.0
 grow_vertical = 2
 label_settings = SubResource("LabelSettings_4ajj6")
+horizontal_alignment = 1
+vertical_alignment = 1
 
-[node name="ADLabel" type="Label" parent="CardPanelSmall"]
-layout_mode = 1
+[node name="DamageSprite" type="Sprite2D" parent="CardPanelSmall"]
+position = Vector2(70, 125)
+texture = SubResource("GradientTexture2D_idfms")
+
+[node name="ADLabel" type="Label" parent="CardPanelSmall/DamageSprite"]
 anchors_preset = 6
 anchor_left = 1.0
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
-offset_left = -88.0
-offset_top = 55.0
-offset_right = -6.0
-offset_bottom = 78.0
+offset_left = -47.0
+offset_top = -29.0
+offset_right = -16.0
+offset_bottom = -4.0
 grow_horizontal = 0
 grow_vertical = 2
 label_settings = SubResource("LabelSettings_416wt")
-horizontal_alignment = 2
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ArmorSprite" type="Sprite2D" parent="CardPanelSmall"]
+position = Vector2(117, 125)
+texture = SubResource("GradientTexture2D_ud7lu")
+
+[node name="ArmorLabel" type="Label" parent="CardPanelSmall/ArmorSprite"]
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -47.0
+offset_top = -29.0
+offset_right = -16.0
+offset_bottom = -4.0
+grow_horizontal = 0
+grow_vertical = 2
+label_settings = SubResource("LabelSettings_wulo1")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CostSprite" type="Sprite2D" parent="CardPanelSmall"]
+position = Vector2(125, 15)
+texture = SubResource("GradientTexture2D_fe3wu")
+
+[node name="CostLabel" type="Label" parent="CardPanelSmall/CostSprite"]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = -19.0
+offset_top = -44.0
+offset_right = 21.0
+offset_bottom = -21.0
+grow_vertical = 0
+label_settings = SubResource("LabelSettings_88qp0")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TierClassSprite" type="Sprite2D" parent="CardPanelSmall"]
+position = Vector2(15, 15)
+texture = SubResource("GradientTexture2D_3aa8h")
+
+[node name="ClassLabel" type="Label" parent="CardPanelSmall/TierClassSprite"]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = -16.0
+offset_top = -41.0
+offset_right = 15.0
+offset_bottom = -18.0
+grow_vertical = 0
+text = "⚔"
+label_settings = SubResource("LabelSettings_88qp0")
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="MouseClickControl" type="Control" parent="."]
 layout_mode = 1
