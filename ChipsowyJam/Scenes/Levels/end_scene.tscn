@@ -22,11 +22,11 @@ offset_left = 16.0
 offset_top = 168.0
 offset_right = 672.0
 offset_bottom = 464.0
-text = "RED MINIONS KILLED:
-BLUE MINIONS KILLED:
+text = "PLAYER 1 MINIONS KILLED:
+PLAYER 2 (AI) MINIONS KILLED:
 
-BLUE TOWERS DESTROYED:
-RED TOWERS DESTROYED:
+PLAYER 1 MINIONS KILLED:
+PLAYER 2 (AI) TOWERS DESTROYED:
 "
 label_settings = SubResource("LabelSettings_lkrcj")
 

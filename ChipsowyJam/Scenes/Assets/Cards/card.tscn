@@ -1,7 +1,6 @@
-[gd_scene load_steps=25 format=3 uid="uid://bpcf3shjxg2ll"]
+[gd_scene load_steps=23 format=3 uid="uid://bpcf3shjxg2ll"]
 
 [ext_resource type="Script" path="res://Scripts/card.gd" id="1_5v28u"]
-[ext_resource type="Script" path="res://Scripts/AutoSizeLabel.gd" id="2_ifa87"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rgrjn"]
 border_width_left = 6
@@ -120,9 +119,6 @@ fill_to = Vector2(1, 0.5)
 
 [sub_resource type="LabelSettings" id="LabelSettings_7batp"]
 
-[sub_resource type="LabelSettings" id="LabelSettings_dqnlm"]
-line_spacing = -10.0
-
 [sub_resource type="LabelSettings" id="LabelSettings_6msuk"]
 font_size = 12
 outline_size = 2
@@ -132,16 +128,16 @@ outline_color = Color(0, 0, 0, 1)
 layout_mode = 3
 anchors_preset = 0
 script = ExtResource("1_5v28u")
-name_label_big = NodePath("CardPanelBig/FaceSide/AutoSizeNameLabelFront")
+name_label_big = NodePath("CardPanelBig/FaceSide/NameLabelFront")
 image_rect_big = NodePath("CardPanelBig/FaceSide/ImagePanel/TextureRect")
 description_label = NodePath("CardPanelBig/ReverseSide/DescriptionLabel")
-name_label_back = NodePath("CardPanelBig/ReverseSide/AutoSizeNameLabelBack")
+name_label_back = NodePath("CardPanelBig/ReverseSide/NameLabelBack")
 cost_label_big = NodePath("CardPanelBig/FaceSide/CostSprite/CostLabel")
-special_ability_label = NodePath("CardPanelBig/FaceSide/AutoSizeSpecialAbilityLabel")
+special_ability_label = NodePath("CardPanelBig/FaceSide/SpecialAbilityLabel")
 health_label_big = NodePath("CardPanelBig/FaceSide/HealthSprite/HealthLabel")
 armor_label_big = NodePath("CardPanelBig/FaceSide/ArmorSprite/ArmorLabel")
 attack_damage_label_big = NodePath("CardPanelBig/FaceSide/DamageSprite/ADLabel")
-name_label_small = NodePath("CardPanelSmall/AutoSizeNameLabel")
+name_label_small = NodePath("CardPanelSmall/NameLabel")
 image_rect_small = NodePath("CardPanelSmall/ImagePanel/TextureRect")
 cost_label_small = NodePath("CardPanelSmall/CostSprite/CostLabel")
 health_label_small = NodePath("CardPanelSmall/HealthSprite/HealthLabel")
@@ -290,30 +286,25 @@ label_settings = SubResource("LabelSettings_7batp")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="AutoSizeNameLabelFront" type="Label" parent="CardPanelBig/FaceSide"]
+[node name="NameLabelFront" type="Label" parent="CardPanelBig/FaceSide"]
 layout_mode = 0
 offset_left = 5.0
-offset_top = 139.0
+offset_top = 140.0
 offset_right = 145.0
-offset_bottom = 165.0
-theme_override_font_sizes/font_size = 18
+offset_bottom = 166.0
 horizontal_alignment = 1
 vertical_alignment = 1
-clip_text = true
-script = ExtResource("2_ifa87")
 
-[node name="AutoSizeSpecialAbilityLabel" type="Label" parent="CardPanelBig/FaceSide"]
+[node name="SpecialAbilityLabel" type="Label" parent="CardPanelBig/FaceSide"]
 layout_mode = 0
 offset_left = 5.0
-offset_top = 165.0
+offset_top = 166.0
 offset_right = 145.0
-offset_bottom = 201.0
-theme_override_font_sizes/font_size = 18
-label_settings = SubResource("LabelSettings_dqnlm")
+offset_bottom = 202.0
+theme_override_constants/line_spacing = -6
 horizontal_alignment = 1
-vertical_alignment = 1
+vertical_alignment = 2
 autowrap_mode = 3
-script = ExtResource("2_ifa87")
 
 [node name="ReverseSide" type="Control" parent="CardPanelBig"]
 visible = false
@@ -324,17 +315,12 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="AutoSizeNameLabelBack" type="Label" parent="CardPanelBig/ReverseSide"]
+[node name="NameLabelBack" type="Label" parent="CardPanelBig/ReverseSide"]
 layout_mode = 0
 offset_left = 5.0
 offset_top = 3.0
 offset_right = 145.0
 offset_bottom = 29.0
-theme_override_font_sizes/font_size = 8
-horizontal_alignment = 1
-vertical_alignment = 1
-clip_text = true
-script = ExtResource("2_ifa87")
 
 [node name="DescriptionLabel" type="Label" parent="CardPanelBig/ReverseSide"]
 layout_mode = 1
@@ -390,17 +376,15 @@ grow_vertical = 2
 expand_mode = 5
 stretch_mode = 5
 
-[node name="AutoSizeNameLabel" type="Label" parent="CardPanelSmall"]
+[node name="NameLabel" type="Label" parent="CardPanelSmall"]
 layout_mode = 0
-offset_left = 4.0
-offset_top = 134.0
-offset_right = 136.0
-offset_bottom = 160.0
-theme_override_font_sizes/font_size = 18
+offset_top = 135.0
+offset_right = 140.0
+offset_bottom = 161.0
 horizontal_alignment = 1
 vertical_alignment = 1
 clip_text = true
-script = ExtResource("2_ifa87")
+text_overrun_behavior = 3
 
 [node name="HealthSprite" type="Sprite2D" parent="CardPanelSmall"]
 position = Vector2(23, 125)
@@ -500,9 +484,9 @@ anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = -70.0
-offset_top = -72.0
+offset_top = -70.0
 offset_right = 70.0
-offset_bottom = 101.0
+offset_bottom = 103.0
 grow_horizontal = 2
 grow_vertical = 2
 

@@ -90,7 +90,11 @@ func update_card():
 		name_label_big.text = card_name
 		name_label_back.text = card_name
 		name_label_small.text = card_name
+		
 		var ls = LabelSettings.new()
+		ls.font_size = 20
+		while name_label_small.get_theme_font("font").get_string_size(card_name, name_label_small.horizontal_alignment, -1, ls.font_size).x > name_label_small.size.x:
+			ls.font_size -= 1
 		#modify label color depending on card's tier
 		var tier_value: int = tier
 		match tier_value:
@@ -150,8 +154,8 @@ func update_card():
 		special_ability_label.text = str(description)
 		health_label_big.text = str(health)
 		health_label_small.text = str(health)
-		attack_damage_label_big.text = str(attack_damage)
-		attack_damage_label_small.text = str(attack_damage)
+		attack_damage_label_big.text = str(attack_damage * attack_speed) #DPS
+		attack_damage_label_small.text = str(attack_damage * attack_speed) #DPS
 		armor_label_small.text = str(armor)
 		armor_label_big.text = str(armor)
 		var _race = str(mob_race.keys()[race])
@@ -161,7 +165,7 @@ func update_card():
 		else:
 			_race = _race.to_pascal_case()
 		description_label.text = str(health) + " Health" + "\n" + str(attack_damage) + " Attack Damage" + "\n" + \
-		str(attack_speed) + "/s Attack Speed\n"+ str(armor) + " Armor Points" + "\n" + \
+		str(attack_speed) + "/s Attack Speed\n"+ str(attack_damage* attack_speed) + " DPS\n"+ str(armor) + " Armor Points" + "\n" + \
 		str(card_tier.keys()[tier]) + " Tier" + "\n" +  _race + " Unit" + "\n" + \
 		str(attack_range) + " Attack Range"
 
