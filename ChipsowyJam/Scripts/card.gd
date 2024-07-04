@@ -3,8 +3,9 @@ extends Control
 @export var name_label_big: Label
 @export var image_rect_big: TextureRect
 @export var description_label: Label
+@export var name_label_back: Label
 @export var cost_label_big: Label
-@export var race_type_label: Label
+@export var special_ability_label: Label
 @export var health_label_big: Label
 @export var armor_label_big: Label
 @export var attack_damage_label_big: Label
@@ -86,6 +87,7 @@ func update_card():
 		$CardPanelBig/FaceSide.visible = true
 		$CardPanelBig/ReverseSide.visible = false
 		name_label_big.text = card_name
+		name_label_back.text = card_name
 		name_label_small.text = card_name
 		var ls = LabelSettings.new()
 		#modify label color depending on card's tier
@@ -103,8 +105,14 @@ func update_card():
 				ls.font_color =  Game.common_color
 		ls.outline_size = 3
 		ls.outline_color = Color.BLACK
+		var fv = FontVariation.new()
+		fv.set_variation_embolden(0.5)
 		name_label_big.label_settings = ls
+		name_label_big.add_theme_font_override("font", fv)
 		name_label_small.label_settings = ls
+		name_label_small.add_theme_font_override("font", fv)
+		name_label_back.label_settings = ls
+		name_label_back.add_theme_font_override("font", fv)
 		#modify card's background color depending on card's race
 		var color
 		#0 - HUMAN_KINGDOM, 1 - OUTLAWS, 2 - MOUNTAIN_CLAN, 3 - FOREST_ORCS, 4 - BLOOD_BROTHERHOOD
@@ -137,7 +145,8 @@ func update_card():
 		image_rect_small.texture = image
 		cost_label_big.text = str(cost)
 		cost_label_small.text = str(cost)
-		race_type_label.text = str(mob_type.keys()[type]) + " " + str(mob_sub_type.keys()[sub_type])
+		#race_type_label.text = str(mob_type.keys()[type]) + " " + str(mob_sub_type.keys()[sub_type])
+		special_ability_label.text = str(description)
 		health_label_big.text = str(health)
 		health_label_small.text = str(health)
 		attack_damage_label_big.text = str(attack_damage)
