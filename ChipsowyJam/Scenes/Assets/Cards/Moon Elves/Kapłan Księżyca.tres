@@ -4,7 +4,7 @@
 
 [resource]
 script = ExtResource("1_sufkc")
-card_name = "Kapłan Księżyca"
+card_name = "Kapłan Księżyca "
 race = 6
 tier = 1
 description = "Aoe Heal / Next hit get 15 armor pen"

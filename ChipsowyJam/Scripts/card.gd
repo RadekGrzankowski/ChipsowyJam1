@@ -111,7 +111,7 @@ func update_card():
 		ls.outline_size = 3
 		ls.outline_color = Color.BLACK
 		var fv = FontVariation.new()
-		fv.set_variation_embolden(0.5)
+		fv.set_variation_embolden(0.45)
 		name_label_big.label_settings = ls
 		name_label_big.add_theme_font_override("font", fv)
 		name_label_small.label_settings = ls
@@ -154,8 +154,8 @@ func update_card():
 		special_ability_label.text = str(description)
 		health_label_big.text = str(health)
 		health_label_small.text = str(health)
-		attack_damage_label_big.text = str(attack_damage * attack_speed) #DPS
-		attack_damage_label_small.text = str(attack_damage * attack_speed) #DPS
+		attack_damage_label_big.text = str(snapped(attack_damage * attack_speed, 0.1)) #DPS
+		attack_damage_label_small.text = str(snapped(attack_damage * attack_speed, 0.1)) #DPS
 		armor_label_small.text = str(armor)
 		armor_label_big.text = str(armor)
 		var _race = str(mob_race.keys()[race])

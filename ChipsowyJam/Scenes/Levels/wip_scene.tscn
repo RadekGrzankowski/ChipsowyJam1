@@ -68,7 +68,7 @@
 [ext_resource type="Resource" uid="uid://uhvuwqevwyp5" path="res://Scenes/Assets/Cards/Moon Elves/Furia Nocy.tres" id="63_d68on"]
 [ext_resource type="Resource" uid="uid://inw77towcek3" path="res://Scenes/Assets/Cards/Beast/Gryf.tres" id="63_m54xj"]
 [ext_resource type="Resource" uid="uid://yfdqdijfylh6" path="res://Scenes/Assets/Cards/Beast/Niedzwiedz.tres" id="64_0qqpx"]
-[ext_resource type="Resource" uid="uid://dxahp34apqjbd" path="res://Scenes/Assets/Cards/Moon Elves/Kapłan Księzyyca.tres" id="64_x320a"]
+[ext_resource type="Resource" uid="uid://dxahp34apqjbd" path="res://Scenes/Assets/Cards/Moon Elves/Kapłan Księżyca.tres" id="64_x320a"]
 [ext_resource type="Resource" uid="uid://byd006ffprlk" path="res://Scenes/Assets/Cards/Moon Elves/Nimfa.tres" id="65_75r05"]
 [ext_resource type="Resource" uid="uid://bmmxkt3k85vnr" path="res://Scenes/Assets/Cards/Beast/Pająk.tres" id="65_quriq"]
 [ext_resource type="Resource" uid="uid://dup21rwc5xnny" path="res://Scenes/Assets/Cards/Beast/Troll.tres" id="66_m07xw"]

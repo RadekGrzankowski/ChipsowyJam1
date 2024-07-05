@@ -105,7 +105,7 @@ var moon_elves_color = Color.LEMON_CHIFFON
 var sun_elves_color = Color.DARK_ORANGE
 var beast_color = Color.DIM_GRAY
 
-var current_version: String = "0.1.116"
+var current_version: String = "0.1.128"
 
 func _ready():
 	var version_label: Label = Label.new()

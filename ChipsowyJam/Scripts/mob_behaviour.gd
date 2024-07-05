@@ -159,7 +159,6 @@ func take_damage(amount, attacker):
 				Game.player1_minions_bot -= 1
 			Game.player1_minions_killed += 1
 			Game.player2_gold += (5 + (card_value * 0.1))
-		is_hitted = false
 		queue_free()
 	else:
 		health_bar.set_value(mob_health)

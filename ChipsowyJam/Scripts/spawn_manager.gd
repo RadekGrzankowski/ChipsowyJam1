@@ -129,7 +129,6 @@ func spawn_bot(color: String, path: String, marker: Marker3D):
 		#INFO Placeholder model setting based on card race
 		#0 - HUMAN_KINGDOM, 1 - OUTLAWS, 2 - MOUNTAIN_CLAN, 3 - FOREST_ORCS, 4 - BLOOD_BROTHERHOOD
 		#5 - UNDEAD_PACT, 6 - MOON_ELVES, 7 - SUN_ELVES, 8 - BEAST
-		model = minion_models[1]
 		match bot_card.race:
 			0, 6, 7:
 				model = minion_models[7]

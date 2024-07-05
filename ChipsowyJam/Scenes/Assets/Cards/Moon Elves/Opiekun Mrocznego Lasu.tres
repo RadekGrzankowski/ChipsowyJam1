@@ -4,7 +4,7 @@
 
 [resource]
 script = ExtResource("1_3g3ys")
-card_name = "Opiekun Mrocznego Lasu"
+card_name = "Opiekun Mrocznego Lasu "
 race = 6
 tier = 3
 description = "AOE/Szansa na Przyzwanie Pająka przy zabójstwie 20%"

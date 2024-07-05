@@ -4,7 +4,7 @@
 
 [resource]
 script = ExtResource("1_kp1kg")
-card_name = "Strażnik Słońca"
+card_name = "Strażnik Słońca "
 race = 7
 tier = 1
 description = ""
