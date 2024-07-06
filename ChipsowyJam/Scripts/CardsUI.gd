@@ -59,7 +59,7 @@ func _ready():
 		call_deferred("fill_the_shop")
 	call_deferred("unlock_the_buttons")
 	var ui_manager: Node3D = get_node("/root/GameNode/HUD/GameUIManager")
-	ui_manager.new_barracks_level.connect(self.on_new_barrack_level)
+	#ui_manager.new_barracks_level.connect(self.on_new_barrack_level)
 	
 func on_new_barrack_level():
 	var barrack_level: int = Game.player1_barracks_level
@@ -202,6 +202,19 @@ func fill_the_shop():
 func _process(delta):
 	if Input.is_action_just_released("open_shop"):
 		open_ui()
+		
+	if Input.is_action_just_pressed("upgrades_left"):
+		if lane_value <= 0:
+			lane_value = 2
+		else:
+			lane_value -= 1
+		change_lane()
+	if Input.is_action_just_pressed("upgrades_right"):
+		if lane_value >= 2:
+			lane_value = 0
+		else:
+			lane_value += 1
+		change_lane()
 		
 	if Input.is_key_label_pressed(KEY_1):
 		lane_value = 0

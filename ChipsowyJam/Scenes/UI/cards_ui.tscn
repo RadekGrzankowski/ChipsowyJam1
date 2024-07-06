@@ -85,6 +85,46 @@ offset_top = -267.0
 offset_right = 156.0
 offset_bottom = -207.0
 
+[node name="LanesLeftPanel" type="Panel" parent="CardsUI/LanesPanel"]
+self_modulate = Color(0.505882, 0.505882, 0.505882, 1)
+layout_mode = 0
+offset_left = -33.0
+offset_top = 17.0
+offset_right = -8.0
+offset_bottom = 42.0
+
+[node name="Label" type="Label" parent="CardsUI/LanesPanel/LanesLeftPanel"]
+layout_mode = 0
+offset_top = -1.0
+offset_right = 25.0
+offset_bottom = 24.0
+text = "Q"
+label_settings = SubResource("LabelSettings_mtnm0")
+horizontal_alignment = 1
+vertical_alignment = 1
+clip_text = true
+text_overrun_behavior = 1
+
+[node name="LanesRightPanel" type="Panel" parent="CardsUI/LanesPanel"]
+self_modulate = Color(0.505882, 0.505882, 0.505882, 1)
+layout_mode = 0
+offset_left = 308.0
+offset_top = 17.0
+offset_right = 333.0
+offset_bottom = 42.0
+
+[node name="Label" type="Label" parent="CardsUI/LanesPanel/LanesRightPanel"]
+layout_mode = 0
+offset_top = -1.0
+offset_right = 25.0
+offset_bottom = 24.0
+text = "E"
+label_settings = SubResource("LabelSettings_mtnm0")
+horizontal_alignment = 1
+vertical_alignment = 1
+clip_text = true
+text_overrun_behavior = 1
+
 [node name="LaneButtons" type="HBoxContainer" parent="CardsUI/LanesPanel"]
 custom_minimum_size = Vector2(300, 60)
 layout_mode = 0
