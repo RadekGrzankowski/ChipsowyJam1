@@ -1,0 +1,18 @@
+[gd_resource type="Resource" load_steps=2 format=3 uid="uid://dtkfhhljyak6s"]
+
+[ext_resource type="Script" path="res://Scripts/Cards/card_stats.gd" id="1_fbu0y"]
+
+[resource]
+script = ExtResource("1_fbu0y")
+card_name = "Starszy Vampir"
+race = 4
+tier = 3
+description = "heal 12 on hit"
+cost = 200
+health = 350
+attack_damage = 50
+armor = 35
+attack_speed = 1.0
+attack_range = 1.5
+type = 0
+sub_type = 7

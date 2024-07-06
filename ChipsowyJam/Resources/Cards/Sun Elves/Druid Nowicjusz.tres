@@ -1,0 +1,18 @@
+[gd_resource type="Resource" load_steps=2 format=3 uid="uid://d3pwpix8d865b"]
+
+[ext_resource type="Script" path="res://Scripts/Cards/card_stats.gd" id="1_2goll"]
+
+[resource]
+script = ExtResource("1_2goll")
+card_name = "Druid Nowicjusz"
+race = 7
+tier = 0
+description = "Heal"
+cost = 20
+health = 80
+attack_damage = 10
+armor = 5
+attack_speed = 0.75
+attack_range = 4.0
+type = 2
+sub_type = 2

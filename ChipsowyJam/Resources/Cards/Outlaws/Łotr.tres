@@ -1,0 +1,18 @@
+[gd_resource type="Resource" load_steps=2 format=3 uid="uid://dkjnxwg4et74p"]
+
+[ext_resource type="Script" path="res://Scripts/Cards/card_stats.gd" id="1_wtow2"]
+
+[resource]
+script = ExtResource("1_wtow2")
+card_name = "Łotr"
+race = 1
+tier = 0
+description = "+2gold per kill"
+cost = 20
+health = 100
+attack_damage = 15
+armor = 0
+attack_speed = 1.0
+attack_range = 1.5
+type = 0
+sub_type = 0

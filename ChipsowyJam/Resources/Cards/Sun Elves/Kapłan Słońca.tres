@@ -1,0 +1,18 @@
+[gd_resource type="Resource" load_steps=2 format=3 uid="uid://cilc4u4tpvb3b"]
+
+[ext_resource type="Script" path="res://Scripts/Cards/card_stats.gd" id="1_4xtnl"]
+
+[resource]
+script = ExtResource("1_4xtnl")
+card_name = "Kapłan Słońca"
+race = 7
+tier = 2
+description = "On kill deal 20 to near units"
+cost = 120
+health = 150
+attack_damage = 30
+armor = 20
+attack_speed = 1.4
+attack_range = 4.0
+type = 2
+sub_type = 4

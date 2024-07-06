@@ -1,0 +1,18 @@
+[gd_resource type="Resource" load_steps=2 format=3 uid="uid://c2r0llxpkr7bh"]
+
+[ext_resource type="Script" path="res://Scripts/Cards/card_stats.gd" id="1_if17o"]
+
+[resource]
+script = ExtResource("1_if17o")
+card_name = "Duch Wiatru"
+race = 3
+tier = 1
+description = "Heal / AFter heal give 10 AS"
+cost = 50
+health = 125
+attack_damage = 10
+armor = 20
+attack_speed = 1.0
+attack_range = 3.0
+type = 0
+sub_type = 0

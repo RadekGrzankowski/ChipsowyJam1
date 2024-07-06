@@ -1,0 +1,18 @@
+[gd_resource type="Resource" load_steps=2 format=3 uid="uid://cs2k24m3fcxo0"]
+
+[ext_resource type="Script" path="res://Scripts/Cards/card_stats.gd" id="1_k27yg"]
+
+[resource]
+script = ExtResource("1_k27yg")
+card_name = "Dowódca Straży"
+race = 0
+tier = 2
+description = "20% chanse to stun"
+cost = 120
+health = 225
+attack_damage = 50
+armor = 50
+attack_speed = 0.5
+attack_range = 1.5
+type = 0
+sub_type = 0

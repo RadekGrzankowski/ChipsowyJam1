@@ -1,0 +1,20 @@
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://effa3sdfk2ia"]
+
+[ext_resource type="Script" path="res://Scripts/Cards/card_stats.gd" id="1_6yirq"]
+[ext_resource type="Texture2D" uid="uid://ws5w7vi85nqp" path="res://Resources/Cards/Undead Pact/Nekromanta.png" id="1_8dwyp"]
+
+[resource]
+script = ExtResource("1_6yirq")
+card_name = "Nektromanta"
+image = ExtResource("1_8dwyp")
+race = 5
+tier = 1
+description = "20% szans na pojawienie sie dodatkwoe truchło przy zabiciu Przeciwnik"
+cost = 50
+health = 125
+attack_damage = 12
+armor = 0
+attack_speed = 0.8
+attack_range = 3.0
+type = 2
+sub_type = 5

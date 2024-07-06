@@ -1,0 +1,18 @@
+[gd_resource type="Resource" load_steps=2 format=3 uid="uid://tam5qjj23gqb"]
+
+[ext_resource type="Script" path="res://Scripts/Cards/card_stats.gd" id="1_pucbs"]
+
+[resource]
+script = ExtResource("1_pucbs")
+card_name = "Wódz Wojenny"
+race = 3
+tier = 3
+description = "After kill near units get 10 % as"
+cost = 200
+health = 400
+attack_damage = 60
+armor = 1
+attack_speed = 70.0
+attack_range = 1.5
+type = 0
+sub_type = 0

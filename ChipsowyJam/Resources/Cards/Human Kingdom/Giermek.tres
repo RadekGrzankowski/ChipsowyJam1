@@ -1,0 +1,18 @@
+[gd_resource type="Resource" load_steps=2 format=3 uid="uid://dv1kg0utxa6tq"]
+
+[ext_resource type="Script" path="res://Scripts/Cards/card_stats.gd" id="1_xtjc2"]
+
+[resource]
+script = ExtResource("1_xtjc2")
+card_name = "Giermek"
+race = 0
+tier = 0
+description = ""
+cost = 20
+health = 85
+attack_damage = 10
+armor = 20
+attack_speed = 1.0
+attack_range = 1.5
+type = 0
+sub_type = 0

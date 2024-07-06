@@ -1,0 +1,18 @@
+[gd_resource type="Resource" load_steps=2 format=3 uid="uid://cq21a2c7eij7"]
+
+[ext_resource type="Script" path="res://Scripts/Cards/card_stats.gd" id="1_u1s3e"]
+
+[resource]
+script = ExtResource("1_u1s3e")
+card_name = "Stary Ork"
+race = 2
+tier = 2
+description = ""
+cost = 120
+health = 350
+attack_damage = 60
+armor = 40
+attack_speed = 1.0
+attack_range = 1.5
+type = 0
+sub_type = 0

@@ -1,6 +1,6 @@
 [gd_scene load_steps=12 format=3 uid="uid://drr8l01a1ia4i"]
 
-[ext_resource type="Script" path="res://Scripts/CardsUI.gd" id="1_lbyja"]
+[ext_resource type="Script" path="res://Scripts/Cards/CardsUI.gd" id="1_lbyja"]
 [ext_resource type="PackedScene" uid="uid://bpcf3shjxg2ll" path="res://Scenes/Assets/Cards/card.tscn" id="2_ju84m"]
 [ext_resource type="PackedScene" uid="uid://bln5nembvaqdw" path="res://Scenes/Assets/Cards/card_zone.tscn" id="8_agvxe"]
 

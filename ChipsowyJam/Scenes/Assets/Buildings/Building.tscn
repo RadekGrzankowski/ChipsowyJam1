@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://j3r26g4shmbm"]
 
-[ext_resource type="Script" path="res://Scripts/buildings_behaviour.gd" id="1_b4qcv"]
+[ext_resource type="Script" path="res://Scripts/Buildings/buildings_behaviour.gd" id="1_f1e58"]
 [ext_resource type="PackedScene" uid="uid://yswx1jx6ncbw" path="res://Scenes/Assets/Buildings/Tower Projectile.tscn" id="2_w41p0"]
 [ext_resource type="PackedScene" uid="uid://8cdq6wa0c78s" path="res://Scenes/Assets/health_ui.tscn" id="3_s02xx"]
 
@@ -11,7 +11,7 @@ viewport_path = NodePath("SubViewport")
 resource_local_to_scene = true
 
 [node name="Building" type="StaticBody3D" groups=["building"]]
-script = ExtResource("1_b4qcv")
+script = ExtResource("1_f1e58")
 building_damage = 0
 building_armor = 0
 building_range = 0.0

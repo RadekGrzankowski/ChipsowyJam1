@@ -1,0 +1,17 @@
+[gd_resource type="Resource" load_steps=2 format=3 uid="uid://b58aod210i8k0"]
+
+[ext_resource type="Script" path="res://Scripts/Buildings/building_upgrade_stats.gd" id="1_ganem"]
+
+[resource]
+script = ExtResource("1_ganem")
+building_type = 1
+building_tier = 3
+upgrade_cost = 150
+bonus_health = 100
+bonus_damage = 0.0
+bonus_armor = 20
+bonus_range = 0.5
+bonus_speed = 0.5
+bonus_aoe = 0.0
+bonus_passive_gold = 0.0
+bonus_gold_speed = 0.0

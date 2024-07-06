@@ -1,6 +1,6 @@
 [gd_scene load_steps=23 format=3 uid="uid://bpcf3shjxg2ll"]
 
-[ext_resource type="Script" path="res://Scripts/card.gd" id="1_5v28u"]
+[ext_resource type="Script" path="res://Scripts/Cards/card.gd" id="1_7lfa2"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rgrjn"]
 border_width_left = 6
@@ -127,7 +127,7 @@ outline_color = Color(0, 0, 0, 1)
 [node name="Card" type="Control" node_paths=PackedStringArray("name_label_big", "image_rect_big", "description_label", "name_label_back", "cost_label_big", "special_ability_label", "health_label_big", "armor_label_big", "attack_damage_label_big", "name_label_small", "image_rect_small", "cost_label_small", "health_label_small", "attack_damage_label_small", "armor_label_small", "cost_sprite_small")]
 layout_mode = 3
 anchors_preset = 0
-script = ExtResource("1_5v28u")
+script = ExtResource("1_7lfa2")
 name_label_big = NodePath("CardPanelBig/FaceSide/NameLabelFront")
 image_rect_big = NodePath("CardPanelBig/FaceSide/ImagePanel/TextureRect")
 description_label = NodePath("CardPanelBig/ReverseSide/DescriptionLabel")

@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=3 uid="uid://mmq7d6i1fgjc"]
 
-[ext_resource type="Script" path="res://Scripts/mob_behaviour.gd" id="1_xxcsg"]
+[ext_resource type="Script" path="res://Scripts/Mobs/mob_behaviour.gd" id="1_n2622"]
 [ext_resource type="PackedScene" uid="uid://bi3f26bls5dm3" path="res://Scenes/Assets/Mobs/Ranged Projectile.tscn" id="2_1urje"]
 [ext_resource type="PackedScene" uid="uid://8cdq6wa0c78s" path="res://Scenes/Assets/health_ui.tscn" id="3_5ovpr"]
 
@@ -30,7 +30,7 @@ point_count = 2
 [node name="Minion" type="CharacterBody3D" groups=["mob"]]
 axis_lock_angular_x = true
 axis_lock_angular_z = true
-script = ExtResource("1_xxcsg")
+script = ExtResource("1_n2622")
 projectile_arrow = ExtResource("2_1urje")
 movement_speed = 3.5
 look_ahead = 1.5

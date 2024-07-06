@@ -1,0 +1,18 @@
+[gd_resource type="Resource" load_steps=2 format=3 uid="uid://d20ddmn51ar5l"]
+
+[ext_resource type="Script" path="res://Scripts/Cards/card_stats.gd" id="1_3g3ys"]
+
+[resource]
+script = ExtResource("1_3g3ys")
+card_name = "Opiekun Mrocznego Lasu "
+race = 6
+tier = 3
+description = "AOE/Szansa na Przyzwanie Pająka przy zabójstwie 20%"
+cost = 200
+health = 225
+attack_damage = 25
+armor = 25
+attack_speed = 1.0
+attack_range = 4.0
+type = 2
+sub_type = 5

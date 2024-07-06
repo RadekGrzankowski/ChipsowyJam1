@@ -20,6 +20,10 @@ var actual_minions_bot: String
 @onready var shop_ui_anim: AnimationPlayer = $HUD/CanvasLayer/UI/AnimationPlayer
 @onready var shop_ui: Control = $HUD/CanvasLayer/UI
 
+@export var tower_upgrades_array: Array[Resource]
+@export var barrack_upgrades_array: Array[Resource]
+@export var nexus_upgrades_array: Array[Resource]
+
 func _process(delta):
 	if Input.is_action_just_pressed("open_upgrades"):
 		if upgrades_ui.visible == false:

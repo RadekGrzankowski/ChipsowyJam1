@@ -1,0 +1,18 @@
+[gd_resource type="Resource" load_steps=2 format=3 uid="uid://vhb7g07k4fae"]
+
+[ext_resource type="Script" path="res://Scripts/Cards/card_stats.gd" id="1_ya3hd"]
+
+[resource]
+script = ExtResource("1_ya3hd")
+card_name = "Władca Run"
+race = 2
+tier = 3
+description = "Aoe"
+cost = 200
+health = 350
+attack_damage = 50
+armor = 30
+attack_speed = 0.7
+attack_range = 4.0
+type = 2
+sub_type = 5

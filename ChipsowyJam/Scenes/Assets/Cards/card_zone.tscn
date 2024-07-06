@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://bln5nembvaqdw"]
 
-[ext_resource type="Script" path="res://Scripts/card_zone.gd" id="1_1es2s"]
+[ext_resource type="Script" path="res://Scripts/Cards/card_zone.gd" id="1_1es2s"]
 [ext_resource type="Texture2D" uid="uid://ci4q8kydgqc1g" path="res://Textures/padlock.png" id="2_syi4t"]
 
 [node name="CardZone" type="Control"]

@@ -1,0 +1,17 @@
+[gd_resource type="Resource" load_steps=2 format=3 uid="uid://otju3di3o3sl"]
+
+[ext_resource type="Script" path="res://Scripts/Buildings/building_upgrade_stats.gd" id="1_7tdc0"]
+
+[resource]
+script = ExtResource("1_7tdc0")
+building_type = 2
+building_tier = 4
+upgrade_cost = 400
+bonus_health = 100
+bonus_damage = 30.0
+bonus_armor = 20
+bonus_range = 0.0
+bonus_speed = 0.0
+bonus_aoe = 0.0
+passive_gold = 2.0
+passive_gold_per_seconds = 1.0

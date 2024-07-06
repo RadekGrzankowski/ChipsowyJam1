@@ -1,0 +1,18 @@
+[gd_resource type="Resource" load_steps=2 format=3 uid="uid://li2hmpdkty3i"]
+
+[ext_resource type="Script" path="res://Scripts/Cards/card_stats.gd" id="1_nt8o4"]
+
+[resource]
+script = ExtResource("1_nt8o4")
+card_name = "Zapomniany Elf"
+race = 6
+tier = 2
+description = "On kill deal 20 near units"
+cost = 120
+health = 150
+attack_damage = 60
+armor = 20
+attack_speed = 0.8
+attack_range = 4.0
+type = 2
+sub_type = 4

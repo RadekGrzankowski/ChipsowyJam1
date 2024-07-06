@@ -1,0 +1,18 @@
+[gd_resource type="Resource" load_steps=2 format=3 uid="uid://c0aix03ktd8bq"]
+
+[ext_resource type="Script" path="res://Scripts/Cards/card_stats.gd" id="1_smkj5"]
+
+[resource]
+script = ExtResource("1_smkj5")
+card_name = "Druid"
+race = 7
+tier = 2
+description = "Aoe Heal"
+cost = 120
+health = 150
+attack_damage = 25
+armor = 25
+attack_speed = 0.75
+attack_range = 4.0
+type = 2
+sub_type = 2
