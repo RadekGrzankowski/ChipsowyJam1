@@ -3,6 +3,8 @@ var format_gold_stats: String = "PLAYER 1 GOLD: %s\nPLAYER 2(AI) GOLD: %s"
 var format_minions_top: String = "P1 MINIONS TOP: %s\nP2 MINIONS TOP: %s"
 var format_minions_mid: String = "P1 MINIONS MID: %s\nP2 MINIONS MID: %s"
 var format_minions_bot: String = "P1 MINIONS BOT: %s\nP2 MINIONS BOT: %s"
+var format_upgrade_info_panel: String = "UPGRADE COST: %s\nHEALTH: %sHP -> %sHP (+%sHP)"
+var format_bonus_damage: String = "\nDAMAGE: %sAD -> %sAD (+%sAD)"
 
 var actual_gold_stats: String
 var actual_minions_top: String
@@ -23,6 +25,23 @@ var actual_minions_bot: String
 @export var tower_upgrades_array: Array[Resource]
 @export var barrack_upgrades_array: Array[Resource]
 @export var nexus_upgrades_array: Array[Resource]
+
+@onready var top_tower_button : Button = $HUD/UpgradesUI/BackgroundPanel/HBoxContainer/TowerUpgrades/TopTower
+@onready var mid_tower_button : Button = $HUD/UpgradesUI/BackgroundPanel/HBoxContainer/TowerUpgrades/MidTower
+@onready var bot_tower_button : Button = $HUD/UpgradesUI/BackgroundPanel/HBoxContainer/TowerUpgrades/BotTower
+@onready var top_barrack_button : Button = $HUD/UpgradesUI/BackgroundPanel/HBoxContainer/BarrackUpgrades/TopBarrack
+@onready var mid_barrack_button : Button = $HUD/UpgradesUI/BackgroundPanel/HBoxContainer/BarrackUpgrades/MidBarrack
+@onready var bot_barrack_button : Button = $HUD/UpgradesUI/BackgroundPanel/HBoxContainer/BarrackUpgrades/BotBarrack
+@onready var nexus_button : Button = $HUD/UpgradesUI/BackgroundPanel/HBoxContainer/NexusUpgrades/Nexus
+
+func _ready():
+	top_tower_button.text = "TOP TOWER UPGRADE TIER 1\nCOST - " + str(tower_upgrades_array[0].upgrade_cost) + "G"
+	mid_tower_button.text = "MID TOWER UPGRADE TIER 1\nCOST - " + str(tower_upgrades_array[0].upgrade_cost)+ "G"
+	bot_tower_button.text = "BOT TOWER UPGRADE TIER 1\nCOST - " + str(tower_upgrades_array[0].upgrade_cost)+ "G"
+	top_barrack_button.text = "TOP BARRACK UPGRADE TIER 1\nCOST - " + str(barrack_upgrades_array[0].upgrade_cost)+ "G"
+	mid_barrack_button.text = "MID BARRACK UPGRADE TIER 1\nCOST - " + str(barrack_upgrades_array[0].upgrade_cost)+ "G"
+	bot_barrack_button.text = "BOT BARRACK UPGRADE TIER 1\nCOST - " + str(barrack_upgrades_array[0].upgrade_cost)+ "G"
+	nexus_button.text = "NEXUS UPGRADE TIER 1\nCOST - " + str(nexus_upgrades_array[0].upgrade_cost)+ "G"
 
 func _process(delta):
 	if Input.is_action_just_pressed("open_upgrades"):
@@ -80,37 +99,47 @@ func upgrade_barracks(level: int, cost: int):
 
 func _on_upgrade_button_mouse_entered(type: String, lane: String, tier: int):
 	upgrade_info_panel.visible = true
-	## The upgrade info box should appear near the mouse
+	var building = get_tree().get_nodes_in_group(lane.capitalize()+type.capitalize())[0]
 	match type:
 		"tower":
 			upgrade_info_panel.get_node("Title").text = type.capitalize() + " " + lane.capitalize() + " Lane \nUpgrade the building to Tier " + str(tier)
+			upgrade_info_panel.get_node("Description").text = format_upgrade_info_panel % [tower_upgrades_array[tier - 1].upgrade_cost, building.building_health,\
+			building.building_health+tower_upgrades_array[tier - 1].bonus_health, tower_upgrades_array[tier - 1].bonus_health]
+			if tower_upgrades_array[tier - 1].bonus_damage > 0:
+				upgrade_info_panel.get_node("Description").text += format_bonus_damage % [building.building_damage, \
+				building.building_damage+tower_upgrades_array[tier - 1].bonus_damage, tower_upgrades_array[tier - 1].bonus_damage]
 			match lane:
 				"top":
-					upgrade_info_panel.position = get_node("HUD/UpgradesUI/BackgroundPanel/HBoxContainer/TowerUpgrades/TopTower").position - Vector2(280, 125)
+					upgrade_info_panel.position = top_tower_button.position - Vector2(280, 125)
 				"mid":
-					upgrade_info_panel.position = get_node("HUD/UpgradesUI/BackgroundPanel/HBoxContainer/TowerUpgrades/MidTower").position - Vector2(280, 125)
+					upgrade_info_panel.position = mid_tower_button.position - Vector2(280, 125)
 				"bot":
-					upgrade_info_panel.position = get_node("HUD/UpgradesUI/BackgroundPanel/HBoxContainer/TowerUpgrades/BotTower").position -  Vector2(280, 125)
+					upgrade_info_panel.position = bot_tower_button.position -  Vector2(280, 125)
 		"barrack":
 			upgrade_info_panel.get_node("Title").text = type.capitalize() + " " + lane.capitalize() + " Lane \nUpgrade the building to Tier " + str(tier)
 			match lane:
 				"top":
-					upgrade_info_panel.position = get_node("HUD/UpgradesUI/BackgroundPanel/HBoxContainer/BarrackUpgrades/TopBarrack").position - Vector2(-60, 125)
+					upgrade_info_panel.position = top_barrack_button.position - Vector2(-60, 125)
 				"mid":
-					upgrade_info_panel.position = get_node("HUD/UpgradesUI/BackgroundPanel/HBoxContainer/BarrackUpgrades/MidBarrack").position - Vector2(-60, 125)
+					upgrade_info_panel.position = mid_barrack_button.position - Vector2(-60, 125)
 				"bot":
-					upgrade_info_panel.position = get_node("HUD/UpgradesUI/BackgroundPanel/HBoxContainer/BarrackUpgrades/BotBarrack").position - Vector2(-60, 125)
+					upgrade_info_panel.position = bot_barrack_button.position - Vector2(-60, 125)
 		"nexus":
 			upgrade_info_panel.get_node("Title").text = type.capitalize() + "\nUpgrade the building to Tier " + str(tier)
-			upgrade_info_panel.position = get_node("HUD/UpgradesUI/BackgroundPanel/HBoxContainer/NexusUpgrades/Nexus").position - Vector2(-400, 0)
+			upgrade_info_panel.position = nexus_button.position - Vector2(-400, 0)
+	
 
 func _on_upgrade_button_mouse_exited():
 	upgrade_info_panel.visible = false
+	upgrade_info_panel.get_node("Title").text = ""
+	upgrade_info_panel.get_node("Description").text = ""
 	
 	
 func _on_upgrade_button_pressed(type: String, lane: String, tier: int):
 	var node_string = ""
-	node_string = "HUD/UpgradesUI/BackgroundPanel/HBoxContainer/"+str(type).capitalize()+"Upgrades/"+str(lane).capitalize()+str(type).capitalize()
+	node_string = "HUD/UpgradesUI/BackgroundPanel/HBoxContainer/"+type.capitalize()+"Upgrades/"+lane.capitalize()+type.capitalize()
+	var building = get_tree().get_nodes_in_group(lane.capitalize()+type.capitalize())[0] #0 - p1 team, 1 - p2 team
 	var button = get_node(node_string)
 	print(button)
+	print(building)
 	#print(type, " ", lane, " ", tier)
