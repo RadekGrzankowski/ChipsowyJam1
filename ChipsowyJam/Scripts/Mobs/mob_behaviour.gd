@@ -97,8 +97,8 @@ func _ready():
 				walk_anim = "Walk"
 			"Death":
 				death_anim = "Death"
-	if ability_activation == 6:
-		special_ability(self)
+	#if ability_activation == 6:
+		#special_ability(self)
 	
 func initialize(card, team: String, main_path: String, model: PackedScene):
 	if card != null:
@@ -153,15 +153,15 @@ func take_damage(amount, attacker):
 		return
 	is_hitted = true
 	mob_health -= int(amount * get_reduction())
-	if ability_activation == 2:
-		special_ability(self)
+	#if ability_activation == 2:
+		#special_ability(self)
 	if mob_health <= 0:
 		attacker.change_target(self)
 
-		if ability_activation == 4:
-			special_ability(self)
-		if attacker.ability_activation == 3:
-			special_ability(attacker)
+		#if ability_activation == 4:
+			#special_ability(self)
+		#if attacker.ability_activation == 3:
+			#special_ability(attacker)
 
 		if teamName == "red":
 			if path == "top":
