@@ -6,10 +6,19 @@ enum lane {TOP, MIDDLE, BOTTOM}
 @export var building_damage: int = 20
 @export var building_armor: int = 5
 @export var building_health: int = 500
+var health_value: int
 @export var building_tier: int = 0 #TOWER Tiers: 0-3, BARRACK Tiers: 0-4, NEXUS Tiers: 0-4
 @export var building_range: float = 5.0
 @export var building_lane: lane
+var building_speed: float = 1.0
 var teamName: String
+#Upgradeable AOE variables
+var aoe_enabled: bool = false
+var aoe_dmg_percentage: float = 0.0
+#Passive gold for Nexus variables
+var passive_gold_enabled: bool = false
+var passive_gold_amount: float = 0
+var passive_gold_time: float = 0
 
 @onready var nexus_model: PackedScene = preload("res://Scenes/Assets/Buildings/Models/Nexus.tscn")
 @onready var barrack_model: PackedScene = preload("res://Scenes/Assets/Buildings/Models/Barrack.tscn")
@@ -36,9 +45,10 @@ var spawned_projectile: Node3D
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	health_value = building_health
 	health_bar.set_max(building_health)
-	health_bar.set_value(building_health)
-	health_label.text = str(building_health) + "HP"
+	health_bar.set_value(health_value)
+	health_label.text = str(health_value) + "HP"
 	var ls = LabelSettings.new()
 	ls.outline_size = 6
 	ls.outline_color = Color.BLACK
@@ -79,13 +89,19 @@ func _ready():
 				_mesh.mesh.surface_set_material(0, light_red)
 				_mesh.mesh.surface_set_material(1, dark_red)
 	detection_shape.shape.radius = building_range
+	update_stats()
+
+func update_stats():
 	stats_label.text = str(type.keys()[building_type]) + " - " + str(lane.keys()[building_lane]) + "\n" +\
 	str(building_damage) + "AD" + " - " + str(building_armor) + "ARMOR" + "\n" +\
 	str(building_tier) + " Tier"
-	
+	health_bar.set_max(building_health)
+	health_bar.set_value(health_value)
+	health_label.text = str(health_value) + "HP"
+
 func take_damage(amount, attacker):
-	building_health -= int(amount * check_armor())
-	if building_health <= 0:
+	health_value -= int(amount * check_armor())
+	if health_value <= 0:
 		if building_type == type.TOWER:
 			attacker.change_target(self)
 			if teamName == "red":
@@ -109,8 +125,8 @@ func take_damage(amount, attacker):
 				Game.winner = "PLAYER 2"
 			get_tree().change_scene_to_file("res://Scenes/Levels/end_scene.tscn")
 	else:
-		health_label.text = str(building_health) + "HP"
-		health_bar.set_value(building_health)
+		health_label.text = str(health_value) + "HP"
+		health_bar.set_value(health_value)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):

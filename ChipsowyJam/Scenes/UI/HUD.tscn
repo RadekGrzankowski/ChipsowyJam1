@@ -134,6 +134,7 @@ text = "Bot AI Panel - F1 key"
 
 [node name="UpgradesUI" type="CanvasLayer" parent="GameUIManager/HUD"]
 layer = 2
+visible = false
 
 [node name="Upgrade info" type="Panel" parent="GameUIManager/HUD/UpgradesUI"]
 visible = false

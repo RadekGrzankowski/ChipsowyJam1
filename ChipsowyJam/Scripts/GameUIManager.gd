@@ -8,10 +8,10 @@ var format_upgrade_cost: String = "UPGRADE COST: [b][color=#dbac34]%sG[/color][/
 var format_bonus_health: String = "\nHEALTH: %sHP -> [b][color=#53c349]%sHP[/color][/b] ([color=#53c349]+%sHP[/color])"
 var format_bonus_damage: String = "\nDAMAGE: %sAD -> [b][color=#fc8f78]%sAD[/color][/b] ([color=#fc8f78]+%sAD[/color])"
 var format_bonus_armor: String = "\nARMOR: %sARM -> [b][color=#37b0ec]%sARM[/color][/b] ([color=#37b0ec]+%sARM[/color])"
-var format_bonus_speed: String = "\nSPEED: %ss -> [b][color=WHITE]%ss[/color][/b] ([color=WHITE]+%ss[/color])"
+var format_bonus_speed: String = "\nSPEED: %ss -> [b][color=WHITE]%ss[/color][/b] ([color=WHITE]-%ss[/color])"
 var format_bonus_range: String = "\nRANGE: %s -> [b][color=WHITE]%s[/color][/b] ([color=WHITE]+%s[/color])"
-var format_bonus_aoe: String = "\nAOE: %s% -> [b][color=WHITE]%s%[/color][/b] ([color=WHITE]+%s%[/color])"
-var format_bonus_gold: String = "\nGOLD: %s/%ss -> [b][color=GOLD]%s[/color]/%ss[/b] ([color=GOLD]+%s/%ss[/color])"
+var format_bonus_aoe: String = "\nAOE: %s -> [b][color=WHITE]%s[/color][/b] ([color=WHITE]+%s[/color])"
+var format_bonus_gold: String = "\nGOLD INCOME: %sG/1s -> [b][color=GOLD]%sG[/color]/1s[/b]"
 
 var actual_gold_stats: String
 var actual_minions_top: String
@@ -72,20 +72,9 @@ func _process(delta):
 
 func _on_exit_button_pressed():
 	upgrades_ui.visible = false
-
-func _on_upgrade_button_mouse_entered(type: String, lane: String, tier: int):
-	if !allow_delay:
-		return
-	allow_delay = false
-	left_the_button = false
-	#Delay before displaying panel
-	await get_tree().create_timer(0.3).timeout
-	allow_delay = true
-	if left_the_button == true:
-		return
+	
+func update_upgrade_panel(type: String, lane: String, tier: int):
 	var building = get_tree().get_nodes_in_group(lane.capitalize()+type.capitalize())[0]
-	var node_string = "HUD/UpgradesUI/BackgroundPanel/HBoxContainer/"+type.capitalize()+"Upgrades/"+lane.capitalize()+type.capitalize()
-	upgrade_info_panel.position = $HUD/UpgradesUI/BackgroundPanel.get_global_mouse_position()
 	#INFO gets custom upgrade info panel text based on buttons variables
 	var _lane : String = "" if lane == "" else lane.capitalize() + " Lane"
 	upgrade_info_panel.get_node("Title").text = type.capitalize() + " " + _lane+"\nUpgrade the building to Tier " + str(tier)
@@ -98,11 +87,52 @@ func _on_upgrade_button_mouse_entered(type: String, lane: String, tier: int):
 	var _bonus_hp = array[array_index].bonus_health
 	upgrade_info_panel.get_node("Description").text += format_bonus_health % [_hp, _hp + _bonus_hp, _bonus_hp]
 	if array[array_index].bonus_damage > 0:
-		var _dmg = building.building_damage
-		var _bonus_dmg = array[array_index].bonus_damage
-		upgrade_info_panel.get_node("Description").text += format_bonus_damage % [_dmg, _dmg + _bonus_dmg, _bonus_dmg]
-	
+		var _value = building.building_damage
+		var _bonus_value = array[array_index].bonus_damage
+		upgrade_info_panel.get_node("Description").text += format_bonus_damage % [_value, _value + _bonus_value, _bonus_value]
+	if array[array_index].bonus_armor > 0:
+		var _value = building.building_armor
+		var _bonus_value = array[array_index].bonus_armor
+		upgrade_info_panel.get_node("Description").text += format_bonus_armor % [_value, _value + _bonus_value, _bonus_value]
+	if array[array_index].bonus_range > 0:
+		var _value = building.building_range
+		var _bonus_value = array[array_index].bonus_range
+		upgrade_info_panel.get_node("Description").text += format_bonus_range % [_value, _value + _bonus_value, _bonus_value]
+	if array[array_index].bonus_speed > 0:
+		var _value = building.building_speed
+		var _bonus_value = array[array_index].bonus_speed
+		upgrade_info_panel.get_node("Description").text += format_bonus_speed % [_value, _value - _bonus_value, _bonus_value]
+	if array[array_index].bonus_aoe > 0:
+		var _value = building.aoe_dmg_percentage
+		var _bonus_value = array[array_index].bonus_aoe
+		upgrade_info_panel.get_node("Description").text += format_bonus_aoe % [_value, _value + _bonus_value, _bonus_value]
+	if array[array_index].passive_gold > 0:
+		var _value = building.passive_gold_amount
+		var _value_time = building.passive_gold_time
+		var _building_gps = 0
+		if _value > 0:
+			_building_gps = _value/_value_time
+		var _bonus_value = array[array_index].passive_gold
+		var _bonus_time = array[array_index].passive_gold_per_seconds
+		var _bonus_gps = _bonus_value/_bonus_time
+		upgrade_info_panel.get_node("Description").text += format_bonus_gold % [snapped(_building_gps, 0.01) , snapped(_bonus_gps, 0.01)]
 
+func _on_upgrade_button_mouse_entered(type: String, lane: String, tier: int):
+	if !allow_delay:
+		return
+	allow_delay = false
+	left_the_button = false
+	#Delay before displaying panel
+	await get_tree().create_timer(0.3).timeout
+	allow_delay = true
+	if left_the_button == true:
+		return
+	var node_string = "HUD/UpgradesUI/BackgroundPanel/HBoxContainer/"+type.capitalize()+"Upgrades/"+lane.capitalize()+type.capitalize()
+	if get_node(node_string).disabled == true:
+		return
+	upgrade_info_panel.position = $HUD/UpgradesUI/BackgroundPanel.get_global_mouse_position()
+	update_upgrade_panel(type, lane, tier)
+	
 func _on_upgrade_button_mouse_exited():
 	left_the_button = true
 	upgrade_info_panel.visible = false
@@ -111,10 +141,33 @@ func _on_upgrade_button_mouse_exited():
 	
 	
 func _on_upgrade_button_pressed(type: String, lane: String, tier: int):
+	var array_index = tier - 1 
+	var array: Array = get(type+"_upgrades_array")
+	#If player does not have enough money for upgrade
+	if array[array_index].upgrade_cost > Game.player1_gold:
+		print("Not enought money!")
+		return
+	Game.player1_gold -= array[array_index].upgrade_cost
 	var node_string = ""
 	node_string = "HUD/UpgradesUI/BackgroundPanel/HBoxContainer/"+type.capitalize()+"Upgrades/"+lane.capitalize()+type.capitalize()
 	var building = get_tree().get_nodes_in_group(lane.capitalize()+type.capitalize())[0] #0 - p1 team, 1 - p2 team
 	var button = get_node(node_string)
-	print(button)
-	print(building)
-	#print(type, " ", lane, " ", tier)
+	building.building_tier = tier
+	building.health_value += array[array_index].bonus_health
+	building.building_health += array[array_index].bonus_health
+	#INFO building.building_health - maximum health of building
+	#INFO building._health_value - current health value of building
+	building.update_stats()
+	if array_index < array.size() - 1:
+		button.text = lane.to_upper() + " " + type.to_upper() + " UPGRADE TIER "+ str(tier + 1) +"\nCOST - " + str(array[tier].upgrade_cost) + "G"
+		button.disconnect("pressed", _on_upgrade_button_pressed)
+		button.pressed.connect(_on_upgrade_button_pressed.bind(type, lane, tier + 1))
+		button.disconnect("mouse_entered", _on_upgrade_button_mouse_entered)
+		button.mouse_entered.connect(_on_upgrade_button_mouse_entered.bind(type, lane, tier + 1))
+		update_upgrade_panel(type, lane, tier + 1)
+	else:
+		button.text = lane.to_upper() + " " + type.to_upper() + " IS FULLY UPGRADED!"
+		upgrade_info_panel.visible = false
+		upgrade_info_panel.get_node("Title").text = ""
+		upgrade_info_panel.get_node("Description").text = ""
+		button.disabled = true
