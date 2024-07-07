@@ -25,20 +25,4 @@ enum mob_sub_type {WARRIOR, ARCHER, HEALER, TANK, CASTER, AOE, ASSASSIN, ENCHANT
 
 @export var model: PackedScene
 
-func _init(p_name = "", p_image = null, p_cost = 0, p_race = 0, p_description = "", p_health = 0, 
-p_attack_damage = 0, p_armor = 0, p_attack_speed = 0.0, p_type = 0, p_tier = 0, p_sub_type = 0, p_range = 0.0, p_model = null):
-	card_name = p_name
-	image = p_image
-	cost = p_cost
-	race = p_race
-	description = p_description
-	health = p_health
-	attack_damage = p_attack_damage
-	armor = p_armor
-	attack_speed = p_attack_speed
-	attack_range = p_range
-	type = p_type
-	sub_type = p_sub_type
-	tier = p_tier
-	model = p_model
-	
+@export var special_ability_stats: MobSpecialAbility

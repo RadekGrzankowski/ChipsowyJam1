@@ -335,7 +335,6 @@ func _on_navigation_agent_3d_link_reached(details: Dictionary):
 		look_ahead = 0.25
 		
 func special_ability(target):
-	pass
 	match ability:
 		1:
 			heal(ability_amount, target)

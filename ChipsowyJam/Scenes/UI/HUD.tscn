@@ -1,7 +1,7 @@
 [gd_scene load_steps=26 format=3 uid="uid://0cdht6xykwu7"]
 
 [ext_resource type="Script" path="res://Scripts/Mobs/spawn_manager.gd" id="1_bvj0y"]
-[ext_resource type="PackedScene" uid="uid://mmq7d6i1fgjc" path="res://Scenes/Assets/Mobs/minion.tscn" id="3_1jksw"]
+[ext_resource type="PackedScene" uid="uid://mmq7d6i1fgjc" path="res://Scenes/Assets/Mobs/Minion.tscn" id="3_1jksw"]
 [ext_resource type="PackedScene" uid="uid://jw65hqu1mseq" path="res://Scenes/Assets/Mobs/Models/Ghost.tscn" id="4_6rao7"]
 [ext_resource type="PackedScene" uid="uid://b77fxsgmsjpkr" path="res://Scenes/Assets/Mobs/Models/Orc.tscn" id="4_e1iku"]
 [ext_resource type="Script" path="res://Scripts/GameUIManager.gd" id="4_v33no"]
