@@ -13,5 +13,5 @@ bonus_armor = 20
 bonus_range = 1.0
 bonus_speed = 0.0
 bonus_aoe = 0.2
-bonus_passive_gold = 0.0
-bonus_gold_speed = 0.0
+passive_gold = 0.0
+passive_gold_per_seconds = 0.0

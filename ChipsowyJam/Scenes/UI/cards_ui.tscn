@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://drr8l01a1ia4i"]
+[gd_scene load_steps=13 format=3 uid="uid://drr8l01a1ia4i"]
 
 [ext_resource type="Script" path="res://Scripts/Cards/CardsUI.gd" id="1_lbyja"]
 [ext_resource type="PackedScene" uid="uid://bpcf3shjxg2ll" path="res://Scenes/Assets/Cards/card.tscn" id="2_ju84m"]
@@ -42,21 +42,27 @@ outline_size = 2
 outline_color = Color(0, 0, 0, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yydpg"]
-bg_color = Color(0.180392, 0.180392, 0.180392, 1)
+bg_color = Color(0.223529, 0.223529, 0.223529, 1)
 border_width_left = 2
 border_width_top = 2
 border_width_right = 2
 border_width_bottom = 2
-border_color = Color(0.0627451, 0.0627451, 0.0627451, 1)
+border_color = Color(0.858824, 0.67451, 0.203922, 1)
 border_blend = true
 corner_radius_top_left = 2
 corner_radius_top_right = 2
 corner_radius_bottom_right = 2
 corner_radius_bottom_left = 2
 
+[sub_resource type="FontVariation" id="FontVariation_k6wds"]
+variation_embolden = 0.5
+
 [sub_resource type="LabelSettings" id="LabelSettings_wp4o5"]
+font = SubResource("FontVariation_k6wds")
 font_size = 30
 font_color = Color(0.858824, 0.67451, 0.203922, 1)
+outline_size = 4
+outline_color = Color(0, 0, 0, 1)
 
 [node name="CardsUI" type="CanvasLayer" node_paths=PackedStringArray("top_lane_deck", "middle_lane_deck", "bottom_lane_deck") groups=["CardsUI"]]
 script = ExtResource("1_lbyja")
@@ -469,8 +475,8 @@ text = "ROLL
 
 [node name="CardCostPopUp" type="Panel" parent="."]
 visible = false
-offset_right = 91.0
-offset_bottom = 48.0
+offset_right = 86.0
+offset_bottom = 34.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_yydpg")
 
 [node name="Label" type="Label" parent="CardCostPopUp"]

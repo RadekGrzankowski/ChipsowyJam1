@@ -59,7 +59,6 @@ func _ready():
 		call_deferred("fill_the_shop")
 	call_deferred("unlock_the_buttons")
 	var ui_manager: Node3D = get_node("/root/GameNode/HUD/GameUIManager")
-	#ui_manager.new_barracks_level.connect(self.on_new_barrack_level)
 	
 func on_new_barrack_level():
 	var barrack_level: int = Game.player1_barracks_level

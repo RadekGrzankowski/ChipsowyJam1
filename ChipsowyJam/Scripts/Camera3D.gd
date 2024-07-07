@@ -1,65 +1,38 @@
 extends Camera3D
-#
-#@onready var top_tower_ui: Control = get_node("/root/GameNode/HUD/GameUIManager/HUD/UpgradeControls/TopTowerUpgrades")
-#@onready var mid_tower_ui: Control = get_node("/root/GameNode/HUD/GameUIManager/HUD/UpgradeControls/MidTowerUpgrades")
-#@onready var bot_tower_ui: Control = get_node("/root/GameNode/HUD/GameUIManager/HUD/UpgradeControls/BotTowerUpgrades")
-#var mouse: Vector2
-#var mouse_on_UI: bool = false
 
-func _ready():
-	#INFO change to work with different UI's
-	#top_tower_ui.mouse_entered.connect(self._mouse_entered)
-	#top_tower_ui.mouse_exited.connect(self._mouse_exited)
-	#
-	#mid_tower_ui.mouse_entered.connect(self._mouse_entered)
-	#mid_tower_ui.mouse_exited.connect(self._mouse_exited)
-	#
-	#bot_tower_ui.mouse_entered.connect(self._mouse_entered)
-	#bot_tower_ui.mouse_exited.connect(self._mouse_exited)
-	#
-	#var buttons = get_tree().get_nodes_in_group("button")
-	#for button in buttons:
-		#button.mouse_entered.connect(self._mouse_entered)
-		#button.mouse_exited.connect(self._mouse_exited)
-	pass
+@onready var upgrades_ui: CanvasLayer = get_node("/root/GameNode/HUD/GameUIManager/HUD/UpgradesUI")
+@onready var cards_ui: Node = get_node("/root/GameNode/CardsUI")
+var mouse: Vector2
 
-func _input(event):
-	#if event is InputEventMouse:
-		#mouse = event.position
-	#if event is InputEventMouseButton and event.is_pressed():
-		#if event.button_index == MOUSE_BUTTON_LEFT && !mouse_on_UI:
-			#select_node()
-	pass
-			
-#func _mouse_entered():
-	#mouse_on_UI = true
-#func _mouse_exited():
-	#mouse_on_UI = false
+func _unhandled_input(event):
+	if event is InputEventMouse:
+		mouse = event.position
+	if event is InputEventMouseButton and event.is_pressed():
+		if event.button_index == MOUSE_BUTTON_LEFT: 
+			select_node()
+		
 
-#func select_node():
-	#var worldspace = get_world_3d().direct_space_state
-	#var start = project_ray_origin(mouse)
-	#var end = project_position(mouse, 1000)
-	#var result = worldspace.intersect_ray(PhysicsRayQueryParameters3D.create(start, end))
-	#if !result:
-		#hide_every_ui()
-		#return
-		#
-	#var collider = result.collider
+func select_node():
+	var worldspace = get_world_3d().direct_space_state
+	var start = project_ray_origin(mouse)
+	var end = project_position(mouse, 1000)
+	var result = worldspace.intersect_ray(PhysicsRayQueryParameters3D.create(start, end))
+	if !result:
+		return
+	var collider = result.collider
+	if collider.is_in_group("blue_team"):
+		if collider.is_in_group("TopTower") || collider.is_in_group("MidTower") || collider.is_in_group("BotTower") || collider.is_in_group("Nexus"):
+			upgrades_ui.visible = true
+		elif collider.is_in_group("TopBarrack"):
+			cards_ui.lane_value = 0
+			cards_ui.change_lane()
+		elif collider.is_in_group("MidBarrack"):
+			cards_ui.lane_value = 1
+			cards_ui.change_lane()
+		elif collider.is_in_group("BotBarrack"):
+			cards_ui.lane_value = 2
+			cards_ui.change_lane()
+	elif collider.is_in_group("red_team"):
+		print("Clicked on enemy building!")
 
-	#if collider.is_in_group("top_tower"):
-		#hide_every_ui()
-		#top_tower_ui.visible = true
-	#elif collider.is_in_group("mid_tower"):
-		#hide_every_ui()
-		#mid_tower_ui.visible = true
-	#elif collider.is_in_group("bot_tower"):
-		#hide_every_ui()
-		#bot_tower_ui.visible = true
-	#else:
-		#hide_every_ui()
-#
-#func hide_every_ui():
-	#top_tower_ui.visible = false
-	#mid_tower_ui.visible = false
-	#bot_tower_ui.visible = false
+

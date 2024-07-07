@@ -3,8 +3,15 @@ var format_gold_stats: String = "PLAYER 1 GOLD: %s\nPLAYER 2(AI) GOLD: %s"
 var format_minions_top: String = "P1 MINIONS TOP: %s\nP2 MINIONS TOP: %s"
 var format_minions_mid: String = "P1 MINIONS MID: %s\nP2 MINIONS MID: %s"
 var format_minions_bot: String = "P1 MINIONS BOT: %s\nP2 MINIONS BOT: %s"
-var format_upgrade_info_panel: String = "UPGRADE COST: %s\nHEALTH: %sHP -> %sHP (+%sHP)"
-var format_bonus_damage: String = "\nDAMAGE: %sAD -> %sAD (+%sAD)"
+
+var format_upgrade_cost: String = "UPGRADE COST: [b][color=#dbac34]%sG[/color][/b]"
+var format_bonus_health: String = "\nHEALTH: %sHP -> [b][color=#53c349]%sHP[/color][/b] ([color=#53c349]+%sHP[/color])"
+var format_bonus_damage: String = "\nDAMAGE: %sAD -> [b][color=#fc8f78]%sAD[/color][/b] ([color=#fc8f78]+%sAD[/color])"
+var format_bonus_armor: String = "\nARMOR: %sARM -> [b][color=#37b0ec]%sARM[/color][/b] ([color=#37b0ec]+%sARM[/color])"
+var format_bonus_speed: String = "\nSPEED: %ss -> [b][color=WHITE]%ss[/color][/b] ([color=WHITE]+%ss[/color])"
+var format_bonus_range: String = "\nRANGE: %s -> [b][color=WHITE]%s[/color][/b] ([color=WHITE]+%s[/color])"
+var format_bonus_aoe: String = "\nAOE: %s% -> [b][color=WHITE]%s%[/color][/b] ([color=WHITE]+%s%[/color])"
+var format_bonus_gold: String = "\nGOLD: %s/%ss -> [b][color=GOLD]%s[/color]/%ss[/b] ([color=GOLD]+%s/%ss[/color])"
 
 var actual_gold_stats: String
 var actual_minions_top: String
@@ -33,6 +40,9 @@ var actual_minions_bot: String
 @onready var mid_barrack_button : Button = $HUD/UpgradesUI/BackgroundPanel/HBoxContainer/BarrackUpgrades/MidBarrack
 @onready var bot_barrack_button : Button = $HUD/UpgradesUI/BackgroundPanel/HBoxContainer/BarrackUpgrades/BotBarrack
 @onready var nexus_button : Button = $HUD/UpgradesUI/BackgroundPanel/HBoxContainer/NexusUpgrades/Nexus
+
+var left_the_button: bool = false
+var allow_delay: bool = true
 
 func _ready():
 	top_tower_button.text = "TOP TOWER UPGRADE TIER 1\nCOST - " + str(tower_upgrades_array[0].upgrade_cost) + "G"
@@ -63,73 +73,38 @@ func _process(delta):
 func _on_exit_button_pressed():
 	upgrades_ui.visible = false
 
-func _upgrade_tower(lane: String, buff_type_of: String, node_type_of: String, value: int, level_of_upgrade: int):
-	Game.player1_gold -= 100
-	var upgrade_string = ""
-	var node_string = ""
-	
-	upgrade_string = "additional_player1_"+lane+"_tower_"+buff_type_of
-	node_string = "HUD/UpgradeControls/"+str(lane).capitalize()+"TowerUpgrades/"+node_type_of+"Upgrades/"+node_type_of+"Upgrade"
-	if level_of_upgrade < 4:
-		var curr_node = node_string + str(level_of_upgrade)
-		level_of_upgrade += 1
-		var next_node = node_string + str(level_of_upgrade)
-		get_node(next_node).disabled = false
-		get_node(curr_node).disabled = true
-	else:
-		var curr_node = node_string + str(level_of_upgrade)
-		get_node(curr_node).disabled = true
-		
-	Game.set_deferred(upgrade_string, value)
-
-func upgrade_barracks(level: int, cost: int):
-	Game.player1_gold -= cost
-	Game.player1_barracks_level += 1
-	var node_string = ""
-	node_string = "HUD/UpgradesUI/NexusPanel/Upgrades/HBoxContainer/BarrackLevels/BarrackUpgrade"
-	if level < 4:
-		var curr_node = node_string + str(level)
-		level += 1
-		var next_node = node_string + str(level)
-		get_node(next_node).disabled = false
-		get_node(curr_node).disabled = true
-	else:
-		var curr_node = node_string + str(level)
-		get_node(curr_node).disabled = true
-
 func _on_upgrade_button_mouse_entered(type: String, lane: String, tier: int):
-	upgrade_info_panel.visible = true
+	if !allow_delay:
+		return
+	allow_delay = false
+	left_the_button = false
+	#Delay before displaying panel
+	await get_tree().create_timer(0.3).timeout
+	allow_delay = true
+	if left_the_button == true:
+		return
 	var building = get_tree().get_nodes_in_group(lane.capitalize()+type.capitalize())[0]
-	match type:
-		"tower":
-			upgrade_info_panel.get_node("Title").text = type.capitalize() + " " + lane.capitalize() + " Lane \nUpgrade the building to Tier " + str(tier)
-			upgrade_info_panel.get_node("Description").text = format_upgrade_info_panel % [tower_upgrades_array[tier - 1].upgrade_cost, building.building_health,\
-			building.building_health+tower_upgrades_array[tier - 1].bonus_health, tower_upgrades_array[tier - 1].bonus_health]
-			if tower_upgrades_array[tier - 1].bonus_damage > 0:
-				upgrade_info_panel.get_node("Description").text += format_bonus_damage % [building.building_damage, \
-				building.building_damage+tower_upgrades_array[tier - 1].bonus_damage, tower_upgrades_array[tier - 1].bonus_damage]
-			match lane:
-				"top":
-					upgrade_info_panel.position = top_tower_button.position - Vector2(280, 125)
-				"mid":
-					upgrade_info_panel.position = mid_tower_button.position - Vector2(280, 125)
-				"bot":
-					upgrade_info_panel.position = bot_tower_button.position -  Vector2(280, 125)
-		"barrack":
-			upgrade_info_panel.get_node("Title").text = type.capitalize() + " " + lane.capitalize() + " Lane \nUpgrade the building to Tier " + str(tier)
-			match lane:
-				"top":
-					upgrade_info_panel.position = top_barrack_button.position - Vector2(-60, 125)
-				"mid":
-					upgrade_info_panel.position = mid_barrack_button.position - Vector2(-60, 125)
-				"bot":
-					upgrade_info_panel.position = bot_barrack_button.position - Vector2(-60, 125)
-		"nexus":
-			upgrade_info_panel.get_node("Title").text = type.capitalize() + "\nUpgrade the building to Tier " + str(tier)
-			upgrade_info_panel.position = nexus_button.position - Vector2(-400, 0)
+	var node_string = "HUD/UpgradesUI/BackgroundPanel/HBoxContainer/"+type.capitalize()+"Upgrades/"+lane.capitalize()+type.capitalize()
+	upgrade_info_panel.position = $HUD/UpgradesUI/BackgroundPanel.get_global_mouse_position()
+	#INFO gets custom upgrade info panel text based on buttons variables
+	var _lane : String = "" if lane == "" else lane.capitalize() + " Lane"
+	upgrade_info_panel.get_node("Title").text = type.capitalize() + " " + _lane+"\nUpgrade the building to Tier " + str(tier)
+	upgrade_info_panel.visible = true
+	#INFO gets custom upgrade info description text
+	var array_index = tier - 1 
+	var array = get(type+"_upgrades_array")
+	upgrade_info_panel.get_node("Description").text = format_upgrade_cost % [array[array_index].upgrade_cost]
+	var _hp = building.building_health
+	var _bonus_hp = array[array_index].bonus_health
+	upgrade_info_panel.get_node("Description").text += format_bonus_health % [_hp, _hp + _bonus_hp, _bonus_hp]
+	if array[array_index].bonus_damage > 0:
+		var _dmg = building.building_damage
+		var _bonus_dmg = array[array_index].bonus_damage
+		upgrade_info_panel.get_node("Description").text += format_bonus_damage % [_dmg, _dmg + _bonus_dmg, _bonus_dmg]
 	
 
 func _on_upgrade_button_mouse_exited():
+	left_the_button = true
 	upgrade_info_panel.visible = false
 	upgrade_info_panel.get_node("Title").text = ""
 	upgrade_info_panel.get_node("Description").text = ""

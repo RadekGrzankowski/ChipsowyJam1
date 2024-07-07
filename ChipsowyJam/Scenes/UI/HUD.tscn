@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://0cdht6xykwu7"]
+[gd_scene load_steps=26 format=3 uid="uid://0cdht6xykwu7"]
 
 [ext_resource type="Script" path="res://Scripts/Mobs/spawn_manager.gd" id="1_bvj0y"]
 [ext_resource type="PackedScene" uid="uid://mmq7d6i1fgjc" path="res://Scenes/Assets/Mobs/Minion.tscn" id="3_1jksw"]
@@ -25,15 +25,46 @@
 [sub_resource type="LabelSettings" id="LabelSettings_tnijv"]
 font_size = 18
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sk5jk"]
+bg_color = Color(0.2, 0.2, 0.2, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0.0313726, 0.0313726, 0.0313726, 1)
+border_blend = true
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+expand_margin_left = 2.0
+expand_margin_top = 2.0
+expand_margin_right = 2.0
+expand_margin_bottom = 2.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_n8sug"]
+bg_color = Color(0.196078, 0.196078, 0.196078, 1)
+border_width_left = 6
+border_width_top = 6
+border_width_right = 6
+border_width_bottom = 6
+border_color = Color(0.101961, 0.101961, 0.101961, 1)
+border_blend = true
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+expand_margin_left = 6.0
+expand_margin_top = 6.0
+expand_margin_right = 6.0
+expand_margin_bottom = 6.0
+
 [sub_resource type="LabelSettings" id="LabelSettings_e6r6v"]
 font_size = 26
 outline_size = 2
 outline_color = Color(0, 0, 0, 1)
 shadow_size = 2
 shadow_color = Color(0.00392157, 0.00392157, 0.00392157, 0.470588)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sk5jk"]
-bg_color = Color(0.113725, 0.113725, 0.113725, 1)
 
 [node name="UIController" type="Node3D"]
 
@@ -44,10 +75,10 @@ minion_models = [ExtResource("4_6rao7"), ExtResource("4_e1iku"), ExtResource("5_
 
 [node name="GameUIManager" type="Node3D" parent="." node_paths=PackedStringArray("upgrade_info_panel")]
 script = ExtResource("4_v33no")
-upgrade_info_panel = NodePath("HUD/UpgradesUI/BackgroundPanel/Upgrade info")
-tower_upgrades_array = [ExtResource("11_f53kw"), ExtResource("12_0g4kj"), ExtResource("13_gf0j7")]
-barrack_upgrades_array = [ExtResource("14_uilx5"), ExtResource("15_1v8fr"), ExtResource("16_kxjxp"), ExtResource("17_b5mna")]
-nexus_upgrades_array = [ExtResource("18_tqmii"), ExtResource("19_jbwph"), ExtResource("20_vm82y"), ExtResource("21_qna0q")]
+upgrade_info_panel = NodePath("HUD/UpgradesUI/Upgrade info")
+tower_upgrades_array = Array[Resource]([ExtResource("11_f53kw"), ExtResource("12_0g4kj"), ExtResource("13_gf0j7")])
+barrack_upgrades_array = Array[Resource]([ExtResource("14_uilx5"), ExtResource("15_1v8fr"), ExtResource("16_kxjxp"), ExtResource("17_b5mna")])
+nexus_upgrades_array = Array[Resource]([ExtResource("18_tqmii"), ExtResource("19_jbwph"), ExtResource("20_vm82y"), ExtResource("21_qna0q")])
 
 [node name="HUD" type="Node2D" parent="GameUIManager"]
 
@@ -104,6 +135,39 @@ text = "Bot AI Panel - F1 key"
 [node name="UpgradesUI" type="CanvasLayer" parent="GameUIManager/HUD"]
 layer = 2
 
+[node name="Upgrade info" type="Panel" parent="GameUIManager/HUD/UpgradesUI"]
+visible = false
+z_index = 1
+offset_right = 280.0
+offset_bottom = 430.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_sk5jk")
+
+[node name="Title" type="Label" parent="GameUIManager/HUD/UpgradesUI/Upgrade info"]
+layout_mode = 0
+offset_right = 280.0
+offset_bottom = 60.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 3
+text = "[Building] upgrade tier [Tier]"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Description" type="RichTextLabel" parent="GameUIManager/HUD/UpgradesUI/Upgrade info"]
+layout_mode = 0
+offset_left = 3.0
+offset_top = 67.0
+offset_right = 278.0
+offset_bottom = 427.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/line_separation = 15
+theme_override_constants/outline_size = 3
+theme_override_font_sizes/normal_font_size = 15
+theme_override_font_sizes/bold_font_size = 15
+bbcode_enabled = true
+text = "PLACEHOLDER UPGRADE DESCRIPTION
+"
+
 [node name="BackgroundPanel" type="Panel" parent="GameUIManager/HUD/UpgradesUI"]
 anchors_preset = 5
 anchor_left = 0.5
@@ -113,6 +177,7 @@ offset_top = 150.0
 offset_right = 509.5
 offset_bottom = 580.0
 grow_horizontal = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_n8sug")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="GameUIManager/HUD/UpgradesUI/BackgroundPanel"]
 layout_mode = 0
@@ -139,6 +204,7 @@ size_flags_vertical = 3
 [node name="BarrackUpgrades" type="VBoxContainer" parent="GameUIManager/HUD/UpgradesUI/BackgroundPanel/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
+alignment = 1
 
 [node name="TopBarrack" type="Button" parent="GameUIManager/HUD/UpgradesUI/BackgroundPanel/HBoxContainer/BarrackUpgrades"]
 layout_mode = 2
@@ -155,6 +221,7 @@ size_flags_vertical = 3
 [node name="NexusUpgrades" type="VBoxContainer" parent="GameUIManager/HUD/UpgradesUI/BackgroundPanel/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
+alignment = 2
 
 [node name="Nexus" type="Button" parent="GameUIManager/HUD/UpgradesUI/BackgroundPanel/HBoxContainer/NexusUpgrades"]
 layout_mode = 2
@@ -182,34 +249,6 @@ offset_bottom = 55.0
 grow_horizontal = 0
 theme_override_font_sizes/font_size = 30
 text = "X"
-
-[node name="Upgrade info" type="Panel" parent="GameUIManager/HUD/UpgradesUI/BackgroundPanel"]
-visible = false
-layout_mode = 0
-offset_left = -450.5
-offset_top = -150.0
-offset_right = -170.5
-offset_bottom = 280.0
-theme_override_styles/panel = SubResource("StyleBoxFlat_sk5jk")
-
-[node name="Title" type="Label" parent="GameUIManager/HUD/UpgradesUI/BackgroundPanel/Upgrade info"]
-layout_mode = 0
-offset_right = 280.0
-offset_bottom = 60.0
-text = "[Building] upgrade tier [Tier]"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Description" type="Label" parent="GameUIManager/HUD/UpgradesUI/BackgroundPanel/Upgrade info"]
-layout_mode = 0
-offset_top = 60.0
-offset_right = 280.0
-offset_bottom = 430.0
-theme_override_font_sizes/font_size = 13
-text = "PLACEHOLDER UPGRADE DESCRIPTION"
-horizontal_alignment = 1
-vertical_alignment = 1
-autowrap_mode = 3
 
 [node name="WaveTimer" type="Timer" parent="."]
 wait_time = 45.0
