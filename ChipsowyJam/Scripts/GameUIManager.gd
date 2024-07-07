@@ -5,13 +5,13 @@ var format_minions_mid: String = "P1 MINIONS MID: %s\nP2 MINIONS MID: %s"
 var format_minions_bot: String = "P1 MINIONS BOT: %s\nP2 MINIONS BOT: %s"
 
 var format_upgrade_cost: String = "UPGRADE COST: [b][color=#dbac34]%sG[/color][/b]"
-var format_bonus_health: String = "\nHEALTH: %sHP -> [b][color=#53c349]%sHP[/color][/b] ([color=#53c349]+%sHP[/color])"
-var format_bonus_damage: String = "\nDAMAGE: %sAD -> [b][color=#fc8f78]%sAD[/color][/b] ([color=#fc8f78]+%sAD[/color])"
-var format_bonus_armor: String = "\nARMOR: %sARM -> [b][color=#37b0ec]%sARM[/color][/b] ([color=#37b0ec]+%sARM[/color])"
-var format_bonus_speed: String = "\nSPEED: %ss -> [b][color=WHITE]%ss[/color][/b] ([color=WHITE]-%ss[/color])"
-var format_bonus_range: String = "\nRANGE: %s -> [b][color=WHITE]%s[/color][/b] ([color=WHITE]+%s[/color])"
-var format_bonus_aoe: String = "\nAOE: %s -> [b][color=WHITE]%s[/color][/b] ([color=WHITE]+%s[/color])"
-var format_bonus_gold: String = "\nGOLD INCOME: %sG/1s -> [b][color=GOLD]%sG[/color]/1s[/b]"
+var format_bonus_health: String = "\n\nHEALTH: %sHP -> [b][color=#53c349]%sHP[/color][/b] ([color=#53c349]+%sHP[/color])"
+var format_bonus_damage: String = "\n\nDAMAGE: %sAD -> [b][color=#fc8f78]%sAD[/color][/b] ([color=#fc8f78]+%sAD[/color])"
+var format_bonus_armor: String = "\n\nARMOR: %sARM -> [b][color=#37b0ec]%sARM[/color][/b] ([color=#37b0ec]+%sARM[/color])"
+var format_bonus_speed: String = "\n\nSPEED: %ss -> [b][color=WHITE]%ss[/color][/b] ([color=WHITE]-%ss[/color])"
+var format_bonus_range: String = "\n\nRANGE: %s -> [b][color=WHITE]%s[/color][/b] ([color=WHITE]+%s[/color])"
+var format_bonus_aoe: String = "\n\nAOE: %s -> [b][color=WHITE]%s[/color][/b] ([color=WHITE]+%s[/color])"
+var format_bonus_gold: String = "\n\nGOLD INCOME: %sG/1s -> [b][color=GOLD]%sG[/color]/1s[/b]"
 
 var actual_gold_stats: String
 var actual_minions_top: String
@@ -116,6 +116,7 @@ func update_upgrade_panel(type: String, lane: String, tier: int):
 		var _bonus_time = array[array_index].passive_gold_per_seconds
 		var _bonus_gps = _bonus_value/_bonus_time
 		upgrade_info_panel.get_node("Description").text += format_bonus_gold % [snapped(_building_gps, 0.01) , snapped(_bonus_gps, 0.01)]
+		upgrade_info_panel.get_node("Description").text += "\n\nIncreased chance of dropping better cards in the Shop!"
 
 func _on_upgrade_button_mouse_entered(type: String, lane: String, tier: int):
 	if !allow_delay:
@@ -155,9 +156,13 @@ func _on_upgrade_button_pressed(type: String, lane: String, tier: int):
 	building.building_tier = tier
 	building.health_value += array[array_index].bonus_health
 	building.building_health += array[array_index].bonus_health
+	building.building_damage += array[array_index].bonus_damage
+	building.building_armor +=  array[array_index].bonus_armor
 	#INFO building.building_health - maximum health of building
 	#INFO building._health_value - current health value of building
 	building.update_stats()
+	if type == "nexus":
+		get_tree().get_first_node_in_group("CardsUI").on_new_nexus_level()
 	if array_index < array.size() - 1:
 		button.text = lane.to_upper() + " " + type.to_upper() + " UPGRADE TIER "+ str(tier + 1) +"\nCOST - " + str(array[tier].upgrade_cost) + "G"
 		button.disconnect("pressed", _on_upgrade_button_pressed)

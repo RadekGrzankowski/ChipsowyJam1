@@ -60,12 +60,11 @@ func _ready():
 	call_deferred("unlock_the_buttons")
 	var ui_manager: Node3D = get_node("/root/GameNode/HUD/GameUIManager")
 	
-func on_new_barrack_level():
-	var barrack_level: int = Game.player1_barracks_level
-	common_label.text = "Common: " + str(Game.get("common_"+str(barrack_level))) + "%"
-	rare_label.text = "Rare: "+str(Game.get("rare_"+str(barrack_level))) + "%"
-	epic_label.text = "Epic: "+ str(Game.get("epic_"+str(barrack_level))) + "%"
-	legendary_label.text = "Legendary: " + str(Game.get("legendary_"+str(barrack_level))) + "%"
+func on_new_nexus_level():
+	common_label.text = "Common: " + str(Game.get("common_"+str(nexusNode.building_tier))) + "%"
+	rare_label.text = "Rare: "+str(Game.get("rare_"+str(nexusNode.building_tier))) + "%"
+	epic_label.text = "Epic: "+ str(Game.get("epic_"+str(nexusNode.building_tier))) + "%"
+	legendary_label.text = "Legendary: " + str(Game.get("legendary_"+str(nexusNode.building_tier))) + "%"
 
 func init_cards_array():
 	for card in human_kingdom_cards_array:
