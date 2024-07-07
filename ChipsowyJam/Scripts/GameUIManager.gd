@@ -158,6 +158,13 @@ func _on_upgrade_button_pressed(type: String, lane: String, tier: int):
 	building.building_health += array[array_index].bonus_health
 	building.building_damage += array[array_index].bonus_damage
 	building.building_armor +=  array[array_index].bonus_armor
+	building.building_speed -= array[array_index].bonus_speed
+	building.building_range += array[array_index].bonus_range
+	if array[array_index].passive_gold > 0:
+		if building.passive_gold_enabled == false:
+			building.passive_gold_enabled = true
+		building.passive_gold_amount = array[array_index].passive_gold
+		building.passive_gold_time = array[array_index].passive_gold_per_seconds
 	#INFO building.building_health - maximum health of building
 	#INFO building._health_value - current health value of building
 	building.update_stats()

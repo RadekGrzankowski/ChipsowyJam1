@@ -10,7 +10,7 @@ var health_value: int
 @export var building_tier: int = 0 #TOWER Tiers: 0-3, BARRACK Tiers: 0-4, NEXUS Tiers: 0-4
 @export var building_range: float = 5.0
 @export var building_lane: lane
-var building_speed: float = 1.0
+var building_speed: float = 0.5
 var teamName: String
 #Upgradeable AOE variables
 var aoe_enabled: bool = false
@@ -19,6 +19,7 @@ var aoe_dmg_percentage: float = 0.0
 var passive_gold_enabled: bool = false
 var passive_gold_amount: float = 0
 var passive_gold_time: float = 0
+var gold_started: bool = false
 
 @onready var nexus_model: PackedScene = preload("res://Scenes/Assets/Buildings/Models/Nexus.tscn")
 @onready var barrack_model: PackedScene = preload("res://Scenes/Assets/Buildings/Models/Barrack.tscn")
@@ -98,6 +99,8 @@ func update_stats():
 	health_bar.set_max(building_health)
 	health_bar.set_value(health_value)
 	health_label.text = str(health_value) + "HP"
+	attack_cooldown.wait_time = building_speed
+	detection_shape.shape.radius = building_range
 
 func take_damage(amount, attacker):
 	health_value -= int(amount * check_armor())
@@ -130,6 +133,17 @@ func take_damage(amount, attacker):
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	if building_type == type.NEXUS:
+		if passive_gold_enabled == true:
+			if gold_started:
+				return
+			gold_started = true
+			await get_tree().create_timer(passive_gold_time).timeout
+			if teamName == "blue":
+				Game.player1_gold += passive_gold_amount
+			if teamName == "red":
+				Game.player2_gold += passive_gold_amount
+			gold_started = false
 	if building_damage <= 0:
 		return
 	if is_attacking:
