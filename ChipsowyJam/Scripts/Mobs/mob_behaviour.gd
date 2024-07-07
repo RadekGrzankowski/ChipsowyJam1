@@ -31,6 +31,18 @@ var idle_anim: String
 var walk_anim: String
 var death_anim: String
 
+# Special Abilities
+var is_ability : bool
+var ability_activation : int = 0 ## 1 - On hit | 2 - On damaged | 3 - On kill | 4 - On death | 5 - On buff | 6 - On spawn 
+var ability: int
+var ability_amount: float ## If <1 - percentage, >1 - int amount
+var ability_elemental: String ## Fire, acid, blood etc
+var ability_radius: int ## Used for aoe abilities and auras
+var ability_chance: float ## Float <1 (percentage)
+var ability_duration: float ## Used for damage over time abilities as well as stuns and other timed abilities (in seconds) 
+var ability_buff_type: int ## 1 - Attack | 2 - Armor | 3 - Attack speed | 5 - Range | 6 - Movement Speed tbd
+
+
 func _ready():
 	super()
 	info_label.text = str(mob_name) + " " + str(mob_health) + "HP\n" + \
@@ -85,6 +97,8 @@ func _ready():
 				walk_anim = "Walk"
 			"Death":
 				death_anim = "Death"
+	if ability_activation == 6:
+		special_ability(self)
 	
 func initialize(card, team: String, main_path: String, model: PackedScene):
 	if card != null:
@@ -139,8 +153,16 @@ func take_damage(amount, attacker):
 		return
 	is_hitted = true
 	mob_health -= int(amount * get_reduction())
+	if ability_activation == 2:
+		special_ability(self)
 	if mob_health <= 0:
 		attacker.change_target(self)
+
+		if ability_activation == 4:
+			special_ability(self)
+		if attacker.ability_activation == 3:
+			special_ability(attacker)
+
 		if teamName == "red":
 			if path == "top":
 				Game.player2_minions_top -= 1
@@ -311,3 +333,51 @@ func _on_navigation_agent_3d_link_reached(details: Dictionary):
 		_link_end_point = details.link_exit_position
 		_is_travelling_links = true
 		look_ahead = 0.25
+		
+func special_ability(target):
+	pass
+	match ability:
+		1:
+			heal(ability_amount, target)
+		2:
+			stun(ability_duration, target)
+		3:
+			buff(ability_buff_type, ability_duration, ability_amount, target)
+		4:
+			explode(ability_amount, target)
+		5:
+			ressurect(ability_chance, target)
+		6:
+			ot_damage(ability_elemental, ability_duration, target)
+		7:
+			aura(ability, ability_amount, ability_radius)
+
+### SPECIAL ABILITIES
+
+func heal(amount, target): 
+	target.mob_health += amount
+	pass
+func stun(duration, target): 
+	target.is_stunned = true
+	pass
+func buff(type, duration, amount, target):
+	if type == 1:
+		target.mob_attack += amount
+	elif type == 2:
+		target.mob_armor += amount
+	elif type == 3:
+		target.attack_speed += amount
+	elif type == 4:
+		target.attack_range += amount
+	elif type == 5:
+		target.move_speed += amount 
+	pass
+func explode(amount, target):
+	target.take_damage(amount, self)
+	pass
+func ressurect(chance, target):
+	pass
+func ot_damage(elemental, duration, target): 
+	pass
+func aura(type, amount, radius):
+	pass
