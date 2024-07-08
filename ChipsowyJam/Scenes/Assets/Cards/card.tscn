@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://bpcf3shjxg2ll"]
+[gd_scene load_steps=24 format=3 uid="uid://bpcf3shjxg2ll"]
 
 [ext_resource type="Script" path="res://Scripts/Cards/card.gd" id="1_7lfa2"]
 
@@ -121,10 +121,17 @@ fill_to = Vector2(1, 0.5)
 
 [sub_resource type="LabelSettings" id="LabelSettings_6msuk"]
 font_size = 12
-outline_size = 2
+outline_size = 3
 outline_color = Color(0, 0, 0, 1)
 
-[node name="Card" type="Control" node_paths=PackedStringArray("name_label_big", "image_rect_big", "description_label", "name_label_back", "cost_label_big", "special_ability_label", "health_label_big", "armor_label_big", "attack_damage_label_big", "name_label_small", "image_rect_small", "cost_label_small", "health_label_small", "attack_damage_label_small", "armor_label_small", "cost_sprite_small")]
+[sub_resource type="LabelSettings" id="LabelSettings_cwe28"]
+font_size = 22
+font_color = Color(0.827451, 0.709804, 0.239216, 1)
+outline_size = 5
+outline_color = Color(0, 0, 0, 1)
+shadow_size = 2
+
+[node name="Card" type="Control" node_paths=PackedStringArray("name_label_big", "image_rect_big", "description_label", "name_label_back", "cost_label_big", "special_ability_label", "health_label_big", "armor_label_big", "attack_damage_label_big", "name_label_small", "image_rect_small", "cost_label_small", "health_label_small", "attack_damage_label_small", "armor_label_small", "cost_sprite_small", "shop_sell_label")]
 layout_mode = 3
 anchors_preset = 0
 script = ExtResource("1_7lfa2")
@@ -144,6 +151,7 @@ health_label_small = NodePath("CardPanelSmall/HealthSprite/HealthLabel")
 attack_damage_label_small = NodePath("CardPanelSmall/DamageSprite/ADLabel")
 armor_label_small = NodePath("CardPanelSmall/ArmorSprite/ArmorLabel")
 cost_sprite_small = NodePath("CardPanelSmall/CostSprite")
+shop_sell_label = NodePath("ShopSellLabel")
 
 [node name="CardPanelBig" type="Control" parent="."]
 visible = false
@@ -489,6 +497,17 @@ offset_right = 70.0
 offset_bottom = 103.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="ShopSellLabel" type="Label" parent="."]
+visible = false
+layout_mode = 0
+offset_left = -118.0
+offset_top = -142.0
+offset_right = 118.0
+offset_bottom = -111.0
+label_settings = SubResource("LabelSettings_cwe28")
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [connection signal="gui_input" from="MouseClickControl" to="." method="_on_mouse_click_control_gui_input"]
 [connection signal="mouse_entered" from="MouseClickControl" to="." method="_on_mouse_click_control_mouse_entered"]

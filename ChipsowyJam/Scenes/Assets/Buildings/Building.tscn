@@ -19,6 +19,7 @@ projectile_ball = ExtResource("2_w41p0")
 
 [node name="StatsLabel" type="Label3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 0)
+visible = false
 billboard = 1
 font_size = 60
 outline_size = 15

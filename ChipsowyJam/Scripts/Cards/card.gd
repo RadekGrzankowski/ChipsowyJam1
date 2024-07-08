@@ -18,6 +18,8 @@ extends Control
 @export var armor_label_small: Label
 @export var cost_sprite_small: Sprite2D
 
+@export var shop_sell_label: Label
+
 var card_name: String
 var image: Texture2D
 var description: String
@@ -180,6 +182,23 @@ func _physics_process(delta):
 			global_position = lerp(global_position, position, 10 * delta)
 
 func _on_mouse_click_control_gui_input(event):
+	var is_card_moved: bool = false
+	if event is InputEventMouse:
+		if is_card_moved:
+			return
+		var sell_zone = get_tree().get_first_node_in_group("sell_zone")
+		var distance = global_position.distance_to(sell_zone.global_position + sell_zone.pivot_offset)
+		if distance < 70:
+			if !is_in_group("shop_card"):
+				shop_sell_label.visible = true
+				shop_sell_label.text = "+" + str(cost / 2) + "G"
+			else:
+				shop_sell_label.visible = true
+				shop_sell_label.text = "Cannot sell shop card!"
+		else:
+			shop_sell_label.visible = false
+			shop_sell_label.text = ""
+			
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
 		if not selected and event.pressed:
 			# INFO change top level of the card to always be on top for duration of drag
@@ -233,7 +252,6 @@ func _on_mouse_click_control_gui_input(event):
 								break
 					index += 1	
 			else:	
-				var is_card_moved: bool = false
 				for node: Control in rest_nodes:
 					var distance = global_position.distance_to(node.global_position + node.pivot_offset)
 					if distance < shortest_dist:

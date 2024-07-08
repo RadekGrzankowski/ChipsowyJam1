@@ -1,5 +1,5 @@
 extends Node3D
-var format_gold_stats: String = "PLAYER 1 GOLD: %s\nPLAYER 2(AI) GOLD: %s"
+var format_gold_stats: String = "PLAYER 1 GOLD: %sG\nPLAYER 2(AI) GOLD: %sG"
 var format_minions_top: String = "P1 MINIONS TOP: %s\nP2 MINIONS TOP: %s"
 var format_minions_mid: String = "P1 MINIONS MID: %s\nP2 MINIONS MID: %s"
 var format_minions_bot: String = "P1 MINIONS BOT: %s\nP2 MINIONS BOT: %s"
